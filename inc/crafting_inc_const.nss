@@ -212,3 +212,21 @@ const string SATCHEL_VAR_SPELLID	= "SatchelSpellId";
 const string II_VAR_CONTAINER		= "ii_CraftContainer";
 const string II_VAR_CRAFTER			= "ii_CraftCrafter";
 const string II_VAR_SPELLID			= "ii_CraftSpellId";
+
+
+// -----------------------------------------------------------------------------
+// extra Constants
+// -----------------------------------------------------------------------------
+// spellIds:
+const int SPELL_IMBUE_ITEM					= 1081;
+
+const int SPELL_SHAPERS_ALEMBIC_DIVIDE		= 1098;
+const int SPELL_SHAPERS_ALEMBIC_COMBINE		= 1099;
+const int SPELL_SHAPERS_ALEMBIC_CONVERT		= 1100;
+
+// baseItems:
+const int BASE_ITEM_BALORSWORD		= 82;
+const int BASE_ITEM_BALORFALCHION	= 83;
+const int BASE_ITEM_STEIN			= 127;
+const int BASE_ITEM_BAG				= 131;
+const int BASE_ITEM_SPOON			= 138;

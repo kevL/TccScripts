@@ -17,7 +17,7 @@
 #include "x2_inc_switches"		// CAMPAIGN_SWITCH_CRAFTING_USE_TOTAL_LEVEL
 #include "crafting_inc_const"
 
-//#include "x0_i0_stringlib"	// Sort(), FindListElementIndex(), GetTotalTokens()
+//#include "x0_i0_stringlib"	// Sort(), FindListElementIndex(), GetNumberTokens()
 
 // ______________
 // ** STRUCTS ***
@@ -1131,34 +1131,34 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol)
 	string sRecipeMatch, sCraftResult, sRecipeMatchTest, sCraftResultTest;
 	int bFound;
 
-/*	struct tokenizer rTok = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
-	while (CheckMoreTokens(rTok))
+/*	struct sStringTokenizer rTok = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
+	while (HasMoreTokens(rTok))
 	{
-		rTok = AdvanceTokenizer(rTok);
-		sRecipeMatch = GetCurrentToken(rTok);
+		rTok = AdvanceToNextToken(rTok);
+		sRecipeMatch = GetNextToken(rTok);
 
 		sCraftResult = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatch));
 		bFound = FALSE;
 
-		struct tokenizer rTokTest = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
-		while (CheckMoreTokens(rTokTest))
+		struct sStringTokenizer rTokTest = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
+		while (HasMoreTokens(rTokTest))
 		{
 			// nope. Would have to rewrite the tokenizer ....
 		}
 	} */
-	int iTokens = GetTotalTokens(sRecipeMatches, REAGENT_LIST_DELIMITER);
+	int iTokens = GetNumberTokens(sRecipeMatches, REAGENT_LIST_DELIMITER);
 	//TellCraft(". iTokens= " + IntToString(iTokens));
 	int i, j;
 	for (i = 0; i != iTokens; ++i)
 	{
-		sRecipeMatch = GetTokenByPosition(sRecipeMatches, i, REAGENT_LIST_DELIMITER);
+		sRecipeMatch = GetTokenByPosition(sRecipeMatches, REAGENT_LIST_DELIMITER, i);
 		sCraftResult = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatch));
 		//TellCraft(". . sRecipeMatch= " + sRecipeMatch + " / sCraftResult= " + sCraftResult);
 		bFound = FALSE;
 
 		for (j = i + 1; j != iTokens; ++j)
 		{
-			sRecipeMatchTest = GetTokenByPosition(sRecipeMatches, j, REAGENT_LIST_DELIMITER);
+			sRecipeMatchTest = GetTokenByPosition(sRecipeMatches, REAGENT_LIST_DELIMITER, j);
 			sCraftResultTest = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatchTest));
 			//TellCraft(". . . sRecipeMatchTest= " + sRecipeMatchTest + " / sCraftResultTest= " + sCraftResultTest);
 
@@ -1199,13 +1199,13 @@ int ParseRecipeMatches(string sRecipeMatches, object oCrafter)
 	string sRef, sSpellId, sRecipeMatch, sInfo, sInfoSpells;
 	int iSpellId;
 
-	struct tokenizer rTok = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
-	while (CheckMoreTokens(rTok))
+	struct sStringTokenizer rTok = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
+	while (HasMoreTokens(rTok))
 	{
 		++iProceed;
 
-		rTok = AdvanceTokenizer(rTok);
-		sRecipeMatch = GetCurrentToken(rTok);
+		rTok = AdvanceToNextToken(rTok);
+		sRecipeMatch = GetNextToken(rTok);
 
 		sSpellId = Get2DAString(CRAFTING_2DA, COL_CRAFTING_CATEGORY, StringToInt(sRecipeMatch));
 		iSpellId = StringToInt(sSpellId);
@@ -1815,7 +1815,7 @@ int hasExcludedProp(object oItem, int iRecipeMatch)
 	{
 		itemproperty ipScan;
 
-		int iTokens = GetTotalTokens(sExclusions, REAGENT_LIST_DELIMITER);
+		int iTokens = GetNumberTokens(sExclusions, REAGENT_LIST_DELIMITER);
 		int i;
 		for (i = 0; i != iTokens; ++i)
 		{
@@ -2757,11 +2757,11 @@ string MakeList(string sReagent1,
 int GetAreAllEncodedEffectsAnUpgrade(object oItem, string sEncodedIps)
 {
 	string sEncodedIp;
-	struct tokenizer rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
-	while (CheckMoreTokens(rEncodedIps))
+	struct sStringTokenizer rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+	while (HasMoreTokens(rEncodedIps))
 	{
-		rEncodedIps = AdvanceTokenizer(rEncodedIps);
-		sEncodedIp = GetCurrentToken(rEncodedIps);
+		rEncodedIps = AdvanceToNextToken(rEncodedIps);
+		sEncodedIp = GetNextToken(rEncodedIps);
 
 		if (!GetIsEncodedEffectAnUpgrade(oItem, sEncodedIp))
 			return FALSE; // if any is not an upgrade then all are not an upgrade
@@ -2804,11 +2804,11 @@ void ApplyEncodedEffectsToItem(object oItem, string sEncodedIps)
 {
 	//TellCraft("applying sEncodedIps " + sEncodedIps);
 	string sEncodedIp;
-	struct tokenizer rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
-	while (CheckMoreTokens(rEncodedIps))
+	struct sStringTokenizer rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+	while (HasMoreTokens(rEncodedIps))
 	{
-		rEncodedIps = AdvanceTokenizer(rEncodedIps);
-		sEncodedIp = GetCurrentToken(rEncodedIps);
+		rEncodedIps = AdvanceToNextToken(rEncodedIps);
+		sEncodedIp = GetNextToken(rEncodedIps);
 		AddEncodedIp(oItem, sEncodedIp);
 	}
 }
