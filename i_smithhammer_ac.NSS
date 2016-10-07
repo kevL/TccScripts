@@ -25,7 +25,7 @@ void main()
 		AssignCommand(oTarget, DoMundaneCrafting(oPC));
 	else if (GetObjectType(oTarget) == OBJECT_TYPE_ITEM)
 	{
-		if (GetPlotFlag(oTarget))
+		if (!GetPlotFlag(oTarget))
 		{
 			if (GetGlobalInt(CAMPAIGN_SWITCH_SMITH_HAMMER_RENAME_ITEM)
 				|| StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_AllowEasyItemRenaming)))
