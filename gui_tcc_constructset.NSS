@@ -73,7 +73,7 @@ void ConvertToSetPart(object oOriginal, string sSetLabel, object oContainer, obj
 	}
 
 	// if Set re-tagging is on and oOriginal is already tagged then reject
-	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_AllowSetNameChange))
+	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 1)) // TCC_Toggle_AllowSetNameChange
 		&& GetLocalString(oOriginal, TCC_VAR_SET_LABEL) != "")
 	{
 		NotifyPlayer(oCrafter, -1, GetName(oOriginal) + " is already part of an item Set.");
@@ -99,7 +99,7 @@ void ConvertToSetPart(object oOriginal, string sSetLabel, object oContainer, obj
 		SetLocalInt(oCopy, TCC_VAR_MASTERWORK, TRUE);
 
 	int iMaterial = GetMaterialCode(oOriginal);
-	if (iMaterial != MAT_NUL)
+	if (iMaterial != 0) // MAT_NUL
 		SetLocalInt(oCopy, TCC_VAR_MATERIAL, iMaterial);
 
 	SetLocalString(oCopy, TCC_VAR_SET_LABEL, sSetLabel);

@@ -4,49 +4,52 @@
 
 
 // TCC Constants
-const string TCC_CONFIG_2da			= "tcc_config";
-const string TCC_SALVAGE_2da		= "tcc_salvage";
+const string TCC_CONFIG_2da		= "tcc_config";
+const string TCC_SALVAGE_2da	= "tcc_salvage";
 
-const string TCC_COL_VALUE			= "Value1";
+const string TCC_COL_VALUE		= "Value1";
 
+// WARNING: Do not use these because they may cause a conflict with
+// other const int's when the internal Gui-script compiler runs.
+//
 // TCC Config.2da rows
-const int TCC_Value_SalvageDCModifier			=  0;// note: double-slash represents qty of usages
-const int TCC_Toggle_AllowSetNameChange			=  1;//
-const int TCC_Value_MaximumSetProperties		=  2;////////
-const int TCC_Toggle_RequireCasterLevel			=  3;//
-const int TCC_Toggle_RequireFeats				=  4;//
-const int TCC_Toggle_LimitNumberOfProps			=  5;//
-const int TCC_Value_GrantMasterworkBonusSlots	=  6;//
-const int TCC_Value_BasePropSlots				=  7;//
-const int TCC_Toggle_GrantMaterialBonusSlots	=  8;//
-const int TCC_Value_DarksteelPropSlots			=  9;//
-const int TCC_Value_MithralPropSlots			= 10;//
-const int TCC_Value_SalamanderPropSlots			= 11;//
-const int TCC_Value_UmberHulkPropSlots			= 12;//
-const int TCC_Value_WyvernPropSlots				= 13;//
-const int TCC_Value_DuskwoodPropSlots			= 14;//
-const int TCC_Value_ShederranPropSlots			= 15;//
-const int TCC_Value_AlchemicalSilverPropSlots	= 16;//
-const int TCC_Value_ColdIronPropSlots			= 17;//
-const int TCC_Value_AdamantinePropSlots			= 18;//
-const int TCC_Value_ZalantarPropSlots			= 19;//
-const int TCC_Value_RedDragonPropSlots			= 20;//
-const int TCC_Toggle_GrantLimitationBonusSlot	= 21;//
-const int TCC_Toggle_LimitationPropsAreFree		= 22;//
-const int TCC_Toggle_LightPropsAreFree			= 23;//
-const int TCC_Toggle_VFXPropsAreFree			= 24;//
-const int TCC_Toggle_SetPropsAreFree			= 25;//
-const int TCC_Toggle_CreateMasterworkItems		= 26;//
-const int TCC_Toggle_AllowItemSalvaging			= 27;//
-const int TCC_Toggle_SalvagingRequiresMinSkill	= 28;//
-const int TCC_Toggle_SalvagingUsesSkillCheck	= 29;//
-const int TCC_Toggle_AllowEasyItemRenaming		= 30;//
-const int TCC_Value_MasterworkSkillModifier		= 31;//
-const int TCC_Value_FirstSetRecipeLine			= 32;//
-const int TCC_Toggle_UseRecipeExclusion			= 33;//
-const int TCC_Toggle_UseVariableSlotCosts		= 34;//
-const int TCC_Toggle_UseRecipeXPCosts			= 35;//
-const int TCC_Toggle_UseRecipeGPCosts			= 36;//
+//const int TCC_Value_SalvageDCModifier				=  0;
+//const int TCC_Toggle_AllowSetNameChange			=  1;
+//const int TCC_Value_MaximumSetProperties			=  2;
+//const int TCC_Toggle_RequireCasterLevel			=  3;
+//const int TCC_Toggle_RequireFeats					=  4;
+//const int TCC_Toggle_LimitNumberOfProps			=  5;
+//const int TCC_Value_GrantMasterworkBonusSlots		=  6;
+//const int TCC_Value_BasePropSlots					=  7;
+//const int TCC_Toggle_GrantMaterialBonusSlots		=  8;
+//const int TCC_Value_DarksteelPropSlots			=  9;
+//const int TCC_Value_MithralPropSlots				= 10;
+//const int TCC_Value_SalamanderPropSlots			= 11;
+//const int TCC_Value_UmberHulkPropSlots			= 12;
+//const int TCC_Value_WyvernPropSlots				= 13;
+//const int TCC_Value_DuskwoodPropSlots				= 14;
+//const int TCC_Value_ShederranPropSlots			= 15;
+//const int TCC_Value_AlchemicalSilverPropSlots		= 16;
+//const int TCC_Value_ColdIronPropSlots				= 17;
+//const int TCC_Value_AdamantinePropSlots			= 18;
+//const int TCC_Value_ZalantarPropSlots				= 19;
+//const int TCC_Value_RedDragonPropSlots			= 20;
+//const int TCC_Toggle_GrantLimitationBonusSlot		= 21;
+//const int TCC_Toggle_LimitationPropsAreFree		= 22;
+//const int TCC_Toggle_LightPropsAreFree			= 23;
+//const int TCC_Toggle_VFXPropsAreFree				= 24;
+//const int TCC_Toggle_SetPropsAreFree				= 25;
+//const int TCC_Toggle_CreateMasterworkItems		= 26;
+//const int TCC_Toggle_AllowItemSalvaging			= 27;
+//const int TCC_Toggle_SalvagingRequiresMinSkill	= 28;
+//const int TCC_Toggle_SalvagingUsesSkillCheck		= 29;
+//const int TCC_Toggle_AllowEasyItemRenaming		= 30;
+//const int TCC_Value_MasterworkSkillModifier		= 31;
+//const int TCC_Value_FirstSetRecipeLine			= 32;
+//const int TCC_Toggle_UseRecipeExclusion			= 33;
+//const int TCC_Toggle_UseVariableSlotCosts			= 34;
+//const int TCC_Toggle_UseRecipeXPCosts				= 35;
+//const int TCC_Toggle_UseRecipeGPCosts				= 36;
 
 // TCC general vars
 const string TCC_VAR_MASTERWORK		= "tcc_masterwork";
@@ -100,20 +103,23 @@ const int TCC_TYPE_RING 			= 52;
 const int TCC_TYPE_BACK 			= 80;
 
 
+// WARNING: Do not use these because they may cause a conflict with
+// other const int's when the internal Gui-script compiler runs.
+//
 // material types
-const int MAT_NUL =  0; // none.
-const int MAT_ADA =  1; // "_ada_"
-const int MAT_CLD =  2; // "_cld_"
-const int MAT_DRK =  3; // "_drk_"
-const int MAT_DSK =  4; // "_dsk_"
-const int MAT_MTH =  5; // "_mth_"
-const int MAT_RDH =  6; // "_rdh_"
-const int MAT_SHD =  7; // "_shd_"
-const int MAT_SLH =  8; // "_slh_"
-const int MAT_SLV =  9; // "_slv_"
-const int MAT_UHH = 10; // "_uhh_"
-const int MAT_WYH = 11; // "_wyh_"
-const int MAT_ZAL = 12; // "_zal_"
+//const int MAT_NUL =  0; // none.
+//const int MAT_ADA =  1; // "_ada_"
+//const int MAT_CLD =  2; // "_cld_"
+//const int MAT_DRK =  3; // "_drk_"
+//const int MAT_DSK =  4; // "_dsk_"
+//const int MAT_MTH =  5; // "_mth_"
+//const int MAT_RDH =  6; // "_rdh_"
+//const int MAT_SHD =  7; // "_shd_"
+//const int MAT_SLH =  8; // "_slh_"
+//const int MAT_SLV =  9; // "_slv_"
+//const int MAT_UHH = 10; // "_uhh_"
+//const int MAT_WYH = 11; // "_wyh_"
+//const int MAT_ZAL = 12; // "_zal_"
 
 
 

@@ -17,7 +17,8 @@
 #include "x2_inc_switches"		// CAMPAIGN_SWITCH_CRAFTING_USE_TOTAL_LEVEL
 #include "crafting_inc_const"
 
-//#include "x0_i0_stringlib"	// Sort(), FindListElementIndex(), GetNumberTokens()
+//#include "x0_i0_stringlib"	// Sort(), FindListElementIndex(), GetNumberTokens(), GetTokenByPosition(),
+								// GetStringTokenizer(), HasMoreTokens(), AdvanceToNextToken(), GetNextToken()
 
 // ______________
 // ** STRUCTS ***
@@ -496,7 +497,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 	}
 	TellCraft(". iCasterLevel= " + IntToString(iCasterLevel));
 
-	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_RequireCasterLevel))
+	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 3)) // TCC_Toggle_RequireCasterLevel
 		&& iCasterLevel < StringToInt(Get2DAString(CRAFTING_2DA, COL_CRAFTING_SKILL_LEVEL, iRecipeMatch)))
 	{
 		NotifyPlayer(oCrafter, ERROR_INSUFFICIENT_CASTER_LEVEL);
@@ -507,7 +508,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 	TellCraft(". iTccType= " + IntToString(iTccType));
 
 	// Check for the required feat on caster
-	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_RequireFeats)))
+	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 4))) // TCC_Toggle_RequireFeats
 	{
 		string sFeat = Get2DAString(CRAFTING_2DA, COL_CRAFTING_CRAFT_SKILL, iRecipeMatch);
 		int iFeat = StringToInt(sFeat);
@@ -572,7 +573,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 	object oOwnedPC = GetOwnedCharacter(oCrafter);
 
 	int iGPCost = 0;
-	if (Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_UseRecipeGPCosts) != "0")
+	if (Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 36) != "0") // TCC_Toggle_UseRecipeGPCosts
 		iGPCost = StringToInt(Get2DAString(CRAFTING_2DA, "GP", iRecipeMatch));
 	TellCraft(". iGPCost= " + IntToString(iGPCost));
 
@@ -584,7 +585,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 
 	// Check experience if required
 	int iXPCost = 0;
-	if (Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_UseRecipeXPCosts) != "0")
+	if (Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 35) != "0") // TCC_Toggle_UseRecipeXPCosts
 		iXPCost = StringToInt(Get2DAString(CRAFTING_2DA, "XP", iRecipeMatch));
 	TellCraft(". iXPCost= " + IntToString(iXPCost));
 
@@ -617,9 +618,8 @@ int GetBardicClassLevelForSongs(object oCrafter);
 
 		int iPropType = GetIntParam(sEncodedIp, 0);
 		TellCraft(". . iPropType= " + IntToString(iPropType));
-//		int iPar1 = GetIntParam(sEncodedIp, 1);
 		itemproperty ipEnchant = IPGetItemPropertyByID(iPropType,
-													   GetIntParam(sEncodedIp, 1), //iPar1,
+													   GetIntParam(sEncodedIp, 1),
 													   GetIntParam(sEncodedIp, 2),
 													   GetIntParam(sEncodedIp, 3),
 													   GetIntParam(sEncodedIp, 4));
@@ -642,22 +642,22 @@ int GetBardicClassLevelForSongs(object oCrafter);
 		}
 
 		// Check for properties that arrogate this one
-		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_UseRecipeExclusion))
+		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 33)) // TCC_Toggle_UseRecipeExclusion
 			&& hasExcludedProp(oItem, iRecipeMatch))
 		{
 			NotifyPlayer(oCrafter, -1, "This recipe can't be combined with properties already on the item.");
 			return;
 		}
 
-		int iFirstSetRecipe = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_FirstSetRecipeLine));
-		int iLastSetRecipe	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_MaximumSetProperties)) + iFirstSetRecipe;
+		int iFirstSetRecipe = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 32)); // TCC_Value_FirstSetRecipeLine
+		int iLastSetRecipe	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + iFirstSetRecipe; // TCC_Value_MaximumSetProperties
 		TellCraft(". . PropSet indices : first= " + IntToString(iFirstSetRecipe) + " last= " + IntToString(iLastSetRecipe));
 
 		// Check for available slots on item for enchants;
 		// if good, Do ENCHANTMENTS.
-		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_LimitNumberOfProps)))
+		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 5))) // TCC_Toggle_LimitNumberOfProps
 		{
-			int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_BasePropSlots));
+			int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 7)); // TCC_Value_BasePropSlots
 			TellCraft(". . . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
 			// grant a bonus slot if the Caster is of Epic Level (21+)
 			if (iCasterLevel > 20)
@@ -673,11 +673,11 @@ int GetBardicClassLevelForSongs(object oCrafter);
 			if (GetLocalInt(oItem, TCC_VAR_MASTERWORK)
 				|| GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
 			{
-				iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_GrantMasterworkBonusSlots));
+				iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 6)); // TCC_Value_GrantMasterworkBonusSlots
 				TellCraft(". . . enchant on Masterwork item - iBonus= " + IntToString(iBonus));
 			}
 
-			if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_GrantMaterialBonusSlots)))
+			if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 8))) // TCC_Toggle_GrantMaterialBonusSlots
 			{
 				// increase limit by material code if available
 				string sType;
@@ -698,64 +698,64 @@ int GetBardicClassLevelForSongs(object oCrafter);
 				{
 					switch (GetMaterialCode(oItem))
 					{
-						case MAT_ADA:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_AdamantinePropSlots));		// adamantine
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_AdamantinePropSlots));
+						case  1: // MAT_ADA
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 18)); // adamantine
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 18)); // TCC_Value_AdamantinePropSlots
 							break;
-						case MAT_CLD:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_ColdIronPropSlots));			// cold iron
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_ColdIronPropSlots));
+						case  2: // MAT_CLD
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 17)); // cold iron
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 17)); // TCC_Value_ColdIronPropSlots
 							break;
-						case MAT_DRK:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_DarksteelPropSlots));		// darksteel
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_DarksteelPropSlots));
+						case  3: // MAT_DRK
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS,  9)); // darksteel
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW,  9)); // TCC_Value_DarksteelPropSlots
 							break;
-						case MAT_DSK:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_DuskwoodPropSlots));			// duskwood
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_DuskwoodPropSlots));
+						case  4: // MAT_DSK
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 14)); // duskwood
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 14)); // TCC_Value_DuskwoodPropSlots
 							break;
-						case MAT_MTH:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_MithralPropSlots));			// mithral
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_MithralPropSlots));
+						case  5: // MAT_MTH
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 10)); // mithral
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 10)); // TCC_Value_MithralPropSlots
 							break;
-						case MAT_RDH:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_RedDragonPropSlots));		// red dragon hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_RedDragonPropSlots));
+						case  6: // MAT_RDH
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 20)); // red dragon hide
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 20)); // TCC_Value_RedDragonPropSlots
 							break;
-						case MAT_SHD:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_ShederranPropSlots));		// shederran
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_ShederranPropSlots));
+						case  7: // MAT_SHD
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 15)); // shederran
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 15)); // TCC_Value_ShederranPropSlots
 							break;
-						case MAT_SLH:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_SalamanderPropSlots));		// salamander hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_SalamanderPropSlots));
+						case  8: // MAT_SLH
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 11)); // salamander hide
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 11)); // TCC_Value_SalamanderPropSlots
 							break;
-						case MAT_SLV:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_AlchemicalSilverPropSlots));	// alchemical silver
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_AlchemicalSilverPropSlots));
+						case  9: // MAT_SLV
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 16)); // alchemical silver
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 16)); // TCC_Value_AlchemicalSilverPropSlots
 							break;
-						case MAT_UHH:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_UmberHulkPropSlots));		// umber hulk hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_UmberHulkPropSlots));
+						case 10: // MAT_UHH
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 12)); // umber hulk hide
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 12)); // TCC_Value_UmberHulkPropSlots
 							break;
-						case MAT_WYH:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_WyvernPropSlots));			// wyvern hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_WyvernPropSlots));
+						case 11: // MAT_WYH
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 13)); // wyvern hide
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 13)); // TCC_Value_WyvernPropSlots
 							break;
-						case MAT_ZAL:
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, TCC_Value_ZalantarPropSlots));			// zalantar
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, TCC_Value_ZalantarPropSlots));
+						case 12: // MAT_ZAL
+							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 19)); // zalantar
+							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 19)); // TCC_Value_ZalantarPropSlots
 					}
 				}
 				TellCraft(". . . material modifier - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
 			}
 
 
-			int bTCC_UseVariableSlotCosts	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_UseVariableSlotCosts));
-			int bTCC_LimitationPropsAreFree	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_LimitationPropsAreFree));
-			int bTCC_LightPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_LightPropsAreFree));
-			int bTCC_VFXPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_VFXPropsAreFree));
-			int bTCC_SetPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_SetPropsAreFree));
+			int bTCC_UseVariableSlotCosts	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 34)); // TCC_Toggle_UseVariableSlotCosts
+			int bTCC_LimitationPropsAreFree	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 22)); // TCC_Toggle_LimitationPropsAreFree
+			int bTCC_LightPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 23)); // TCC_Toggle_LightPropsAreFree
+			int bTCC_VFXPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 24)); // TCC_Toggle_VFXPropsAreFree
+			int bTCC_SetPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 25)); // TCC_Toggle_SetPropsAreFree
 
 			int iLimitationSlots = 0;
 			int iLimitationProps = 0;
@@ -783,7 +783,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 						iDiscount += iLimitationSlots;
 				}
 
-				if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_GrantLimitationBonusSlot)))
+				if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 21))) // TCC_Toggle_GrantLimitationBonusSlot
 					++iBonus;
 			}
 			TellCraft(". . limitation props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
@@ -819,7 +819,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 			if (iTccType == TCC_TYPE_MELEE) // note: Not sure what else should do this ->
 				bUpgrade = ReplaceAttackBonus(oItem,
 											  iPropType,
-											  GetItemPropertyCostTableValue(ipEnchant), //iPar1
+											  GetItemPropertyCostTableValue(ipEnchant),
 											  GetItemPropertySubType(ipEnchant));
 
 			if (!bUpgrade)
@@ -918,7 +918,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 					{
 						SetLatentPartReady(oItem, iPart);
 						NotifyPlayer(oCrafter, -1, "Item prepared ! The next property added will require "
-												   + IntToString(iPart) + " Set parts to activate !");
+									+ IntToString(iPart) + " Set parts to activate !");
 						return;
 					}
 					++iFirstSetRecipe;
@@ -1676,6 +1676,7 @@ const int TCC_TYPE_BACK 			= 80; // BASE_ITEM_CLOAK
 //   to a multi-TCC-type like TCC_TYPE_MISC_EQUIPPABLE or TCC_TYPE_ARMOR_SHIELD
 //   that needs to be done elsewhere, eg. isTypeMatch()
 // @return -
+// - TCC_TYPE_NONE
 // - TCC_TYPE_HEAD
 // - TCC_TYPE_NECK
 // - TCC_TYPE_WAIST
@@ -1803,7 +1804,6 @@ int isShield(object oItem)
 		int iSlots = kL_HexStringToInt(sSlots);
 		if (iSlots != -1) return (iSlots & 32); // 0x20 (32) is lefthand-slot.
 	}
-
 	return FALSE;
 } */
 
@@ -1839,7 +1839,7 @@ int GetMaterialCode(object oItem)
 {
 	//TellCraft("GetMaterialCode() " + GetTag(oItem));
 	int iMaterial = GetLocalInt(oItem, TCC_VAR_MATERIAL);
-	if (iMaterial != MAT_NUL)
+	if (iMaterial != 0) // MAT_NUL
 	{
 		//TellCraft(". local material= " + IntToString(iMaterial));
 		return iMaterial;
@@ -1857,21 +1857,21 @@ int GetMaterialCode(object oItem)
 		{
 			sMaterial = GetSubString(sTag, i, 5);
 			//TellCraft(". . test= " + sMaterial);
-			if (sMaterial == "_ada_") return MAT_ADA;
-			if (sMaterial == "_cld_") return MAT_CLD;
-			if (sMaterial == "_drk_") return MAT_DRK;
-			if (sMaterial == "_dsk_") return MAT_DSK;
-			if (sMaterial == "_mth_") return MAT_MTH;
-			if (sMaterial == "_rdh_") return MAT_RDH;
-			if (sMaterial == "_shd_") return MAT_SHD;
-			if (sMaterial == "_slh_") return MAT_SLH;
-			if (sMaterial == "_slv_") return MAT_SLV;
-			if (sMaterial == "_uhh_") return MAT_UHH;
-			if (sMaterial == "_wyh_") return MAT_WYH;
-			if (sMaterial == "_zal_") return MAT_ZAL;
+			if (sMaterial == "_ada_") return  1; // MAT_ADA
+			if (sMaterial == "_cld_") return  2; // MAT_CLD
+			if (sMaterial == "_drk_") return  3; // MAT_DRK
+			if (sMaterial == "_dsk_") return  4; // MAT_DSK
+			if (sMaterial == "_mth_") return  5; // MAT_MTH
+			if (sMaterial == "_rdh_") return  6; // MAT_RDH
+			if (sMaterial == "_shd_") return  7; // MAT_SHD
+			if (sMaterial == "_slh_") return  8; // MAT_SLH
+			if (sMaterial == "_slv_") return  9; // MAT_SLV
+			if (sMaterial == "_uhh_") return 10; // MAT_UHH
+			if (sMaterial == "_wyh_") return 11; // MAT_WYH
+			if (sMaterial == "_zal_") return 12; // MAT_ZAL
 		}
 	}
-	return MAT_NUL; // nothing was found, assume no particular material
+	return 0; // MAT_NUL - nothing was found, assume no particular material
 }
 
 // Gets the quantity of ip's of iPropType on oItem.
@@ -2046,7 +2046,7 @@ int GetQtyLatentIps(object oItem)
 {
 	int iTotal = 0;
 
-	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_MaximumSetProperties)) + 1;
+	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
 	int iGroup = 2;
 	while (iGroup <= iSetProps)
 	{
@@ -2111,7 +2111,7 @@ int GetQtyLatentPartsEquipped(string sSetLabel, object oPC)
 // Activates or deactivates Property Set ip's of the appropriate group.
 void ActivateLatentGroup(string sSetLabel, int iParts, object oPC)
 {
-	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_MaximumSetProperties)) + 1;
+	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
 	int iGroup;
 
 	object oItem;
@@ -2147,7 +2147,7 @@ void DeactivateAllLatentIps(object oItem)
 
 	string sSetProp;
 
-	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_MaximumSetProperties)) + 1;
+	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
 	int iGroup = 2;
 	while (iGroup <= iSetProps)	// loop through the possible Set ip-vars on oItem
 	{							// TODO: break if actual quantity of setprops is less than max setprops.
@@ -2282,9 +2282,9 @@ void DoMundaneCrafting(object oCrafter)
 	int bMasterwork = FALSE;
 	int iBonus = 0;
 
-	if (Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_CreateMasterworkItems) != "0")
+	if (Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 26) != "0") // TCC_Toggle_CreateMasterworkItems
 	{
-		int iTCC_MasterworkSkillModifier = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_MasterworkSkillModifier));
+		int iTCC_MasterworkSkillModifier = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 31)); // TCC_Value_MasterworkSkillModifier
 		if (iTCC_MasterworkSkillModifier + iSkillRankReq <= iSkillRankPC)
 		{
 			NotifyPlayer(oCrafter, -1, "You have created a masterpiece !");
@@ -2362,7 +2362,7 @@ void DoDistillation(object oItem, object oCrafter)
 		string sResrefList = Get2DAString(CRAFTING_2DA, COL_CRAFTING_OUTPUT, iRecipeMatch);
 		ExecuteDistillation(iSkillRankReq, oItem, oCrafter, sResrefList);
 	}
-	else if (!StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_AllowItemSalvaging)))
+	else if (!StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 27))) // TCC_Toggle_AllowItemSalvaging
 	{
 		//TellCraft("Nothing to see here ...");
 		NotifyPlayer(oCrafter, ERROR_ITEM_NOT_DISTILLABLE);
@@ -2464,7 +2464,7 @@ void ExecuteSalvage(object oItem, object oCrafter)
 	}
 
 	if (iSkillRankReq - 5 > GetSkillRank(SKILL_SPELLCRAFT, oCrafter) // check required skill level
-		&& StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_SalvagingRequiresMinSkill)))
+		&& StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 28))) // TCC_Toggle_SalvagingRequiresMinSkill
 	{
 		NotifyPlayer(oCrafter, -1, "Your Spellcraft skill is not high enough to salvage any materials.");
 		return;
@@ -2492,7 +2492,7 @@ void ExecuteSalvage(object oItem, object oCrafter)
 	}
 
 	string sProduct; // do a skill check and create the products - auto success if no skillcheck required
-	if (!StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Toggle_SalvagingUsesSkillCheck))
+	if (!StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 29)) // TCC_Toggle_SalvagingUsesSkillCheck
 		|| GetIsSkillSuccessful(oCrafter, SKILL_SPELLCRAFT, iSalvageDC))
 	{
 		sProduct = sSuccessProduct;
@@ -2557,7 +2557,7 @@ int GetSalvageDC(int iIndex, int iGrade)
 		case 3: iDC = StringToInt(Get2DAString(TCC_SALVAGE_2da, "SKILL3", iIndex));
 		case 4: iDC = StringToInt(Get2DAString(TCC_SALVAGE_2da, "SKILL4", iIndex));
 	}
-	return iDC + StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, TCC_Value_SalvageDCModifier));
+	return iDC + StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 0)); // TCC_Value_SalvageDCModifier
 }
 
 // Gets the tag of the essence related by iIndex and iGrade.
