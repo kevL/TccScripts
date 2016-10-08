@@ -514,7 +514,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 		int iFeat = StringToInt(sFeat);
 		if (sFeat == ""
 			|| iFeat == -1	// TODO: update Crafting.2da column ("SKILL") values that currently read "0" to "-1" OR "****".
-			|| iFeat ==  0)	// <- is Alertness but should be removed altogether.
+			|| iFeat ==  0)	// <- 0 is Alertness but should be removed altogether, both here and in the 2da.
 		{
 			switch (iTccType)
 			{
@@ -528,7 +528,6 @@ int GetBardicClassLevelForSongs(object oCrafter);
 					iFeat = FEAT_CRAFT_MAGIC_ARMS_AND_ARMOR;
 					break;
 
-				default:
 				case TCC_TYPE_HEAD:
 				case TCC_TYPE_NECK:
 				case TCC_TYPE_WAIST:
@@ -540,6 +539,11 @@ int GetBardicClassLevelForSongs(object oCrafter);
 				case TCC_TYPE_CONTAINER:
 				case TCC_TYPE_OTHER: // "Other" should never happen.
 					iFeat = FEAT_CRAFT_WONDROUS_ITEMS;
+					break;
+
+				default:
+				case TCC_TYPE_NONE:	// <- construct "OUTPUT" Resref - these *need* a value
+					break;			// under Crafting.2da "SKILL" ("0" won't cut it, see TODO above^)
 			}
 		}
 		TellCraft(". iFeat= " + IntToString(iFeat));
