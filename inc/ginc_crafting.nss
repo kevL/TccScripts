@@ -1950,7 +1950,7 @@ int ClearIpType(object oItem, int iPropType, int iCost, int iSubtype = -1)
 	{
 		if (GetItemPropertyDurationType(ipScan) == DURATION_TYPE_PERMANENT
 			&& GetItemPropertyType(ipScan) == iPropType
-			&& (iSubtype == -1 || GetItemPropertySubType(ipScan) == iSubtype)
+			&& (iSubtype == -1 || GetItemPropertySubType(ipScan) == iSubtype) // iSubtype will always have a valid value when called by ReplaceAttackBonus()
 			&& GetItemPropertyCostTableValue(ipScan) <= iCost)
 		{
 			bFound = TRUE;
@@ -1964,6 +1964,7 @@ int ClearIpType(object oItem, int iPropType, int iCost, int iSubtype = -1)
 }
 
 // Searches oItem for an ip similar to ipProp.
+// - this is functionally identical to GetIsItemPropertyAnUpgrade()
 // - similar properties have the same type and subtype but may have different
 //   parameters beyond that
 // - only permanent ip's are checked
@@ -1973,14 +1974,14 @@ int isIpUpgrade(object oItem, itemproperty ipProp)
 	if (!isIgnoredIp(ipProp))
 	{
 		int iPropType = GetItemPropertyType(ipProp);
+		int bIgnoreSub = isIgnoredSubtype(ipProp);
 
 		itemproperty ipScan = GetFirstItemProperty(oItem);
 		while (GetIsItemPropertyValid(ipScan))
 		{
 			if (GetItemPropertyDurationType(ipScan) == DURATION_TYPE_PERMANENT
 				&& GetItemPropertyType(ipScan) == iPropType
-				&& (GetItemPropertySubType(ipScan) == GetItemPropertySubType(ipProp)
-					|| isIgnoredSubtype(ipProp)))
+				&& (bIgnoreSub || GetItemPropertySubType(ipScan) == GetItemPropertySubType(ipProp)))
 			{
 				return TRUE;
 			}
@@ -2034,9 +2035,13 @@ int isIgnoredIp(itemproperty ip)
 // Checks if adding an ip should ignore subtype.
 int isIgnoredSubtype(itemproperty ip)
 {
-	if (GetItemPropertyType(ip) == ITEM_PROPERTY_VISUALEFFECT) //|| ITEM_PROPERTY_AC_BONUS (dodge/deflection/etc. should be okay)
-		return TRUE;
-
+	int iPropType = GetItemPropertyType(ip);
+	if (iPropType == ITEM_PROPERTY_VISUALEFFECT
+//		|| iPropType == ITEM_PROPERTY_AC_BONUS									// <- dodge/deflection/etc. should be okay (is handled globally by BaseItems.2da).
+		|| Get2DAString(ITEM_PROP_DEF_2DA, "SubTypeResRef", iPropType) == "")	// NOTE: Determine if subType needs to be compared;
+	{																			// because even if there is no subType to an ip,
+		return TRUE;															// it might be set at "-1" or "0", etc. doh!
+	}
 	return FALSE;
 }
 
@@ -2794,6 +2799,7 @@ itemproperty GetEncodedEffectItemProperty(string sEncodedIp)
 }
 
 // Gets whether ip will be treated as an upgrade.
+// - this is functionally identical to isIpUpgrade()
 int GetIsItemPropertyAnUpgrade(object oItem, itemproperty ip)
 {
 	if (isIgnoredIp(ip))
