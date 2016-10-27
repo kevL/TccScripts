@@ -2299,8 +2299,7 @@ void DoMundaneCrafting(object oCrafter)
 			NotifyPlayer(oCrafter, -1, "You have created a masterpiece !");
 
 			bMasterwork = TRUE;
-			int iBonus = (iSkillRankPC - iSkillRankReq) / iTCC_MasterworkSkillModifier;
-			if (iBonus < 0) iBonus = 0; // safety.
+			int iBonus = 1;
 		}
 	}
 	CreateListOfItemsInInventory(sResrefList, OBJECT_SELF, TRUE, bMasterwork, TRUE, iBonus);
