@@ -130,11 +130,7 @@ void CreateListOfItemsInInventory(string sResrefList,
 								  object oContainer = OBJECT_SELF,
 								  int bIdentify = TRUE,
 								  int bMasterWork = FALSE,
-								  int bFullStack = FALSE,
-								  int iBonus = 0);
-
-// Applies bonuses to crafted masterwork oItem.
-void ApplyMasterworkBonus(object oItem, int iBonus);
+								  int bFullStack = FALSE);
 
 
 // -----------------------------------------------------------------------------
@@ -880,6 +876,9 @@ int GetBardicClassLevelForSongs(object oCrafter);
 				iPropCount += GetQtyLatentIps(oItem);
 
 			TellCraft(". . iPropCount= " + IntToString(iPropCount));
+			TellCraft(". . iDiscount= " + IntToString(iDiscount));
+			TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+			TellCraft(". . iBonus= " + IntToString(iBonus));
 
 			// perform final slot check
 			if (!bUpgrade && !bFreeProp
@@ -1342,8 +1341,7 @@ void CreateListOfItemsInInventory(string sResrefList,
 								  object oContainer = OBJECT_SELF,
 								  int bIdentify = TRUE,
 								  int bMasterWork = FALSE,
-								  int bFullStack = FALSE,
-								  int iBonus = 0)
+								  int bFullStack = FALSE)
 {
 	//TellCraft("CreateListOfItemsInInventory() ( " + sResrefList + " )");
 	object oCreate;
@@ -1365,8 +1363,6 @@ void CreateListOfItemsInInventory(string sResrefList,
 				SetLocalInt(oCreate, TCC_VAR_MASTERWORK, TRUE);
 			}
 
-			if (GetIsObjectValid(oCreate) && iBonus)
-				ApplyMasterworkBonus(oCreate, iBonus);
 		}
 		else
 		{
@@ -1387,60 +1383,6 @@ void CreateListOfItemsInInventory(string sResrefList,
 		sResref = GetStringParam(sResrefList, ++i);
 	}
 }
-
-// Applies bonuses to crafted masterwork oItem.
-void ApplyMasterworkBonus(object oItem, int iBonus)
-{
-	int bMelee = IPGetIsMeleeWeapon(oItem);
-	if (bMelee || GetWeaponRanged(oItem))
-	{
-		if (iBonus > 20) iBonus = 20; // jic.
-
-		itemproperty ipBonus = ItemPropertyAttackBonus(iBonus);
-		IPSafeAddItemProperty(oItem, ipBonus);
-
-		if (iBonus /= 2)
-		{
-			if (bMelee)
-			{
-				switch (iBonus)
-				{
-					default: // should never happen.
-					case  1: iBonus = IP_CONST_DAMAGEBONUS_1; break;
-					case  2: iBonus = IP_CONST_DAMAGEBONUS_2; break;
-					case  3: iBonus = IP_CONST_DAMAGEBONUS_3; break;
-					case  4: iBonus = IP_CONST_DAMAGEBONUS_4; break;
-					case  5: iBonus = IP_CONST_DAMAGEBONUS_5; break;
-					case  6: iBonus = IP_CONST_DAMAGEBONUS_6; break;
-					case  7: iBonus = IP_CONST_DAMAGEBONUS_7; break;
-					case  8: iBonus = IP_CONST_DAMAGEBONUS_8; break;
-					case  9: iBonus = IP_CONST_DAMAGEBONUS_9; break;
-					case 10: iBonus = IP_CONST_DAMAGEBONUS_10;
-				}
-
-				int iType = GetWeaponType(oItem);
-				switch (iType)
-				{
-//					case WEAPON_TYPE_NONE: break; // better not happen.
-					case WEAPON_TYPE_PIERCING:				iType = IP_CONST_DAMAGETYPE_PIERCING;		break;
-					case WEAPON_TYPE_BLUDGEONING:			iType = IP_CONST_DAMAGETYPE_BLUDGEONING;	break;
-					case WEAPON_TYPE_SLASHING:				iType = IP_CONST_DAMAGETYPE_SLASHING;		break;
-					default:
-					case WEAPON_TYPE_PIERCING_AND_SLASHING:	iType = IP_CONST_DAMAGETYPE_SLASHING; // this could use the additive-const bug ...
-					// note that http://nwn2.wikia.com/wiki/Baseitems.2da
-					// says there's also bludgeoning-piercing type.
-				}
-
-				ipBonus = ItemPropertyDamageBonus(iType, iBonus);
-			}
-			else // ranged.
-				ipBonus = ItemPropertyMaxRangeStrengthMod(iBonus);
-
-			IPSafeAddItemProperty(oItem, ipBonus);
-		}
-	}
-}
-
 
 // -----------------------------------------------------------------------------
 // private functions for Magical Crafting
@@ -2289,7 +2231,6 @@ void DoMundaneCrafting(object oCrafter)
 
 	string sResrefList = Get2DAString(CRAFTING_2DA, COL_CRAFTING_OUTPUT, iRecipeMatch);
 	int bMasterwork = FALSE;
-	int iBonus = 0;
 
 	if (Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 26) != "0") // TCC_Toggle_CreateMasterworkItems
 	{
@@ -2299,10 +2240,9 @@ void DoMundaneCrafting(object oCrafter)
 			NotifyPlayer(oCrafter, -1, "You have created a masterpiece !");
 
 			bMasterwork = TRUE;
-			iBonus = 1;
 		}
 	}
-	CreateListOfItemsInInventory(sResrefList, OBJECT_SELF, TRUE, bMasterwork, TRUE, iBonus);
+	CreateListOfItemsInInventory(sResrefList, OBJECT_SELF, TRUE, bMasterwork, TRUE);
 
 	ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect(VFX_FNF_CRAFT_BLACKSMITH), OBJECT_SELF);
 	NotifyPlayer(oCrafter);
