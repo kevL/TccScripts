@@ -1120,9 +1120,8 @@ string GetRecipeMatches(object oItem)
 }
 
 // Finds and effectively deletes Crafting.2da indices that would result in the
-// same applied-ip or construction-resref.
-// - if matches are found it will be the last index that is kept, however the
-//   trigger itself will still be the first index.
+// same applied-ip or construction-resref, from the same reagents.
+// - if matches are found it will be the first recipe in the 2DA that is used.
 // - at last 1 index will be kept and returned as long as sRecipeMatches is not
 //   blank
 // - note that blank strings can be handled albeit redundantly at the call pt.
@@ -1132,6 +1131,7 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol)
 	string sMatches;
 
 	string sRecipeMatch, sCraftResult, sRecipeMatchTest, sCraftResultTest;
+	string sCraftInputs, sCraftInputsTest;
 	int bFound;
 
 /*	struct sStringTokenizer rTok = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
@@ -1156,16 +1156,18 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol)
 	{
 		sRecipeMatch = GetTokenByPosition(sRecipeMatches, REAGENT_LIST_DELIMITER, i);
 		sCraftResult = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatch));
+		sCraftInputs = Get2DAString(CRAFTING_2DA, COL_CRAFTING_REAGENTS, StringToInt(sRecipeMatch));
 		//TellCraft(". . sRecipeMatch= " + sRecipeMatch + " / sCraftResult= " + sCraftResult);
 		bFound = FALSE;
 
-		for (j = i + 1; j != iTokens; ++j)
+		for (j = 0; j != iTokens; ++j)
 		{
 			sRecipeMatchTest = GetTokenByPosition(sRecipeMatches, REAGENT_LIST_DELIMITER, j);
 			sCraftResultTest = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatchTest));
+			sCraftInputsTest = Get2DAString(CRAFTING_2DA, COL_CRAFTING_REAGENTS, StringToInt(sRecipeMatchTest));
 			//TellCraft(". . . sRecipeMatchTest= " + sRecipeMatchTest + " / sCraftResultTest= " + sCraftResultTest);
 
-			if (sCraftResultTest == sCraftResult)
+			if (sCraftResultTest == sCraftResult && sCraftInputs == sCraftInputsTest && i != j)
 			{
 				//TellCraft(". . . . MATCH bFound= TRUE");
 				bFound = TRUE;
