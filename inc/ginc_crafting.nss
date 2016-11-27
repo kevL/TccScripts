@@ -620,41 +620,61 @@ int GetBardicClassLevelForSongs(object oCrafter);
 		}
 
 		// Collect the required recipe information
-		string sEncodedIp = Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, iRecipeMatch);
-		TellCraft(". . sEncodedIp= " + sEncodedIp);
+		string sEncodedIps = Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, iRecipeMatch);
+		TellCraft(". . sEncodedIps= " + sEncodedIps);
 
-		int iPropType = GetIntParam(sEncodedIp, 0);
-		TellCraft(". . iPropType= " + IntToString(iPropType));
-		itemproperty ipEnchant = IPGetItemPropertyByID(iPropType,
-													   GetIntParam(sEncodedIp, 1),
-													   GetIntParam(sEncodedIp, 2),
-													   GetIntParam(sEncodedIp, 3),
-													   GetIntParam(sEncodedIp, 4));
-
-		// do a validity check although it's probably not thorough
-		if (!GetIsItemPropertyValid(ipEnchant))
+		struct sStringTokenizer stEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+		string sEncodedIp;
+		int iPropType;
+		itemproperty ipEnchant;
+		// perform checks on each property in the recipe
+		while (HasMoreTokens(stEncodedIps))
 		{
-			TellCraft("ERROR : DoMagicCrafting() ipEnchant is invalid ( " + sEncodedIp
-					  + " ) for iRecipeMatch= " + IntToString(iRecipeMatch));
-			NotifyPlayer(oCrafter, -1, "ERROR : The itemproperty as defined in Crafting.2da"
-								  + " is malformed for the recipe. Sry bout that");
-			return;
+			stEncodedIps = AdvanceToNextToken(stEncodedIps);
+			sEncodedIp = GetNextToken(stEncodedIps);
+			iPropType = GetIntParam(sEncodedIp, 0);
+			TellCraft(". . iPropType= " + IntToString(iPropType));
+			ipEnchant = IPGetItemPropertyByID(iPropType,
+														GetIntParam(sEncodedIp, 1),
+														GetIntParam(sEncodedIp, 2),
+														GetIntParam(sEncodedIp, 3),
+														GetIntParam(sEncodedIp, 4));
+			// do a validity check although it's probably not thorough
+			if (!GetIsItemPropertyValid(ipEnchant))
+			{
+				TellCraft("ERROR : DoMagicCrafting() ipEnchant is invalid ( " + sEncodedIp
+							+ " ) for iRecipeMatch= " + IntToString(iRecipeMatch));
+				NotifyPlayer(oCrafter, -1, "ERROR : The itemproperty as defined in Crafting.2da"
+											+ " is malformed for the recipe. Sry bout that");
+				return;
+			}
+
+			// is the ip-type legal for oItem
+			if (!GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
+			{
+				NotifyPlayer(oCrafter, ERROR_TARGET_NOT_LEGAL_FOR_EFFECT);
+				return;
+			}
+
+			// Check for properties that arrogate this one
+			if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 33)) // TCC_Toggle_UseRecipeExclusion
+				&& hasExcludedProp(oItem, iRecipeMatch))
+			{
+				NotifyPlayer(oCrafter, -1, "This recipe can't be combined with properties already on the item.");
+				return;
+			}
+
 		}
 
-		// is the ip-type legal for oItem
-		if (!GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
-		{
-			NotifyPlayer(oCrafter, ERROR_TARGET_NOT_LEGAL_FOR_EFFECT);
-			return;
-		}
-
-		// Check for properties that arrogate this one
-		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 33)) // TCC_Toggle_UseRecipeExclusion
-			&& hasExcludedProp(oItem, iRecipeMatch))
-		{
-			NotifyPlayer(oCrafter, -1, "This recipe can't be combined with properties already on the item.");
-			return;
-		}
+		// Reset ipEnchant and iPropType to the first property for now
+		stEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+		stEncodedIps = AdvanceToNextToken(stEncodedIps);
+		iPropType = GetIntParam(sEncodedIp, 0);
+		ipEnchant = IPGetItemPropertyByID(iPropType,
+										GetIntParam(sEncodedIp, 1),
+										GetIntParam(sEncodedIp, 2),
+										GetIntParam(sEncodedIp, 3),
+										GetIntParam(sEncodedIp, 4));
 
 		int iFirstSetRecipe = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 32)); // TCC_Value_FirstSetRecipeLine
 		int iLastSetRecipe	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + iFirstSetRecipe; // TCC_Value_MaximumSetProperties
@@ -943,19 +963,32 @@ int GetBardicClassLevelForSongs(object oCrafter);
 		}
 		else // not part of a Set
 		{
-			TellCraft(". . add IP !");
-			int iPolicy;
-			if (isIgnoredIp(ipEnchant))
-				iPolicy = X2_IP_ADDPROP_POLICY_IGNORE_EXISTING;
-			else
-				iPolicy = X2_IP_ADDPROP_POLICY_REPLACE_EXISTING;
+			stEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER); // reset the Tokenizer
+			while (HasMoreTokens(stEncodedIps))
+			{
+				stEncodedIps = AdvanceToNextToken(stEncodedIps);
+				sEncodedIp = GetNextToken(stEncodedIps);
+				iPropType = GetIntParam(sEncodedIp, 0);
+				ipEnchant = IPGetItemPropertyByID(iPropType,
+												GetIntParam(sEncodedIp, 1),
+												GetIntParam(sEncodedIp, 2),
+												GetIntParam(sEncodedIp, 3),
+												GetIntParam(sEncodedIp, 4));
+																									
+				TellCraft(". . add IP " + IntToString(iPropType) + "!");
+				int iPolicy;
+				if (isIgnoredIp(ipEnchant))
+					iPolicy = X2_IP_ADDPROP_POLICY_IGNORE_EXISTING;
+				else
+					iPolicy = X2_IP_ADDPROP_POLICY_REPLACE_EXISTING;
 
-			IPSafeAddItemProperty(oItem,
-								  ipEnchant,
-								  0.f,
-								  iPolicy,
-								  FALSE,
-								  isIgnoredSubtype(ipEnchant));
+				IPSafeAddItemProperty(oItem,
+									  ipEnchant,
+									  0.f,
+									  iPolicy,
+									  FALSE,
+									  isIgnoredSubtype(ipEnchant));
+			}
 		}
 	}
 
