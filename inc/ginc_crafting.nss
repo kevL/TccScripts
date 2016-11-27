@@ -170,6 +170,8 @@ int GetPropSlotsUsed(object oItem);
 int isIgnoredIp(itemproperty ip);
 // Checks if adding an ip should ignore subtype.
 int isIgnoredSubtype(itemproperty ip);
+// Finds attack bonus on Masterwork weapons
+int GetWeaponAttackBonus(object oWeapon, int nAttackBonusType = ITEM_PROPERTY_ATTACK_BONUS);
 
 
 // -----------------------------------------------------------------------------
@@ -445,7 +447,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			sRecipeMatches = PruneRecipeMatches(sRecipeMatches, sCol);
 			TellCraft(". . . pruned sRecipeMatches= " + sRecipeMatches);
 
-			if (ParseRecipeMatches(sRecipeMatches, oCrafter) != 0)
+			if (ParseRecipeMatches(sRecipeMatches, oCrafter) > 0)
 			{
 				TellCraft(". . . . call SetTriggerSpell() & exit");
 				SetTriggerSpell(oCrafter);
@@ -696,12 +698,18 @@ int GetBardicClassLevelForSongs(object oCrafter);
 			int iBonus = 0;
 			int iDiscount = 0;
 
-			// grant a bonus slot if the item is masterwork
+			// grant a bonus slot if the item is Masterwork
 			if (GetLocalInt(oItem, TCC_VAR_MASTERWORK)
 				|| GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
 			{
 				iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 6)); // TCC_Value_GrantMasterworkBonusSlots
 				TellCraft(". . . enchant on Masterwork item - iBonus= " + IntToString(iBonus));
+				// Give an extra slot for Masterwork weapons with the Attack Bonus +1 ability
+				if (GetWeaponAttackBonus(oItem) == 1)
+				{
+					iDiscount += 1;
+					TellCraft(". . . Masterwork weapon with inherent +1 Attack bonus - iDiscount= " + IntToString(iDiscount));
+				}
 			}
 
 			if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 8))) // TCC_Toggle_GrantMaterialBonusSlots
@@ -2019,6 +2027,18 @@ int isIgnoredSubtype(itemproperty ip)
 	return FALSE;
 }
 
+// Finds attack bonus on Masterwork weapons
+int GetWeaponAttackBonus(object oWeapon, int nAttackBonusType = ITEM_PROPERTY_ATTACK_BONUS) {
+    itemproperty ip = GetFirstItemProperty(oWeapon);
+    int nFound = 0;
+    while (nFound == 0 && GetIsItemPropertyValid(ip)) {
+        if (GetItemPropertyType(ip) ==nAttackBonusType) {
+            nFound = GetItemPropertyCostTableValue(ip);
+        }
+        ip = GetNextItemProperty(oWeapon);
+    }
+    return nFound;
+}
 
 // -----------------------------------------------------------------------------
 // functions for Property Sets
