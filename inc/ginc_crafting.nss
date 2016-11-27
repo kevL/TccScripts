@@ -603,8 +603,15 @@ int GetBardicClassLevelForSongs(object oCrafter);
 	if (sResrefList == "") bEnchant = TRUE;
 	TellCraft(". bEnchant= " + IntToString(bEnchant));
 
-	if (bEnchant)
+	if (!bEnchant) // CONSTRUCTION of a new Item
 	{
+		TellCraft(". construct resref(s) !");
+		DestroyItemsInInventory();
+		// this could be sucked up by DestroyItemsInInventory() so must be done after!
+		CreateListOfItemsInInventory(sResrefList, OBJECT_SELF, TRUE, FALSE, TRUE);
+	}
+
+	else { // ENCHANTMENT OF EXISTING ITEM
 		// Validate that an item was succesfully retrieved
 		if (!GetIsObjectValid(oItem))
 		{
@@ -951,14 +958,6 @@ int GetBardicClassLevelForSongs(object oCrafter);
 								  isIgnoredSubtype(ipEnchant));
 		}
 	}
-	else // CONSTRUCTION of a new Item
-	{
-		TellCraft(". construct resref(s) !");
-		DestroyItemsInInventory();
-		// this could be sucked up by DestroyItemsInInventory() so must be done after!
-		CreateListOfItemsInInventory(sResrefList, OBJECT_SELF, TRUE, FALSE, TRUE);
-	}
-
 
 	if (iGPCost > 0) // Charge gold coins if required
 		TakeGoldFromCreature(iGPCost, oOwnedPC, TRUE);
