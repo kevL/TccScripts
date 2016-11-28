@@ -982,7 +982,7 @@ int GetBardicClassLevelForSongs(object oCrafter);
 												GetIntParam(sEncodedIp, 2),
 												GetIntParam(sEncodedIp, 3),
 												GetIntParam(sEncodedIp, 4));
-																									
+
 				TellCraft(". . add IP " + IntToString(iPropType) + "!");
 				int iPolicy;
 				if (isIgnoredIp(ipEnchant))
