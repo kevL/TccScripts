@@ -98,8 +98,8 @@ string GetSortedReagents(int bEnchant = FALSE, object oContainer = OBJECT_SELF);
 string GetRepeatTags(object oItem);
 // Gets the first row in Crafting.2da that's within a determined range of rows
 // and that matches sReagentTags, sTrigger, and is the correct TCC-type (TAGS).
-int GetRecipeMatch(string sReagentTags,
-				   string sTrigger,
+int GetRecipeMatch(string sTrigger,
+				   string sReagentTags,
 				   object oItem = OBJECT_INVALID);
 // Gets a list of comma-delimited indices into Crafting.2da that will be valid
 // recipes for SPELL_IMBUE_ITEM.
@@ -112,8 +112,6 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol);
 int ParseRecipeMatches(string sRecipeMatches, object oCrafter);
 // Gets the first and last rows in Crafting.2da for sTrigger.
 struct range2da GetTriggerRange(string sTrigger);
-// Gets the first row for sTrigger in Crafting.2da.
-int GetTriggerStart(string sTrigger);
 // Checks if sTrigger is a spell-ID (is purely numeric).
 int isSpellId(string sTrigger);
 // Finds the first match in Crafting.2da for a sorted string of reagent-tags.
@@ -1028,7 +1026,7 @@ int GetInventoryRecipeMatch(string sTrigger, object oItem = OBJECT_INVALID)
 	//TellCraft(". . sTrigger= " + sTrigger);
 	string sReagentTags = GetSortedReagents(GetIsObjectValid(oItem)); // list of reagents in workbench or satchel
 	//TellCraft(". . sReagentTags= " + sReagentTags);
-	return GetRecipeMatch(sReagentTags, sTrigger, oItem);
+	return GetRecipeMatch(sTrigger, sReagentTags, oItem);
 }
 
 // Gets all reagents sorted into an alphabetical list (case-sensitive).
@@ -1080,9 +1078,8 @@ string GetRepeatTags(object oItem)
 // and that matches sReagentTags, sTrigger, and is the correct TCC-type (TAGS).
 // - if oItem is invalid ITEM_CATEGORY_NONE should return a match.
 // - returns index of sReagentTags for sTrigger (-1 if not found)
-int GetRecipeMatch(string sReagentTags, string sTrigger, object oItem = OBJECT_INVALID)
+int GetRecipeMatch(string sTrigger, string sReagentTags, object oItem = OBJECT_INVALID)
 {
-	//TellCraft("sReagentTags= " + sReagentTags);
 	//TellCraft("sReagentTags= " + sReagentTags);
 	string sTypes;
 
@@ -1285,7 +1282,17 @@ struct range2da GetTriggerRange(string sTrigger)
 	int i = 0;
 	if (sTrigger != "1081") // note: ImbueItem acts as a trigger for any magical recipe.
 	{
-		i = GetTriggerStart(sTrigger);
+		int iTotal = GetNum2DARows(CRAFTING_INDEX_2DA);
+		while (i != iTotal)
+		{
+			if (Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_CATEGORY, i) == sTrigger)
+				break;
+
+			++i;
+		}
+		if (i == iTotal)
+			i = -1;
+
 		switch (i)
 		{
 			case -1:
@@ -1311,21 +1318,6 @@ struct range2da GetTriggerRange(string sTrigger)
 	}
 
 	return rRange;
-}
-
-// Gets the first row for sTrigger in Crafting.2da.
-int GetTriggerStart(string sTrigger)
-{
-	int iTotal = GetNum2DARows(CRAFTING_INDEX_2DA);
-	int i = 0;
-	while (i != iTotal)
-	{
-		if (Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_CATEGORY, i) == sTrigger)
-			return i;
-
-		++i;
-	}
-	return -1;
 }
 
 // Checks if sTrigger is a spell-ID (is purely numeric).
@@ -2353,7 +2345,7 @@ void DoAlchemyCrafting(object oCrafter)
 // - distillation has no index
 void DoDistillation(object oItem, object oCrafter)
 {
-	int iRecipeMatch = GetRecipeMatch(GetTag(oItem), DISTILLATION_RECIPE_TRIGGER);
+	int iRecipeMatch = GetRecipeMatch(DISTILLATION_RECIPE_TRIGGER, GetTag(oItem));
 	//TellCraft("iRecipeMatch = " + IntToString(iRecipeMatch));
 	if (iRecipeMatch != -1)
 	{
