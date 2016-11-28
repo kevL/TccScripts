@@ -150,8 +150,8 @@ const string COL_CRAFTING_OUTPUT			= "OUTPUT"; 	// magical/wondrous, mundane, al
 const string COL_CRAFTING_CRAFT_SKILL		= "SKILL";		// magical/wondrous (Feat), mundane (skill)
 const string COL_CRAFTING_SKILL_LEVEL		= "LEVEL";		// magical/wondrous (caster level), mundane (skill level), alchemy (alchemy level), distillation (alchemy level)
 
-const string CRAFTING_INDEX_2DA 			= "crafting_index";	// Crafting_Index.2da
-const string COL_CRAFTING_START_ROW 		= "START_ROW";
+//const string CRAFTING_INDEX_2DA 			= "crafting_index";	// Crafting_Index.2da
+//const string COL_CRAFTING_START_ROW 		= "START_ROW";
 
 const string ITEM_PROP_DEF_2DA				= "itempropdef";	// ItemPropDef.2da
 const string COL_ITEM_PROP_DEF_SLOTS		= "Slots";
@@ -223,6 +223,8 @@ const string II_VAR_SPELLID			= "ii_CraftSpellId";
 // -----------------------------------------------------------------------------
 // extra Constants
 // -----------------------------------------------------------------------------
+const string SPELL_IMBUE_ITEM_ST = "1081";
+
 // spellIds:
 const int SPELL_IMBUE_ITEM					= 1081;
 

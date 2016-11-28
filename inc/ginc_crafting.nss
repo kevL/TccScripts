@@ -97,7 +97,7 @@ string GetSortedReagents(int bEnchant = FALSE, object oContainer = OBJECT_SELF);
 // Gets a list of tags for any stacksize of oItem.
 string GetRepeatTags(object oItem);
 // Gets the first row in Crafting.2da that's within a determined range of rows
-// and that matches sReagentTags, sTrigger, and is the correct TCC-type (TAGS).
+// and that matches sTrigger, sReagentTags, and is the correct TCC-type (TAGS).
 int GetRecipeMatch(string sTrigger,
 				   string sReagentTags,
 				   object oItem = OBJECT_INVALID);
@@ -105,7 +105,7 @@ int GetRecipeMatch(string sTrigger,
 // recipes for SPELL_IMBUE_ITEM.
 string GetRecipeMatches(object oItem);
 // Finds and effectively deletes Crafting.2da indices that would result in the
-// same applied-ip or construction-resref.
+// same applied-ip or construction-resref based on the same reagents.
 string PruneRecipeMatches(string sRecipeMatches, string sCol);
 // Takes a list of Crafting.2da indices and tells player what the candidate
 // triggers for SPELL_IMBUE_ITEM are.
@@ -445,7 +445,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			sRecipeMatches = PruneRecipeMatches(sRecipeMatches, sCol);
 			TellCraft(". . . pruned sRecipeMatches= " + sRecipeMatches);
 
-			if (ParseRecipeMatches(sRecipeMatches, oCrafter) > 0)
+			if (ParseRecipeMatches(sRecipeMatches, oCrafter) > 0) // note this won't return "-1" because 'sRecipeMatches' is not blank.
 			{
 				TellCraft(". . . . call SetTriggerSpell() & exit");
 				SetTriggerSpell(oCrafter);
@@ -1075,7 +1075,7 @@ string GetRepeatTags(object oItem)
 }
 
 // Gets the first row in Crafting.2da that's within a determined range of rows
-// and that matches sReagentTags, sTrigger, and is the correct TCC-type (TAGS).
+// and that matches sTrigger, sReagentTags, and is the correct TCC-type (TAGS).
 // - if oItem is invalid ITEM_CATEGORY_NONE should return a match.
 // - returns index of sReagentTags for sTrigger (-1 if not found)
 int GetRecipeMatch(string sTrigger, string sReagentTags, object oItem = OBJECT_INVALID)
@@ -1116,7 +1116,7 @@ string GetRecipeMatches(object oItem)
 	string sTypes;
 	int iPropType;
 
-	struct range2da rRange = GetTriggerRange("1081"); // get Crafting.2da rows per Crafting_Index.2da for SPELL_IMBUE_ITEM
+	struct range2da rRange = GetTriggerRange(SPELL_IMBUE_ITEM_ST); // get Crafting.2da rows per Crafting_Index.2da for SPELL_IMBUE_ITEM
 	//TellCraft(". rRange first= " + IntToString(rRange.first) + " last=" + IntToString(rRange.last));
 	while (rRange.first != -1)
 	{
@@ -1157,7 +1157,7 @@ string GetRecipeMatches(object oItem)
 }
 
 // Finds and effectively deletes Crafting.2da indices that would result in the
-// same applied-ip or construction-resref.
+// same applied-ip or construction-resref based on the same reagents.
 // - if matches are found it will be the last index that is kept, however the
 //   trigger itself will still be the first index.
 // - at last 1 index will be kept and returned as long as sRecipeMatches is not
@@ -1196,7 +1196,7 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol)
 		//TellCraft(". . sRecipeMatch= " + sRecipeMatch + " / sCraftResult= " + sCraftResult);
 		bFound = FALSE;
 
-		for (j = i+1; j != iTokens; ++j)
+		for (j = i + 1; j != iTokens; ++j)
 		{
 			sRecipeMatchTest = GetTokenByPosition(sRecipeMatches, REAGENT_LIST_DELIMITER, j);
 			sCraftResultTest = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatchTest));
@@ -1272,17 +1272,49 @@ int ParseRecipeMatches(string sRecipeMatches, object oCrafter)
 }
 
 // Gets the first and last rows in Crafting.2da for sTrigger.
-// - note: Crafting_Index.2da shall not have blank rows.
-// - note: Spells shall be arranged first in Crafting_Index.2da and therefore in
-//   Crafting.2da also.
+// - note: Spells shall be arranged first in Crafting.2da
+// @return	-1 if sTrigger is not found
+//			rRange.first - the first row in Crafting.2da for sTrigger (inclusive)
+//			rRange.last  - the last  row in Crafting.2da for sTrigger (inclusive)
 struct range2da GetTriggerRange(string sTrigger)
 {
+	TellCraft("GetTriggerRange() sTrigger= " + sTrigger);
+
 	struct range2da rRange;
+	rRange.first = -1;
+	rRange.last  = -1;
+
+	string sCategory;
+
+	int iTotal = GetNum2DARows(CRAFTING_2DA);
+	TellCraft(". Crafting2da rows= " + IntToString(iTotal));
 
 	int i = 0;
-	if (sTrigger != "1081") // note: ImbueItem acts as a trigger for any magical recipe.
+	if (sTrigger != SPELL_IMBUE_ITEM_ST) // note: Imbue_Item acts as a trigger for any magical recipe.
 	{
-		int iTotal = GetNum2DARows(CRAFTING_INDEX_2DA);
+		TellCraft(". . regular (not II)");
+		while (i != iTotal && rRange.last == -1)
+		{
+			sCategory = Get2DAString(CRAFTING_2DA, COL_CRAFTING_CATEGORY, i);
+			TellCraft(". . . sCategory= " + sCategory + " i= " + IntToString(i));
+			//TellCraft(". . . first= " + IntToString(rRange.first));
+			//TellCraft(". . . last= " + IntToString(rRange.last));
+
+			if (rRange.first == -1 && sCategory == sTrigger) // search for 'first', set it so it doesn't get found a second time
+			{
+				rRange.first = i;
+				//TellCraft(". . . . FOUND first= " + IntToString(rRange.first));
+			}
+			else if (rRange.first != -1		// 'first' has been found
+				  && rRange.last  == -1		// 'last' has not been found
+				  && sCategory != sTrigger)	// rely on 'first' being found before allowing 'last + 1' to be found
+			{
+				rRange.last = i - 1; // gone too far, back up a row
+				//TellCraft(". . . . FOUND last= " + IntToString(rRange.last));
+			}
+			++i;
+		}
+/*		int iTotal = GetNum2DARows(CRAFTING_INDEX_2DA);
 		while (i != iTotal)
 		{
 			if (Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_CATEGORY, i) == sTrigger)
@@ -1290,8 +1322,7 @@ struct range2da GetTriggerRange(string sTrigger)
 
 			++i;
 		}
-		if (i == iTotal)
-			i = -1;
+		if (i == iTotal) i = -1;
 
 		switch (i)
 		{
@@ -1306,17 +1337,41 @@ struct range2da GetTriggerRange(string sTrigger)
 					rRange.last = GetNum2DARows(CRAFTING_2DA) - 1;
 				else
 					rRange.last = StringToInt(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_START_ROW, i + 1)) - 1;
-		}
+		} */
 	}
 	else // Imbue_Item will search all spellId's ->
 	{
-		while (isSpellId(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_CATEGORY, i)))
+		TellCraft(". . Imbue Item");
+		while (i != iTotal && rRange.last == -1)
+		{
+			sCategory = Get2DAString(CRAFTING_2DA, COL_CRAFTING_CATEGORY, i);
+			TellCraft(". . . sCategory= " + sCategory + " i= " + IntToString(i));
+			//TellCraft(". . . first= " + IntToString(rRange.first));
+			//TellCraft(". . . last= " + IntToString(rRange.last));
+
+			if (rRange.first == -1 && isSpellId(sCategory)) // search for 'first', set it so it doesn't get found a second time
+			{
+				rRange.first = i;
+				//TellCraft(". . . . FOUND first= " + IntToString(rRange.first));
+			}
+			else if (rRange.first != -1		// 'first' has been found
+				  && rRange.last  == -1		// 'last' has not been found
+				  && !isSpellId(sCategory))	// rely on 'first' being found before allowing 'last + 1' to be found
+			{
+				rRange.last = i - 1; // gone too far, back up a row
+				//TellCraft(". . . . FOUND last= " + IntToString(rRange.last));
+			}
+			++i;
+		}
+/*		while (isSpellId(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_CATEGORY, i)))
 			++i;
 
 		rRange.last = StringToInt(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_START_ROW, i)) - 1;
-		rRange.first = 0;
+		rRange.first = 0; */
 	}
 
+	TellCraft(". first= " + IntToString(rRange.first));
+	TellCraft(". last= " + IntToString(rRange.last));
 	return rRange;
 }
 
