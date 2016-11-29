@@ -407,6 +407,12 @@ int IsAlchemyWorkbench(object oTarget)
 // ____________________________________________________________________________
 //  ----------------------------------------------------------------------------
 
+// __________________
+// ** SCRIPT VARS ***
+// ------------------
+int _iRecipeMatch_ii;
+
+
 // Does crafting at a Magical Workbench with a spell trigger.
 // - this covers two types of crafting:
 // 1. Enchanting Item requires a set of reagents, an item to work on, and a
@@ -431,9 +437,14 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 	object oItem = GetFirstEquippableItem();
 	TellCraft(". oItem : " + GetName(oItem) + " ( " + GetTag(oItem) + " )");
 
+	_iRecipeMatch_ii = -2; // init.
+
 	if (iSpellId == SPELL_IMBUE_ITEM)
 	{
-		// if no matches or only one match, bypass this and let regular code handle it.
+		// if no matches or only one match bypass SetTriggerSpell() GUI
+		// - if no matches let regular code handle it
+		// - if only one match set 'iRecipeMatch' with the script-var '_iRecipeMatch_ii'
+		//   in ParseRecipeMatches() and proceed ...
 		string sRecipeMatches = GetRecipeMatches(oItem);
 		TellCraft(". . IMBUE_ITEM : sRecipeMatches= " + sRecipeMatches);
 		if (sRecipeMatches != "")
@@ -447,18 +458,39 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			sRecipeMatches = PruneRecipeMatches(sRecipeMatches, sCol);
 			TellCraft(". . . pruned sRecipeMatches= " + sRecipeMatches);
 
-			if (ParseRecipeMatches(sRecipeMatches, oCrafter) > 0)
+			if (ParseRecipeMatches(sRecipeMatches, oCrafter) > 1)
 			{
 				TellCraft(". . . . call SetTriggerSpell() & exit");
 				SetTriggerSpell(oCrafter);
 				return;
 			}
-			else TellCraft(". . . . only 1 trigger for Imbue_Item -> continue");
+			else
+			{
+				// '_iRecipeMatch_ii' was set by ParseRecipeMatches()
+				// pass it to 'iRecipeMatch' below
+				TellCraft(". . . . only 1 trigger for Imbue_Item : proceed w/ recipe");
+			}
 		}
-		else TellCraft(". . . no trigger for Imbue_Item -> continue");
+		else
+		{
+			_iRecipeMatch_ii = -1;
+			TellCraft(". . . no trigger for Imbue_Item : exit");
+		}
 	}
 
-	int iRecipeMatch = GetInventoryRecipeMatch(IntToString(iSpellId), oItem);
+	int iRecipeMatch;
+	switch (_iRecipeMatch_ii)
+	{
+		case -2:
+			iRecipeMatch = GetInventoryRecipeMatch(IntToString(iSpellId), oItem); // for regular SpellId.
+			break;
+		case -1:
+			iRecipeMatch = -1; // for Imbue_Item w/ no matches.
+			break;
+		default:
+			iRecipeMatch = _iRecipeMatch_ii; // for Imbue_Item w/ only one match.
+	}
+
 	TellCraft(". iRecipeMatch= " + IntToString(iRecipeMatch));
 
 	if (iRecipeMatch == -1 || StringToInt(Get2DAString(CRAFTING_2DA, "DISABLE", iRecipeMatch)))
@@ -1168,7 +1200,7 @@ string GetRecipeMatches(object oItem)
 // - note that blank strings can be handled albeit redundantly at the call pt.
 string PruneRecipeMatches(string sRecipeMatches, string sCol)
 {
-	//TellCraft("PruneRecipeMatchesEnchanting() sRecipeMatches= " + sRecipeMatches);
+	//TellCraft("PruneRecipeMatches() sRecipeMatches= " + sRecipeMatches);
 	string sMatches;
 
 	string sRecipeMatch, sCraftResult, sRecipeMatchTest, sCraftResultTest;
@@ -1229,15 +1261,15 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol)
 // @param sRecipeMatches	- a comma-delimited list of indices into Crafting.2da
 // @param oCrafter			- the character to send the parsed info to
 // @return					- how to proceed:
-//							   1 - (or greater) show triggerspell candidates
-//							   0 - don't show candidates, only one match, proceed with standard recipe
-//							  -1 - no match found, abort recipe
+//								2+ - show triggerspell candidates
+//								1  - don't show candidates, only one match, proceed with standard recipe
+//								0  - no match found, abort recipe
 // @note 'sRecipeMatches' will be in format: "234,34,0,2343" eg. -- no trailing
 // delimiter to keep things compatible with 'x0_i0_stringlib'.
 int ParseRecipeMatches(string sRecipeMatches, object oCrafter)
 {
 	//TellCraft("Parse sRecipeMatches= " + sRecipeMatches);
-	int iProceed = -1;
+	int iProceed = 0;
 
 	string sRef, sSpellId, sRecipeMatch, sInfo, sInfoSpells;
 	int iSpellId;
@@ -1259,9 +1291,10 @@ int ParseRecipeMatches(string sRecipeMatches, object oCrafter)
 
 	switch (iProceed)
 	{
-		case -1: return -1; // 'iProceed' will not be "-1" as along as sRecipeMatches is not blank.
+		case 0: return 0; // 'iProceed' will not be "0" as along as sRecipeMatches is not blank.
 
-		case 0:
+		case 1:
+			_iRecipeMatch_ii = StringToInt(sRecipeMatch);
 			sInfo = "<c=plum>_ Crafting :</c> ";
 			break;
 		default:
