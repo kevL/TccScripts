@@ -33,10 +33,10 @@ void main(string sSpell)
 
 		object oCrafter = GetControlledCharacter(OBJECT_SELF);
 
-		if (sSpell == "1081") // Imbue_Item is NOT allowed here.
+		if (sSpell == SPELL_IMBUE_ITEM_ST) // Imbue_Item is NOT allowed here.
 		{
 			NotifyPlayer(oCrafter, -1,
-					"<c=plum>_ Crafting :</c> <c=firebrick>Spell ID :</c> 1081"
+					"<c=plum>_ Crafting :</c> <c=firebrick>Spell ID :</c> " + SPELL_IMBUE_ITEM_ST
 					+ " <c=firebrick>( Imbue Item ) is NOT allowed. Try again.</c>");
 		}
 		else

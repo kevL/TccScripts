@@ -223,6 +223,8 @@ const string II_VAR_SPELLID			= "ii_CraftSpellId";
 // -----------------------------------------------------------------------------
 // extra Constants
 // -----------------------------------------------------------------------------
+const string SPELL_IMBUE_ITEM_ST = "1081";
+
 // spellIds:
 const int SPELL_IMBUE_ITEM					= 1081;
 

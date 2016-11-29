@@ -1151,7 +1151,7 @@ string GetRecipeMatches(object oItem)
 	string sTypes;
 	int iPropType;
 
-	struct range2da rRange = GetTriggerRange("1081"); // get Crafting.2da rows per Crafting_Index.2da for SPELL_IMBUE_ITEM
+	struct range2da rRange = GetTriggerRange(SPELL_IMBUE_ITEM_ST); // get Crafting.2da rows per Crafting_Index.2da for SPELL_IMBUE_ITEM
 	//TellCraft(". rRange first= " + IntToString(rRange.first) + " last=" + IntToString(rRange.last));
 	while (rRange.first != -1)
 	{
@@ -1302,7 +1302,7 @@ struct range2da GetTriggerRange(string sTrigger)
 	struct range2da rRange;
 
 	int i = 0;
-	if (sTrigger != "1081") // note: ImbueItem acts as a trigger for any magical recipe.
+	if (sTrigger != SPELL_IMBUE_ITEM_ST) // note: ImbueItem acts as a trigger for any magical recipe.
 	{
 		i = GetTriggerStart(sTrigger);
 		switch (i)
