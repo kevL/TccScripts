@@ -1080,10 +1080,8 @@ string GetSortedReagents(int bEnchant = FALSE, object oContainer = OBJECT_SELF)
 			|| !GetIsEquippable(oItem)		// if not equippable then must be part of recipe
 			|| isInExceptionList(oItem))	// is equippable but in the exception list
 		{
-			if (sList == "")
-				sList += GetRepeatTags(oItem);
-			else
-				sList += REAGENT_LIST_DELIMITER + GetRepeatTags(oItem);
+			if (sList != "") sList += REAGENT_LIST_DELIMITER;
+			sList += GetRepeatTags(oItem);
 		}
 		oItem = GetNextItemInInventory(oContainer);
 	}
@@ -1104,10 +1102,8 @@ string GetRepeatTags(object oItem)
 		int i;
 		for (i = 0; i != iStackSize; ++i)
 		{
-			if (i == 0)
-				sList = sTag;
-			else
-				sList += REAGENT_LIST_DELIMITER + sTag;
+			if (i != 0) sList += REAGENT_LIST_DELIMITER;
+			sList += sTag;
 		}
 	}
 	return sList;
@@ -1147,13 +1143,13 @@ int GetRecipeMatch(string sReagentTags, string sTrigger, object oItem = OBJECT_I
 //				  ie. the triggerspells for Imbue_Item recipes ("" if none found)
 string GetRecipeMatches(object oItem)
 {
-	//TellCraft("GetRecipeMatches() ( " + GetName(oItem) + " )");
+	//TellCraft("GetRecipeMatches() ( " + (GetIsObjectValid(oItem) ? GetName(oItem) : "construction") + " )");
 	string sMatches;
 
 	string sReagentTags = GetSortedReagents(GetIsObjectValid(oItem));
 	//TellCraft(". sReagentTags= " + sReagentTags);
 	string sTypes;
-	int iPropType;
+	int iPropType, bLegal;
 
 	struct range2da rRange = GetTriggerRange(SPELL_IMBUE_ITEM_ST); // get Crafting.2da rows per Crafting_Index.2da for SPELL_IMBUE_ITEM
 	//TellCraft(". rRange first= " + IntToString(rRange.first) + " last=" + IntToString(rRange.last));
@@ -1170,17 +1166,35 @@ string GetRecipeMatches(object oItem)
 			default:
 				sTypes = Get2DAString(CRAFTING_2DA, COL_CRAFTING_TAGS, rRange.first);
 				//TellCraft(". . . sTypes= " + sTypes);
-				if (isTypeMatch(oItem, sTypes))
+				if (isTypeMatch(oItem, sTypes)) // will handle enchantment or construction
 				{
 					//TellCraft(". . . . MATCHTYPE first= " + IntToString(rRange.first));
-					iPropType = GetIntParam(Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, rRange.first), 0);
-					if (GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
+
+					bLegal = FALSE;
+					if (GetIsObjectValid(oItem)) // enchantment
 					{
-						//TellCraft(". . . . . ip is Legal for type !");
+						//TellCraft(". . . . . check if prop-type is legal for base-type");
+						iPropType = GetIntParam(Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, rRange.first), 0);
+						if (GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
+						{
+							//TellCraft(". . . . . . ip is Legal for type !");
+							bLegal = TRUE;
+							if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
+							sMatches += IntToString(rRange.first);
+						}
+						//else TellCraft(". . . . . . ip is NOT Legal for type !");
+					}
+					else // construction
+					{
+						//TellCraft(". . . . . is construction - bypass legality check");
+						bLegal = TRUE;
+					}
+
+					if (bLegal)
+					{
 						if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
 						sMatches += IntToString(rRange.first);
 					}
-					//else TellCraft(". . . . . ip is NOT Legal for type !");
 				}
 				//else TellCraft(". . . . Type does NOT match.");
 		}
