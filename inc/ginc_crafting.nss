@@ -644,8 +644,8 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		// this could be sucked up by DestroyItemsInInventory() so must be done after!
 		CreateListOfItemsInInventory(sResrefList, OBJECT_SELF, TRUE, FALSE, TRUE);
 	}
-
-	else { // ENCHANTMENT OF EXISTING ITEM
+	else // ENCHANTMENT OF EXISTING ITEM
+	{
 		// Validate that an item was succesfully retrieved
 		if (!GetIsObjectValid(oItem))
 		{
@@ -657,15 +657,17 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		string sEncodedIps = Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, iRecipeMatch);
 		TellCraft(". . sEncodedIps= " + sEncodedIps);
 
-		struct sStringTokenizer stEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
 		string sEncodedIp;
 		int iPropType;
 		itemproperty ipEnchant;
-		// perform checks on each property in the recipe
-		while (HasMoreTokens(stEncodedIps))
+
+		// Perform checks on each encoded-ip in the recipe
+		struct sStringTokenizer rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+		while (HasMoreTokens(rEncodedIps))
 		{
-			stEncodedIps = AdvanceToNextToken(stEncodedIps);
-			sEncodedIp = GetNextToken(stEncodedIps);
+			rEncodedIps = AdvanceToNextToken(rEncodedIps);
+			sEncodedIp = GetNextToken(rEncodedIps);
+
 			iPropType = GetIntParam(sEncodedIp, 0);
 			TellCraft(". . iPropType= " + IntToString(iPropType));
 			ipEnchant = IPGetItemPropertyByID(iPropType,
@@ -697,18 +699,19 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				NotifyPlayer(oCrafter, -1, "This recipe can't be combined with properties already on the item.");
 				return;
 			}
-
 		}
 
-		// Reset ipEnchant and iPropType to the first property for now
-		stEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
-		stEncodedIps = AdvanceToNextToken(stEncodedIps);
+		// Reset 'sEncodedIp' 'iPropType' 'ipEnchant' to first encoded-ip for now ... TODO: don't panic.
+		rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+		rEncodedIps = AdvanceToNextToken(rEncodedIps);
+		sEncodedIp = GetNextToken(rEncodedIps);
+
 		iPropType = GetIntParam(sEncodedIp, 0);
 		ipEnchant = IPGetItemPropertyByID(iPropType,
-										GetIntParam(sEncodedIp, 1),
-										GetIntParam(sEncodedIp, 2),
-										GetIntParam(sEncodedIp, 3),
-										GetIntParam(sEncodedIp, 4));
+										  GetIntParam(sEncodedIp, 1),
+										  GetIntParam(sEncodedIp, 2),
+										  GetIntParam(sEncodedIp, 3),
+										  GetIntParam(sEncodedIp, 4));
 
 		int iFirstSetRecipe = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 32)); // TCC_Value_FirstSetRecipeLine
 		int iLastSetRecipe	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + iFirstSetRecipe; // TCC_Value_MaximumSetProperties
@@ -1004,11 +1007,12 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		}
 		else // not part of a Set
 		{
-			stEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER); // reset the Tokenizer
-			while (HasMoreTokens(stEncodedIps))
+			rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER); // reset the Tokenizer
+			while (HasMoreTokens(rEncodedIps))
 			{
-				stEncodedIps = AdvanceToNextToken(stEncodedIps);
-				sEncodedIp = GetNextToken(stEncodedIps);
+				rEncodedIps = AdvanceToNextToken(rEncodedIps);
+				sEncodedIp = GetNextToken(rEncodedIps);
+
 				iPropType = GetIntParam(sEncodedIp, 0);
 				ipEnchant = IPGetItemPropertyByID(iPropType,
 												  GetIntParam(sEncodedIp, 1),
