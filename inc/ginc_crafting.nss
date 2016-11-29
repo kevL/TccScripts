@@ -104,8 +104,8 @@ int GetRecipeMatch(string sReagentTags,
 // Gets a list of comma-delimited indices into Crafting.2da that will be valid
 // recipes for SPELL_IMBUE_ITEM.
 string GetRecipeMatches(object oItem);
-// Finds and effectively deletes Crafting.2da indices that would result in the
-// same applied-ip or construction-resref.
+// Finds and effectively deletes Crafting.2da indices that given the same
+// reagents would result in the same applied-ip or construction-resref.
 string PruneRecipeMatches(string sRecipeMatches, string sCol);
 // Takes a list of Crafting.2da indices and tells player what the candidate
 // triggers for SPELL_IMBUE_ITEM are.
@@ -467,7 +467,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			else
 			{
 				// '_iRecipeMatch_ii' was set by ParseRecipeMatches()
-				// pass it to 'iRecipeMatch' below
+				// assign it to 'iRecipeMatch' below
 				TellCraft(". . . . only 1 trigger for Imbue_Item : proceed w/ recipe");
 			}
 		}
@@ -499,7 +499,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		return;
 	}
 
-	// +++ check additional criteria
+	// +++ check additional criteria +++
 
 // kL: TODO
 /* int GetPrestigeCasterLevelByClassLevel(int nClass, int nClassLevel, object oTarget); 'cmi_includes'
@@ -669,10 +669,10 @@ int GetBardicClassLevelForSongs(object oCrafter);
 			iPropType = GetIntParam(sEncodedIp, 0);
 			TellCraft(". . iPropType= " + IntToString(iPropType));
 			ipEnchant = IPGetItemPropertyByID(iPropType,
-														GetIntParam(sEncodedIp, 1),
-														GetIntParam(sEncodedIp, 2),
-														GetIntParam(sEncodedIp, 3),
-														GetIntParam(sEncodedIp, 4));
+											  GetIntParam(sEncodedIp, 1),
+											  GetIntParam(sEncodedIp, 2),
+											  GetIntParam(sEncodedIp, 3),
+											  GetIntParam(sEncodedIp, 4));
 			// do a validity check although it's probably not thorough
 			if (!GetIsItemPropertyValid(ipEnchant))
 			{
@@ -957,7 +957,8 @@ int GetBardicClassLevelForSongs(object oCrafter);
 		}
 
 
-		// +++ all criteria good to go, add ItemProperty ->
+		// +++ all criteria good to go, add ItemProperty +++
+
 		TellCraft(". ALL CHECKS PASSED");
 
 		DestroyItemsInInventory(TRUE);
@@ -1010,10 +1011,10 @@ int GetBardicClassLevelForSongs(object oCrafter);
 				sEncodedIp = GetNextToken(stEncodedIps);
 				iPropType = GetIntParam(sEncodedIp, 0);
 				ipEnchant = IPGetItemPropertyByID(iPropType,
-												GetIntParam(sEncodedIp, 1),
-												GetIntParam(sEncodedIp, 2),
-												GetIntParam(sEncodedIp, 3),
-												GetIntParam(sEncodedIp, 4));
+												  GetIntParam(sEncodedIp, 1),
+												  GetIntParam(sEncodedIp, 2),
+												  GetIntParam(sEncodedIp, 3),
+												  GetIntParam(sEncodedIp, 4));
 
 				TellCraft(". . add IP " + IntToString(iPropType) + "!");
 				int iPolicy;
@@ -1114,8 +1115,7 @@ string GetRepeatTags(object oItem)
 // - returns index of sReagentTags for sTrigger (-1 if not found)
 int GetRecipeMatch(string sReagentTags, string sTrigger, object oItem = OBJECT_INVALID)
 {
-	//TellCraft("sReagentTags= " + sReagentTags);
-	//TellCraft("sReagentTags= " + sReagentTags);
+	//TellCraft("GetRecipeMatch() sTrigger= " + sTrigger + " sReagentTags= " + sReagentTags);
 	string sTypes;
 
 	struct range2da rRange = GetTriggerRange(sTrigger); // Crafting.2da rows
@@ -1155,29 +1155,30 @@ string GetRecipeMatches(object oItem)
 	//TellCraft(". rRange first= " + IntToString(rRange.first) + " last=" + IntToString(rRange.last));
 	while (rRange.first != -1)
 	{
-		//TellCraft(". Search first= " + IntToString(rRange.first));
+		//TellCraft(". . Search first= " + IntToString(rRange.first));
 		rRange.first = SearchForReagents(sReagentTags, rRange.first, rRange.last);
 		switch (rRange.first)
 		{
 			case -1:
-				//TellCraft(". . ret " + sMatches);
+				//TellCraft(". . . RET sMatches= " + sMatches);
 				return sMatches;
 
 			default:
 				sTypes = Get2DAString(CRAFTING_2DA, COL_CRAFTING_TAGS, rRange.first);
-				//TellCraft(". . sTypes= " + sTypes);
+				//TellCraft(". . . sTypes= " + sTypes);
 				if (isTypeMatch(oItem, sTypes))
 				{
-					//TellCraft(". . . MATCHTYPE ! first= " + IntToString(rRange.first));
+					//TellCraft(". . . . MATCHTYPE first= " + IntToString(rRange.first));
 					iPropType = GetIntParam(Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, rRange.first), 0);
 					if (GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
 					{
-						//TellCraft(". . . . ip is Legal for type !");
+						//TellCraft(". . . . . ip is Legal for type !");
 						if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
 						sMatches += IntToString(rRange.first);
 					}
-					//else TellCraft(". . . . ip is NOT Legal for type !");
+					//else TellCraft(". . . . . ip is NOT Legal for type !");
 				}
+				//else TellCraft(". . . . Type does NOT match.");
 		}
 
 		if (++rRange.first > rRange.last)
@@ -1191,8 +1192,8 @@ string GetRecipeMatches(object oItem)
 	return sMatches;
 }
 
-// Finds and effectively deletes Crafting.2da indices that would result in the
-// same applied-ip or construction-resref.
+// Finds and effectively deletes Crafting.2da indices that given the same
+// reagents would result in the same applied-ip or construction-resref.
 // - if matches are found it will be the last index that is kept, however the
 //   trigger itself will still be the first index.
 // - at last 1 index will be kept and returned as long as sRecipeMatches is not
@@ -1206,21 +1207,6 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol)
 	string sRecipeMatch, sCraftResult, sRecipeMatchTest, sCraftResultTest;
 	int bFound;
 
-/*	struct sStringTokenizer rTok = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
-	while (HasMoreTokens(rTok))
-	{
-		rTok = AdvanceToNextToken(rTok);
-		sRecipeMatch = GetNextToken(rTok);
-
-		sCraftResult = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatch));
-		bFound = FALSE;
-
-		struct sStringTokenizer rTokTest = GetStringTokenizer(sRecipeMatches, REAGENT_LIST_DELIMITER);
-		while (HasMoreTokens(rTokTest))
-		{
-			// nope. Would have to rewrite the tokenizer ....
-		}
-	} */
 	int iTokens = GetNumberTokens(sRecipeMatches, REAGENT_LIST_DELIMITER);
 	//TellCraft(". iTokens= " + IntToString(iTokens));
 	int i, j;
@@ -1231,7 +1217,7 @@ string PruneRecipeMatches(string sRecipeMatches, string sCol)
 		//TellCraft(". . sRecipeMatch= " + sRecipeMatch + " / sCraftResult= " + sCraftResult);
 		bFound = FALSE;
 
-		for (j = i+1; j != iTokens; ++j)
+		for (j = i + 1; j != iTokens; ++j)
 		{
 			sRecipeMatchTest = GetTokenByPosition(sRecipeMatches, REAGENT_LIST_DELIMITER, j);
 			sCraftResultTest = Get2DAString(CRAFTING_2DA, sCol, StringToInt(sRecipeMatchTest));
@@ -1382,13 +1368,21 @@ int isSpellId(string sTrigger)
 // @note The search does NOT stop at an empty string.
 int SearchForReagents(string sReagentTags, int iStartRow, int iStopRow)
 {
+	//TellCraft("");
+	//TellCraft("SearchForReagents() sReagentTags= " + sReagentTags);
+	//TellCraft(". iStartRow= " + IntToString(iStartRow));
+	//TellCraft(". iStopRow= " + IntToString(iStopRow));
 	while (iStartRow <= iStopRow)
 	{
+		//TellCraft(". . iStartRow= " + IntToString(iStartRow));
 		if (Get2DAString(CRAFTING_2DA, COL_CRAFTING_REAGENTS, iStartRow) == sReagentTags)
+		{
+			//TellCraft(". . . FOUND iStartRow= " + IntToString(iStartRow));
 			return iStartRow;
-
+		}
 		++iStartRow;
 	}
+	//TellCraft(". reagents NOT found ret -1");
 	return -1;
 }
 
