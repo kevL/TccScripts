@@ -401,6 +401,22 @@ int IsAlchemyWorkbench(object oTarget)
 // -----------------------------------------------------------------------------
 // public functions for crafting
 // -----------------------------------------------------------------------------
+// kL: TODO
+/* int GetPrestigeCasterLevelByClassLevel(int nClass, int nClassLevel, object oTarget); 'cmi_includes'
+
+int GetWarlockCasterLevel(object oCaster); 'cmi_ginc_spells'
+int GetBlackguardCasterLevel(object oCaster);
+int GetAssassinCasterLevel(object oCaster);
+
+int GetPalRngCasterLevel(object oCaster = OBJECT_SELF); 'cmi_ginc_palrng'
+int GetCasterLevelForPaladins(object oCaster = OBJECT_SELF);
+int GetCasterLevelForRangers(object oCaster = OBJECT_SELF);
+int GetRawPaladinCasterLevel(object oCaster = OBJECT_SELF);
+int GetRawRangerCasterLevel(object oCaster = OBJECT_SELF);
+
+int GetBardicClassLevelForUses(object oCrafter); 'cmi_ginc_chars'
+int GetBardicClassLevelForSongs(object oCrafter);
+*/
 // ____________________________________________________________________________
 //  ----------------------------------------------------------------------------
 //   MAGICAL CRAFTING
@@ -501,22 +517,6 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 	// +++ check additional criteria +++
 
-// kL: TODO
-/* int GetPrestigeCasterLevelByClassLevel(int nClass, int nClassLevel, object oTarget); 'cmi_includes'
-
-int GetWarlockCasterLevel(object oCaster); 'cmi_ginc_spells'
-int GetBlackguardCasterLevel(object oCaster);
-int GetAssassinCasterLevel(object oCaster);
-
-int GetPalRngCasterLevel(object oCaster = OBJECT_SELF); 'cmi_ginc_palrng'
-int GetCasterLevelForPaladins(object oCaster = OBJECT_SELF);
-int GetCasterLevelForRangers(object oCaster = OBJECT_SELF);
-int GetRawPaladinCasterLevel(object oCaster = OBJECT_SELF);
-int GetRawRangerCasterLevel(object oCaster = OBJECT_SELF);
-
-int GetBardicClassLevelForUses(object oCrafter); 'cmi_ginc_chars'
-int GetBardicClassLevelForSongs(object oCrafter);
-*/
 	// check if caster is of sufficient level
 	int iCasterLevel = GetCasterLevel(oCrafter);
 	if (GetGlobalInt(CAMPAIGN_SWITCH_CRAFTING_USE_TOTAL_LEVEL))
@@ -1368,10 +1368,8 @@ int isSpellId(string sTrigger)
 // @note The search does NOT stop at an empty string.
 int SearchForReagents(string sReagentTags, int iStartRow, int iStopRow)
 {
-	//TellCraft("");
 	//TellCraft("SearchForReagents() sReagentTags= " + sReagentTags);
-	//TellCraft(". iStartRow= " + IntToString(iStartRow));
-	//TellCraft(". iStopRow= " + IntToString(iStopRow));
+	//TellCraft(". iStart= " + IntToString(iStartRow) + " iStop= " + IntToString(iStopRow));
 	while (iStartRow <= iStopRow)
 	{
 		//TellCraft(". . iStartRow= " + IntToString(iStartRow));
