@@ -721,167 +721,6 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		// if good, Do ENCHANTMENTS.
 		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 5))) // TCC_Toggle_LimitNumberOfProps
 		{
-			int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 7)); // TCC_Value_BasePropSlots
-			TellCraft(". . . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
-			// grant a bonus slot if the Caster is of Epic Level (21+)
-			if (iCasterLevel > 20)
-			{
-				iTCC_BasePropSlots += 1;
-				TellCraft(". . . EPIC iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
-			}
-
-			int iBonus = 0;
-			int iDiscount = 0;
-
-			// grant a bonus slot if the item is Masterwork
-			if (GetLocalInt(oItem, TCC_VAR_MASTERWORK)
-				|| GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
-			{
-				iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 6)); // TCC_Value_GrantMasterworkBonusSlots
-				TellCraft(". . . enchant on Masterwork item - iBonus= " + IntToString(iBonus));
-				// grant an extra slot for Masterwork weapons with a +1 Attack Bonus property
-				if (hasMasterworkAttackBonus(oItem))
-				{
-					iDiscount += 1;
-					TellCraft(". . . . Masterwork weapon with +1 Attack bonus - iDiscount= " + IntToString(iDiscount));
-				}
-			}
-
-			if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 8))) // TCC_Toggle_GrantMaterialBonusSlots
-			{
-				// increase limit by material code if available
-				string sType;
-				switch (iTccType)
-				{
-					case TCC_TYPE_ARMOR:
-					case TCC_TYPE_SHIELD:	sType = TCC_BONUS_ARMOR;
-						break;
-					case TCC_TYPE_BOW:
-					case TCC_TYPE_XBOW:
-					case TCC_TYPE_SLING:	sType = TCC_BONUS_RANGED;
-						break;
-					case TCC_TYPE_MELEE:
-					case TCC_TYPE_AMMO:		sType = TCC_BONUS_WEAPON;
-				}
-
-				if (sType != "")
-				{
-					switch (GetMaterialCode(oItem))
-					{
-						case  1: // MAT_ADA
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 18)); // adamantine
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 18)); // TCC_Value_AdamantinePropSlots
-							break;
-						case  2: // MAT_CLD
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 17)); // cold iron
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 17)); // TCC_Value_ColdIronPropSlots
-							break;
-						case  3: // MAT_DRK
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS,  9)); // darksteel
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW,  9)); // TCC_Value_DarksteelPropSlots
-							break;
-						case  4: // MAT_DSK
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 14)); // duskwood
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 14)); // TCC_Value_DuskwoodPropSlots
-							break;
-						case  5: // MAT_MTH
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 10)); // mithral
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 10)); // TCC_Value_MithralPropSlots
-							break;
-						case  6: // MAT_RDH
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 20)); // red dragon hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 20)); // TCC_Value_RedDragonPropSlots
-							break;
-						case  7: // MAT_SHD
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 15)); // shederran
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 15)); // TCC_Value_ShederranPropSlots
-							break;
-						case  8: // MAT_SLH
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 11)); // salamander hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 11)); // TCC_Value_SalamanderPropSlots
-							break;
-						case  9: // MAT_SLV
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 16)); // alchemical silver
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 16)); // TCC_Value_AlchemicalSilverPropSlots
-							break;
-						case 10: // MAT_UHH
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 12)); // umber hulk hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 12)); // TCC_Value_UmberHulkPropSlots
-							break;
-						case 11: // MAT_WYH
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 13)); // wyvern hide
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 13)); // TCC_Value_WyvernPropSlots
-							break;
-						case 12: // MAT_ZAL
-							iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 19)); // zalantar
-							iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 19)); // TCC_Value_ZalantarPropSlots
-					}
-				}
-				TellCraft(". . . material modifier - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
-			}
-
-
-			int bTCC_UseVariableSlotCosts	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 34)); // TCC_Toggle_UseVariableSlotCosts
-			int bTCC_LimitationPropsAreFree	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 22)); // TCC_Toggle_LimitationPropsAreFree
-			int bTCC_LightPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 23)); // TCC_Toggle_LightPropsAreFree
-			int bTCC_VFXPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 24)); // TCC_Toggle_VFXPropsAreFree
-			int bTCC_SetPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 25)); // TCC_Toggle_SetPropsAreFree
-
-			int iLimitationSlots = 0;
-			int iLimitationProps = 0;
-
-			int iQty;
-			int iLimitationType;
-			for (iLimitationType = ITEM_PROPERTY_USE_LIMITATION_ALIGNMENT_GROUP; iLimitationType < ITEM_PROPERTY_BONUS_HITPOINTS; ++iLimitationType)
-			{
-				iQty = GetQtyPropsOfType(oItem, iLimitationType);
-
-				iLimitationProps += iQty;
-				iLimitationSlots += iQty * StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iLimitationType));
-				TellCraft(". . . check limitation propType= " + IntToString(iLimitationType) + " iQty= " + IntToString(iQty));
-			}
-
-			// grant discount slot credit to offset each limitation property;
-			// also grant a bonus slot if the item has any limitation property.
-			if (iLimitationProps)
-			{
-				if (bTCC_LimitationPropsAreFree)
-				{
-					if (!bTCC_UseVariableSlotCosts)
-						iDiscount += iLimitationProps;
-					else
-						iDiscount += iLimitationSlots;
-				}
-
-				if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 21))) // TCC_Toggle_GrantLimitationBonusSlot
-					++iBonus;
-			}
-			TellCraft(". . limitation props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
-
-			// grant discount slot for each existing light effect
-			if (bTCC_LightPropsAreFree)
-			{
-				int iLightProps = GetQtyPropsOfType(oItem, ITEM_PROPERTY_LIGHT);
-
-				if (!bTCC_UseVariableSlotCosts)
-					iDiscount += iLightProps;
-				else
-					iDiscount += iLightProps * StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, ITEM_PROPERTY_LIGHT));
-			}
-			TellCraft(". . light props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
-
-			// grant discount slot for each existing vFx property
-			if (bTCC_VFXPropsAreFree)
-			{
-				int iVfxProps = GetQtyPropsOfType(oItem, ITEM_PROPERTY_VISUALEFFECT);
-
-				if (!bTCC_UseVariableSlotCosts)
-					iDiscount += iVfxProps;
-				else
-					iDiscount += iVfxProps * StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, ITEM_PROPERTY_VISUALEFFECT));
-			}
-			TellCraft(". . VFX props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
-
 			// look for an existing ip being replaced or upgraded
 			int bUpgrade = FALSE;
 
@@ -897,65 +736,232 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 			TellCraft(". . bUpgrade= " + IntToString(bUpgrade));
 
-			// check if ip to be added is free
-			int bFreeProp = FALSE;
-			if (bTCC_UseVariableSlotCosts
-				&& !StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType)))
+			if (!bUpgrade)
 			{
-				bFreeProp = TRUE;
-			}
-			else if (bTCC_SetPropsAreFree
-				&& iRecipeMatch >= iFirstSetRecipe
-				&& iRecipeMatch <= iLastSetRecipe)
-			{
-				bFreeProp = TRUE;
-			}
-			else
-			{
-				switch (iPropType)
+				// check if ip to be added is free
+				int bFreeProp = FALSE;
+
+				int bTCC_UseVariableSlotCosts	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 34)); // TCC_Toggle_UseVariableSlotCosts
+				int bTCC_LimitationPropsAreFree	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 22)); // TCC_Toggle_LimitationPropsAreFree
+				int bTCC_LightPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 23)); // TCC_Toggle_LightPropsAreFree
+				int bTCC_VFXPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 24)); // TCC_Toggle_VFXPropsAreFree
+				int bTCC_SetPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 25)); // TCC_Toggle_SetPropsAreFree
+
+				if (bTCC_UseVariableSlotCosts
+					&& !StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType)))
 				{
-					case ITEM_PROPERTY_USE_LIMITATION_CLASS:
-					case ITEM_PROPERTY_USE_LIMITATION_RACIAL_TYPE:
-					case ITEM_PROPERTY_USE_LIMITATION_ALIGNMENT_GROUP:
-					case ITEM_PROPERTY_USE_LIMITATION_SPECIFIC_ALIGNMENT:
-						if (bTCC_LimitationPropsAreFree)
-							bFreeProp = TRUE;
-						break;
-
-					case ITEM_PROPERTY_LIGHT:
-						if (bTCC_LightPropsAreFree)
-							bFreeProp = TRUE;
-						break;
-
-					case ITEM_PROPERTY_VISUALEFFECT:
-						if (bTCC_VFXPropsAreFree)
-							bFreeProp = TRUE;
+					bFreeProp = TRUE;
 				}
-			}
-			TellCraft(". . bFreeProp= " + IntToString(bFreeProp));
+				else if (bTCC_SetPropsAreFree
+					&& iRecipeMatch >= iFirstSetRecipe
+					&& iRecipeMatch <= iLastSetRecipe)
+				{
+					bFreeProp = TRUE;
+				}
+				else
+				{
+					switch (iPropType)
+					{
+						case ITEM_PROPERTY_USE_LIMITATION_CLASS:
+						case ITEM_PROPERTY_USE_LIMITATION_RACIAL_TYPE:
+						case ITEM_PROPERTY_USE_LIMITATION_ALIGNMENT_GROUP:
+						case ITEM_PROPERTY_USE_LIMITATION_SPECIFIC_ALIGNMENT:
+							if (bTCC_LimitationPropsAreFree)
+								bFreeProp = TRUE;
+							break;
 
-			// look for quantity of existing ip's
-			int iPropCount;
-			if (bTCC_UseVariableSlotCosts)
-				iPropCount = GetCostSlotsUsed(oItem);
-			else
-				iPropCount = GetPropSlotsUsed(oItem);
+						case ITEM_PROPERTY_LIGHT:
+							if (bTCC_LightPropsAreFree)
+								bFreeProp = TRUE;
+							break;
 
-			// add the quantity of potential ip's from Set Properties
-			if (!bTCC_SetPropsAreFree)
-				iPropCount += GetQtyLatentIps(oItem);
+						case ITEM_PROPERTY_VISUALEFFECT:
+							if (bTCC_VFXPropsAreFree)
+								bFreeProp = TRUE;
+					}
+				}
+				TellCraft(". . bFreeProp= " + IntToString(bFreeProp));
 
-			TellCraft(". . iPropCount= " + IntToString(iPropCount));
-			TellCraft(". . iDiscount= " + IntToString(iDiscount));
-			TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
-			TellCraft(". . iBonus= " + IntToString(iBonus));
+				if (!bFreeProp)
+				{
+					int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 7)); // TCC_Value_BasePropSlots
+					TellCraft(". . . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+					// grant a bonus slot if the Caster is of Epic Level (21+)
+					if (iCasterLevel > 20)
+					{
+						iTCC_BasePropSlots += 1;
+						TellCraft(". . . EPIC iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+					}
 
-			// perform final slot check
-			if (!bUpgrade && !bFreeProp
-				&& iPropCount - iDiscount >= iTCC_BasePropSlots + iBonus)
-			{
-				NotifyPlayer(oCrafter, ERROR_TARGET_HAS_MAX_ENCHANTMENTS);
-				return;
+					int iBonus = 0;
+					int iDiscount = 0;
+
+					// grant a bonus slot if the item is Masterwork
+					if (GetLocalInt(oItem, TCC_VAR_MASTERWORK)
+						|| GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
+					{
+						iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 6)); // TCC_Value_GrantMasterworkBonusSlots
+						TellCraft(". . . enchant on Masterwork item - iBonus= " + IntToString(iBonus));
+						// grant an extra slot for Masterwork weapons with a +1 Attack Bonus property
+						if (hasMasterworkAttackBonus(oItem))
+						{
+							iDiscount += 1;
+							TellCraft(". . . . Masterwork weapon with +1 Attack bonus - iDiscount= " + IntToString(iDiscount));
+						}
+					}
+
+					if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 8))) // TCC_Toggle_GrantMaterialBonusSlots
+					{
+						// increase limit by material code if available
+						string sType;
+						switch (iTccType)
+						{
+							case TCC_TYPE_ARMOR:
+							case TCC_TYPE_SHIELD:	sType = TCC_BONUS_ARMOR;
+								break;
+							case TCC_TYPE_BOW:
+							case TCC_TYPE_XBOW:
+							case TCC_TYPE_SLING:	sType = TCC_BONUS_RANGED;
+								break;
+							case TCC_TYPE_MELEE:
+							case TCC_TYPE_AMMO:		sType = TCC_BONUS_WEAPON;
+						}
+
+						if (sType != "")
+						{
+							switch (GetMaterialCode(oItem))
+							{
+								case  1: // MAT_ADA
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 18)); // adamantine
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 18)); // TCC_Value_AdamantinePropSlots
+									break;
+								case  2: // MAT_CLD
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 17)); // cold iron
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 17)); // TCC_Value_ColdIronPropSlots
+									break;
+								case  3: // MAT_DRK
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS,  9)); // darksteel
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW,  9)); // TCC_Value_DarksteelPropSlots
+									break;
+								case  4: // MAT_DSK
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 14)); // duskwood
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 14)); // TCC_Value_DuskwoodPropSlots
+									break;
+								case  5: // MAT_MTH
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 10)); // mithral
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 10)); // TCC_Value_MithralPropSlots
+									break;
+								case  6: // MAT_RDH
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 20)); // red dragon hide
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 20)); // TCC_Value_RedDragonPropSlots
+									break;
+								case  7: // MAT_SHD
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 15)); // shederran
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 15)); // TCC_Value_ShederranPropSlots
+									break;
+								case  8: // MAT_SLH
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 11)); // salamander hide
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 11)); // TCC_Value_SalamanderPropSlots
+									break;
+								case  9: // MAT_SLV
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 16)); // alchemical silver
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 16)); // TCC_Value_AlchemicalSilverPropSlots
+									break;
+								case 10: // MAT_UHH
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 12)); // umber hulk hide
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 12)); // TCC_Value_UmberHulkPropSlots
+									break;
+								case 11: // MAT_WYH
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 13)); // wyvern hide
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 13)); // TCC_Value_WyvernPropSlots
+									break;
+								case 12: // MAT_ZAL
+									iBonus    += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_BONUS, 19)); // zalantar
+									iDiscount += StringToInt(Get2DAString(TCC_CONFIG_2da, sType + TCC_ALLOW, 19)); // TCC_Value_ZalantarPropSlots
+							}
+						}
+						TellCraft(". . . material modifier - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
+					}
+
+
+					int iLimitationSlots = 0;
+					int iLimitationProps = 0;
+
+					int iQty;
+					int iLimitationType;
+					for (iLimitationType = ITEM_PROPERTY_USE_LIMITATION_ALIGNMENT_GROUP; iLimitationType < ITEM_PROPERTY_BONUS_HITPOINTS; ++iLimitationType)
+					{
+						iQty = GetQtyPropsOfType(oItem, iLimitationType);
+
+						iLimitationProps += iQty;
+						iLimitationSlots += iQty * StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iLimitationType));
+						TellCraft(". . . check limitation propType= " + IntToString(iLimitationType) + " iQty= " + IntToString(iQty));
+					}
+
+					// grant discount slot credit to offset each limitation property;
+					// also grant a bonus slot if the item has any limitation property.
+					if (iLimitationProps)
+					{
+						if (bTCC_LimitationPropsAreFree)
+						{
+							if (!bTCC_UseVariableSlotCosts)
+								iDiscount += iLimitationProps;
+							else
+								iDiscount += iLimitationSlots;
+						}
+
+						if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 21))) // TCC_Toggle_GrantLimitationBonusSlot
+							++iBonus;
+					}
+					TellCraft(". . limitation props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
+
+					// grant discount slot for each existing light effect
+					if (bTCC_LightPropsAreFree)
+					{
+						int iLightProps = GetQtyPropsOfType(oItem, ITEM_PROPERTY_LIGHT);
+
+						if (!bTCC_UseVariableSlotCosts)
+							iDiscount += iLightProps;
+						else
+							iDiscount += iLightProps * StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, ITEM_PROPERTY_LIGHT));
+					}
+					TellCraft(". . light props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
+
+					// grant discount slot for each existing vFx property
+					if (bTCC_VFXPropsAreFree)
+					{
+						int iVfxProps = GetQtyPropsOfType(oItem, ITEM_PROPERTY_VISUALEFFECT);
+
+						if (!bTCC_UseVariableSlotCosts)
+							iDiscount += iVfxProps;
+						else
+							iDiscount += iVfxProps * StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, ITEM_PROPERTY_VISUALEFFECT));
+					}
+					TellCraft(". . VFX props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
+
+					// look for quantity of existing ip's
+					int iPropCount;
+					if (bTCC_UseVariableSlotCosts)
+						iPropCount = GetCostSlotsUsed(oItem);
+					else
+						iPropCount = GetPropSlotsUsed(oItem);
+
+					// add the quantity of potential ip's from Set Properties
+					if (!bTCC_SetPropsAreFree)
+						iPropCount += GetQtyLatentIps(oItem);
+
+					TellCraft(". . iPropCount= " + IntToString(iPropCount));
+					TellCraft(". . iDiscount= " + IntToString(iDiscount));
+					TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+					TellCraft(". . iBonus= " + IntToString(iBonus));
+
+					// perform final slot check
+					if (iPropCount - iDiscount >= iTCC_BasePropSlots + iBonus)
+					{
+						NotifyPlayer(oCrafter, ERROR_TARGET_HAS_MAX_ENCHANTMENTS);
+						return;
+					}
+				}
 			}
 		}
 
