@@ -1179,8 +1179,6 @@ string GetRecipeMatches(object oItem)
 //						{
 							//TellCraft(". . . . . . ip is Legal for type !");
 //							bLegal = TRUE;
-//							if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
-//							sMatches += IntToString(rRange.first);
 //						}
 						//else TellCraft(". . . . . . ip is NOT Legal for type !");
 //					}
