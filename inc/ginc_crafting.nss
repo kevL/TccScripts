@@ -691,14 +691,14 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				NotifyPlayer(oCrafter, ERROR_TARGET_NOT_LEGAL_FOR_EFFECT);
 				return;
 			}
+		}
 
-			// Check for properties that arrogate this one
-			if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 33)) // TCC_Toggle_UseRecipeExclusion
-				&& hasExcludedProp(oItem, iRecipeMatch))
-			{
-				NotifyPlayer(oCrafter, -1, "This recipe can't be combined with properties already on the item.");
-				return;
-			}
+		// Check for properties that arrogate this one
+		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 33)) // TCC_Toggle_UseRecipeExclusion
+			&& hasExcludedProp(oItem, iRecipeMatch))
+		{
+			NotifyPlayer(oCrafter, -1, "This recipe can't be combined with properties already on the item.");
+			return;
 		}
 
 		// Reset 'sEncodedIp' 'iPropType' 'ipEnchant' to first encoded-ip for now ... TODO: don't panic.
