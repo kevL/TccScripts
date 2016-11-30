@@ -1149,7 +1149,7 @@ string GetRecipeMatches(object oItem)
 	string sReagentTags = GetSortedReagents(GetIsObjectValid(oItem));
 	//TellCraft(". sReagentTags= " + sReagentTags);
 	string sTypes;
-	int iPropType, bLegal;
+//	int iPropType, bLegal;
 
 	struct range2da rRange = GetTriggerRange(SPELL_IMBUE_ITEM_ST); // get Crafting.2da rows per Crafting_Index.2da for SPELL_IMBUE_ITEM
 	//TellCraft(". rRange first= " + IntToString(rRange.first) + " last=" + IntToString(rRange.last));
