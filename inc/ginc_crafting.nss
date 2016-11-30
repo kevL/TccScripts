@@ -1170,31 +1170,31 @@ string GetRecipeMatches(object oItem)
 				{
 					//TellCraft(". . . . MATCHTYPE first= " + IntToString(rRange.first));
 
-					bLegal = FALSE;
-					if (GetIsObjectValid(oItem)) // enchantment
-					{
+//					bLegal = FALSE;
+//					if (GetIsObjectValid(oItem)) // enchantment
+//					{
 						//TellCraft(". . . . . check if prop-type is legal for base-type");
-						iPropType = GetIntParam(Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, rRange.first), 0);
-						if (GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
-						{
+//						iPropType = GetIntParam(Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, rRange.first), 0);
+//						if (GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
+//						{
 							//TellCraft(". . . . . . ip is Legal for type !");
-							bLegal = TRUE;
-							if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
-							sMatches += IntToString(rRange.first);
-						}
+//							bLegal = TRUE;
+//							if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
+//							sMatches += IntToString(rRange.first);
+//						}
 						//else TellCraft(". . . . . . ip is NOT Legal for type !");
-					}
-					else // construction
-					{
+//					}
+//					else // construction
+//					{
 						//TellCraft(". . . . . is construction - bypass legality check");
-						bLegal = TRUE;
-					}
+//						bLegal = TRUE;
+//					}
 
-					if (bLegal)
-					{
-						if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
-						sMatches += IntToString(rRange.first);
-					}
+//					if (bLegal)
+//					{
+					if (sMatches != "") sMatches += REAGENT_LIST_DELIMITER;
+					sMatches += IntToString(rRange.first);
+//					}
 				}
 				//else TellCraft(". . . . Type does NOT match.");
 		}
