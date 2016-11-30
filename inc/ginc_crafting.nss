@@ -170,8 +170,8 @@ int GetPropSlotsUsed(object oItem);
 int isIgnoredIp(itemproperty ip);
 // Checks if adding an ip should ignore subtype.
 int isIgnoredSubtype(itemproperty ip);
-// Finds attack bonus on Masterwork weapons
-int GetWeaponAttackBonus(object oWeapon, int nAttackBonusType = ITEM_PROPERTY_ATTACK_BONUS);
+// Checks for +1 attack bonus on Masterwork weapons.
+int hasMasterworkAttackBonus(object oItem);
 
 
 // -----------------------------------------------------------------------------
@@ -739,11 +739,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			{
 				iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 6)); // TCC_Value_GrantMasterworkBonusSlots
 				TellCraft(". . . enchant on Masterwork item - iBonus= " + IntToString(iBonus));
-				// Give an extra slot for Masterwork weapons with the Attack Bonus +1 ability
-				if (GetWeaponAttackBonus(oItem) == 1)
+				// grant an extra slot for Masterwork weapons with a +1 Attack Bonus property
+				if (hasMasterworkAttackBonus(oItem))
 				{
 					iDiscount += 1;
-					TellCraft(". . . Masterwork weapon with inherent +1 Attack bonus - iDiscount= " + IntToString(iDiscount));
+					TellCraft(". . . . Masterwork weapon with +1 Attack bonus - iDiscount= " + IntToString(iDiscount));
 				}
 			}
 
@@ -2068,17 +2068,21 @@ int isIgnoredSubtype(itemproperty ip)
 	return FALSE;
 }
 
-// Finds attack bonus on Masterwork weapons
-int GetWeaponAttackBonus(object oWeapon, int nAttackBonusType = ITEM_PROPERTY_ATTACK_BONUS) {
-    itemproperty ip = GetFirstItemProperty(oWeapon);
-    int nFound = 0;
-    while (nFound == 0 && GetIsItemPropertyValid(ip)) {
-        if (GetItemPropertyType(ip) ==nAttackBonusType) {
-            nFound = GetItemPropertyCostTableValue(ip);
-        }
-        ip = GetNextItemProperty(oWeapon);
-    }
-    return nFound;
+// Checks for +1 attack bonus on Masterwork weapons.
+int hasMasterworkAttackBonus(object oItem)
+{
+	itemproperty ipScan = GetFirstItemProperty(oItem);
+	while (GetIsItemPropertyValid(ipScan))
+	{
+		if (GetItemPropertyDurationType(ipScan) == DURATION_TYPE_PERMANENT
+			&& GetItemPropertyType(ipScan) == ITEM_PROPERTY_ATTACK_BONUS
+			&& GetItemPropertyCostTableValue(ipScan) == 1)
+		{
+			return TRUE;
+		}
+		ipScan = GetNextItemProperty(oItem);
+	}
+	return FALSE;
 }
 
 // -----------------------------------------------------------------------------
