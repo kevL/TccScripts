@@ -884,8 +884,8 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					}
 
 
-					int iLimitationSlots = 0;
-					int iLimitationProps = 0;
+					int iLimitationProps = 0; // each ip counts as 1
+					int iLimitationSlots = 0; // each ip counts by value in ItemPropDef.2da "Slots"
 
 					int iQty;
 					int iLimitationType;
@@ -941,10 +941,10 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 					// look for quantity of existing ip's
 					int iPropCount;
-					if (bTCC_UseVariableSlotCosts)
-						iPropCount = GetCostSlotsUsed(oItem);
-					else
+					if (!bTCC_UseVariableSlotCosts)
 						iPropCount = GetPropSlotsUsed(oItem);
+					else
+						iPropCount = GetCostSlotsUsed(oItem);
 
 					// add the quantity of potential ip's from Set Properties
 					if (!bTCC_SetPropsAreFree)
@@ -1868,6 +1868,7 @@ int hasExcludedProp(object oItem, int iRecipeMatch)
 }
 
 // Gets the material of oItem if any.
+// @note TCC-materials disregard stock GMATERIAL_* values. Possible TODO.
 int GetMaterialCode(object oItem)
 {
 	//TellCraft("GetMaterialCode() " + GetTag(oItem));
