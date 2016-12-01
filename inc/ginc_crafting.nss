@@ -445,7 +445,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 	TellCraft(". id= " + IntToString(iSpellId));
 	TellCraft(". crafter : " + GetName(oCrafter));
 
-	// if there is no item in the bench/satchel just exit all this w/ no message.
+	// Exit w/out message if there is no item in the bench/satchel
 	if (!GetIsObjectValid(GetFirstItemInInventory()))
 		return;
 
@@ -457,7 +457,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 	if (iSpellId == SPELL_IMBUE_ITEM)
 	{
-		// if no matches or only one match bypass SetTriggerSpell() GUI
+		// Bypass SetTriggerSpell() GUI if there are no matches or there is only one match
 		// - if no matches let regular code handle it
 		// - if only one match set 'iRecipeMatch' with the script-var '_iRecipeMatch_ii'
 		//   in ParseRecipeMatches() and proceed ...
@@ -517,7 +517,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 	// +++ check additional criteria +++
 
-	// check if caster is of sufficient level
+	// Check if caster is of sufficient level
 	int iCasterLevel = GetCasterLevel(oCrafter);
 	if (GetGlobalInt(CAMPAIGN_SWITCH_CRAFTING_USE_TOTAL_LEVEL))
 	{
@@ -537,7 +537,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 	int iTccType = GetTccType(oItem);
 	TellCraft(". iTccType= " + IntToString(iTccType));
 
-	// Check for the required feat on caster
+	// Check if caster has the required feat if any
 	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 4))) // TCC_Toggle_RequireFeats
 	{
 		string sFeat = Get2DAString(CRAFTING_2DA, COL_CRAFTING_CRAFT_SKILL, iRecipeMatch);
@@ -629,7 +629,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		return;
 	}
 
-	// Determine if a new item is getting created or an existing one is being enchanted
+	// Determine if a new item is getting constructed or an existing one is being enchanted
 	string sResrefList = Get2DAString(CRAFTING_2DA, COL_CRAFTING_OUTPUT, iRecipeMatch);
 	TellCraft(". sResrefList= " + sResrefList);
 
@@ -675,7 +675,8 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 											  GetIntParam(sEncodedIp, 2),
 											  GetIntParam(sEncodedIp, 3),
 											  GetIntParam(sEncodedIp, 4));
-			// do a validity check although it's probably not thorough
+
+			// Do a validity check although it's probably not thorough
 			if (!GetIsItemPropertyValid(ipEnchant))
 			{
 				TellCraft("ERROR : DoMagicCrafting() ipEnchant is invalid ( " + sEncodedIp
@@ -685,7 +686,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				return;
 			}
 
-			// is the ip-type legal for oItem
+			// Check if the ip-type is legal for oItem's base-type
 			if (!GetIsLegalItemProp(GetBaseItemType(oItem), iPropType))
 			{
 				NotifyPlayer(oCrafter, ERROR_TARGET_NOT_LEGAL_FOR_EFFECT);
@@ -721,10 +722,10 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		// if good, Do ENCHANTMENTS.
 		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 5))) // TCC_Toggle_LimitNumberOfProps
 		{
-			// look for an existing ip being replaced or upgraded
+			// Look for an existing ip being replaced or upgraded
 			int bUpgrade = FALSE;
 
-			// check if an Enhancement bonus is equal or better than existing Attack bonuses
+			// Check if an Enhancement bonus is equal or better than any existing Attack bonuses
 			if (iTccType == TCC_TYPE_MELEE) // note: Not sure what else should do this ->
 				bUpgrade = ReplaceAttackBonus(oItem,
 											  iPropType,
@@ -738,7 +739,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 			if (!bUpgrade)
 			{
-				// check if ip to be added is free
+				// Check if ip to be added is free
 				int bFreeProp = FALSE;
 
 				int bTCC_UseVariableSlotCosts	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 34)); // TCC_Toggle_UseVariableSlotCosts
@@ -784,25 +785,17 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 				if (!bFreeProp)
 				{
-					int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 7)); // TCC_Value_BasePropSlots
-					TellCraft(". . . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
-					// grant a bonus slot if the Caster is of Epic Level (21+)
-					if (iCasterLevel > 20)
-					{
-						iTCC_BasePropSlots += 1;
-						TellCraft(". . . EPIC iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
-					}
-
 					int iBonus = 0;
 					int iDiscount = 0;
 
-					// grant a bonus slot if the item is Masterwork
+					// Grant a bonus slot if the item is Masterwork
 					if (GetLocalInt(oItem, TCC_VAR_MASTERWORK)
 						|| GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
 					{
 						iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 6)); // TCC_Value_GrantMasterworkBonusSlots
 						TellCraft(". . . enchant on Masterwork item - iBonus= " + IntToString(iBonus));
-						// grant an extra slot for Masterwork weapons with a +1 Attack Bonus property
+
+						// Grant an extra slot for Masterwork weapons with a +1 Attack Bonus property
 						if (hasMasterworkAttackBonus(oItem))
 						{
 							iDiscount += 1;
@@ -812,7 +805,9 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 					if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 8))) // TCC_Toggle_GrantMaterialBonusSlots
 					{
-						// increase limit by material code if available
+						// Increase bonus/discount by material-type if available
+						// note: does not consider GMATERIAL_* values. These are
+						// currently TCC-material-types only. See GetMaterialCode()
 						string sType;
 						switch (iTccType)
 						{
@@ -898,7 +893,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						TellCraft(". . . check limitation propType= " + IntToString(iLimitationType) + " iQty= " + IntToString(iQty));
 					}
 
-					// grant discount slot credit to offset each limitation property;
+					// Grant discount slot credit to offset each limitation property;
 					// also grant a bonus slot if the item has any limitation property.
 					if (iLimitationProps)
 					{
@@ -915,7 +910,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					}
 					TellCraft(". . limitation props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
 
-					// grant discount slot for each existing light effect
+					// Grant discount slot for each existing light effect
 					if (bTCC_LightPropsAreFree)
 					{
 						int iLightProps = GetQtyPropsOfType(oItem, ITEM_PROPERTY_LIGHT);
@@ -927,7 +922,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					}
 					TellCraft(". . light props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
 
-					// grant discount slot for each existing vFx property
+					// Grant discount slot for each existing vFx property
 					if (bTCC_VFXPropsAreFree)
 					{
 						int iVfxProps = GetQtyPropsOfType(oItem, ITEM_PROPERTY_VISUALEFFECT);
@@ -939,24 +934,42 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					}
 					TellCraft(". . VFX props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
 
-					// look for quantity of existing ip's
+					// Look for quantity of existing ip's
 					int iPropCount;
 					if (!bTCC_UseVariableSlotCosts)
+					{
 						iPropCount = GetPropSlotsUsed(oItem);
+						iPropCount += 1; // add this ip.
+					}
 					else
+					{
 						iPropCount = GetCostSlotsUsed(oItem);
+						iPropCount += StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType));
+					}
 
-					// add the quantity of potential ip's from Set Properties
+					// Add the quantity of potential ip's from Set Properties
 					if (!bTCC_SetPropsAreFree)
 						iPropCount += GetQtyLatentIps(oItem);
 
-					TellCraft(". . iPropCount= " + IntToString(iPropCount));
-					TellCraft(". . iDiscount= " + IntToString(iDiscount));
-					TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
-					TellCraft(". . iBonus= " + IntToString(iBonus));
 
-					// perform final slot check
-					if (iPropCount - iDiscount >= iTCC_BasePropSlots + iBonus)
+					// Get basic qty of prop-slots per Tcc_Config.2da
+					int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 7)); // TCC_Value_BasePropSlots
+					TellCraft(". . . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+
+					// Grant a bonus slot if the caster is of Epic Level (21+)
+					if (iCasterLevel > 20)
+					{
+						iTCC_BasePropSlots += 1;
+						TellCraft(". . . EPIC iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+					}
+
+					TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+					TellCraft(". . iPropCount= " + IntToString(iPropCount));
+					TellCraft(". . iBonus= " + IntToString(iBonus));
+					TellCraft(". . iDiscount= " + IntToString(iDiscount));
+
+					// Perform final slot check
+					if (iPropCount - iDiscount > iTCC_BasePropSlots + iBonus)
 					{
 						NotifyPlayer(oCrafter, ERROR_TARGET_HAS_MAX_ENCHANTMENTS);
 						return;
