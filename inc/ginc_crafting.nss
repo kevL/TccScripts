@@ -129,7 +129,7 @@ void DestroyItemsInInventory(int bEnchant = FALSE, object oContainer = OBJECT_SE
 void CreateListOfItemsInInventory(string sResrefList,
 								  object oContainer = OBJECT_SELF,
 								  int bIdentify = TRUE,
-								  int bMasterWork = FALSE,
+								  int bMasterwork = FALSE,
 								  int bFullStack = FALSE);
 
 
@@ -1440,38 +1440,39 @@ void DestroyItemsInInventory(int bEnchant = FALSE, object oContainer = OBJECT_SE
 void CreateListOfItemsInInventory(string sResrefList,
 								  object oContainer = OBJECT_SELF,
 								  int bIdentify = TRUE,
-								  int bMasterWork = FALSE,
+								  int bMasterwork = FALSE,
 								  int bFullStack = FALSE)
 {
 	//TellCraft("CreateListOfItemsInInventory() ( " + sResrefList + " )");
 	object oCreate;
+
+	string sResrefMstrwork;
 
 	int i = 0;
 	string sResref = GetStringParam(sResrefList, i);
 	while (sResref != "")
 	{
 		//TellCraft(". resref= " + sResref);
-		if (bMasterWork)
+		oCreate = OBJECT_INVALID;
+
+		if (bMasterwork)
 		{
-			//TellCraft(". masterwork !");
-			oCreate = CreateItemOnObject(sResref + TCC_MASTER_TAG, oContainer);
-			if (!GetIsObjectValid(oCreate))
-			{
-				//TellCraft(". . WARNING : no masterwork resref ( " + sResref + TCC_MASTER_TAG + " )");
-
-				oCreate = CreateItemOnObject(sResref, oContainer);
-				SetLocalInt(oCreate, TCC_VAR_MASTERWORK, TRUE);
-			}
-
+			sResrefMstrwork = sResref + TCC_MASTER_TAG;
+			oCreate = CreateItemOnObject(sResrefMstrwork, oContainer);
+			TellCraft(". . masterwork ! ( " + sResrefMstrwork + " )" + (!GetIsObjectValid(oCreate) ? " WARNING : no masterwork resref" : ""));
 		}
-		else
+
+		if (!GetIsObjectValid(oCreate))
 		{
-			//TellCraft("creating : " + sResref);
+			//TellCraft(". creating : " + sResref);
 			oCreate = CreateItemOnObject(sResref, oContainer);
 		}
 
 		if (GetIsObjectValid(oCreate))
 		{
+			if (bMasterwork) // set Masterwork flag whether or not item was created w/ a Masterwork-resref.
+				SetLocalInt(oCreate, TCC_VAR_MASTERWORK, TRUE);
+
 			if (bIdentify != -1)
 				SetIdentified(oCreate, bIdentify);
 
@@ -1480,6 +1481,7 @@ void CreateListOfItemsInInventory(string sResrefList,
 								 StringToInt(Get2DAString("baseitems", "Stacking", GetBaseItemType(oCreate))));
 		}
 		//else TellCraft(". . ERROR : failed to create ( " + sResref + " )");
+
 		sResref = GetStringParam(sResrefList, ++i);
 	}
 }
