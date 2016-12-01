@@ -658,9 +658,12 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		string sEncodedIps = Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, iRecipeMatch);
 		TellCraft(". . sEncodedIps= " + sEncodedIps);
 
-		string sEncodedIp;
-		int iPropType;
+		string sEncodedIpFirst, sEncodedIp;
+		int iPropTypeFirst, iPropType;
+
 		itemproperty ipEnchant;
+
+		int bFirstIp = TRUE;
 
 		// Perform checks on each encoded-ip in the recipe
 		struct sStringTokenizer rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
@@ -675,6 +678,12 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 											  GetIntParam(sEncodedIp, 2),
 											  GetIntParam(sEncodedIp, 3),
 											  GetIntParam(sEncodedIp, 4));
+			if (bFirstIp)
+			{
+				bFirstIp = FALSE;
+				sEncodedIpFirst = sEncodedIp;
+				iPropTypeFirst  = iPropType;
+			}
 
 			TellCraft(". . . iPropType= " + IntToString(iPropType));
 
@@ -703,19 +712,6 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			NotifyPlayer(oCrafter, -1, "This recipe can't be combined with properties already on the item.");
 			return;
 		}
-
-		// Reset 'sEncodedIp' 'iPropType' 'ipEnchant' to first encoded-ip for now ... TODO: don't panic.
-		rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
-		rEncodedIps = AdvanceToNextToken(rEncodedIps);
-		sEncodedIp = GetNextToken(rEncodedIps);
-		// NOTE: Only 'sEncodedIp' might be needed from here for a Set-item's latent-ip.
-
-//		iPropType = GetIntParam(sEncodedIp, 0);
-//		ipEnchant = IPGetItemPropertyByID(iPropType,
-//										  GetIntParam(sEncodedIp, 1),
-//										  GetIntParam(sEncodedIp, 2),
-//										  GetIntParam(sEncodedIp, 3),
-//										  GetIntParam(sEncodedIp, 4));
 
 		int iFirstSetRecipe = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 32)); // TCC_Value_FirstSetRecipeLine
 		int iLastSetRecipe	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + iFirstSetRecipe; // TCC_Value_MaximumSetProperties
@@ -765,19 +761,6 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			//		 slot if they aren't all upgrades (or all free).
 
 
-			// Reset 'sEncodedIp' 'iPropType' 'ipEnchant' to first encoded-ip for now ... TODO: don't panic.
-			rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
-			rEncodedIps = AdvanceToNextToken(rEncodedIps);
-			sEncodedIp = GetNextToken(rEncodedIps);
-			// NOTE: Only 'sEncodedIp' might be needed from here for a Set-item's latent-ip.
-
-//			iPropType = GetIntParam(sEncodedIp, 0);
-//			ipEnchant = IPGetItemPropertyByID(iPropType,
-//											  GetIntParam(sEncodedIp, 1),
-//											  GetIntParam(sEncodedIp, 2),
-//											  GetIntParam(sEncodedIp, 3),
-//											  GetIntParam(sEncodedIp, 4));
-
 			if (!bUpgrade) // check Free ->
 			{
 				int bTCC_LimitationPropsAreFree	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 22)); // TCC_Toggle_LimitationPropsAreFree
@@ -807,14 +790,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						bFreeProp = FALSE;
 
 						rEncodedIps = AdvanceToNextToken(rEncodedIps);
-						sEncodedIp = GetNextToken(rEncodedIps);
-
-						iPropType = GetIntParam(sEncodedIp, 0);
-//						ipEnchant = IPGetItemPropertyByID(iPropType,
-//														  GetIntParam(sEncodedIp, 1),
-//														  GetIntParam(sEncodedIp, 2),
-//														  GetIntParam(sEncodedIp, 3),
-//														  GetIntParam(sEncodedIp, 4));
+						iPropType = GetIntParam(GetNextToken(rEncodedIps), 0);
 
 						TellCraft(". . . . check iPropType= " + IntToString(iPropType));
 
@@ -854,20 +830,6 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				// NOTE: Only the first encoded-ip will be checked for an
 				//		 available slot if they aren't all free.
 
-
-				// Reset 'sEncodedIp' 'iPropType' 'ipEnchant' to first encoded-ip for now ... TODO: don't panic.
-				rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
-				rEncodedIps = AdvanceToNextToken(rEncodedIps);
-				sEncodedIp = GetNextToken(rEncodedIps);
-				// NOTE: 'sEncodedIp' might be needed from here for a Set-item's latent-ip
-				//		 'iPropType' will be needed below if variable slot-costs are enabled.
-
-				iPropType = GetIntParam(sEncodedIp, 0);
-//				ipEnchant = IPGetItemPropertyByID(iPropType,
-//												  GetIntParam(sEncodedIp, 1),
-//												  GetIntParam(sEncodedIp, 2),
-//												  GetIntParam(sEncodedIp, 3),
-//												  GetIntParam(sEncodedIp, 4));
 
 				if (!bFreeProp) // check slots ->
 				{
@@ -1030,7 +992,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					else
 					{
 						iPropCount = GetCostSlotsUsed(oItem);
-						iPropCount += StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType));
+						iPropCount += StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropTypeFirst));
 					}
 
 					// Add the quantity of potential ip's from Set Properties
@@ -1106,7 +1068,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			}
 
 			// if function hasn't exited add selected effect as a Property Set ip
-			AddLatentIp(oItem, GetLatentPartReady(oItem), sEncodedIp, oCrafter);
+			AddLatentIp(oItem, GetLatentPartReady(oItem), sEncodedIpFirst, oCrafter);
 			NotifyPlayer(oCrafter, -1, "Effect added as Set property !");
 			return;
 		}
