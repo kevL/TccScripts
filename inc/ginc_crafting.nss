@@ -526,6 +526,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			iCasterLevel = iTotalLevel;
 	}
 	TellCraft(". iCasterLevel= " + IntToString(iCasterLevel));
+	TellCraft(". iCasterLevel required= " + Get2DAString(CRAFTING_2DA, COL_CRAFTING_SKILL_LEVEL, iRecipeMatch));
 
 	if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 3)) // TCC_Toggle_RequireCasterLevel
 		&& iCasterLevel < StringToInt(Get2DAString(CRAFTING_2DA, COL_CRAFTING_SKILL_LEVEL, iRecipeMatch)))
@@ -669,12 +670,13 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			sEncodedIp = GetNextToken(rEncodedIps);
 
 			iPropType = GetIntParam(sEncodedIp, 0);
-			TellCraft(". . iPropType= " + IntToString(iPropType));
 			ipEnchant = IPGetItemPropertyByID(iPropType,
 											  GetIntParam(sEncodedIp, 1),
 											  GetIntParam(sEncodedIp, 2),
 											  GetIntParam(sEncodedIp, 3),
 											  GetIntParam(sEncodedIp, 4));
+
+			TellCraft(". . . iPropType= " + IntToString(iPropType));
 
 			// Do a validity check although it's probably not thorough
 			if (!GetIsItemPropertyValid(ipEnchant))
@@ -706,13 +708,14 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
 		rEncodedIps = AdvanceToNextToken(rEncodedIps);
 		sEncodedIp = GetNextToken(rEncodedIps);
+		// NOTE: Only 'sEncodedIp' might be needed from here for a Set-item's latent-ip.
 
-		iPropType = GetIntParam(sEncodedIp, 0);
-		ipEnchant = IPGetItemPropertyByID(iPropType,
-										  GetIntParam(sEncodedIp, 1),
-										  GetIntParam(sEncodedIp, 2),
-										  GetIntParam(sEncodedIp, 3),
-										  GetIntParam(sEncodedIp, 4));
+//		iPropType = GetIntParam(sEncodedIp, 0);
+//		ipEnchant = IPGetItemPropertyByID(iPropType,
+//										  GetIntParam(sEncodedIp, 1),
+//										  GetIntParam(sEncodedIp, 2),
+//										  GetIntParam(sEncodedIp, 3),
+//										  GetIntParam(sEncodedIp, 4));
 
 		int iFirstSetRecipe = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 32)); // TCC_Value_FirstSetRecipeLine
 		int iLastSetRecipe	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + iFirstSetRecipe; // TCC_Value_MaximumSetProperties
@@ -722,68 +725,151 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		// if good, Do ENCHANTMENTS.
 		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 5))) // TCC_Toggle_LimitNumberOfProps
 		{
-			// Look for an existing ip being replaced or upgraded
-			int bUpgrade = FALSE;
+			// Look for a existing IPs being replaced or upgraded
+			int bUpgrade;
 
-			// Check if an Enhancement bonus is equal or better than any existing Attack bonuses
-			if (iTccType == TCC_TYPE_MELEE) // note: Not sure what else should do this ->
-				bUpgrade = ReplaceAttackBonus(oItem,
-											  iPropType,
-											  GetItemPropertyCostTableValue(ipEnchant),
-											  GetItemPropertySubType(ipEnchant));
-
-			if (!bUpgrade)
-				bUpgrade = isIpUpgrade(oItem, ipEnchant);
-
-			TellCraft(". . bUpgrade= " + IntToString(bUpgrade));
-
-			if (!bUpgrade)
+			// Check if all encoded-ips are upgrades
+			TellCraft(". . . check all encoded-ips for Upgrade");
+			rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER); // reset Tokenizer.
+			while (HasMoreTokens(rEncodedIps))
 			{
-				// Check if ip to be added is free
-				int bFreeProp = FALSE;
+				bUpgrade = FALSE;
 
-				int bTCC_UseVariableSlotCosts	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 34)); // TCC_Toggle_UseVariableSlotCosts
+				rEncodedIps = AdvanceToNextToken(rEncodedIps);
+				sEncodedIp = GetNextToken(rEncodedIps);
+
+				iPropType = GetIntParam(sEncodedIp, 0);
+				ipEnchant = IPGetItemPropertyByID(iPropType,
+												  GetIntParam(sEncodedIp, 1),
+												  GetIntParam(sEncodedIp, 2),
+												  GetIntParam(sEncodedIp, 3),
+												  GetIntParam(sEncodedIp, 4));
+
+				TellCraft(". . . . check iPropType= " + IntToString(iPropType));
+
+				// Check if an Enhancement bonus is equal or better than any existing Attack bonuses
+				if (iTccType == TCC_TYPE_MELEE) // note: Not sure what else should do this ->
+					bUpgrade = ReplaceAttackBonus(oItem,
+												  iPropType,
+												  GetItemPropertyCostTableValue(ipEnchant),
+												  GetItemPropertySubType(ipEnchant));
+
+				if (!bUpgrade)
+					bUpgrade = isIpUpgrade(oItem, ipEnchant);
+
+				if (!bUpgrade) // fail.
+					break;
+			}
+			TellCraft(". . . bUpgrade= " + IntToString(bUpgrade));
+			// NOTE: Only the first encoded-ip will be checked for an available
+			//		 slot if they aren't all upgrades (or all free).
+
+
+			// Reset 'sEncodedIp' 'iPropType' 'ipEnchant' to first encoded-ip for now ... TODO: don't panic.
+			rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+			rEncodedIps = AdvanceToNextToken(rEncodedIps);
+			sEncodedIp = GetNextToken(rEncodedIps);
+			// NOTE: Only 'sEncodedIp' might be needed from here for a Set-item's latent-ip.
+
+//			iPropType = GetIntParam(sEncodedIp, 0);
+//			ipEnchant = IPGetItemPropertyByID(iPropType,
+//											  GetIntParam(sEncodedIp, 1),
+//											  GetIntParam(sEncodedIp, 2),
+//											  GetIntParam(sEncodedIp, 3),
+//											  GetIntParam(sEncodedIp, 4));
+
+			if (!bUpgrade) // check Free ->
+			{
 				int bTCC_LimitationPropsAreFree	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 22)); // TCC_Toggle_LimitationPropsAreFree
 				int bTCC_LightPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 23)); // TCC_Toggle_LightPropsAreFree
 				int bTCC_VFXPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 24)); // TCC_Toggle_VFXPropsAreFree
 				int bTCC_SetPropsAreFree		= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 25)); // TCC_Toggle_SetPropsAreFree
 
-				if (bTCC_UseVariableSlotCosts
-					&& !StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType)))
-				{
-					bFreeProp = TRUE;
-				}
-				else if (bTCC_SetPropsAreFree
+				int bTCC_UseVariableSlotCosts	= StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 34)); // TCC_Toggle_UseVariableSlotCosts
+
+
+				int bFreeProp = FALSE;
+
+				if (bTCC_SetPropsAreFree
 					&& iRecipeMatch >= iFirstSetRecipe
 					&& iRecipeMatch <= iLastSetRecipe)
 				{
+					TellCraft(". . . is SetProp : free");
 					bFreeProp = TRUE;
 				}
 				else
 				{
-					switch (iPropType)
+					// Check if all encoded-ips are free
+					TellCraft(". . . check all encoded-ips for Free");
+					rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER); // reset Tokenizer.
+					while (HasMoreTokens(rEncodedIps))
 					{
-						case ITEM_PROPERTY_USE_LIMITATION_CLASS:
-						case ITEM_PROPERTY_USE_LIMITATION_RACIAL_TYPE:
-						case ITEM_PROPERTY_USE_LIMITATION_ALIGNMENT_GROUP:
-						case ITEM_PROPERTY_USE_LIMITATION_SPECIFIC_ALIGNMENT:
-							if (bTCC_LimitationPropsAreFree)
-								bFreeProp = TRUE;
-							break;
+						bFreeProp = FALSE;
 
-						case ITEM_PROPERTY_LIGHT:
-							if (bTCC_LightPropsAreFree)
-								bFreeProp = TRUE;
-							break;
+						rEncodedIps = AdvanceToNextToken(rEncodedIps);
+						sEncodedIp = GetNextToken(rEncodedIps);
 
-						case ITEM_PROPERTY_VISUALEFFECT:
-							if (bTCC_VFXPropsAreFree)
-								bFreeProp = TRUE;
+						iPropType = GetIntParam(sEncodedIp, 0);
+//						ipEnchant = IPGetItemPropertyByID(iPropType,
+//														  GetIntParam(sEncodedIp, 1),
+//														  GetIntParam(sEncodedIp, 2),
+//														  GetIntParam(sEncodedIp, 3),
+//														  GetIntParam(sEncodedIp, 4));
+
+						TellCraft(". . . . check iPropType= " + IntToString(iPropType));
+
+						if (bTCC_UseVariableSlotCosts
+							&& !StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType)))
+						{
+							bFreeProp = TRUE;
+						}
+						else
+						{
+							switch (iPropType)
+							{
+								case ITEM_PROPERTY_USE_LIMITATION_CLASS:
+								case ITEM_PROPERTY_USE_LIMITATION_RACIAL_TYPE:
+								case ITEM_PROPERTY_USE_LIMITATION_ALIGNMENT_GROUP:
+								case ITEM_PROPERTY_USE_LIMITATION_SPECIFIC_ALIGNMENT:
+									if (bTCC_LimitationPropsAreFree)
+										bFreeProp = TRUE;
+									break;
+
+								case ITEM_PROPERTY_LIGHT:
+									if (bTCC_LightPropsAreFree)
+										bFreeProp = TRUE;
+									break;
+
+								case ITEM_PROPERTY_VISUALEFFECT:
+									if (bTCC_VFXPropsAreFree)
+										bFreeProp = TRUE;
+							}
+						}
+
+						if (!bFreeProp) // fail.
+							break;
 					}
 				}
 				TellCraft(". . bFreeProp= " + IntToString(bFreeProp));
+				// NOTE: Only the first encoded-ip will be checked for an
+				//		 available slot if they aren't all free.
 
-				if (!bFreeProp)
+
+				// Reset 'sEncodedIp' 'iPropType' 'ipEnchant' to first encoded-ip for now ... TODO: don't panic.
+				rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER);
+				rEncodedIps = AdvanceToNextToken(rEncodedIps);
+				sEncodedIp = GetNextToken(rEncodedIps);
+				// NOTE: 'sEncodedIp' might be needed from here for a Set-item's latent-ip
+				//		 'iPropType' will be needed below if variable slot-costs are enabled.
+
+				iPropType = GetIntParam(sEncodedIp, 0);
+//				ipEnchant = IPGetItemPropertyByID(iPropType,
+//												  GetIntParam(sEncodedIp, 1),
+//												  GetIntParam(sEncodedIp, 2),
+//												  GetIntParam(sEncodedIp, 3),
+//												  GetIntParam(sEncodedIp, 4));
+
+				if (!bFreeProp) // check slots ->
 				{
 					int iBonus = 0;
 					int iDiscount = 0;
@@ -1039,7 +1125,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 												  GetIntParam(sEncodedIp, 3),
 												  GetIntParam(sEncodedIp, 4));
 
-				TellCraft(". . add IP " + IntToString(iPropType) + "!");
+				TellCraft(". . add IP " + IntToString(iPropType) + " !");
 				int iPolicy;
 				if (isIgnoredIp(ipEnchant))
 					iPolicy = X2_IP_ADDPROP_POLICY_IGNORE_EXISTING;
