@@ -1002,7 +1002,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 					// Get basic qty of prop-slots per Tcc_Config.2da
 					int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 7)); // TCC_Value_BasePropSlots
-					TellCraft(". . . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
+					TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
 
 					// Grant a bonus slot if the caster is of Epic Level (21+)
 					if (iCasterLevel > 20)
@@ -1011,7 +1011,6 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						TellCraft(". . . EPIC iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
 					}
 
-					TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
 					TellCraft(". . iPropCount= " + IntToString(iPropCount));
 					TellCraft(". . iBonus= " + IntToString(iBonus));
 					TellCraft(". . iDiscount= " + IntToString(iDiscount));
