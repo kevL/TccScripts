@@ -721,7 +721,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		// if good, Do ENCHANTMENTS.
 		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 5))) // TCC_Toggle_LimitNumberOfProps
 		{
-			// Look for a existing IPs being replaced or upgraded
+			// Look for existing IPs being replaced or upgraded
 			int bUpgrade;
 
 			// Check if all encoded-ips are upgrades
