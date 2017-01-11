@@ -814,10 +814,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			}
 			TellCraft(". . . iRecipeTotalCost= " + IntToString(iRecipeTotalCost));
 
-			if(iRecipeTotalCost>0) // check if there are slots available for the total non-free/upgrade properties
+			if (iRecipeTotalCost > 0) // check if there are slots available for the total non-free/upgrade properties
 			{
 				int iBonus = 0;
 				int iDiscount = 0;
+
 				// Grant a bonus slot if the item is Masterwork
 				if (GetLocalInt(oItem, TCC_VAR_MASTERWORK)
 					|| GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
@@ -831,6 +832,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						TellCraft(". . . . Masterwork weapon with +1 Attack bonus - iDiscount= " + IntToString(iDiscount));
 					}
 				}
+
 				if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 8))) // TCC_Toggle_GrantMaterialBonusSlots
 				{
 					// Increase bonus/discount by material-type if available
@@ -849,7 +851,8 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						case TCC_TYPE_MELEE:
 						case TCC_TYPE_AMMO:		sType = TCC_BONUS_WEAPON;
 					}
-						if (sType != "")
+
+					if (sType != "")
 					{
 						switch (GetMaterialCode(oItem))
 						{
@@ -918,6 +921,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					iLimitationSlots += iQty * StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iLimitationType));
 					TellCraft(". . . check limitation propType= " + IntToString(iLimitationType) + " iQty= " + IntToString(iQty));
 				}
+
 				// Grant discount slot credit to offset each limitation property;
 				// also grant a bonus slot if the item has any limitation property.
 				if (iLimitationProps)
@@ -934,6 +938,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						++iBonus;
 				}
 				TellCraft(". . limitation props - iBonus= " + IntToString(iBonus) + " iDiscount= " + IntToString(iDiscount));
+
 				// Grant discount slot for each existing light effect
 				if (bTCC_LightPropsAreFree)
 				{
