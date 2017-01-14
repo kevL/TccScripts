@@ -1,6 +1,6 @@
 // 'i_tcc_scanner_ac'
 //
-// Associated with the TCC scanner gem item.
+// Associated with the TCC scanner item.
 // - script is run when the item's special ability is used
 // - target an item with the ability to use it
 // - echoes item property information to the chat window
@@ -12,9 +12,6 @@
 
 
 #include "ginc_crafting"
-
-const string COL_ITEM_PROP_DEF_NAME		= "Name";
-const string COL_ITEM_PROP_DEF_SUBTYPE	= "SubTypeResRef";
 
 
 // ___________________
@@ -52,12 +49,12 @@ void main()
 
 	if (GetObjectType(oTarget) != OBJECT_TYPE_ITEM)
 	{
-		SendMessageToPC(oPC, "error : Only items can be targeted !");
+		SendMessageToPC(oPC, "ERROR : Only items can be targeted !");
 		return;
 	}
 
 	if (GetItemStackSize(oTarget) != 1)
-		SendMessageToPC(oPC, "warning : Variables on items in stacks might not be consistent.");
+		SendMessageToPC(oPC, "WARNING : Variables on items in stacks might not be consistent.");
 
 
 	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + GetTag(oTarget) + " )");
@@ -126,7 +123,7 @@ void main()
 // Gets property-type as a string.
 string prop(int iPropType)
 {
-	string sRet = GetStringByStrRef(StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_NAME, iPropType)));
+	string sRet = GetStringByStrRef(StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, "Name", iPropType)));
 	return " <c=cornflowerblue>( " + sRet + " )</c>";
 }
 
@@ -147,7 +144,7 @@ string dur(int iDurType)
 // Gets subtype as a string.
 string subtype(int iPropType, int iSubType)
 {
-	string sRet = Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SUBTYPE, iPropType);
+	string sRet = Get2DAString(ITEM_PROP_DEF_2DA, "SubTypeResRef", iPropType);
 	if (sRet != "")
 	{
 		string sRet1 = GetStringByStrRef(StringToInt(Get2DAString(sRet, "Name", iSubType)));
