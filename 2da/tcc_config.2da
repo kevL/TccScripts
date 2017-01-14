@@ -35,7 +35,7 @@
 31	Value_MasterworkSkillModifier	5	****	****	****	****	****	****
 32	Value_FirstSetRecipeLine	934	****	****	****	****	****	****
 33	Toggle_UseRecipeExclusion	1	****	****	****	****	****	****
-34	Toggle_UseVariableSlotCosts	1	****	****	****	****	****	****
+34	Toggle_UseVariableSlotCosts	0	****	****	****	****	****	****
 35	Toggle_UseRecipeXPCosts	0	****	****	****	****	****	****
 36	Toggle_UseRecipeGPCosts	0	****	****	****	****	****	****
 37	Value_EpicCharacterBonusProp	1	****	****	****	****	****	****
