@@ -705,7 +705,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			}
 		}
 
-		// Check for properties that arrogate this one
+		// Check for properties of oItem that arrogate iRecipeMatch
 		if (StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 33)) // TCC_Toggle_UseRecipeExclusion
 			&& hasExcludedProp(oItem, iRecipeMatch))
 		{
@@ -753,9 +753,9 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				// Check if an Enhancement bonus is equal or better than any existing Attack bonuses
 				if (iTccType == TCC_TYPE_MELEE) // note: Not sure what else should do this ->
 					bUpgradeOrFree = ReplaceAttackBonus(oItem,
-												  iPropType,
-												  GetItemPropertyCostTableValue(ipEnchant),
-												  GetItemPropertySubType(ipEnchant));
+														iPropType,
+														GetItemPropertyCostTableValue(ipEnchant),
+														GetItemPropertySubType(ipEnchant));
 
 				if (!bUpgradeOrFree)
 					bUpgradeOrFree = isIpUpgrade(oItem, ipEnchant);
@@ -775,8 +775,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					if (bTCC_UseVariableSlotCosts
 						&& !StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType)))
 					{
-						// could not find a cost for the property
-						bUpgradeOrFree = TRUE;
+						bUpgradeOrFree = TRUE; // could not find a cost for the property
 					}
 					else
 					{
@@ -789,11 +788,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 								if (bTCC_LimitationPropsAreFree)
 									bUpgradeOrFree = TRUE;
 								break;
-								case ITEM_PROPERTY_LIGHT:
+							case ITEM_PROPERTY_LIGHT:
 								if (bTCC_LightPropsAreFree)
 									bUpgradeOrFree = TRUE;
 								break;
-								case ITEM_PROPERTY_VISUALEFFECT:
+							case ITEM_PROPERTY_VISUALEFFECT:
 								if (bTCC_VFXPropsAreFree)
 									bUpgradeOrFree = TRUE;
 						}
