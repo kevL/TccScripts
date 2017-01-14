@@ -757,8 +757,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 												  GetItemPropertyCostTableValue(ipEnchant),
 												  GetItemPropertySubType(ipEnchant));
 
-				if (!bUpgradeOrFree)
+				if (!bUpgradeOrFree) {
 					bUpgradeOrFree = isIpUpgrade(oItem, ipEnchant);
+					if(bUpgradeOrFree)
+						TellCraft(". . . . . " + IntToString(iPropType) + " is an Upgrade");
+				}
 
 				if (!bUpgradeOrFree)
 				{
@@ -766,17 +769,18 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						&& iRecipeMatch >= iFirstSetRecipe
 						&& iRecipeMatch <= iLastSetRecipe)
 					{
-						TellCraft(". . . is SetProp : free");
+						TellCraft(". . . . . is SetProp : free");
 						bUpgradeOrFree = TRUE;
 					}
 				}
-				else
+				if (!bUpgradeOrFree)
 				{
 					if (bTCC_UseVariableSlotCosts
 						&& !StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType)))
 					{
 						// could not find a cost for the property
 						bUpgradeOrFree = TRUE;
+						TellCraft(". . . . . " + IntToString(iPropType) + " had no available cost");
 					}
 					else
 					{
@@ -788,14 +792,18 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 							case ITEM_PROPERTY_USE_LIMITATION_SPECIFIC_ALIGNMENT:
 								if (bTCC_LimitationPropsAreFree)
 									bUpgradeOrFree = TRUE;
+								TellCraft(". . . . . " + IntToString(iPropType) + " is a Limitation Prop");
 								break;
-								case ITEM_PROPERTY_LIGHT:
+							case ITEM_PROPERTY_LIGHT:
 								if (bTCC_LightPropsAreFree)
 									bUpgradeOrFree = TRUE;
+								TellCraft(". . . . . " + IntToString(iPropType) + " is a Light Prop");
 								break;
-								case ITEM_PROPERTY_VISUALEFFECT:
+							case ITEM_PROPERTY_VISUALEFFECT:
 								if (bTCC_VFXPropsAreFree)
 									bUpgradeOrFree = TRUE;
+								TellCraft(". . . . . " + IntToString(iPropType) + " is a VFX");
+								break;
 						}
 					}
 				}
@@ -982,16 +990,17 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				int iTCC_BasePropSlots = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 7)); // TCC_Value_BasePropSlots
 				TellCraft(". . iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
 
-				// Grant a bonus slot if the caster is of Epic Level (21+)
+				// Grant bonus slots if the caster is of Epic Level (21+) (default 0)
 				if (iCasterLevel > 20)
 				{
-					iTCC_BasePropSlots += 1;
+					iTCC_BasePropSlots += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 37)); // TCC_Value_EpicCharacterBonusProp
 					TellCraft(". . . EPIC iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
 				}
 
 				TellCraft(". . iPropCount= " + IntToString(iPropCount));
 				TellCraft(". . iBonus= " + IntToString(iBonus));
 				TellCraft(". . iDiscount= " + IntToString(iDiscount));
+				TellCraft(". . iRecipeTotalCost= " + IntToString(iRecipeTotalCost));
 
 				// Perform final slot check
 				if (iPropCount - iDiscount + iRecipeTotalCost > iTCC_BasePropSlots + iBonus)
