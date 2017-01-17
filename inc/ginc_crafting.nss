@@ -1202,7 +1202,7 @@ string GetRecipeMatches(object oItem)
 	string sReagentTags = GetSortedReagents(GetIsObjectValid(oItem));
 	//TellCraft(". sReagentTags= " + sReagentTags);
 	string sTypes;
-//	int iPropType, bLegal;
+	//int iPropType, bLegal;
 
 	struct range2da rRange = GetTriggerRange(SPELL_IMBUE_ITEM_ST); // get Crafting.2da rows per Crafting_Index.2da for SPELL_IMBUE_ITEM
 	//TellCraft(". rRange first= " + IntToString(rRange.first) + " last=" + IntToString(rRange.last));
@@ -1590,13 +1590,8 @@ int isTypeMatch(object oItem, string sTypes)
 		if (sTypes == "-1")					// TCC_TYPE_ANY: TAGS shall be "-1" only.
 		{
 			//TellCraft(". . match Any");
-			if (iType != TCC_TYPE_MELEE)	// NOTE: does *not* include TCC_TYPE_MELEE (why not)
-			{
-				//TellCraft(". . . ret TRUE");
-				return TRUE;
-			}
-			//TellCraft(". . . ret FALSE");
-			return FALSE;
+			//TellCraft(". . . ret TRUE");
+			return TRUE;
 		}
 
 		switch (iType) // cases include only the possible returns from GetTccType()
