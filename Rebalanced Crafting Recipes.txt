@@ -515,14 +515,14 @@ Craft Armor
   Ice Mephit Hide: +5
   Darksteel: +10
   Mithral: +10
-  Zalantar: +10
+  Zalantar: +10 (grants a bonus enchantment slot due to being the 'best' wood for armor - see tcc_config)
   Salamander Hide: +12
   Winter Wolf Hide: +12
-  Adamantine: +15
-  Ironwood: +15
+  Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for armor - see tcc_config)
+  Ironwood: +15 (not found in NWN2, but exists in the game files)
   Umber Hulk Hide: +17
   Wyvern Hide: +20
-  Red Dragon Hide: +23
+  Red Dragon Hide: +23 (grants a bonus enchantment slot due to being the 'best' hide for armor - see tcc_config)
 
 Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
 Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
@@ -540,7 +540,7 @@ Mithral: Gloves, Hat, Metal Armor, Shields
 
 Duskwood: Shields
 Ironwood: Shields
-Shederran: Shields
+Shederran: None
 Zalantar: Shields
 
 
@@ -564,11 +564,11 @@ Craft Weapon
   Shederran: +5
   Darksteel: +10
   Mithral: +10
-  Zalantar: +10
+  Zalantar: +10 (grants a bonus enchantment slot due to being the 'best' wood for weapons - see tcc_config)
   Salamander Hide: +12
   Winter Wolf Hide: +12
-  Adamantine: +15
-  Ironwood: +15
+  Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for weapons - see tcc_config)
+  Ironwood: +15 (not found in NWN2, but exists in the game files)
 
 Salamander Hide: Sling
 Winter Wolf Hide: Sling
