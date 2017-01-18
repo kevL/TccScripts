@@ -1,0 +1,3287 @@
+Neverwinter Nights 2 TCC Rebalance Crafting Recipes
+Mod Version: 1.167
+
+
+--------------------------------------------------------------------------------
+				Table of Contents
+--------------------------------------------------------------------------------
+
+
+INTRO
+RECIPES
+ Item Creation
+  X0000 Universal Ingredients
+  X0001 Alchemical Creations
+  X0002 Ammunition
+  X0003 Amulets
+  X0004 Belts
+  X0005 Blacksmith
+	 Alchemical Ammunition
+	 Armor
+	 Weapons
+  X0006 Boots
+  X0007 Cloaks
+  X0008 Gloves
+  X0009 Head
+  X0010 Misc Items
+  X0011 Poisons
+  X0012 Quest Items
+  X0013 Rings
+  X0014 Robes
+  X0015 Traps
+ Item Enchanting
+  X1001 Armor
+	 Basic
+	 Elemental
+	 Other
+  X1002 Armor/Weapon
+  X1003 Gloves
+	 Basic
+	 Elemental
+	 Misc
+	 On-Hit
+  X1004 Universal
+	 Attributes
+	 Feats
+	 Misc
+	 Skills
+	 Spells
+	 VFX
+  X1005 Weapons (Ammo)
+  X1006 Weapons
+	 Basic
+	 Elemental
+	 Misc
+	 On-Hit
+         VFX
+  X1007 Weapons (Ranged)
+  x1008 Wondrous Items
+
+
+
+--------------------------------------------------------------------------------
+				INTRO
+--------------------------------------------------------------------------------
+
+
+This is a list of the various recipes available using the rebalanced version of
+the Rebalanced version of the Complete Craftsman.
+
+It does not list MotB recipes, as those have not been changed.
+
+Do note that some spells will not work on the Magician Workbench, and can only
+be used on MotB's Enchanter's Satchel. Make sure to try the spell on both before
+reporting that a spell doesn't work.
+
+
+--------------------------------------------------------------------------------
+			 RECIPES - ITEM CREATION
+--------------------------------------------------------------------------------
+
+                    /////Universal Ingredients\\\\\                        X0000
+
+
+Armor: Any Armor, Shield, or Clothes/Robe (including one already enchanted)
+Belts: 1 Leather Hide
+Boots: 1 Leather Hide
+Cloaks: 2 Leather Hides
+Rings: 1 Iron Ingot
+Traps: Trap Mold
+Weapons: Any Weapon (including one already enchanted)
+
+
+--------------------------------------------------------------------------------
+                    /////Alchemical Creations\\\\\                         X0001
+
+
+Acid Flask: Thrown Weapon inflicts 1d6 Acid Damage
+  Requires: Craft Alchemy 4
+  Ingredients: Venom Gland + Quicksilver
+
+Acid Flask (Improved): Thrown Weapon inflicts 1d8 Acid Damage
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Venom Gland + 2 Quicksilver
+
+Acid Flask (Greater): Thrown Weapon inflicts 1d10 Acid Damage
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Venom Gland + 3 Quicksilver
+
+Acid Flask (Perfected): Thrown Weapon inflicts 2d6 Acid Damage
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Venom Gland + 4 Quicksilver
+
+Alchemist's Fire: Thrown Weapon inflicts 1d6 Fire Damage or
+                  coats a Weapon with Fire to add 1d4 Fire Damage to attacks
+  Requires: Craft Alchemy 4
+  Ingredients: Fairy Dust + Distilled Alcohol
+
+Alchemist's Fire (Improved): Thrown Weapon inflicts 1d8 Fire Damage or
+                             coats a Weapon to add 1d6 Fire Damage to attacks
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Fairy Dust + 2 Distilled Alcohol
+
+Alchemist's Fire (Greater): Thrown Weapon inflicts 1d10 Fire Damage or
+                            coats a Weapon to add 1d6 Fire Damage to attacks
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Fairy Dust + 3 Distilled Alcohol
+
+Alchemist's Fire (Perfected): Thrown Weapon inflicts 2d6 Fire Damage or
+                              coats a Weapon to add 1d10 Fire Damage to attacks
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Fairy Dust + 4 Distilled Alcohol
+
+Choking Powder: Creates a Stinking Cloud effect that lasts 5 rounds
+  Requires: Craft Alchemy 4
+  Ingredients: Garlic + Belladonna
+
+Choking Powder (Improved): Creates a Stinking Cloud effect that lasts 5 rounds
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Garlic + 2 Belladonna
+
+Choking Powder (Greater): Creates a Stinking Cloud effect that lasts 5 rounds
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Garlic + 3 Belladonna
+
+Choking Powder (Perfected): Creates a Stinking Cloud effect that lasts 5 rounds
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Garlic + 4 Belladonna
+
+Holy Water: Thrown Weapon inflicts 2d4 Holy Damage to Undead
+  Requires: Craft Alchemy 4
+  Ingredients: Amethyst + Powdered Silver
+
+Holy Water (Improved): Thrown Weapon inflicts 2d6 Holy Damage to Undead
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Amethyst + 2 Powdered Silver
+
+Holy Water (Greater): Thrown Weapon inflicts 2d8 Holy Damage to Undead
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Amethyst + 3 Powdered Silver
+
+Holy Water (Perfected): Thrown Weapon inflicts 2d10 Holy Damage to Undead
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Amethyst + 4 Powdered Silver
+
+Tanglefoot Bag: Creates Entangle effect that lasts for 2 rounds
+  Requires: Craft Alchemy 4
+  Ingredients: Quicksilver + Belladonna
+
+Tanglefoot Bag (Improved): Creates Entangle effect that lasts for 3 rounds
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Quicksilver + 2 Belladonna
+
+Tanglefoot Bag (Greater): Creates Entangle effect that lasts for 5 rounds
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Quicksilver + 3 Belladonna
+
+Tanglefoot Bag (Perfected): Creates Entangle effect that lasts for 6 rounds
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Quicksilver + 4 Belladonna
+
+Thunderstone: Deafens target for 5 rounds
+  Requires: Craft Alchemy 4
+  Ingredients: Diamond Dust + Amethyst
+
+Thunderstone (Improved): Deafens target for 5 rounds
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Diamond Dust + 2 Amethyst
+
+Thunderstone (Greater): Deafens target for 5 rounds
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Diamond Dust + 3 Amethyst
+
+Thunderstone (Perfected): Deafens target for 5 rounds
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Diamond Dust + 4 Amethyst
+
+
+--------------------------------------------------------------------------------
+                        /////Ammunition\\\\\                               X0002
+
+
+***These require the Craft Magic Arms and Armor feat***
+
+
+Arrows:
+
+Acid = Mithral + Arrow Mold + Melf's Acid Arrow (Level 10)
+Detonation = Mithral + Arrow Mold + Delayed Blast Fireball/Firestorm (Level 18)
+Fire = Mithral + Arrow Mold + Flame Arrow/Flame Weapon (Level 10)
+Ice = Mithral + Arrow Mold + Ray of Frost/Hypothermia (Level 10)
+Lightning = Mithral + Arrow Mold + Shocking Grasp/Call Lightning (Level 10)
+Mild Poison = Mithral + Arrow Mold + Poison (Level 8)
+Petrification = Mithral + Arrow Mold + Flesh to Stone (Level 15)
+Piercing = Mithral + Arrow Mold + Spike Growth (Level 12)
+Poison = Mithral + Arrow Mold + Contagion (Level 10)
+Vampire = Mithral + Arrow Mold + Vampiric Touch (Level 8)
+
+Bolts:
+
+Fire = Mithral + Bolt Mold + Flame Arrow/Flame Weapon (Level 10)
+Frostbite = Mithral + Bolt Mold + Ray of Frost/Hypothermia (Level 10)
+Lightning = Mithral + Bolt Mold + Shocking Grasp/Call Lightning (Level 10)
+Mild Poison = Mithral + Bolt Mold + Poison (Level 8)
+Paralytic = Mithral + Bolt Mold + Ghoul Touch/Stonehold (Level 14)
+Piercing = Mithral + Bolt Mold + Spike Growth (Level 12)
+Poison = Mithral + Bolt Mold + Contagion (Level 10)
+
+Bullets:
+
+Fire = Mithral + Bullet Mold + Fireburst/Flame Weapon (Level 10)
+Giant's Bane = Mithral + Bullet Mold + Spike Growth (Level 14)
+Ice = Mithral + Bullet Mold + Ray of Frost/Hypothermia (Level 10)
+Lightning = Mithral + Bullet Mold + Shocking Grasp/Call Lightning (Level 10)
+Screaming = Mithral + Bullet Mold + Sound Burst (Level 12)
+Smiting = Mithral + Bullet Mold + Weapon of Impact (Level 12)
+
+Darts:
+
+Accuracy = Mithral + Dart Mold + True Strike (Level 15)
+Acid = Mithral + Dart Mold + Acid Splash (Level 12)
+Asp's Nest = Mithral + Dart Mold + Quillfire (Level 12)
+Ice = Mithral + Dart Mold + Ray of Frost/Hypothermia (Level 12)
+Stunning = Mithral + Dart Mold + Power Word Stun (Level 15)
+
+Shurikens:
+
+Dragon's Tail = Mithral + Shuriken Mold + Fireburst/Flame Weapon (Level 12)
+Grains of Sand = Mithral + Shuriken Mold + Hiss of Sleep (Level 12)
+Many Talons = Mithral + Shuriken Mold + Vampiric Touch (Level 14)
+Ojy-do = Mithral + Shuriken Mold + Ray of Frost/Hypothermia (Level 12)
+Shining Light = Mithral + Shuriken Mold + Daze (Level 15)
+
+Throwing Axes:
+
+Black Raven = 2 Mithral + Throwing Axe Mold + Fear (Level 12)
+Coming Storm = 2 Mithral + Throwing Axe Mold + Call Lightning Storm (Level 15)
+Fire = 2 Mithral + Throwing Axe Mold + Fireburst/Flame Weapon (Level 12)
+Rifthome = 2 Mithral + Throwing Axe Mold + Bull's Strength (Level 12)
+Thunderbeast = 2 Mithral + Throwing Axe Mold + Cacophonic Burst (Level 15)
+
+
+--------------------------------------------------------------------------------
+                        /////Amulets\\\\\                                  X0003
+
+
+Amulet of Health (Lesser): Immunity to Disease and Poison
+  Requires: Caster Level 5, Craft Wondrous Item feat
+  Ingredients: Weak Power Essence + Weak Water Essence + Obsidian + Iron Ingot
+  Spell: Remove Disease or Neutralize Poison
+
+Amulet of Health: Immunity to Ability/Level Drain, Disease, and Poison
+  Requires: Caster Level 5, Craft Wondrous Item feat
+  Ingredients: Glowing Power Essence + Glowing Water Essence + Canary Diamond
+               + Iron Ingot
+  Spell: Remove Disease or Neutralize Poison
+
+Amulet of Health (Greater): Immunity to Ability/Level Drain, Disease, and Poison
+                            Regeneration +1
+  Requires: Caster Level 5, Craft Wondrous Item feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + Blue Diamond
+               + Iron Ingot
+  Spell: Remove Disease or Neutralize Poison
+
+Amulet of Natural Armor +1: +1 Natural bonus to AC
+  Requires: Caster Level 5, Craft Wondrous Item feat
+  Ingredients: Faint Earth Essence + Sapphire + Iron Ingot
+  Spell: Barkskin
+
+Amulet of Natural Armor +2: +2 Natural bonus to AC
+  Requires: Caster Level 6, Craft Wondrous Item feat
+  Ingredients: Weak Earth Essence + Emerald + Iron Ingot
+  Spell: Barkskin
+
+Amulet of Natural Armor +3: +3 Natural bonus to AC
+  Requires: Caster Level 9, Craft Wondrous Item feat
+  Ingredients: Faint Power Essence + Glowing Earth Essence + Jacinth
+               + Iron Ingot
+  Spell: Barkskin
+
+Amulet of Natural Armor +4: +4 Natural bonus to AC
+  Requires: Caster Level 12, Craft Wondrous Item feat
+  Ingredients: Weak Power Essence + Glowing Earth Essence + Blue Diamond
+               + Iron Ingot
+  Spell: Barkskin
+
+Amulet of Natural Armor +5: +5 Natural bonus to AC
+  Requires: Caster Level 15, Craft Wondrous Item feat
+  Ingredients: Weak Power Essence + Radiant Earth Essence + Beljuril
+               + Iron Ingot
+  Spell: Barkskin
+
+Brooch of Shielding: Shield (5) 3/day
+  Requires: Caster Level 1, Craft Wondrous Item feat
+  Ingredients: Faint Power Essence + Sapphire + 2 Iron Ingots
+  Spell: Shield
+
+Medallion of Thought: Immunity to Mind Affecting Spells, +5 Bluff, +5 Diplomacy 
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Weak Power Essence + Weak Water Essence + Canary Diamond
+               + Iron Ingot
+  Spell: Owl's Wisdom
+
+Periapt of Wisdom +2: +2 bonus to Wisdom
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Faint Water Essence + Diamond + Iron Ingot
+  Spell: Owl's Wisdom
+
+Periapt of Wisdom +4: +4 bonus to Wisdom
+  Requires: Caster Level 11, Craft Wondrous Item feat
+  Ingredients: Weak Water Essence + Star Sapphire + Iron Ingot
+  Spell: Owl's Wisdom
+
+Periapt of Wisdom +6: +6 bonus to Wisdom
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: Glowing Water Essence + Rogue Stone + Iron Ingot
+  Spell: Owl's Wisdom
+
+Periapt of Wisdom +8: +8 bonus to Wisdom
+  Requires: Caster Level 17, Craft Wondrous Item feat
+  Ingredients: Radiant Water Essence + Beljuril + Iron Ingot
+  Spell: Owl's Wisdom
+
+Scarab of Greater Protection: Spell Resistance 20, Immunity to Death Effects,
+                              and Immunity to Energy Drain
+  Requires: Caster Level 18, Craft Wondrous Item feat
+  Ingredients: Iron Ingot + Radiant Power Essence + Radiant Fire Essence
+               + Radiant Water Essence + Blue Diamond
+  Spell: Death Ward
+
+
+--------------------------------------------------------------------------------
+                         /////Belts\\\\\                                   X0004
+
+
+Belt of Agility +2: +2 bonus to Dexterity, Freedom of Movement
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Faint Air Essence + Diamond
+  Spell: Cat's Grace
+
+Belt of Agility +4: +4 bonus to Dexterity, Freedom of Movement
+  Requires: Caster Level 11, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Weak Air Essence + Star Sapphire
+  Spell: Cat's Grace
+
+Belt of Agility +6: +6 bonus to Dexterity, Freedom of Movement
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Glowing Air Essence + Rogue Stone
+  Spell: Cat's Grace
+
+Belt of Agility +8: +8 bonus to Dexterity, Freedom of Movement
+  Requires: Caster Level 17, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Radiant Air Essence + Beljuril
+  Spell: Cat's Grace
+
+Belt of Frost Giant Strength: +4 bonus to Strength
+  Requires: Caster Level 11, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Weak Fire Essence + Blue Diamond
+  Spell: Bull's Strength
+
+Belt of Stone Giant Strength: +6 bonus to Strength
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Glowing Fire Essence + Beljuril
+  Spell: Bull's Strength
+
+Belt of Cloud Giant Strength: +8 bonus to Strength
+  Requires: Caster Level 17, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Radiant Fire Essence + King's Tear
+  Spell: Bull's Strength
+
+
+--------------------------------------------------------------------------------
+                       /////Blacksmith\\\\\                                X0005
+
+
+***These use the Blacksmith Workbench and require the appropriate mold***
+
+
+**Alchemical Ammunition**
+
+
+Acid Arrows: 1d6 Acid Damage
+  Requires: Craft Weapon 12
+  Ingredients: Alchemical Silver + Acid Flask
+
+Arrows of Detonation: Fireball (Level 10) on hit
+  Requires: Craft Weapon 22
+  Ingredients: Adamantine + Perfected Alchemist's Fire + Perfected Thunderstone
+
+Fire Arrows: 1d6 Fire Damage
+  Requires: Craft Weapon 12
+  Ingredients: Alchemical Silver + Alchemist's Fire
+
+Ice Arrows: 1d6 Cold Damage
+  Requires: Craft Weapon 12
+  Ingredients: Cold Iron + Coldstone
+
+Magic Arrows: +1 enchantment
+  Requires: Craft Weapon 17
+  Ingredients: Mithral + Potion of Bless
+
+Mild Poison Arrows: Poison (1d2 Con Damage, DC=14) on hit
+  Requires: Craft Weapon 7
+  Ingredients: Iron + Mild Bee Venom
+
+Lightning Arrows: 1d6 Shock Damage
+  Requires: Craft Weapon 17
+  Ingredients: Darksteel + Quartz Crystal
+
+Poison Arrows: Poison (1d2 Con/Str Damage, DC=14) on hit
+  Requires: Craft Weapon 7
+  Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
+
+Fire Bolts: 1d6 Fire Damage
+  Requires: Craft Weapon 12
+  Ingredients: Alchemical Silver + Alchemist's Fire
+
+Ice Bolts: 1d6 Cold Damage
+  Requires: Craft Weapon 12
+  Ingredients: Cold Iron + Coldstone
+
+Magic Bolts: +1 enchantment
+  Requires: Craft Weapon 17
+  Ingredients: Mithral + Potion of Bless
+
+Mild Poison Bolts: Poison (1d2 Con Damage, DC=14) on hit
+  Requires: Craft Weapon 7
+  Ingredients: Iron + Mild Bee Venom
+
+Lightning Bolts: 1d6 Shock Damage
+  Requires: Craft Weapon 17
+  Ingredients: Darksteel + Quartz Crystal
+
+Paralytic Bolts: Stun (DC=14, Duration: 50% / 2 Rounds) on hit
+  Requires: Craft Weapon 7
+  Ingredients: Iron + Choking Powder + Tanglefoot Bag
+
+Poison Bolts: Poison (1d2 Con/Str Damage, DC=14) on hit
+  Requires: Craft Weapon 7
+  Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
+
+Bullets of Screaming: 1d4 Sonic Damage, Silence (DC=14, Duration: 50% / 2 Rounds) on hit
+  Requires: Craft Weapon 7
+  Ingredients: Iron + Thunderstone
+
+Fire Bullets: 1d6 Fire Damage
+  Requires: Craft Weapon 12
+  Ingredients: Alchemical Silver + Alchemist's Fire
+
+Ice Bullets: 1d6 Cold Damage
+  Requires: Craft Weapon 12
+  Ingredients: Cold Iron + Coldstone
+
+Magic Bullets: +1 enchantment
+  Requires: Craft Weapon 17
+  Ingredients: Mithral + Potion of Bless
+
+Lightning Bullets: +1d6 Shock Damage
+  Requires: Craft Weapon 17
+  Ingredients: Darksteel + Quartz Crystal
+
+Magic Darts/Shurikens: +1 enchantment
+  Requires: Craft Weapon 17
+  Ingredients: Mithral + Potion of Bless
+
+Magic Throwing Axes: +1 enchantment
+  Requires: Craft Weapon 17
+  Ingredients: 2 Mithral + Potion of Bless
+
+
+**Armor**
+
+
+Craft Armor
+ Clothes: 1
+ Light Shield: 1
+ Padded Armor: 1
+ Heavy Shield: 2
+ Leather Armor: 2
+ Hide Armor: 3
+ Studded Leather Armor: 3
+ Chain Shirt: 4
+ Tower Shield: 4
+ Breastplate: 5
+ Chain Mail: 5
+ Banded Mail: 6
+ Splint Mail: 6
+ Half-Plate Armor: 7
+ Full-Plate Armor: 8
+  Iron: +0
+  Leather Hide: +0
+  Alchemical Silver: +5
+  Cold Iron: +5
+  Duskwood: +5
+  Fire Mephit Hide: +5
+  Ice Mephit Hide: +5
+  Darksteel: +10
+  Mithral: +10
+  Zalantar: +10
+  Salamander Hide: +12
+  Winter Wolf Hide: +12
+  Adamantine: +15
+  Ironwood: +15
+  Umber Hulk Hide: +17
+  Wyvern Hide: +20
+  Red Dragon Hide: +23
+
+Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
+Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
+Red Dragon Hide: Breastplate, Gloves, Half Plate, Hat, Scalemail, Shields
+Salamander Hide: Belt, Boots, Cloak, Gloves, Hat, Hide, Leather, Studded Leather
+Umber Hulk Hide: Half Plate, Shields
+Winter Wolf Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
+Wyvern Hide: Breastplate, Full Plate, Half Plate, Scalemail, Shields
+
+Adamantine: Gloves, Hat, Metal Armor, Shields
+Alchemical Silver: Gloves, Hat
+Cold Iron: Gloves, Hat
+Darksteel: Gloves, Hat, Metal Armor, Shields
+Mithral: Gloves, Hat, Metal Armor, Shields
+
+Duskwood: Shields
+Ironwood: Shields
+Shederran: Shields
+Zalantar: Shields
+
+
+**Weapons**
+
+
+Craft Weapon
+ Arrow/Bolt/Bullet: 2
+ Bow: 2
+ Simple: 2
+ Sling: 2
+ Crossbow: 5
+ Martial: 5
+ Exotic: 8
+  Iron: +0
+  Leather Hide: +0
+  Wood: +0
+  Alchemical Silver: +5
+  Cold Iron: +5
+  Duskwood: +5
+  Shederran: +5
+  Darksteel: +10
+  Mithral: +10
+  Zalantar: +10
+  Salamander Hide: +12
+  Winter Wolf Hide: +12
+  Adamantine: +15
+  Ironwood: +15
+
+Salamander Hide: Sling
+Winter Wolf Hide: Sling
+
+Adamantine: Metal Weapons
+Darksteel: Metal Weapons
+Alchemical Silver: Metal Weapons
+Cold Iron: Metal Weapons
+Mithral: Metal Weapons
+
+Duskwood: Bow, Club, Crossbow, Quarterstaff, Spear
+Ironwood: Club, Quarterstaff, Spear
+Shederran: Bow, Crossbow
+Zalantar: Bow, Club, Crossbow, Quarterstaff, Spear
+
+
+--------------------------------------------------------------------------------
+                         /////Boots\\\\\                                   X0006
+
+
+Boots of Elvenkind: +5 bonus on Move Silently checks
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Leather Hide + Faint Water Essence + Fire Opal
+  Spell: Silence
+
+Boots of Speed: Haste (10) 3/day
+  Requires: Caster Level 7, Craft Wondrous Item feat
+  Ingredients: Weak Air Essence + Weak Power Essence + Star Sapphire
+  Spell: Haste
+
+Boots of Striding +2: +2 bonus to Constitution
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Faint Earth Essence + Diamond
+  Spell: Bear's Endurance
+  
+Boots of Striding +4: +4 bonus to Constitution
+  Requires: Caster Level 11, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Weak Earth Essence + Jacinth
+  Spell: Bear's Endurance
+
+Boots of Striding +6: +6 bonus to Constitution
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Glowing Earth Essence + Rogue Stone
+  Spell: Bear's Endurance
+
+Boots of Striding +8: +8 bonus to Constitution
+  Requires: Caster Level 17, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Radiant Earth Essence + Beljuril
+  Spell: Bear's Endurance
+
+
+--------------------------------------------------------------------------------
+                         /////Cloaks\\\\\                                  X0007
+
+
+Cloak of Displacement: Cast Displacement three times per day
+  Requires: Caster Level 3, Craft Wondrous Item feat
+  Ingredients: Weak Air Essence + Blue Diamond
+  Spell: Displacement
+
+Cloak of Elvenkind: +5 bonus on Hide checks
+  Requires: Caster Level 3, Craft Wondrous Item feat
+  Ingredients: Faint Water Essence + Fire Opal
+  Spell: Invisibility
+
+Cloak of Resistance +1: +1 bonus on Saving Throws
+  Requires: Caster Level 5, Craft Wondrous Item feat
+  Ingredients: Faint Earth Essence + Obsidian
+  Spell: Resistance
+
+Cloak of Resistance +2: +2 bonus on Saving Throws
+  Requires: Caster Level 6, Craft Wondrous Item feat
+  Ingredients: Faint Earth Essence + Diamond
+  Spell: Resistance
+
+Cloak of Resistance +3: +3 bonus on Saving Throws
+  Requires: Caster Level 9, Craft Wondrous Item feat
+  Ingredients: Weak Earth Essence + Canary Diamond
+  Spell: Resistance
+
+Cloak of Resistance +4: +4 bonus on Saving Throws
+  Requires: Caster Level 12, Craft Wondrous Item feat
+  Ingredients: Glowing Earth Essence + Jacinth
+  Spell: Resistance
+
+Cloak of Resistance +5: +5 bonus on Saving Throws
+  Requires: Caster Level 15, Craft Wondrous Item feat
+  Ingredients: Radiant Earth Essence + Blue Diamond
+  Spell: Resistance
+
+Greater Mantle of Spell Resistance: Spell Resistance 20
+  Requires: Caster Level 9, Craft Wondrous Item feat
+  Ingredients: Radiant Power Essence + Radiant Fire Essence + King's Tear
+  Spell: Spell Resistance
+
+Nymph Cloak +2: +2 bonus to Charisma
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Faint Water Essence + Diamond
+  Spell: Eagle's Splendor
+
+Nymph Cloak +4: +4 bonus to Charisma
+  Requires: Caster Level 11, Craft Wondrous Item feat
+  Ingredients: Weak Water Essence + Star Sapphire
+  Spell: Eagle's Splendor
+
+Nymph Cloak +6: +6 bonus to Charisma
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: Glowing Water Essence + Rogue Stone
+  Spell: Eagle's Splendor
+
+Nymph Cloak +8: +8 bonus to Charisma
+  Requires: Caster Level 17, Craft Wondrous Item feat
+  Ingredients: Radiant Water Essence + Beljuril
+  Spell: Eagle's Splendor
+
+
+--------------------------------------------------------------------------------
+                         /////Gloves\\\\\                                  X0008
+
+
+Bracers of Armor +1: +1 bonus to AC
+  Requires: Caster Level 7, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Faint Earth Essence + Obsidian
+  Spell: Mage Armor or Shield of Faith
+
+Bracers of Armor +2: +2 bonus to AC
+  Requires: Caster Level 7, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Faint Earth Essence + Diamond
+  Spell: Mage Armor or Shield of Faith
+
+Bracers of Armor +3: +3 bonus to AC
+  Requires: Caster Level 7, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Weak Earth Essence + Canary Diamond
+  Spell: Mage Armor or Shield of Faith
+
+Bracers of Armor +4: +4 bonus to AC
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Weak Earth Essence + Jacinth
+  Spell: Mage Armor or Shield of Faith
+
+Bracers of Armor +5: +5 bonus to AC
+  Requires: Caster Level 10, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Glowing Earth Essence + Blue Diamond
+  Spell: Mage Armor or Shield of Faith
+
+Bracers of Armor +6: +6 bonus to AC
+  Requires: Caster Level 12, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Glowing Earth Essence + Rogue Stone
+  Spell: Mage Armor or Shield of Faith
+
+Bracers of Armor +7: +7 bonus to AC
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Radiant Earth Essence + Beljuril
+  Spell: Mage Armor or Shield of Faith
+
+Bracers of Armor +8: +8 bonus to AC
+  Requires: Caster Level 16, Craft Wondrous Item feat
+  Ingredients: 2 Iron Ingots + Radiant Earth Essence + King's Tear
+  Spell: Mage Armor or Shield of Faith
+
+Gauntlets of Ogre Power: +2 Strength
+  Requires: Caster Level 6, Craft Wondrous Item feat
+  Ingredients: Faint Fire Essence, Ruby, 2 Iron Ingots
+  Spell: Bull's Strength
+
+
+--------------------------------------------------------------------------------
+                         /////Head\\\\\                                    X0009
+
+
+Headband of Intellect +2: +2 bonus to Intelligence
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Faint Fire Essence + Diamond
+  Spell: Fox's Cunning
+
+Headband of Intellect +4: +4 bonus to Intelligence
+  Requires: Caster Level 11, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Weak Fire Essence + Star Sapphire
+  Spell: Fox's Cunning
+
+Headband of Intellect +6: +6 bonus to Intelligence
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Glowing Fire Essence + Rogue Stone
+  Spell: Fox's Cunning
+
+Headband of Intellect +8: +8 bonus to Intelligence
+  Requires: Caster Level 17, Craft Wondrous Item feat
+  Ingredients: Leather Hide + Radiant Fire Essence + Beljuril
+  Spell: Fox's Cunning
+
+
+--------------------------------------------------------------------------------
+                      /////Misc Items\\\\\                                 X0010
+
+Gem of Seeing: Casts True Seeing once per day
+  Requires: Caster Level 10, Craft Wondrous Item feat
+  Ingredients: Weak Air Essence + King's Tear
+  Spell: True Seeing
+
+Magic Bag (Pouch)
+  Requires: Caster Level 3, Craft Wondrous Item feat
+  Ingredients: Leather + Faint Fire Essence + Faint Water Essence + Amethyst
+  Spell: Planar Binding
+
+Magic Bag (Lesser)
+  Requires: Caster Level 7, Craft Wondrous Item feat
+  Ingredients: Leather + Faint Fire Essence + Faint Water Essence + Fire Agate
+  Spell: Planar Binding
+
+Magic Bag
+  Requires: Caster Level 11, Craft Wondrous Item feat
+  Ingredients: Leather + Weak Fire Essence + Weak Water Essence + Fire Opal
+  Spell: Planar Binding
+
+Magic Bag (Greater)
+  Requires: Caster Level 15, Craft Wondrous Item feat
+  Ingredients: Leather + Glowing Fire Essence + Glowing Water Essence + Ruby
+  Spell: Planar Binding
+
+Magic Bag (Holding)
+  Requires: Caster Level 19, Craft Wondrous Item feat
+  Ingredients: Leather + Radiant Fire Essence + Radiant Water Essence + Diamond
+  Spell: Planar Binding
+
+Scabbard of Keen Edges: Casts Keen Edge once per day
+  Requires: Caster Level 5, Craft Wondrous Item feat
+  Ingredients: Wooden Plank + Faint Earth Essence + Jacinth
+  Spell: Keen Edge
+
+
+--------------------------------------------------------------------------------
+                         /////Poisons\\\\\                                 X0011
+
+
+Giant Bee Venom (Mild): Coats a weapon with Poison
+                        (DC 18, 1d2 points of Constitution damage)
+  Requires: Craft Alchemy 4
+  Ingredients: Giant Bee Venom Gland
+
+Giant Bee Venom (Average): Coats a weapon with Poison
+                           (DC 20, 1d2 points of Constitution damage)
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Giant Bee Venom Glands
+
+Giant Bee Venom (Strong): Coats a weapon with Poison
+                          (DC 22, 1d2 points of Constitution damage)
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Giant Bee Venom Glands
+
+Giant Bee Venom (Deadly): Coats a weapon with Poison
+                          (DC 26, 1d2 points of Constitution damage)
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Giant Bee Venom Glands
+
+Giant Centipede Venom (Mild): Coats a weapon with Poison
+                              (DC 18, 1d2 points of Intelligence damage)
+  Requires: Craft Alchemy 4
+  Ingredients: Giant Centipede Venom Gland
+
+Giant Centipede Venom (Average): Coats a weapon with Poison
+                                 (DC 20, 1d2 points of Intelligence damage)
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Giant Centipede Venom Glands
+
+Giant Centipede Venom (Strong): Coats a weapon with Poison
+                                (DC 22, 1d2 points of Intelligence damage)
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Giant Centipede Venom Glands
+
+Giant Centipede Venom (Deadly): Coats a weapon with Poison
+                                (DC 26, 1d2 points of Intelligence damage)
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Giant Centipede Venom Glands
+
+Giant Scorpion Venom (Mild): Coats a weapon with Poison
+                             (DC 18, 1d2 points of Strength damage)
+  Requires: Craft Alchemy 4
+  Ingredients: Giant Scorpion Venom Gland
+
+Giant Scorpion Venom (Average): Coats a weapon with Poison
+                                (DC 20, 1d2 points of Strength damage)
+  Requires: Craft Alchemy 8
+  Ingredients: 2 Giant Scorpion Venom Glands
+
+Giant Scorpion Venom (Strong): Coats a weapon with Poison
+                               (DC 22, 1d2 points of Strength damage)
+  Requires: Craft Alchemy 12
+  Ingredients: 3 Giant Scorpion Venom Glands
+
+Giant Scorpion Venom (Deadly): Coats a weapon with Poison
+                               (DC 26, 1d2 points of Strength damage)
+  Requires: Craft Alchemy 16
+  Ingredients: 4 Giant Scorpion Venom Glands
+
+
+--------------------------------------------------------------------------------
+                      /////Quest Items\\\\\                                X0012
+
+
+***NOTE*** These only work in the Main Campaign.
+
+
+Gold Filigree Charm: Used for summoning Mephasm in Crossroad Keep
+  Requires: Caster Level 1, Mephasm Quest
+  Ingredients: Faint Power Essence + Glowing Fire Essence + Star Sapphire
+               + Gold Necklace
+  Spell: Darkness
+
+Infernal Focus 1: Used for bargaining with Mephasm in Crossroad Keep
+  Requires: Caster Level 1, Mephasm Quest
+  Ingredients: Glowing Power Essence + Ruby + Darksteel Ingot
+  Spell: Darkness
+
+Infernal Focus 2: Used for bargaining with Mephasm in Crossroad Keep
+  Requires: Caster Level 1, Mephasm Quest
+  Ingredients: Glowing Fire Essence + Sapphire + Mithral Ingot
+  Spell: Darkness
+
+Infernal Focus 3: Used for bargaining with Mephasm in Crossroad Keep
+  Requires: Caster Level 1, Mephasm Quest
+  Ingredients: 1 Faint Power Essence + Faint Fire Essence + Blue Diamond
+               + Iron Ingot
+  Spell: Darkness
+
+
+--------------------------------------------------------------------------------
+                         /////Rings\\\\\                                   X0013
+
+
+Ring of Divine Power 1: Store one extra 1st-Level Divine spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Faint Fire Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Ring of Divine Power 2: Store one extra 2nd-Level Divine spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Weak Fire Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Ring of Divine Power 3: Store one extra 3rd-Level Divine spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Faint Power Essence + Weak Fire Essence + Canary Diamond
+  Spell: Owl's Wisdom
+
+Ring of Divine Power 4: Store one extra 4th-Level Divine spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Weak Power Essence + Glowing Fire Essence + Star Sapphire
+  Spell: Owl's Wisdom
+
+Ring of Divine Power 5: Store one extra 5th-Level Divine spell per day
+  Requires: Caster Level 12, Craft Wondrous Item feat
+  Ingredients: Glowing Power Essence + Radiant Fire Essence + Blue Diamond
+  Spell: Owl's Wisdom
+
+Ring of Wizardry 1: Store one extra 1st-Level Arcane spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Faint Air Essence + Obsidian
+  Spell: Fox's Cunning
+
+Ring of Wizardry 2: Store one extra 2nd-Level Arcane spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Weak Air Essence + Obsidian
+  Spell: Fox's Cunning
+
+Ring of Wizardry 3: Store one extra 3rd-Level Arcane spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Faint Power Essence + Weak Air Essence + Canary Diamond
+  Spell: Fox's Cunning
+
+Ring of Wizardry 4: Store one extra 4th-Level Arcane spell per day
+  Requires: Caster Level 8, Craft Wondrous Item feat
+  Ingredients: Weak Power Essence + Glowing Air Essence + Star Sapphire
+  Spell: Fox's Cunning
+
+Ring of Wizardry 5: Store one extra 5th-Level Arcane spell per day
+  Requires: Caster Level 12, Craft Wondrous Item feat
+  Ingredients: Glowing Power Essence + Radiant Air Essence + Blue Diamond
+  Spell: Fox's Cunning
+
+
+--------------------------------------------------------------------------------
+                         /////Robes\\\\\                                   X0014
+
+
+Robe of the Archmagi: Armor Bonus +5, Spell Penetration feat, Bonus Level 5, 6,
+                      & 7 Wizard/Sorcerer Spells, Spell Resistance 20, +3
+                      Universal Saves, Only Usable by Wizard or Sorcerer
+  Requires: Caster Level 14, Craft Wondrous Item feat
+  Ingredients: Glowing Power Essence + Radiant Air Essence + Radiant Earth
+               Essence + Radiant Fire Essence + Radiant Water Essence + King's
+               Tear + Iron Ingot + Leather Hide
+  Spell: Mage Armor
+
+
+--------------------------------------------------------------------------------
+                         /////Traps\\\\\                                   X0015
+
+
+Acid Splash (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Acid Flask
+
+Acid Splash (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Acid Flasks
+
+Acid Splash (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Acid Flasks
+
+Acid Splash (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Acid Flasks
+
+Acid Blob (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Acid Flask, Tanglefoot Bag
+
+Acid Blob (Average)
+  Requires: Craft Trap 10
+  Ingredients: 2 Acid Flasks, 2 Tanglefoot Bags
+
+Acid Blob (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Acid Flasks, 5 Tanglefoot Bags
+
+Acid Blob (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Acid Flasks, 7 Tanglefoot Bags
+
+Electrical (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Quartz Crystal
+
+Electrical (Average)
+  Requires: Craft Trap 10
+  Ingredients: 2 Quartz Crystals
+
+Electrical (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Quartz Crystals
+
+Electrical (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Quartz Crystals
+
+Fire (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Alchemist's Fire
+
+Fire (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Alchemist's Fire
+
+Fire (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Alchemist's Fire
+
+Fire (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Alchemist's Fire
+
+Frost (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Coldstone
+
+Frost (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Coldstones
+
+Frost (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Coldstones
+
+Frost (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Coldstones
+
+Gas (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Choking Powder
+
+Gas (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Choking Powders
+
+Gas (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Choking Powders
+
+Gas (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Choking Powders
+
+Holy (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Holy Water
+
+Holy (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Holy Waters
+
+Holy (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Holy Waters
+
+Holy (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Holy Waters
+
+Negative Energy (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Obsidian
+
+Negative Energy (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Obsidian
+
+Negative Energy (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Obsidian
+
+Negative Energy (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Obsidian
+
+Sonic (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Thunderstone
+
+Sonic (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Thunderstones
+
+Sonic (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Thunderstones
+
+Sonic (Deadly)
+  Requires: Craft Trap 5
+  Ingredients: 7 Thunderstones
+
+Spike (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Dagger
+
+Spike (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Daggers
+
+Spike (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Daggers
+
+Spike (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Daggers
+
+Tangle (Minor)
+  Requires: Craft Trap 5
+  Ingredients: Tanglefoot Bag
+
+Tangle (Average)
+  Requires: Craft Trap 10
+  Ingredients: 3 Tanglefoot Bags
+
+Tangle (Major)
+  Requires: Craft Trap 15
+  Ingredients: 5 Tanglefoot Bags
+
+Tangle (Deadly)
+  Requires: Craft Trap 20
+  Ingredients: 7 Tanglefoot Bags
+
+
+--------------------------------------------------------------------------------
+			 RECIPES - ITEM ENCHANTING
+--------------------------------------------------------------------------------
+
+                         /////Armor\\\\\                                   X1001
+
+
+**Basic**
+
+
+Base Armor Enchantment +1: Armor gains +1 Enhancement bonus
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Earth Essence + Obsidian
+  Spell: Mage Armor or Magic Vestment
+
+Base Armor Enchantment +2: Armor gains +2 Enhancement bonus
+  Requires: Caster Level 6, Craft Magic Arms and Armor feat
+  Ingredients: Faint Earth Essence + Diamond
+  Spell: Mage Armor or Magic Vestment
+
+Base Armor Enchantment +3: Armor gains a +3 Enhancement bonus
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Weak Earth Essence + Emerald
+  Spell: Mage Armor or Magic Vestment
+
+Base Armor Enchantment +4: Armor gains a +4 Enhancement bonus
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Glowing Earth Essence + Star Sapphire
+  Spell: Mage Armor or Magic Vestment
+
+Base Armor Enchantment +5: Armor gains a +5 Enhancement bonus
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Glowing Earth Essence + Blue Diamond
+  Spell: Mage Armor or Magic Vestment
+
+
+**Elemental**
+
+
+Armor of Acid Resistance: Acid Resistance 10
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Earth Essence + Jacinth
+  Spell: Resist Energy/Elements
+
+Armor of Acid Resistance (Improved): Acid Resistance 20
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Earth Essence + Rogue Stone
+  Spell: Resist Energy/Elements
+
+Armor of Acid Resistance (Greater): Acid Resistance 30
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Earth Essence + King's Tear
+  Spell: Resist Energy/Elements
+
+Armor of Cold Resistance: Cold Resistance 10
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Water Essence + Jacinth
+  Spell: Resist Energy/Elements
+
+Armor of Cold Resistance (Improved): Cold Resistance 20
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Water Essence + Rogue Stone
+  Spell: Resist Energy/Elements
+
+Armor of Cold Resistance (Greater): Cold Resistance 30
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Water Essence + King's Tear
+  Spell: Resist Energy/Elements
+
+Armor of Electricity Resistance: Electricity Resistance 10
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Jacinth
+  Spell: Resist Energy/Elements
+
+Armor of Electricity Resistance (Improved): Electricity Resistance 20
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Rogue Stone
+  Spell: Resist Energy/Elements
+
+Armor of Electricity Resistance (Greater): Electricity Resistance 30
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Air Essence + King's Tear
+  Spell: Resist Energy/Elements
+
+Armor of Fire Resistance: Fire Resistance 10
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Fire Essence + Jacinth
+  Spell: Resist Energy/Elements
+
+Armor of Fire Resistance (Improved): Fire Resistance 20
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Fire Essence + Rogue Stone
+  Spell: Resist Energy/Elements
+
+Armor of Fire Resistance (Greater): Fire Resistance 30
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Fire Essence + King's Tear
+  Spell: Resist Energy/Elements
+
+Armor of Sonic Resistance: Sonic Resistance 10
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Jacinth
+  Spell: Resist Energy/Elements
+
+Armor of Sonic Resistance (Improved): Sonic Resistance 20
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Rogue Stone
+  Spell: Resist Energy/Elements
+
+Armor of Sonic Resistance (Greater): Sonic Resistance 30
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + King's Tear
+  Spell: Resist Energy/Elements
+
+
+**Other**
+
+
+Armor of Arrow Deflection: Grants Deflect Arrows as a bonus feat
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Weak Air Essence + Jacinth
+  Spell: Protection from Arrows
+
+Armor of Spell Resistance: Spell Resistance 14
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Glowing Fire Essence + Star Sapphire
+  Spell: Spell Resistance
+
+Armor of Spell Resistance (Improved): Spell Resistance 18
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Radiant Fire Essence + Blue Diamond
+  Spell: Spell Resistance
+
+Armor of Spell Resistance (Greater): Spell Resistance 22
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Fire Essence + Beljuril
+  Spell: Spell Resistance
+
+Damage Resistance (Bludgeoning): 5
+  Requires: Caster Level 14, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Faint Earth Essence + Star Sapphire
+  Spell: Stoneskin
+
+Damage Resistance (Bludgeoning): 10
+  Requires: Caster Level 16, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Weak Earth Essence + Blue Diamond
+  Spell: Stoneskin
+
+Damage Resistance (Bludgeoning): 15
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Glowing Earth Essence + Beljuril
+  Spell: Stoneskin
+
+Damage Resistance (Bludgeoning): 20
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Earth Essence + King's Tear
+  Spell: Stoneskin
+
+Damage Resistance (Magical): 5
+  Requires: Caster Level 14, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Faint Fire Essence + Star Sapphire
+  Spell: Stoneskin
+
+Damage Resistance (Magical): 10
+  Requires: Caster Level 16, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Weak Fire Essence + Blue Diamond
+  Spell: Stoneskin
+
+Damage Resistance (Magical): 15
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Glowing Fire Essence + Beljuril
+  Spell: Stoneskin
+
+Damage Resistance (Magical): 20
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Fire Essence + King's Tear
+  Spell: Stoneskin
+
+Damage Resistance (Piercing): 5
+  Requires: Caster Level 14, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Faint Water Essence + Star Sapphire
+  Spell: Stoneskin
+
+Damage Resistance (Piercing): 10
+  Requires: Caster Level 16, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Weak Water Essence + Blue Diamond
+  Spell: Stoneskin
+
+Damage Resistance (Piercing): 15
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Glowing Water Essence + Beljuril
+  Spell: Stoneskin
+
+Damage Resistance (Piercing): 20
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + King's Tear
+  Spell: Stoneskin
+
+Damage Resistance (Slashing): 5
+  Requires: Caster Level 14, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Faint Air Essence + Star Sapphire
+  Spell: Stoneskin
+
+Damage Resistance (Slashing): 10
+  Requires: Caster Level 16, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Weak Air Essence + Blue Diamond
+  Spell: Stoneskin
+
+Damage Resistance (Slashing): 15
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Glowing Air Essence + Beljuril
+  Spell: Stoneskin
+
+Damage Resistance (Slashing): 20
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Air Essence + King's Tear
+  Spell: Stoneskin
+
+Fortified Armor: Immunity to Critical Hits and Sneak Attack
+  Requires: Caster Level 13, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Radiant Earth Essence + Blue Diamond
+  Spell: Clairaudience/Clairvoyance
+
+Shadowy Armor: +5 competence bonus on Hide checks
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Water Essence + Fire Opal
+  Spell: Invisibility
+
+Shadowy Armor (Improved): +10 competence bonus on Hide checks
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Water Essence + Star Sapphire
+  Spell: Invisibility
+
+Shadowy Armor (Greater): +15 competence bonus on Hide checks
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Water Essence + Blue Diamond
+  Spell: Invisibility
+
+Silent Armor: +5 competence bonus on Move Silently checks
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Water Essence + Fire Opal
+  Spell: Silence
+
+Silent Armor (Improved): +10 competence bonus on Move Silently checks
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Water Essence + Star Sapphire
+  Spell: Silence
+
+Silent Armor (Greater): +15 competence bonus on Move Silently checks
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Water Essence + Blue Diamond
+  Spell: Silence
+
+Spell Failure Reduction (5%)
+  Requires: Caster Level 1, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Faint Earth Essence + Aventurine
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (10%)
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Faint Earth Essence + Aventurine
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (15%)
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Faint Earth Essence +
+               Faint Power Essence + Aventurine
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (20%)
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Weak Earth Essence + Aventurine
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (25%)
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Air Essence + Weak Earth Essence + Sapphire
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (30%)
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Air Essence + Weak Earth Essence +
+               Weak Power Essence + Sapphire
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (35%)
+  Requires: Caster Level 13, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Air Essence + Glowing Earth Essence + Sapphire
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (40%)
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Glowing Earth Essence + Star Sapphire
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (45%)
+  Requires: Caster Level 17, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Glowing Earth Essence +
+               Glowing Power Essence + Star Sapphire
+  Spell: Ethereal Visage
+
+Spell Failure Reduction (50%)
+  Requires: Caster Level 19, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Earth Essence + Star Sapphire
+  Spell: Ethereal Visage
+
+
+--------------------------------------------------------------------------------
+                    /////Armor and Weapons\\\\\                            X1002
+
+
+**Cast Spell On Hit**
+
+
+Weapons cast the spell on a successful attack while Armor casts it when an
+enemy successfully hits you.
+
+The recipes follow the following formula:
+
+R.Earth = Armor Recipe
+R.Air = Weapon Recipe
+R.Power = All Recipes
+R.Fire = Arcane spell
+R.Water = Divine spell
+G.Water + G.Fire = Cross-type spell
+
+Arcane gems:
+
+Alexandrite
+Sapphire
+Star Sapphire
+Blue Diamond
+Beljuril
+
+Divine Gems:
+
+Topaz
+Obsidian
+Diamond
+Canary Diamond
+King's Tear
+
+Cross-type Gems:
+
+Fire Agate
+Fire Opal
+Ruby
+Jacinth
+Rogue Stone
+
+Spell cast at level 04: Alexandrite/Topaz/Fire Agate
+Spell cast at level 08: Sapphire/Obsidian/Fire Opal
+Spell cast at level 12: Star Sapphire/Diamond/Ruby
+Spell cast at level 16: Blue Diamond/Canary Diamond/Jacinth
+Spell cast at level 20: Beljuril/King's Tear/Rogue Stone
+
+Caster Level requirement = Spell level.
+
+Available Weapon Spells:
+
+Banishment              (Cross-Type)
+Bestow Curse            (Cross-Type)
+Combust                 (Arcane)
+Contagion               (Cross-Type)
+Crumble                 (Divine)
+Enervation              (Arcane)
+Feeblemind              (Arcane)
+Harm                    (Divine)
+Inflict Minor Wounds    (Divine)
+Inflict Light Wounds    (Divine)
+Inflict Moderate Wounds (Divine)
+Inflict Serious Wounds  (Divine)
+Inflict Critical Wounds (Divine)
+Lesser Spell Breach     (Arcane)
+Phantasmal Killer       (Arcane)
+Vampiric Touch          (Arcane)
+
+Available Armor Spells:
+
+Combust                 (Arcane)
+Contagion               (Cross-Type)
+Enervation              (Arcane)
+Entangle                (Divine)
+Fear                    (Arcane)
+Inflict Minor Wounds    (Divine)
+Inflict Light Wounds    (Divine)
+Inflict Moderate Wounds (Divine)
+Inflict Serious Wounds  (Divine)
+Inflict Critical Wounds (Divine)
+Poison                  (Divine)
+Quillfire               (Divine)
+Shocking Grasp          (Arcane)
+Sound Burst             (Cross-Type)
+Stonehold               (Divine)
+Web                     (Arcane)
+
+Examples;
+Weapon Casting Inflict Critical at level 8 = Air4 + Power4 + Water4 + Obsidian
+Armor Casting Inflict Critical at level 12 = Earth4 + Power4 + Water4 + Diamond
+Weapon Casting Contagion at level 16 = Air4 + Fire3 + Power4 + Water3 + Jacinth
+Armor Casting Contagion at level 20 = Earth4 + Fire3 + Power4 + Water3 + Rogue Stone
+Weapon Casting Enervation at level 12 = Air4 + Fire4 + Power4 + Star Sapphire
+Armor Casting Enervation at level 16 = Earth4 + Fire4 + Power4 + Blue Diamond
+
+
+--------------------------------------------------------------------------------
+                         /////Gloves\\\\\                                  X1003
+
+
+**Basic**
+
+
+Attack +1
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Faint Fire Essence + Obsidian
+  Spell: Bless or True Strike
+
+Attack +2
+  Requires: Caster Level 6, Craft Wondrous Items feat
+  Ingredients: Faint Fire Essence + Diamond
+  Spell: Bless or True Strike
+
+Attack +3
+  Requires: Caster Level 9, Craft Wondrous Items feat
+  Ingredients: Weak Fire Essence + Faint Power Essence + Emerald
+  Spell: Bless or True Strike
+
+Attack +4
+  Requires: Caster Level 12, Craft Wondrous Items feat
+  Ingredients: Glowing Fire Essence + Weak Power Essence + Star Sapphire
+  Spell: Bless or True Strike
+
+Attack +5
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Fire Essence + Glowing Power Essence + Blue Diamond
+  Spell: Bless or True Strike
+
+
+**Elemental**
+
+
+Acid: +2 Acid Damage
+  Requires: Caster Level 5, Craft Wondrous Items feat
+  Ingredients: Faint Earth Essence + Emerald
+  Spell: Acid Splash
+
+Acid: +1d6 Acid Damage
+  Requires: Caster Level 10, Craft Wondrous Items feat
+  Ingredients: Weak Earth Essence + Emerald
+  Spell: Acid Splash
+
+Acid: +1d10 Acid Damage
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Earth Essence + Emerald
+  Spell: Acid Splash
+
+Acid: +2d6 Acid Damage
+  Requires: Caster Level 20, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Emerald
+  Spell: Acid Splash
+
+Flaming: +2 Fire Damage
+  Requires: Caster Level 5, Craft Wondrous Items feat
+  Ingredients: Faint Fire Essence + Ruby
+  Spell: Burning Hands or Flame Strike
+
+Flaming: +1d6 Fire Damage
+  Requires: Caster Level 10, Craft Wondrous Items feat
+  Ingredients: Weak Fire Essence + Ruby
+  Spell: Burning Hands or Flame Strike
+
+Flaming: +1d10 Fire Damage
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Fire Essence + Ruby
+  Spell: Burning Hands or Flame Strike
+
+Flaming: +2d6 Fire Damage
+  Requires: Caster Level 20, Craft Wondrous Items feat
+  Ingredients: Radiant Fire Essence + Ruby
+  Spell: Burning Hands or Flame Strike
+
+Frost: +2 Cold Damage
+  Requires: Caster Level 5, Craft Wondrous Items feat
+  Ingredients: Faint Water Essence + Sapphire
+  Spell: Ice storm
+
+Frost: +1d6 Cold Damage
+  Requires: Caster Level 10, Craft Wondrous Items feat
+  Ingredients: Weak Water Essence + Sapphire
+  Spell: Ice storm
+
+Frost: +1d10 Cold Damage
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Water Essence + Sapphire
+  Spell: Ice storm
+
+Frost: +2d6 Cold Damage
+  Requires: Caster Level 20, Craft Wondrous Items feat
+  Ingredients: Radiant Water Essence + Sapphire
+  Spell: Ice storm
+
+Shock: +2 Electricity Damage
+  Requires: Caster Level 5, Craft Wondrous Items feat
+  Ingredients: Faint Air Essence + Diamond
+  Spell: Call Lightning or Shocking Grasp
+
+Shock: +1d6 Electricity Damage
+  Requires: Caster Level 10, Craft Wondrous Items feat
+  Ingredients: Weak Air Essence + Diamond
+  Spell: Call Lightning or Shocking Grasp
+
+Shock: +1d10 Electricity Damage
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Air Essence + Diamond
+  Spell: Call Lightning or Shocking Grasp
+
+Shock: +2d6 Electricity Damage
+  Requires: Caster Level 20, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Diamond
+  Spell: Call Lightning or Shocking Grasp
+
+Sonic: +2 Sonic Damage
+  Requires: Caster Level 5, Craft Wondrous Items feat
+  Ingredients: Faint Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+Sonic: +1D6 Sonic Damage
+  Requires: Caster Level 10, Craft Wondrous Items feat
+  Ingredients: Weak Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+Sonic: +1D10 Sonic Damage
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+Sonic: +2D6 Sonic Damage
+  Requires: Caster Level 20, Craft Wondrous Items feat
+  Ingredients: Radiant Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+
+**Misc**
+
+
+Anarchic: +2d6 Damage against Lawful creatures
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Faint Air Essence + Faint Power Essence + Canary Diamond
+  Spell: Inflict Critical Wounds
+
+Arrow Deflecting: Grants Deflect Arrows as a bonus feat
+  Requires: Caster Level 5, Craft Wondrous Items feat
+  Ingredients: Faint Power Essence + Weak Air Essence + Jacinth
+  Spell: Protection from Arrows
+
+Axiomatic: +2d6 Damage against Chaotic creatures
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Faint Earth Essence + Faint Power Essence + Jacinth
+  Spell: Inflict Critical Wounds
+
+Defending: Adds +1 Deflection AC Bonus
+  Requires: Caster Level 8, Craft Wondrous Items feat
+  Ingredients: Weak Earth Essence + Diamond
+  Spell: Mage Armor or Shield of Faith
+
+Defending (Improved): Adds +2 Deflection AC Bonus
+  Requires: Caster Level 10, Craft Wondrous Items feat
+  Ingredients: Glowing Earth Essence + Emerald
+  Spell: Mage Armor or Shield of Faith
+
+Defending (Greater): Adds +3 Deflection AC Bonus
+  Requires: Caster Level 12, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Blue Diamond
+  Spell: Mage Armor or Shield of Faith
+
+Holy: +2d6 Damage against Evil creatures
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Faint Power Essence + Faint Water Essence + Diamond
+  Spell: Cure Critical Wounds
+
+Hunting: +2d6 Damage against Beasts
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Faint Power Essence + Faint Water Essence + Star Sapphire
+  Spell: Light
+
+Unholy: +2d6 Damage against Good creatures
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Faint Power Essence + Faint Fire Essence + Star Sapphire
+  Spell: Inflict Critical Wounds
+
+Vampiric: Vampiric Regeneration 1
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Weak Power Essence + Weak Fire Essence + Ruby
+  Spell: Enervation
+
+Vampiric (Improved): Vampiric Regeneration 3
+  Requires: Caster Level 11, Craft Wondrous Items feat
+  Ingredients: Glowing Power Essence + Glowing Fire Essence + Canary Diamond
+  Spell: Enervation
+
+Vampiric (Greater): Vampiric Regeneration 5
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Radiant Power Essence + Radiant Fire Essence + Beljuril
+  Spell: Enervation
+
+
+**On-Hit**
+
+
+Blinding: Blind (DC 20)
+  Requires: Caster Level 12, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Diamond
+  Spell: Blindness and Deafness
+
+Dazing: Daze (DC 20)
+  Requires: Caster Level 13, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Power Essence + Diamond
+  Spell: Daze
+
+Dispelling: Greater Dispel (DC 20)
+  Requires: Caster Level 16, Craft Wondrous Items feat
+  Ingredients: Radiant Fire Essence + Radiant Power Essence + Diamond
+  Spell: Greater Dispel Magic
+
+Frightening: Fear (DC 20)
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + Diamond
+  Spell: Fear
+
+Jinxing: Doom (DC 20, 100% / 2 Rounds)
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Fire Essence + Glowing Power Essence +
+               Glowing Water Essence + Bloodstone
+  Spell: Doom
+
+Level Draining: Level Drain (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Fire Essence + Radiant Power Essence +
+               Radiant Water Essence + Beljuril
+  Spell: Energy Drain
+
+Paralyzing: Hold (DC 20)
+  Requires: Caster Level 16, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Power Essence + Diamond
+  Spell: Hold Monster
+
+Silencing: Silence (DC 20)
+  Requires: Caster Level 13, Craft Wondrous Items feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + Diamond
+  Spell: Silence
+
+Slaying (Animals): Slay Animal (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Beasts): Slay Beast (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Elementals): Slay Elemental (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Fire Essence + Radiant Power Essence +
+               Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Giants): Slay Giant (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Fire Essence +
+               Radiant Power Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Humans): Slay Human (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Earth Essence +
+
+               Radiant Fire Essence + Radiant Power Essence +
+
+               Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Orcs): Slay Orc (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Radiant Fire Essence +
+               Radiant Power Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Outsiders): Slay Outsider (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Power Essence +
+               Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Undead): Slay Undead (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Radiant Fire Essence +
+               Radiant Power Essence + Radiant Water Essence + Rogue Stone
+  Spell: Undeath to Death
+
+Slowing: Slow (DC 20)
+  Requires: Caster Level 10, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Diamond
+  Spell: Slow
+
+Stunning: Stun (DC 20)
+  Requires: Caster Level 17, Craft Wondrous Items feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Diamond
+  Spell: Power Word Stun
+
+Wounding: Wound (DC=20)
+  Requires: Caster Level 14, Craft Wondrous Items feat
+  Ingredients: Glowing Power Essence + Glowing Water Essence + Jacinth
+  Spell: Harm
+
+
+--------------------------------------------------------------------------------
+                        /////Universal\\\\\                                X1004
+
+
+**Attributes**
+
+
+Charisma +2
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Water Essence + Diamond
+  Spell: Eagle's Splendor
+
+Charisma +4
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Weak Water Essence + Star Sapphire
+  Spell: Eagle's Splendor
+
+Charisma +6
+  Requires: Caster Level 14, appropriate Craft feat
+  Ingredients: Glowing Water Essence + Rogue Stone
+  Spell: Eagle's Splendor
+
+Charisma +8
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Water Essence + Beljuril
+  Spell: Eagle's Splendor
+
+Constitution +2
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Earth Essence + Diamond
+  Spell: Bear's Endurance
+
+Constitution +4
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Weak Earth Essence + Jacinth
+  Spell: Bear's Endurance
+
+Constitution +6
+  Requires: Caster Level 14, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Rogue Stone
+  Spell: Bear's Endurance
+
+Constitution +8
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Beljuril
+  Spell: Bear's Endurance
+
+Dexterity +2
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Air Essence + Diamond
+  Spell: Cat's Grace
+
+Dexterity +4
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Weak Air Essence + Star Sapphire
+  Spell: Cat's Grace
+
+Dexterity +6
+  Requires: Caster Level 14, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Rogue Stone
+  Spell: Cat's Grace
+
+Dexterity +8
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Beljuril
+  Spell: Cat's Grace
+
+Intelligence +2
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Fire Essence + Diamond
+  Spell: Fox's Cunning
+
+Intelligence +4
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Weak Fire Essence + Star Sapphire
+  Spell: Fox's Cunning
+
+Intelligence +6
+  Requires: Caster Level 14, appropriate Craft feat
+  Ingredients: Glowing Fire Essence + Rogue Stone
+  Spell: Fox's Cunning
+
+Intelligence +8
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Beljuril
+  Spell: Fox's Cunning
+
+Strength +2
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Fire Essence + Rogue Stone
+  Spell: Bull's Strength
+
+Strength +4
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Weak Fire Essence + Blue Diamond
+  Spell: Bull's Strength
+
+Strength +6
+  Requires: Caster Level 14, appropriate Craft feat
+  Ingredients: Glowing Fire Essence + Beljuril
+  Spell: Bull's Strength
+
+Strength +8
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + King's Tear
+  Spell: Bull's Strength
+
+Wisdom +2
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Water Essence + Diamond
+  Spell: Owl's Wisdom
+
+Wisdom +4
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Weak Water Essence + Star Sapphire
+  Spell: Owl's Wisdom
+
+Wisdom +6
+  Requires: Caster Level 14, appropriate Craft feat
+  Ingredients: Glowing Water Essence + Rogue Stone
+  Spell: Owl's Wisdom
+
+Wisdom +8
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Water Essence + Beljuril
+  Spell: Owl's Wisdom
+
+
+**Feats**
+
+
+Arcane Defense (Abjuration)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Weak Earth Essence +
+               Radiant Power Essence + Phenalope
+  Spell: Identify
+
+Arcane Defense (Conjuration)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Weak Fire Essence +
+               Radiant Power Essence + Phenalope
+  Spell: Identify
+
+Arcane Defense (Divination)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Radiant Power Essence +
+               Weak Water Essence + Phenalope
+  Spell: Identify
+
+Arcane Defense (Enchantment)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Weak Air Essence + Glowing Fire Essence +
+               Radiant Power Essence + Phenalope
+  Spell: Identify
+
+Arcane Defense (Evocation)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Fire Essence + Radiant Power Essence +
+               Weak Water Essence + Phenalope
+  Spell: Identify
+
+Arcane Defense (Illusion)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Weak Air Essence + Radiant Power Essence +
+               Glowing Water Essence + Phenalope
+  Spell: Identify
+
+Arcane Defense (Necromancy)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Radiant Power Essence +
+               Weak Water Essence + Phenalope
+  Spell: Identify
+
+Arcane Defense (Transmutation)
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Weak Air Essence + Glowing Earth Essence +
+               Radiant Power Essence + Phenalope
+  Spell: Protection from Spells
+
+Blind Fighting
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Beljuril
+  Spell: Blindsight
+
+Cleave
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Rogue Stone
+  Spell: Keen Edge
+
+Dash
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Beljuril
+  Spell: Expeditious Retreat
+
+Dodge
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Radiant Water Essence + Rogue Stone
+  Spell: Cat's Grace
+
+Spell Penetration
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Rogue Stone
+  Spell: Assay Resistance
+
+Spell Focus (Abjuration)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Weak Earth Essence +
+               Radiant Power Essence + Fire Agate
+  Spell: Identify
+
+Spell Focus (Conjuration)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Weak Fire Essence +
+               Radiant Power Essence + Fire Agate
+  Spell: Identify
+
+Spell Focus (Divination)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Radiant Power Essence +
+               Weak Water Essence + Fire Agate
+  Spell: Identify
+
+Spell Focus (Enchantment)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Weak Air Essence + Glowing Fire Essence +
+               Radiant Power Essence + Fire Agate
+  Spell: Identify
+
+Spell Focus (Evocation)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Fire Essence + Radiant Power Essence +
+               Weak Water Essence + Fire Agate
+  Spell: Identify
+
+Spell Focus (Illusion)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Weak Air Essence + Radiant Power Essence +
+               Glowing Water Essence + Fire Agate
+  Spell: Identify
+
+Spell Focus (Necromancy)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Radiant Power Essence +
+               Weak Water Essence + Fire Agate
+  Spell: Identify
+
+Toughness
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Beljuril
+  Spell: Flesh to Stone
+
+
+**Misc**
+
+
+Bonus Spell Slot (Bard Level 1)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Air Essence + Obsidian
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Bard Level 2)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Air Essence + Obsidian
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Bard Level 3)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Air Essence + Faint Power Essence + Canary Diamond
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Bard Level 4)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Weak Power Essence + Star Sapphire
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Bard Level 5)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Glowing Power Essence + Blue Diamond
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Cleric Level 1)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Water Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Cleric Level 2)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Water Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Cleric Level 3)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Water Essence + Faint Power Essence + Canary Diamond
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Cleric Level 4)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Glowing Water Essence + Weak Power Essence + Star Sapphire
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Cleric Level 5)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Radiant Water Essence + Glowing Power Essence + Blue Diamond
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Druid Level 1)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Earth Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Druid Level 2)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Earth Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Druid Level 3)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Earth Essence + Faint Power Essence + Canary Diamond
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Druid Level 4)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Weak Power Essence + Star Sapphire
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Druid Level 5)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Glowing Power Essence + Blue Diamond
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Sorcerer Level 1)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Fire Essence + Obsidian
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Sorcerer Level 2)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Fire Essence + Obsidian
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Sorcerer Level 3)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Fire Essence + Faint Power Essence + Canary Diamond
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Sorcerer Level 4)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Glowing Fire Essence + Weak Power Essence + Star Sapphire
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Sorcerer Level 5)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Glowing Power Essence + Blue Diamond
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Wizard Level 1)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Air Essence + Obsidian
+  Spell: Fox's Cunning
+
+Bonus Spell Slot (Wizard Level 2)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Air Essence + Obsidian
+  Spell: Fox's Cunning
+
+Bonus Spell Slot (Wizard Level 3)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Air Essence + Faint Power Essence + Canary Diamond
+  Spell: Fox's Cunning
+
+Bonus Spell Slot (Wizard Level 4)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Weak Power Essence + Star Sapphire
+  Spell: Fox's Cunning
+
+Bonus Spell Slot (Wizard Level 5)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Glowing Power Essence + Blue Diamond
+  Spell: Fox's Cunning
+
+Regeneration +1
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Water Essence + Bloodstone
+  Spell: Regenerate
+
+Regeneration +2
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Faint Earth Essence + Weak Water Essence + Obsidian
+  Spell: Regenerate
+
+Regeneration +3
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Weak Earth Essence + Glowing Water Essence + Emerald
+  Spell: Regenerate
+
+Regeneration +4
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Radiant Water Essence + Canary Diamond
+  Spell: Regenerate
+
+Regeneration +5
+  Requires: Caster Level 19, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Radiant Water Essence + Beljuril
+  Spell: Regenerate
+
+Resistance +1
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Earth Essence + Obsidian
+  Spell: Protection from Energy
+
+Resistance +2
+  Requires: Caster Level 6, appropriate Craft feat
+  Ingredients: Faint Earth Essence + Diamond
+  Spell: Protection from Energy
+
+Resistance +3
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Weak Earth Essence + Canary Diamond
+  Spell: Protection from Energy
+
+Resistance +4
+  Requires: Caster Level 12, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Jacinth
+  Spell: Protection from Energy
+
+Resistance +5
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Blue Diamond
+  Spell: Protection from Energy
+
+
+**Skills**
+
+
+Required Spell: Legend Lore
+Required Caster Level: 12/15/18
+
+Skills have been separated into 6 groups; Dialog, Physical-Natural, Physical-Skilled,
+Physical-Complex, Mental, and Crafting.
+
+Dialog: Bluff/Diplomacy/Intimidate/Taunt
+Physical-N: Listen/Search/Spot/Survival
+Physical-S: Heal/Hide/M.Silently/Parry/Tumble
+Physical-C: D.Device/O.Locks/Perform/S.Trap/SoH
+Mental: Appraise/Concentration/Lore/Spellcraft/UMD
+Crafting: C.Alchemy/C.Armor/C.Trap/C.Weapon
+
+Each group uses a different set of gems.
+
+Dialog: Topaz/Diamond/C.Diamond
+Physical-N: Greenstone/Bloodstone/Obsidian
+Physical-S: Aventurine/Sapphire/S.Sapphire
+Physical-C: Amethyst/Garnet/Ruby
+Mental: F.Agate/F.Opal/Jacinth
+Crafting: Malachite/Alexandrite/Emerald
+
+Each skill is associated with a specific essence.
+
+Bluff: Water
+Diplomacy: Air
+Intimidate: Power
+Taunt: Fire
+
+Listen: Air
+Search: Water
+Spot: Fire
+Survival: Earth
+
+Heal: Power
+Hide: Air
+Move Silently: Water
+Parry: Fire
+Tumble: Earth
+
+Disable Device: Fire
+Open Locks: Power
+Perform: Water
+Set Trap: Earth
+Sleight of Hand: Air
+
+Appraise: Water
+Concentration: Earth
+Lore: Air
+Spellcraft: Fire
+Use Magic Device: Power
+
+Craft Alchemy: Power
+Craft Armor: Earth
+Craft Trap: Fire
+Craft Weapon: Water
+
+Each level (+4/+8/+12) uses one essence at the required level.
+
++4: Weak
++6: Glowing
++12: Radiant
+
+Use the above information to determine the exact recipe required.
+
+Examples;
+Topaz + W.Water = Bluff +4
+Bloodstone + G.Fire = Spot +8
+Aventurine + W.Fire = Parry +4
+Garnet + G.Power = Open Locks +8
+Jacinth + R.Power = UMD +12
+Malachite + W.Fire = Craft Trap +4
+
+
+**Spells**
+
+
+Animate Dead (1/Day)
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Faint Power Essence + Obsidian
+  Spell: Animate Dead
+
+Assay Resistance (2/Day)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Weak Power Essence + Obsidian
+  Spell: Assay Resistance
+
+Bless (3/Day)
+  Requires: Caster Level 2, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Glowing Power Essence + Canary Diamond
+  Spell: Bless
+
+Call Lightning (2/Day)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Weak Power Essence + Canary Diamond
+  Spell: Call Lightning
+
+Chain Lightning (1/Day)
+  Requires: Caster Level 20, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Faint Power Essence + Sapphire
+  Spell: Chain Lightning
+
+Charm Monster (3/Day)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Radiant Water Essence + Sapphire
+  Spell: Charm Monster
+
+Control Undead (3/Day)
+  Requires: Caster Level 20, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Glowing Power Essence + Obsidian
+  Spell: Control Undead
+
+Cure Critical Wounds (2/Day)
+  Requires: Caster Level 15, appropriate Craft feat
+  Ingredients: Weak Power Essence + Radiant Water Essence + Diamond
+  Spell: Cure Critical Wounds
+
+Death Ward (3/Day)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Glowing Power Essence + Canary Diamond
+  Spell: Death Ward
+
+Dispel Magic (3/Day)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Glowing Power Essence + Sapphire
+  Spell: Dispel Magic
+
+Dominate Monster (1/Day)
+  Requires: Caster Level 17, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Faint Power Essence + Sapphire
+  Spell: Dominate Monster
+
+Fire Storm (1/Day)
+  Requires: Caster Level 18, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Faint Power Essence + Fire Agate
+  Spell: Fire Storm
+
+Fireball (3/Day)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Glowing Power Essence + Fire Opal
+  Spell: Fireball
+
+Flame Strike (2/Day)
+  Requires: Caster Level 18, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Weak Power Essence + Fire Opal
+  Spell: Flame Strike
+
+Haste: Haste (3/day)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Glowing Power Essence + Blue Diamond
+  Spell: Haste
+
+Heal (1/Day)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Faint Power Essence + Radiant Water Essence + Canary Diamond
+  Spell: Heal
+
+Hold Monster (3/Day)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Glowing Power Essence + Star Sapphire
+  Spell: Hold Monster
+
+Hold Person (3/Day)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Glowing Power Essence + Obsidian
+  Spell: Hold Person
+
+Identify (3/Day)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Beljuril
+  Spell: Identify
+
+Invisibility (3/Day)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Glowing Power Essence + Rogue Stone
+  Spell: Invisibility
+
+Invisibility Purge (3/Day)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Radiant Water Essence + Rogue Stone
+  Spell: Invisibility Purge
+
+Iron Body (1/Day)
+  Requires: Caster Level 20, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Faint Power Essence + Obsidian
+  Spell: Iron Body
+
+Magic Missile (3/Day)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Fire Essence + Glowing Power Essence + Star Sapphire
+  Spell: Magic Missile
+
+Mordenkainen's Sword (1/Day)
+  Requires: Caster Level 18, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Faint Power Essence + Jacinth
+  Spell: Mordenkainen's Sword
+
+Stoneskin (1/Day)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Radiant Earth Essence + Faint Power Essence + Blue Diamond
+  Spell: Stoneskin
+
+
+**VFX**
+
+
+Blue Light (Dim)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Weak Power Essence + Sapphire
+  Spell: Flare or Searing Light
+
+Blue Light (Faint)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Power Essence + Sapphire
+  Spell: Flare or Searing Light
+
+Blue Light (Glowing)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Sapphire
+  Spell: Flare or Searing Light
+
+Blue Light (Radiant)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Sapphire
+  Spell: Flare or Searing Light
+
+Green Light (Dim)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Weak Power Essence + Emerald
+  Spell: Flare or Searing Light
+
+Green Light (Faint)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Power Essence + Emerald
+  Spell: Flare or Searing Light
+
+Green Light (Glowing)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Emerald
+  Spell: Flare or Searing Light
+
+Green Light (Radiant)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Emerald
+  Spell: Flare or Searing Light
+
+Orange Light (Dim)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Weak Power Essence + Fire Opal
+  Spell: Flare or Searing Light
+
+Orange Light (Faint)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Power Essence + Fire Opal
+  Spell: Flare or Searing Light
+
+Orange Light (Glowing)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Fire Opal
+  Spell: Flare or Searing Light
+
+Orange Light (Radiant)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Fire Opal
+  Spell: Flare or Searing Light
+
+Purple Light (Dim)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Weak Power Essence + Phenalope
+  Spell: Flare or Searing Light
+
+Purple Light (Faint)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Power Essence + Phenalope
+  Spell: Flare or Searing Light
+
+Purple Light (Glowing)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Phenalope
+  Spell: Flare or Searing Light
+
+Purple Light (Radiant)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Phenalope
+  Spell: Flare or Searing Light
+
+Red Light (Dim)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Weak Power Essence + Garnet
+  Spell: Flare or Searing Light
+
+Red Light (Faint)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Power Essence + Garnet
+  Spell: Flare or Searing Light
+
+Red Light (Glowing)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Garnet
+  Spell: Flare or Searing Light
+
+Red Light (Radiant)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Garnet
+  Spell: Flare or Searing Light
+
+White Light (Dim)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Weak Power Essence + Diamond
+  Spell: Flare or Searing Light
+
+White Light (Faint)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Power Essence + Diamond
+  Spell: Flare or Searing Light
+
+White Light (Glowing)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Diamond
+  Spell: Flare or Searing Light
+
+White Light (Radiant)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Diamond
+  Spell: Flare or Searing Light
+
+Yellow Light (Dim)
+  Requires: Caster Level 5, appropriate Craft feat
+  Ingredients: Weak Power Essence + Topaz
+  Spell: Flare or Searing Light
+
+Yellow Light (Faint)
+  Requires: Caster Level 3, appropriate Craft feat
+  Ingredients: Faint Power Essence + Topaz
+  Spell: Flare or Searing Light
+
+Yellow Light (Glowing)
+  Requires: Caster Level 7, appropriate Craft feat
+  Ingredients: Glowing Power Essence + Topaz
+  Spell: Flare or Searing Light
+
+Yellow Light (Radiant)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Radiant Power Essence + Topaz
+  Spell: Flare or Searing Light
+
+
+--------------------------------------------------------------------------------
+                     /////Weapons (Ammo)\\\\\                              X1005
+
+
+Bludgeoning Damage +1
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Earth Essence + Obsidian
+  Spell: Magic Missile
+
+Bludgeoning Damage +2
+  Requires: Caster Level 6, Craft Magic Arms and Armor feat
+  Ingredients: Faint Earth Essence + Diamond
+  Spell: Magic Missile
+
+Bludgeoning Damage +3
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Weak Earth Essence + Obsidian
+  Spell: Magic Missile
+
+Bludgeoning Damage +4
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Weak Earth Essence + Diamond
+  Spell: Magic Missile
+
+Bludgeoning Damage +5
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Earth Essence + Emerald
+  Spell: Magic Missile
+
+Magic Damage +1
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Obsidian
+  Spell: Magic Missile
+
+Magic Damage +2
+  Requires: Caster Level 6, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Diamond
+  Spell: Magic Missile
+
+Magic Damage +3
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Obsidian
+  Spell: Magic Missile
+
+Magic Damage +4
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Diamond
+  Spell: Magic Missile
+
+Magic Damage +5
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Emerald
+  Spell: Magic Missile
+
+Piercing Damage +1
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Fire Essence + Obsidian
+  Spell: Magic Missile
+
+Piercing Damage +2
+  Requires: Caster Level 6, Craft Magic Arms and Armor feat
+  Ingredients: Faint Fire Essence + Diamond
+  Spell: Magic Missile
+
+Piercing Damage +3
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Weak Fire Essence + Obsidian
+  Spell: Magic Missile
+
+Piercing Damage +4
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Weak Fire Essence + Diamond
+  Spell: Magic Missile
+
+Piercing Damage +5
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Fire Essence + Emerald
+  Spell: Magic Missile
+
+Slashing Damage +1
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Obsidian
+  Spell: Magic Missile
+
+Slashing Damage +2
+  Requires: Caster Level 6, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Diamond
+  Spell: Magic Missile
+
+Slashing Damage +3
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Obsidian
+  Spell: Magic Missile
+
+Slashing Damage +4
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Diamond
+  Spell: Magic Missile
+
+Slashing Damage +5
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Air Essence + Emerald
+  Spell: Magic Missile
+
+
+--------------------------------------------------------------------------------
+                         /////Weapons\\\\\                                 X1006
+
+
+**Basic**
+
+
+Base Weapon Enchantment +1
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Obsidian
+  Spell: Greater Magic Weapon
+
+Base Weapon Enchantment +2
+  Requires: Caster Level 6, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Diamond
+  Spell: Greater Magic Weapon
+
+Base Weapon Enchantment +3
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Weak Air Essence + Emerald
+  Spell: Greater Magic Weapon
+
+Base Weapon Enchantment +4
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Glowing Air Essence + Star Sapphire
+  Spell: Greater Magic Weapon
+
+Base Weapon Enchantment +5
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Glowing Air Essence + Blue Diamond
+  Spell: Greater Magic Weapon
+
+
+**Elemental**
+
+
+Acid Weapon: +2 Acid Damage
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Earth Essence + Emerald
+  Spell: Acid Splash
+
+Acid Weapon: +1d6 Acid Damage
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Earth Essence + Emerald
+  Spell: Acid Splash
+
+Acid Weapon: +1d10 Acid Damage
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Earth Essence + Emerald
+  Spell: Acid Splash
+
+Acid Weapon: +2d6 Acid Damage
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Emerald
+  Spell: Acid Splash
+
+Flaming Weapon: +2 Fire Damage
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Fire Essence + Ruby
+  Spell: Fireball or Flame Strike
+
+Flaming Weapon: +1d6 Fire Damage
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Fire Essence + Ruby
+  Spell: Fireball or Flame Strike
+
+Flaming Weapon: +1d10 Fire Damage
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Fire Essence + Ruby
+  Spell: Fireball or Flame Strike
+
+Flaming Weapon: +2d6 Fire Damage
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Fire Essence + Ruby
+  Spell: Fireball or Flame Strike
+
+Frost Weapon: +2 Cold Damage
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Water Essence + Sapphire
+  Spell: Ice storm
+
+Frost Weapon: +1d6 Cold Damage
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Water Essence + Sapphire
+  Spell: Ice storm
+
+Frost Weapon: +1d10 Cold Damage
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Water Essence + Sapphire
+  Spell: Ice storm
+
+Frost Weapon: +2d6 Cold Damage
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Water Essence + Sapphire
+  Spell: Ice storm
+
+Shock Weapon: +2 Electricity Damage
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Diamond
+  Spell: Call Lightning or Lightning Bolt
+
+Shock Weapon: +1d6 Electricity Damage
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Diamond
+  Spell: Call Lightning or Lightning Bolt
+
+Shock Weapon: +1d10 Electricity Damage
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Air Essence + Diamond
+  Spell: Call Lightning or Lightning Bolt
+
+Shock Weapon: +2d6 Electricity Damage
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Diamond
+  Spell: Call Lightning or Lightning Bolt
+
+Sonic Weapon: +2 Sonic Damage
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+Sonic Weapon: +1D6 Sonic Damage
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+Sonic Weapon: +1D10 Sonic Damage
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+Sonic Weapon: +2D6 Sonic Damage
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Diamond
+  Spell: Balagarn's Iron Horn or Sound Burst
+
+
+**Misc**
+
+
+Anarchic Weapon: +2d6 Damage against Lawful creatures
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Air Essence + Canary Diamond
+  Spell: Inflict Critical Wounds
+
+Arrow Deflecting Weapon: Grants Deflect Arrows as a bonus feat
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Weak Air Essence + Jacinth
+  Spell: Protection from Arrows
+
+Axiomatic Weapon: +2d6 Damage against Chaotic creatures
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Earth Essence + Jacinth
+  Spell: Inflict Critical Wounds
+
+Defending: Adds +1 Deflection AC Bonus
+  Requires: Caster Level 8, Craft Magic Arms and Armor feat
+  Ingredients: Weak Earth Essence + Diamond
+  Spell: Mage Armor or Shield of Faith
+
+Defending (Improved): Adds +2 Deflection AC Bonus
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Earth Essence + Emerald
+  Spell: Mage Armor or Shield of Faith
+
+Defending (Greater): Adds +3 Deflection AC Bonus
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Blue Diamond
+  Spell: Mage Armor or Shield of Faith
+
+Holy Weapon: +2d6 Damage against Evil creatures
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Water Essence + Diamond
+  Spell: Cure Critical Wounds
+
+Hunting Weapon: +2d6 Damage against Beasts
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Water Essence + Star Sapphire
+  Spell: Light
+
+Keen: Doubles Threat Range
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Earth Essence, Ruby
+  Spell: Keen Edge or Weapon of Impact
+
+Lucky: Adds +1 to all saves
+  Requires: Caster Level 5, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Earth Essence + Obsidian
+  Spell: Resistance
+
+Massive Criticals: Adds 1d10 damage to criticals
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Fire Essence + Faint Power Essence + Fire Opal
+  Spell: Keen Edge or Weapon of Impact
+
+Unholy Weapon: +2d6 Damage against Good creatures
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Fire Essence + Star Sapphire
+  Spell: Inflict Critical Wounds
+
+Weapon of Life Stealing: Vampiric Regeneration 1
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Weak Fire Essence + Ruby
+  Spell: Enervation
+
+Weapon of Life Stealing (Improved): Vampiric Regeneration 3
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Glowing Fire Essence + Canary Diamond
+  Spell: Enervation
+
+Weapon of Life Stealing (Greater): Vampiric Regeneration 5
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Fire Essence + Beljuril
+  Spell: Enervation
+
+
+**On-Hit**
+
+
+Blinding Weapon: Blind (DC 20)
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Diamond
+  Spell: Blindness and Deafness
+
+Dazing Weapon: Daze (DC 20)
+  Requires: Caster Level 13, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Power Essence + Diamond
+  Spell: Daze
+
+Dispelling Weapon: Greater Dispel (DC 20)
+  Requires: Caster Level 16, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Fire Essence + Radiant Power Essence + Diamond
+  Spell: Greater Dispel Magic
+
+Frightening Weapon: Fear (DC 20)
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + Diamond
+  Spell: Fear
+
+Jinxing Weapon: Doom (DC 20, 100% / 2 Rounds)
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Fire Essence + Glowing Power Essence +
+               Glowing Water Essence + Bloodstone
+  Spell: Doom
+
+Level Draining Weapon: Level Drain (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Fire Essence + Radiant Power Essence +
+               Radiant Water Essence + Beljuril
+  Spell: Energy Drain
+
+Paralyzing Weapon: Hold (DC 20)
+  Requires: Caster Level 16, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Power Essence + Diamond
+  Spell: Hold Monster
+
+Poisoned Weapon: Poison (DC 14, 1d2 Con Damage)
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Weak Earth Essence + Emerald
+  Spell: Poison
+
+Silencing Weapon: Silence (DC 20)
+  Requires: Caster Level 13, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + Diamond
+  Spell: Silence
+
+Slaying Weapon (Animals): Slay Animal (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Beasts): Slay Beast (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Dwarves): Slay Dwarf (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Earth Essence +
+               Radiant Fire Essence + Radiant Power Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Elementals): Slay Elemental (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Fire Essence + Radiant Power Essence +
+               Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Elves): Slay Elf (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Fire Essence +
+               Radiant Power Essence + Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Giants): Slay Giant (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Fire Essence +
+               Radiant Power Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Half-Elves): Slay Half-Elf (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Earth Essence +
+               Radiant Power Essence + Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Humans): Slay Human (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Earth Essence +
+
+               Radiant Fire Essence + Radiant Power Essence +
+
+               Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Orcs): Slay Orc (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Radiant Fire Essence +
+               Radiant Power Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Outsiders): Slay Outsider (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Air Essence + Radiant Power Essence +
+               Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying Weapon (Undead): Slay Undead (DC 20)
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Radiant Fire Essence +
+               Radiant Power Essence + Radiant Water Essence + Rogue Stone
+  Spell: Undeath to Death
+
+Slowing Weapon: Slow (DC 20)
+  Requires: Caster Level 10, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Diamond
+  Spell: Slow
+
+Stunning Weapon: Stun (DC 20)
+  Requires: Caster Level 17, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Earth Essence + Radiant Power Essence + Diamond
+  Spell: Power Word Stun
+
+Wounding Weapon: Wound (DC=20)
+  Requires: Caster Level 14, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Glowing Water Essence + Jacinth
+  Spell: Harm
+
+
+**VFX**
+
+
+Acid
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Water Essence + Bloodstone
+  Spell: Flare or Searing Light
+
+Cold
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Faint Water Essence + Bloodstone
+  Spell: Flare or Searing Light
+
+Electrical
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Air Essence + Faint Fire Essence + Bloodstone
+  Spell: Flare or Searing Light
+
+Evil
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Fire Essence + Bloodstone
+  Spell: Flare or Searing Light
+
+Fire
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Fire Essence + Bloodstone
+  Spell: Flare or Searing Light
+
+Holy
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Water Essence + Bloodstone
+  Spell: Flare or Searing Light
+
+Sonic
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Weak Air Essence + Bloodstone
+  Spell: Flare or Searing Light
+
+
+--------------------------------------------------------------------------------
+                    /////Weapons (Ranged)\\\\\                             X1007
+
+
+Attack +1
+  Requires: Caster Level 3, Craft Magic Arms and Armor feat
+  Ingredients: Faint Water Essence + Obsidian
+  Spell: Bless or True Strike
+
+Attack +2
+  Requires: Caster Level 6, Craft Magic Arms and Armor feat
+  Ingredients: Faint Water Essence + Diamond
+  Spell: Bless or True Strike
+
+Attack +3
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Weak Water Essence + Emerald
+  Spell: Bless or True Strike
+
+Attack +4
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Glowing Water Essence + Star Sapphire
+  Spell: Bless or True Strike
+
+Attack +5
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Glowing Water Essence + Blue Diamond
+  Spell: Bless or True Strike
+
+
+--------------------------------------------------------------------------------
+                    /////Wondrous Items\\\\\                              X1008
+
+
+Elemental Resistance (Acid 10)
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Faint Earth Essence + Jacinth
+  Spell: Protection from Energy
+
+Elemental Resistance (Acid 20)
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Weak Earth Essence + Rogue Stone
+  Spell: Protection from Energy
+
+Elemental Resistance (Acid 30)
+  Requires: Caster Level 11, Craft Wondrous Items feat
+  Ingredients: Glowing Earth Essence + King's Tear
+  Spell: Protection from Energy
+
+Elemental Resistance (Cold 10)
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Faint Water Essence + Jacinth
+  Spell: Protection from Energy
+
+Elemental Resistance (Cold 20)
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Weak Water Essence + Rogue Stone
+  Spell: Protection from Energy
+
+Elemental Resistance (Cold 30)
+  Requires: Caster Level 11, Craft Wondrous Items feat
+  Ingredients: Glowing Water Essence + King's Tear
+  Spell: Protection from Energy
+
+Elemental Resistance (Electricity 10)
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Faint Air Essence + Jacinth
+  Spell: Protection from Energy
+
+Elemental Resistance (Electricity 20)
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Weak Air Essence + Rogue Stone
+  Spell: Protection from Energy
+
+Elemental Resistance (Electricity 30)
+  Requires: Caster Level 11, Craft Wondrous Items feat
+  Ingredients: Glowing Air Essence + King's Tear
+  Spell: Protection from Energy
+
+Elemental Resistance (Fire 10)
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Faint Fire Essence + Jacinth
+  Spell: Protection from Energy
+
+Elemental Resistance (Fire 20)
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Weak Fire Essence + Rogue Stone
+  Spell: Protection from Energy
+
+Elemental Resistance (Fire 30)
+  Requires: Caster Level 11, Craft Wondrous Items feat
+  Ingredients: Glowing Fire Essence + King's Tear
+  Spell: Protection from Energy
+
+Elemental Resistance (Sonic 10)
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Faint Power Essence + Jacinth
+  Spell: Protection from Energy
+
+Elemental Resistance (Sonic 20)
+  Requires: Caster Level 7, Craft Wondrous Items feat
+  Ingredients: Weak Power Essence + Rogue Stone
+  Spell: Protection from Energy
+
+Elemental Resistance (Sonic 30)
+  Requires: Caster Level 11, Craft Wondrous Items feat
+  Ingredients: Glowing Power Essence + King's Tear
+  Spell: Protection from Energy
+
+Protection +1
+  Requires: Caster Level 3, Craft Wondrous Items feat
+  Ingredients: Faint Earth Essence + Obsidian
+  Spell: Shield or Shield of Faith
+
+Protection +2
+  Requires: Caster Level 6, Craft Wondrous Items feat
+  Ingredients: Faint Earth Essence + Diamond
+  Spell: Shield or Shield of Faith
+
+Protection +3
+  Requires: Caster Level 9, Craft Wondrous Items feat
+  Ingredients: Weak Earth Essence + Faint Power Essence + Emerald
+  Spell: Shield or Shield of Faith
+
+Protection +4
+  Requires: Caster Level 12, Craft Wondrous Items feat
+  Ingredients: Glowing Earth Essence + Weak Power Essence + Star Sapphire
+  Spell: Shield or Shield of Faith
+
+Protection +5
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Earth Essence + Glowing Power Essence + Blue Diamond
+  Spell: Shield or Shield of Faith
+
+Spell Resistance (Lesser): SR 14
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Glowing Fire Essence + Weak Power Essence + Star Sapphire
+  Spell: Protection from Spells
+
+Spell Resistance: SR 18
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Radiant Fire Essence + Glowing Power Essence + Blue Diamond
+  Spell: Protection from Spells
+
+Spell Resistance (Greater): SR 22
+  Requires: Caster Level 15, Craft Wondrous Items feat
+  Ingredients: Radiant Fire Essence + Radiant Power Essence + Beljuril
+  Spell: Protection from Spells
+
+
+--------------------------------------------------------------------------------
