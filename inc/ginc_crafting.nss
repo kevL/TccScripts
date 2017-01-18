@@ -1587,10 +1587,9 @@ int isTypeMatch(object oItem, string sTypes)
 		int iType = GetTccType(oItem);
 		//TellCraft(". TCC iType= " + IntToString(iType));
 
-		if (sTypes == "-1")					// TCC_TYPE_ANY: TAGS shall be "-1" only.
+		if (sTypes == "-1") // TCC_TYPE_ANY: TAGS shall be "-1" only.
 		{
-			//TellCraft(". . match Any");
-			//TellCraft(". . . ret TRUE");
+			//TellCraft(". . match Any ret TRUE");
 			return TRUE;
 		}
 
