@@ -560,11 +560,11 @@ Craft Weapon
   Wood: +0
   Alchemical Silver: +5
   Cold Iron: +5
-  Duskwood: +5
+  Duskwood: +5 (grants a bonus enchantment slot due to being the 'best' wood for ranged weapons - see tcc_config)
   Shederran: +5
   Darksteel: +10
   Mithral: +10
-  Zalantar: +10 (grants a bonus enchantment slot due to being the 'best' wood for weapons - see tcc_config)
+  Zalantar: +10 (grants a bonus enchantment slot due to being the 'best' wood for melee weapons - see tcc_config)
   Salamander Hide: +12
   Winter Wolf Hide: +12
   Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for weapons - see tcc_config)
