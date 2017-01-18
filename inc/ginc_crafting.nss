@@ -998,10 +998,12 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					TellCraft(". . . EPIC iTCC_BasePropSlots= " + IntToString(iTCC_BasePropSlots));
 				}
 
-				TellCraft(". . iPropCount= " + IntToString(iPropCount));
 				TellCraft(". . iBonus= " + IntToString(iBonus));
 				TellCraft(". . iDiscount= " + IntToString(iDiscount));
+				TellCraft(". . Total Props Allowed= " + IntToString(iTCC_BasePropSlots+iBonus+iDiscount));
+				TellCraft(". . iPropCount= " + IntToString(iPropCount));
 				TellCraft(". . iRecipeTotalCost= " + IntToString(iRecipeTotalCost));
+				TellCraft(". . Total Props After Enchantment= " + IntToString(iPropCount+iRecipeTotalCost));
 
 				// Perform final slot check
 				if (iPropCount - iDiscount + iRecipeTotalCost > iTCC_BasePropSlots + iBonus)
