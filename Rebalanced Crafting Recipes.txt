@@ -2714,6 +2714,11 @@ Only usable by: Sorcerer
   Ingredients: Faint Fire Essence + Amethyst
   Spell: Mind Fog
 
+Only usable by: Warlock
+  Requires: Caster Level 6, appropriate Craft feat
+  Ingredients: Faint Power Essence + Phenalope
+  Spell: Mind Fog
+  
 Only usable by: Wizard
   Requires: Caster Level 6, appropriate Craft feat
   Ingredients: Faint Fire Essence + Phenalope
