@@ -520,10 +520,12 @@ Craft Armor
   Salamander Hide: +12
   Winter Wolf Hide: +12
   Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for armor - see tcc_config)
-  Ironwood: +15 (not found in NWN2, but exists in the game files)
+  Ironwood: +15 (not found in NWN2 campaigns, but exists in the game files)
   Umber Hulk Hide: +17
   Wyvern Hide: +20
   Red Dragon Hide: +23 (grants a bonus enchantment slot due to being the 'best' hide for armor - see tcc_config)
+
+NOTE: Crafting with advanced materials has side-effects. Please read the note on Advanced Materials at the top of this document.
 
 Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
 Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
@@ -570,6 +572,8 @@ Craft Weapon
   Winter Wolf Hide: +12
   Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for weapons - see tcc_config)
   Ironwood: +15 (not found in NWN2, but exists in the game files)
+
+NOTE: Crafting with advanced materials has side-effects. Please read the note on Advanced Materials at the top of this document.
 
 Salamander Hide: Sling
 Winter Wolf Hide: Sling
