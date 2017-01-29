@@ -8,6 +8,7 @@ Mod Version: 1.167
 
 
 INTRO
+EXOTIC MATERIALS
 RECIPES
  Item Creation
   X0000 Universal Ingredients
@@ -74,6 +75,30 @@ Do note that some spells will not work on the Magician Workbench, and can only
 be used on MotB's Enchanter's Satchel. Make sure to try the spell on both before
 reporting that a spell doesn't work.
 
+--------------------------------------------------------------------------------
+				EXOTIC MATERIALS
+--------------------------------------------------------------------------------
+
+TCC allows you to create a number of items using exotic materials not possible
+in vanilla NWN 2. There are some important complexities to bear in mind:
+* Exotic Materials grant their items a pre-determined set of bonuses, that use
+  enchantment slots. These bonus properties cannot be removed.
+* When you craft weapons, armor (torso armor and shields) those items get
+  special bonus slots that offset the pre-determined properties.
+* When you craft boots, gloves, hats, cloaks, and belts, there are no special
+  bonus slots like with armor and weapons. As such, you can craft items that
+  have no free enchantment slots available.
+* Fire and Ice Mephit items do not provide special bonus slots, even for armor,
+  to offset the properties they provide.
+  
+The properties of each exotic item is listed below:
+Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
+Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
+Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
+Salamander Hide - Base Weight Reduction 60%, Fire Resistance 10
+Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10
+Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
+Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
 
 --------------------------------------------------------------------------------
 			 RECIPES - ITEM CREATION
@@ -525,10 +550,10 @@ Craft Armor
   Wyvern Hide: +20
   Red Dragon Hide: +23 (grants a bonus enchantment slot due to being the 'best' hide for armor - see tcc_config)
 
-NOTE: Crafting with advanced materials has side-effects. Please read the note on Advanced Materials at the top of this document.
+NOTE: Crafting with exotic materials has side-effects. Please read the note on Exotic Materials at the top of this document.
 
-Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
-Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
+Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded Armor, Robe
+Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded Armor, Robe
 Red Dragon Hide: Breastplate, Gloves, Half Plate, Hat, Scalemail, Shields
 Salamander Hide: Belt, Boots, Cloak, Gloves, Hat, Hide, Leather, Studded Leather
 Umber Hulk Hide: Half Plate, Shields
@@ -573,7 +598,7 @@ Craft Weapon
   Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for weapons - see tcc_config)
   Ironwood: +15 (not found in NWN2, but exists in the game files)
 
-NOTE: Crafting with advanced materials has side-effects. Please read the note on Advanced Materials at the top of this document.
+NOTE: Crafting with exotic materials has side-effects. Please read the note on Exotic Materials at the top of this document.
 
 Salamander Hide: Sling
 Winter Wolf Hide: Sling
