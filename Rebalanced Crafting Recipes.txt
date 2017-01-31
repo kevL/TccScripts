@@ -90,6 +90,10 @@ in vanilla NWN 2. There are some important complexities to bear in mind:
   have no free enchantment slots available.
 * Fire and Ice Mephit items do not provide special bonus slots, even for armor,
   to offset the properties they provide.
+
+In order to rationalize the effects of exotic materials, there are a number of 
+UTIs in the Template Overrides folder that replace item blueprints in the
+vanilla game. Using these is strictly optional.
   
 The properties of each exotic item is listed below:
 Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
@@ -99,6 +103,10 @@ Salamander Hide - Base Weight Reduction 60%, Fire Resistance 10
 Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10
 Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
 Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
+
+Zalantar Wood - Arcane Spell Failure -10% for Heavy & Tower Shields, -5% for Light Shields.
+				AC +2 for all Shields
+				+1 Magical damage for Melee weapons
 
 --------------------------------------------------------------------------------
 			 RECIPES - ITEM CREATION
