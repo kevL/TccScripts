@@ -555,7 +555,7 @@ NOTE: Crafting with exotic materials has side-effects. Please read the note on E
 Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded Armor, Robe
 Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded Armor, Robe
 Red Dragon Hide: Breastplate, Gloves, Half Plate, Hat, Scalemail, Shields
-Salamander Hide: Belt, Boots, Cloak, Gloves, Hat, Hide, Leather, Studded Leather
+Salamander Hide: Belt, Boots, Cloak, Gloves, Hat, Hide Armor, Leather Armor, Studded Leather Armor
 Umber Hulk Hide: Half Plate, Shields
 Winter Wolf Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
 Wyvern Hide: Breastplate, Full Plate, Half Plate, Scalemail, Shields
