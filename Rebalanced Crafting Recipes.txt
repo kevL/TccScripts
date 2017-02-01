@@ -88,8 +88,8 @@ in vanilla NWN 2. There are some important complexities to bear in mind:
 * When you craft boots, gloves, hats, cloaks, and belts, there are no special
   bonus slots like with armor and weapons. As such, you can craft items that
   have no free enchantment slots available.
-* Fire and Ice Mephit items do not provide special bonus slots, even for armor,
-  to offset the properties they provide.
+* Winter Wolf, Fire and Ice Mephit items do not provide special bonus slots, 
+  even for armor, to offset the properties they provide.
 
 In order to rationalize the effects of exotic materials, there are a number of 
 UTIs in the Template Overrides folder that replace item blueprints in the
@@ -99,7 +99,8 @@ The properties of each exotic item is listed below:
 Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
 Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
 Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
-Salamander Hide - Base Weight Reduction 60%, Fire Resistance 10
+Salamander Hide - AC +1 (Armor), Base Weight Reduction 60%, Fire Resistance 10
+				  +1 attack (Slings, undiscounted)
 Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10
 Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
 Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
@@ -113,13 +114,20 @@ Zalantar - Arcane Spell Failure -10% for Heavy & Tower Shields, -5% for Light Sh
 		   +1 attack (Crossbows), +2 Mighty (Bows)
 
 Alchemical Silver & Cold Iron - No specific bonuses
-Darksteel - Acid Resistance 5 (Armor, Shields, Helms),
-			Electrical damage 1 (Gloves, Melee weapons, Ammunition)
-Mithral
 Adamantine - Damage Resistance 1/- (Light Armor & Light Shields),
 			 2/- (Medium Armor & Heavy Shields),
 			 3/- (Heavy Armor & Tower Shields)
 			 Magical damage 2 (Gauntlets, Melee weapons, Ammunition)
+Darksteel - Acid Resistance 5 (Armor, Shields, Helms),
+			Electrical damage 1 (Gloves, Melee weapons, Ammunition)
+Mithral - Base Weight Reduction 60% (Weapons)
+Mithral Armor & Shields are a special case: Instead of Item Properties they
+are categorized as completely different armor types. In general, they gain:
+Weight reduced by ~50%
+Max Dex Bonus increased by 2
+Armor Check Penalties lessened by 3
+Arcane Spell Failure decreased by 10%
+Heavy Armor becomes Medium, Medium Armor becomes Light
 
 --------------------------------------------------------------------------------
 			 RECIPES - ITEM CREATION
