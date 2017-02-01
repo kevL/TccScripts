@@ -110,6 +110,6 @@
 106 Mass_Mithral_Chainmail     5       4           -1      20             200    4400  162068       162165 179902          Light  
 107 Mass_Mithral_Breastplate   5       5           0       15             150    4350  162068       179895 179903          Light  
 108 Mass_Mithral_Splint        6       2           -3      30             225    4350  162068       13785  179904          Medium 
-109 Mass_Mithral_LightShield   1       100         0       0              25     1009  162068       178723 186067          None   
-110 Mass_Mithral_HeavyShield   2       100         0       5              50     1020  162068       162171 186068          None   
-111 Mass_Mithral_TowerShield   4       4           -7      40             225    1030  162068       162178 186069          None   
+109 Mass_Mithral_LightShield   1       100         0       0              25     1159  162068       178723 186067          None   
+110 Mass_Mithral_HeavyShield   2       100         0       5              50     1170  162068       162171 186068          None   
+111 Mass_Mithral_TowerShield   4       4           -6      40             225    1180  162068       162178 186069          None   
