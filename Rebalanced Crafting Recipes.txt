@@ -105,17 +105,21 @@ Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
 Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
 
 Duskwood - Base Weight Reduction 40%, +3 attack (Crossbows), Mighty +6 (Bows)
-
-Ironwood (not found in vanilla NWN2 as a craftable material, but it does exist
-in the game files)
-		- Base Weight Reduction 40%, Arcane Spell Failure -5% (Shields), 
-		  +1 attack (Melee weapons)
-
-Shederran Wood - +2 attack (Crossbows), Mighty +4 (Bows)
-
+Ironwood - Base Weight Reduction 40%, Arcane Spell Failure -5% (Shields),
+		   +1 attack (Melee weapons)
+Shederran - +2 attack (Crossbows), Mighty +4 (Bows)
 Zalantar - Arcane Spell Failure -10% for Heavy & Tower Shields, -5% for Light Shields.
 		   AC +2 for all Shields, +1 Magical damage for Melee weapons
 		   +1 attack (Crossbows), +2 Mighty (Bows)
+
+Alchemical Silver & Cold Iron - No specific bonuses
+Darksteel - Acid Resistance 5 (Armor, Shields, Helms),
+			Electrical damage 1 (Gloves, Melee weapons, Ammunition)
+Mithral
+Adamantine - Damage Resistance 1/- (Light Armor & Light Shields),
+			 2/- (Medium Armor & Heavy Shields),
+			 3/- (Heavy Armor & Tower Shields)
+			 Magical damage 2 (Gauntlets, Melee weapons, Ammunition)
 
 --------------------------------------------------------------------------------
 			 RECIPES - ITEM CREATION
