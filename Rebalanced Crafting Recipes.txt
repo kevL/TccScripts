@@ -82,29 +82,27 @@ reporting that a spell doesn't work.
 TCC allows you to create a number of items using exotic materials not possible
 in vanilla NWN 2. There are some important complexities to bear in mind:
 * Exotic Materials grant their items a pre-determined set of bonuses, that use
-  enchantment slots. These bonus properties cannot be removed.
+  enchantment slots. These bonus properties can be upgraded but not removed.
 * When you craft weapons, armor (torso armor and shields) those items get
   special bonus slots that offset the pre-determined properties.
 * When you craft boots, gloves, hats, cloaks, and belts, there are no special
   bonus slots like with armor and weapons. As such, you can craft items that
   have no free enchantment slots available.
-* Winter Wolf, Fire and Ice Mephit items do not provide special bonus slots, 
-  even for armor, to offset the properties they provide.
 
 In order to rationalize the effects of exotic materials, there are a number of 
 UTIs in the Template Overrides folder that replace item blueprints in the
 vanilla game. Using these is strictly optional.
   
 The properties of each exotic item is listed below:
+Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
+Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
 Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
-Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
-Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
 Salamander Hide - AC +1 (Armor), Base Weight Reduction 60%, Fire Resistance 10
+Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
 				  +1 attack (Slings)
 Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10,
 				   +1 attack (Slings)
-Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
-Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
+Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
 
 Duskwood - Base Weight Reduction 40%, +3 attack (Crossbows), Mighty +6 (Bows)
 Ironwood - Base Weight Reduction 40%, Arcane Spell Failure -5% (Shields),
