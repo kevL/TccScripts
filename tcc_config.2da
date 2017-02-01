@@ -12,7 +12,7 @@
 8	Toggle_GrantMaterialBonusSlots	1	****	****	****	****	****	****
 9	Value_DarksteelPropSlots	****	1	0	1	0	0	0
 10	Value_MithralPropSlots	****	1	0	0	0	0	0
-11	Value_SalamanderPropSlots	****	0	0	3	0	0	0
+11	Value_SalamanderPropSlots	****	0	0	3	0	1	0
 12	Value_UmberHulkPropSlots	****	0	0	2	0	0	0
 13	Value_WyvernPropSlots	****	0	0	3	0	0	0
 14	Value_DuskwoodPropSlots	****	1	0	1	0	2	1
