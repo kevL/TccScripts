@@ -83,9 +83,9 @@ TCC allows you to create a number of items using exotic materials not possible
 in vanilla NWN 2. There are some important complexities to bear in mind:
 * Exotic Materials grant their items a pre-determined set of bonuses, that use
   enchantment slots. These bonus properties can be upgraded but not removed.
-* When you craft weapons, armor (torso armor and shields) those items get
-  special bonus slots that offset the pre-determined properties.
-* When you craft boots, gloves, hats, cloaks, and belts, there are no special
+* When you craft weapons and armor (torso armor and shields) using exotic materials
+  those items get special bonus slots that offset the pre-determined properties.
+* When you craft other items using exotic materials, there are no special
   bonus slots like with armor and weapons. As such, you can craft items that
   have no free enchantment slots available.
 
