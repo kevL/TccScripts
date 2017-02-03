@@ -764,11 +764,20 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						TellCraft(". . . . . " + IntToString(iPropType) + " is an Upgrade");
 				}
 
+				// Check for set setup recipe
+				if (!bUpgradeOrFree)
+				{
+					if(iRecipeMatch >= iFirstSetRecipe && iRecipeMatch <= iLastSetRecipe)
+					{
+						TellCraft(". . . . . is Set setup recipe : free");
+						bUpgradeOrFree = TRUE;
+					}
+				}
+				// If Set properties are free and this recipe will add one
 				if (!bUpgradeOrFree)
 				{
 					if (bTCC_SetPropsAreFree
-						&& iRecipeMatch >= iFirstSetRecipe
-						&& iRecipeMatch <= iLastSetRecipe)
+						&& GetLatentPartReady(oItem))
 					{
 						TellCraft(". . . . . is SetProp : free");
 						bUpgradeOrFree = TRUE;
