@@ -9,6 +9,7 @@ Mod Version: 1.167
 
 INTRO
 EXOTIC MATERIALS
+SET CREATION
 RECIPES
  Item Creation
   X0000 Universal Ingredients
@@ -57,7 +58,7 @@ RECIPES
 	 On-Hit
          VFX
   X1007 Weapons (Ranged)
-  x1008 Wondrous Items
+  X1008 Wondrous Items
 
 
 
@@ -127,6 +128,31 @@ Max Dex Bonus increased by 2
 Armor Check Penalties lessened by 3
 Arcane Spell Failure decreased by 10%
 Heavy Armor becomes Medium, Medium Armor becomes Light
+
+--------------------------------------------------------------------------------
+				SET CREATION
+--------------------------------------------------------------------------------
+
+Details about set creation can be found here:
+http://completecraftsman.com/
+The Set Creation Recipes are:
+
+To Forge the Item Set (Level 10 required):
+* Place all items for the set into the Workbench
+* Add a Rogue Stone and a Radiant Power Essence
+* Cast Legend Lore
+
+To grant an item a set property
+* Place one item from the set into the Workbench
+* Add a Gem and Essence from the table below
+* Cast Legend Lore
+* Enchant the item with the property you want in the normal way.
+
+Set Property Table. If you want the property to activate when the PC equips:
+Two Set Items: Beljuril & Radiant Power Essence (Level 19 required)
+Three Set Items: King's Tear & Radiant Power Essence (Level 16 required)
+Four Set Items: Diamond & Glowing Power Essence (Level 13 required)
+Five Set Items: Fire Opal & Weak Power Essence (Level 10 required)
 
 --------------------------------------------------------------------------------
 			 RECIPES - ITEM CREATION
