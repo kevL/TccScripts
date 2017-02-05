@@ -1,0 +1,456 @@
+<html>
+	<head>
+		<title>The Complete Craftsman - Help</title>
+		<style>
+		
+			body{
+				font-family:arial;
+				font-size:10pt;
+			}
+			
+			h1{
+				font-size:14pt;
+				border-bottom-width:2px;
+				border-bottom-style:solid;
+				border-bottom-color:#000;
+			}
+			
+			h2{
+				font-size:12pt;
+				font-weight:bold;
+			}
+			
+			b{
+				color:olive;
+			}
+			
+			.main{
+				width:600px;
+			}
+			
+			.back{
+				float:right;
+				position:relative;
+				top:-37px;
+			}
+			
+			
+		
+		</style>
+	</head>
+	<body>
+		<div class="main">
+
+		<h1><a name="top">Introduction</a></h1>
+
+		The Complete Craftsman is an upgrade for the basic crafting system in Neverwinter Nights 2 which includes numerous fixes and improvements, and blends seamlessly with the official campaign and any other mod that uses the basic crafting system. With TCC you can easily rename items, enchant your wondrous objects with additional effects, and more. All through the standard crafting system, without any special commands or cheat codes.<br/><br/>
+
+		This help file is designed to be a complete reference to the functionality available in The Complete Craftsman. It contains sections which detail the major features of the system, and sections for mod makers who want to explore or modify the scripts and other files used by TCC for their own projects. What it does not contain is the list of recipes associated with TCC. That list is <a href="http://spreadsheets.google.com/pub?key=pfzZmmrNUi0FE99_oLBuWYA">maintained online</a> for easier viewing.<br/>
+
+		<h2>User Features Help</h2>
+
+		<b><a href="#user01">Enchantment Slots</a></b> - Expands the limit on the number of enchantments which can be places on an item under several circumstances.<br/><br/>
+
+		<b><a href="#user02">Renaming Items</a></b> - Lets players rename items simply and easily, without having to add any new or upgraded enchantments.<br/><br/>
+
+		<b><a href="#user03">Distilling And Salvaging</a></b> - Allows players to distill magical essence and salvage items to get the materials they need to create other items and enchantments.<br/><br/>
+
+		<b><a href="#user04">Creating Masterwork Items</a></b> - Allows mundane crafters to create masterwork items with unique advantages over normal weapons and armor.<br/><br/>
+
+		<b><a href="#user05">Transmuting Materials</a></b> - Allows master alchemists to transmute metal, converting bars of one type of metal to another.<br/><br/>
+
+		<b><a href="#user06">Creating Item Sets</a></b> - Allows player crafters to create customized item sets with powers that activate as more items are equipped.<br/>
+
+		<h2>Builder Features Help</h2>
+
+		<b><a href="#dev01">Configuring TCC</a></b> - Instruction on modifying the configuration file to customize The Complete Craftsman for your custom content or game.<br/><br/>
+
+		<b><a href="#dev02">Working With Recipes</a></b> - Instructions for creating and modifying your own recipes for making new items or adding new effects to existing equipment.<br/><br/>
+
+		<b><a href="#dev03">Different Item Types</a></b> - Information for recipe makers on the different item tag types used by The Complete Craftsman.<br/><br/>
+
+		<b><a href="#dev04">Customizing Salvage Tables</a></b> - Instructions for creating customized salvage results tables for The Complete Craftsman's salvage system.<br/><br/>
+
+		<b><a href="#dev05">Customizing Property Slot Costs</a></b> - Instructions for setting the slot cost of various properties in the properties spreadsheet.<br/><br/>
+		
+		<br/><br/>
+
+		<h1><a name="user01">Enchantment Slots</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		In the basic system, an item is allowed to have only three special properties, including any property that comes with its material type, all superficial properties, and even negative or limitation properties. TCC replaces this simple system with a more versatile and selecting one, ultimately allowing you to place more effects on your equipment.<br/><br/>
+
+		<h2>Bonus Property Slots</h2>
+
+		<b>Top Tier Materials</b> - Any mundane crafting product made from the top material of each type (Adamantine, Red Dragon Hide, or Zalantar) receives an automatic bonus enchantment slot.<br/><br/>
+
+		<b>Master Craftsmanship</b> - Mundane items which are created by a master craftsman using TCC will be Masterworks. All Masterwork items receive an additional automatic bonus enchantment slot.<br/><br/>
+
+		<b>Limiting Enchantments</b> - Characters may enchant their equipment with class and alignment limitations. An item with one or more these gains a single additional enchantment slot.<br/><br/>
+
+		<h2>Free Enchantment Properties</h2>
+
+		<b>Light and Visual Effects</b> - The superficial Light and Visual Effects properties which may be placed on items are not counted against your total limit when crafting using TCC.<br/><br/>
+
+		<b>Limiting Enchantments</b> - Limiting enchantments are not counted against your total enchantment limit when enchanting using TCC, and grant a bonus slot as described above.<br/><br/>
+
+		<b>Material Properties</b> - Properties that come with mundane crafting products produced using special materials are not counted against your total, even if you upgrade them.<br/><br/>
+
+		<h2>Upgrading Enchantments</h2>
+
+		In the basic crafting system it was possible to upgrade enchantments on an item simply by using the appropriate recipe for the new enchantment. This didn't work however on items which had already reached the three effect limit. The Complete Craftsman resolves this issue, automatically detecting upgrades before they're applied and allowing them to continue even on fully enchanted items.<br/><br/>
+		
+		<br/><br/>
+
+		<h1><a name="user02">Renaming Items</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		The original crafting system allowed you to rename items whenever you placed a new enchantment on them, or upgraded an existing property. The Complete Craftsman leaves this system in place and expands it with the ability to rename items without enchanting them, using the standard smithing hammer and the blacksmith's work bench.<br/><br/>
+
+		<h2>Renaming Equipment</h2>
+
+		To rename an item, simply activate the special power of the Smith Hammer tool, and click on an item in your inventory. A prompt will appear allowing you to enter a new name for the object. This will allow you to rename any item in your inventory as long as it is not flagged as a plot item.<br/><br/>
+		
+		<br/><br/>
+
+		<h1><a name="user03">Distilling And Salvaging</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		The standard crafting system allows players to combine lesser essences into greater essences, and reduce a greater essence to a single lesser one, but this system is lossy and lacks completeness. The Complete Craftsman expands the distillation system with the ability to salvage essences and gems from magical items, and makes the essence conversion system lossless.<br/><br/>
+
+		<h2>Converting Essences</h2>
+
+		<b>Combining Essences</b> - Placing two identical essences on the alchemy work bench and using the mortar and pestle on it will combine them into a single essence of the next greater type, just as in the standard system.<br/><br/>
+
+		<b>Splitting Essences</b> - Unlike in the standard system, using the mortar and pestle on an essence to reduce its type will give you two of the lesser essence. This allows you to freely convert up and down the system.<br/><br/>
+
+		<h2>Salvaging Items</h2>
+
+		Using the special ability of the mortar and pestle item on an equipable object will allow you to salvage it, producing essences, and possibly gems based on the properties the item had. The item will be destroyed in the process. This will often result in a net loss monetarily, since the products of salvaging have a limited sell value, but can be worth using when you need materials for creating magic items more than you need money.<br/><br/>
+
+		<b>Salvage Types</b> - Every property type on an item (ability bonus, enhancement bonus, and so forth) is associated with specific salvage products. Salvaging will produce products for each found on the item salvaged.<br/><br/>
+
+		<b>Salvage Grades</b> - Many but not all properties on items have a grade which measures how potent they are within their type. Properties with grading schemes produce a higher quality result based on the grade of the property salvaged.<br/><br/>
+
+		<b>Minimum Skill Requirement</b> - Every property has a skill check difficulty class. In order to salvage an item at all, a character requires a score in Spellcraft of at least that difficulty minus five of the easies property on it.<br/><br/>
+
+		<b>Salvaging Skill Check</b> - When an item is salvaged, a Spellcraft check is made against the difficulty class of the most difficult to salvage property on the item. If it succeeds, the salvage will produce gems as well as essences.<br/><br/>
+
+		<b>Salvaging Stacks</b> - When salvaging stackable items, success is not always possible. The chance of successfully salvaging is equal to the percentage of the maximum stack size the stack actually contains.<br/><br/>
+		
+		<br/><br/>
+
+		<h1><a name="user04">Creating Masterwork Items</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		The basic crafting system allows you to create a variety of non-magical weapons, shields, and armor from a broad selection of appropriate materials. The Complete Craftsman lets you can take these items above and beyond. When you craft a mundane item, if your skill is high enough you will automatically create a Masterwork version of that item which possesses special properties not otherwise available.<br/><br/>
+
+		<h2>Requirements</h2>
+
+		<b>Crafting Skill</b> - Masterwork items are created automatically instead of standard items whenever the crafter's skill is at least five more than the base requirement for the item being created.<br/><br/>
+
+		<h2>Masterwork Bonuses</h2>
+
+		<b>Melee Weapons</b> - Masterwork melee weapons are especially powerful and well balanced. All Masterwork melee weapons come pre-equipped with a +1 Enhancement bonus to hit and damage.<br/><br/>
+
+		<b>Masterwork Armor</b> - Masterwork armor is extra light and flexible. All Masterwork armor weighs less, has a lower armor check penalty, and allows a higher maximum dexterity bonus than normal armor.<br/><br/>
+
+		<b>Enchanting Masterworks</b> - Masterwork items are much easier to enchant than normal objects. This affords all Masterwork items an extra enchantment slot as described in the Enchantment Slots section.<br/><br/>
+
+		<h2>Older Masterworks</h2>
+
+		When masterwork crafting was first introduced it used a significantly different system to create and manage the items created. There were several flaws in that system, and so it was heavily revised in version 1.06 of The Complete Craftsman. If you find yourself in possession of a Masterwork item created with a version of TCC prior to 1.06, it is recommended that you replace it. These older masterworks are no longer supported, and in some cases may not work at all.<br/><br/>
+		
+		<br/><br/>
+
+		<h1><a name="user05">Transmuting Materials</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		Using the complete craftsman it is possible for an expert alchemist to transmute one type of metal to another. At this time, this feature is somewhat limited, only allowing you to transmute raw metal bars up to the next type of metal, but in time it will be expanded to allow the transmutation of non-metal materials and other convenient features designed to make base materials more accessible, and provide greater choice and flexibility to the mundane crafter.<br/><br/>
+
+		<h2>Transmuting Metal Bars</h2>
+
+		To transmute a metal bar, simply place a bar of any metal other than Adamantine on the alchemist's work bench, and add a single faint power essence. Use the special power of the mortar and pestle crafting tool on the workbench to complete the transmutation, and you will have produced a bar of the next better type of metal. You can repeat this process over and over until you have produced an adamantine bar.<br/><br/>
+
+		<br/><br/>
+
+		<h1><a name="user06">Creating Item Sets</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		A newer feature of The Complete Craftsman is the ability for spell casters to create customized item sets. Item sets are groups of items with enchantments which switch on only when a certain number of member items from the set are equipped on a character. Creating them is a three step process, but it's nice and easy once you get the hang of it.<br/><br/>
+
+		<h2>Forging An Item Set</h2>
+
+		To forge a group of items into an item set, simply place them all in the enchanting workbench with the ingredients for set forging (listed in the recipe list), and cast the required spell. You will be prompted to name your set - the name you enter will be your set's unique identifier, and any items with the same set name will count as part of the same set.<br/><br/>
+
+		Each item in the workbench will be tagged as part of the set, and the set name will be added automatically to the front of its item name. You may later change the item's names if you wish - the set name is added only as a convenience, and the actual set identity is stored behind the scenes.
+		Once you have done that, your set is forged, and allowing the items to see each other, and count each other as part of the set when they are equipped. The next step is to actually add some set powers to your items, which will switch on as the owner equips more and more parts of the set.<br/><br/>
+
+		<h2>Prepare A Set Item</h2>
+
+		In order to add a set property to an item, you must first prepare it. This tells the crafting system that the next property you try to add to the item will be a set property, as well as how many parts of the set will be required to activate it. If you do not prepare the item, any recipes you use on it will add normal properties rather than set properties, so  you are free to mix and match.<br/><br/>
+
+		To prepare the item to receive a new set property, simply use one of the preparation recipes found on the recipe list on it. Which recipe you use will determine how many set items it takes to activate that property.  By default, up to five items may be required for a slot, but there may be additional options depending on your TCC configuration. Remember that because your set property will occupy one of your enchantment slots, you will have to have a slot open in order to prepare the item for a set property.<br/><br/>
+
+		<h2>Add A Set Property</h2>
+
+		Once an item has been prepared to receive a set property, you need only use a normal enchantment recipe on it to create a the final effect. The information for your new set property will be stored away, and the property will be activated or deactivated as you equip more or less items from your item set.  After crafting, there will be no indication that the set property exists until it is activated by the presence of more set items, allowing you to create seemingly random surprise synergies as well as obvious item sets.<br/><br/>
+
+		When adding set properties, you should be aware of any similar properties already on the item. Similar properties are the same type, and if applicable, sub-type. Set properties will never override or upgrade existing properties, be they lower level set properties, or standard properties you have added to the item, so adding set properties of the same type as those you already have is a waste. Also note that adding a second set property with the same number of peaces requirement will always replace the existing property at that requirement level with the new one.<br/><br/>
+
+		<h2>Sets For Content Creators</h2>
+
+		Set items use two key features of the scripting system - tag based scripting, and local variables - to get their job done, and as a content builder you can use this system from the toolset to create sets for your players without all the fuss and bother of doing your own set item scripting. The following is a behind the scenes look at how TCC's set system works, to show you how you can build set items from scratch.<br/><br/>
+
+		<b>Item Tags</b> - TCC's set system is run via tab based scripting. When items are forged into a set, their tags are all set to the same name ("tcc_setitem"), so that a single set of scripts handles them all. The different set names and properties are all handled through the local variable system, so that the scripting involved in universal for every set item using this system. Thus, when creating sets that use this system, they must all use the tag name tcc_setitem. Their names, resrefs, and other information may be set any way you like.<br/><br/>
+
+		<b>Set Name</b> - The most key bit of item setup outside of the tag name is assigning your item to a particular set. This is what is used by the script to determine how many parts of a particular set are equipped, allowing players to mix and match items from different sets without setting off all of their powers. To set your item's set name, assign it a local string variable called "tcc_setname" with the value store being the set name.<br/><br/>
+
+		<b>Masterwork Set Items</b> - Because they all have the same set name, other information that might be derived from that information must be stored elsewhere. One example of this is masterwork items. To designate a set item as a masterwork (as far as enchanting is concerned), you must set another local variable on it. Add a local int to the object named "tcc_masterwork" with a value of 1 to designate a masterwork item.<br/><br/>
+
+		<b>Item Material Types</b> - Because there is no system function to get an items actual material type, this information is also usually derived from the tag. Like masterwork status, it must be set as a local variable for items which will be part of a TCC set system set. To designate an item's material type (again, as far as enchanting with TCC is concerned), set a local string named "tcc_material" with the proper value:<br/><br/>
+
+		Darksteel:  _drk_<br/>
+		Salamander: _slh_<br/>
+		Duskwood: _dsk_<br/>
+		Mithral: _mth_<br/>
+		Umber Hulk: _uhh_<br/>
+		Zalantar: _zal_<br/>
+		Alchemical Silver: _slv_<br/>
+		Wyvern: _wyh_<br/>
+		Shederan: _shd_<br/>
+		Cold Iron: _cld_<br/>
+		Red Dragon: _rdh_<br/>
+		Adamantine: _ada_<br/><br/>
+
+		<b>Item Set Properties</b> - Last but of course not least, you'll want to add set properties to your items. These are also stored as local variables on the item, and take the format local strings named "tcc_setprop_#" with the number of items required to activate the property replacing the # sign on the end of the variable name. The property to be added is stored in the variable, in the form of a parameter list identical to those used in crafting.2da to define the effects of enchanting recipes. I suggest you simply copy and past the desired property string into the variable to insure best results.<br/><br/>
+
+		<br/><br/>
+
+		<h1><a name="dev01">Configuring TCC</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		The Complete Craftsman's configuration file is your master control center for all of the package's features. By modifying this file, you can enable or disable features, and adjust a variety of settings to get TCC working the way you want. Weather you are a player who wants to adjust the limits of the system, or a content developer who wants to establish customized rules for content, these configurations should be your first stop.<br/><br/>
+
+		<h2>Editing The Configuration File</h2>
+
+		The configuration file is named tcc_config.2da and resides in the HakPak's installation directory. Editing this file can be done with any text editor, but for best results I recommend a spreadsheet program such as Microsoft Excel. If you choose to work in a spreadsheet application, you will need to save your updated version of the file as a tab delimited text file. Whatever you use to edit with, the file must retain the same name and file extension.<br/><br/>
+
+		<h2>Configuration Values</h2>
+
+		Many of the configurable settings in the file are values. Values are denoted by the first word in their labels, and may contain a range of numbers. Any limitations on what numbers can be used are explained for the individual configurations below.<br/><br/>
+
+		<b>Salvage DC Modifier</b> - This is a generic modifier to the DC of all Spellcraft skill checks to salvage improved products from items using the salvage system. It may be any positive or negative integer, but values between plus and minus ten are suggested. Negative values make it easier to successfully salvage, while positive values make it harder.<br/><br/>
+
+		<b>Maximum Set Properties</b> - This value establishes the largest number of set properties an item can have. Since the first property requires two items from the set, the second requires three, and so forth. This value can be any positive integer between one and nine. If values above four are used, you should be sure to distribute the higher part count preparation recipes included in the recipe list.<br/><br/>
+
+		<b>Base Property Slots</b> - This value sets the basic number of properties an item can have. It may be set to any positive integer. Three is the default value, taken from the basic crafting system, but you can easily adjust this upwards if you want to allow your players to add a larger number of properties to their items across the board.<br/><br/>
+
+		<b>Material Values</b> - There is a separate line for each material, and these materials use the right hand six columns in the sheet for their information. Use these values to set the number of enchantment slots refunded, and granted as a bonus, for melee weapons, armor and shields, and ranged weapons of that material type.<br/><br/>
+
+		The allowance columns are set to the number of natural properties associated with weapons, armor, or ranged weapons of the material type. The Bonus columns are populated with bonus points to be granted for that material if any. These values can be any positive or negative integer, so you can use them to grant less slots than normal for some materials if you wish.<br/><br/>
+
+		<b>Masterwork Skill Modifier</b> - This value sets the skill margin a character must have to produce a masterwork mundane item. The default value is five - a character with a skill five higher than required to craft the item will produce a masterwork. This can take any integer value from zero up. Setting it to zero means that all crafting will produce masterwork items.<br/><br/>
+
+		<h2>Configuration Toggles</h2>
+
+		Toggles allow you to turn features on and off completely. Each toggle may be set to either zero, or one. Zero disables the feature, and one turns it on. If you have a choice between adjusting a value and a toggle for the same effect, use the toggle for efficiency.<br/><br/>
+
+		<b>Allow Set Name Change</b> - If this toggle is turned off, attempting to use a set item in the forging of a new set will not be allowed. If it is turned on (default) the set item or items will be joined to the newly named set and removed from the old one.<br/><br/>
+
+		<b>Require Caster Level</b> - If this toggle is turned off, enchanting recipes and wondrous item creation recipes do not require a particular caster level. If turned on (default), they will require the caster levels specified for them in crafting.2da.<br/><br/>
+
+		<b>Require Crafting Feats</b> - If this toggle is turned off, enchanting recipes and wondrous item creation recipes do not require any feats to be completed. If turned on (default), the Craft Magical Armor and Armor or Craft Wondrous items feat is requires as normal.<br/><br/>
+
+		<b>Limit Number Of Properties</b> - If this toggle is turned off, the crafting system will totally ignore the number of properties limitations when enchanting items. If turned on (default), all the normal bonuses, restrictions, and checks will be in place.<br/><br/>
+
+		<b>Grant Masterwork Bonus Slots</b> - If this toggle is turned off, players will not be granted an extra slot on masterwork items when enchanting. If turned on (default), they will. This has no effect on existing items, only on the actual event of enchanting.<br/><br/>
+
+		<b>Grant material Bonus Slots</b> - If this toggle is turned off, players will not be granted any extra slots on items of advanced material types when enchanting. If turned on (default), they will receive the slots according to the normal scheme.<br/><br/>
+
+		<b>Grant Limitation Bonus Slots</b> - If this toggle is turned off, players will not receive a bonus slot for having a limiting property on their item when enchanting. If turned on, (default), they will receive the slot as normal.<br/><br/>
+
+		<b>Limitation Properties Are Free</b> - If this toggle is turned off, the slots used by limitation properties are not refunded to the total when enchanting an item. When turned on (default), those slots are refunded so they don't count towards the limit.<br/><br/>
+
+		<b>Light Properties Are Free</b> - If this toggle is turned off, the slots used by light properties are not refunded to the total when enchanting an item. When turned on (default), these slots are refunded and so they don't count towards the limit.<br/><br/>
+
+		<b>VFX Properties Are Free</b> - If this toggle is turned off, the slots used by visual effects on weapons are not refunded to the total when enchanting an item. When turned on (default), these slots are refunded and so they don't count towards the limit.<br/><br/>
+
+		<b>Set Properties Are Free</b> - If this toggle is turned off (default), set properties count towards the total properties limit for items being enchanted. If turned on, these properties are not added to that total, making them effectively free.<br/><br/>
+
+		<b>Create Masterwork Items</b> - If this toggle is turned off, mundane crafting never produces masterwork items. If turned on (default), masterwork items are created by crafters with the requires skill as define by the Masterwork Skill Modifier value.<br/><br/>
+
+		<b>Allow Item Salvaging</b> - If this toggle is turned off, the salvaging system is completely disabled. If turned on (default), players may salvage items using the special ability of the mortar and pestle as normal.<br/><br/>
+
+		<b>Salvaging Uses Skill Check</b> - If this toggle is turned off, no skill roll is used for salvaging. Instead, all salvaging results in the product normally produced by a failed skill roll. If turn on (default), a skill roll determines salvage product as normal.<br/><br/>
+
+		<b>Allow Easy Item Renaming</b> - If this toggle is turned off, using the special ability of the smith hammer directly on an item in inventory will not allow players to rename it. If turned on (default), players will be able to rename items as normal.<br/><br/>
+
+		<b>Use Recipe Exclusion</b> - If this toggle is turned off, the recipe exclusion system is ignored. If turned on (default), recipes cannot be placed on items which already have an effect of any of the excluded types defined for that recipe in crafting.2da.<br/><br/>
+
+		<b>Use Variable Slot Costs</b> - If this toggle is turned off, all properties have a base cost of one slot. If turned on (default), the number of slots occupied by a property are derived from the settings in the itempropdef.2da file.<br/><br/>
+
+		<b>Use Recipe XP Costs </b> - If this toggle is turned on, the player's main character will be charged any experience points cost set for a recipe. If turned off (default), the player is never charged experience.<br/><br/>
+
+		<b>Use Recipe GP Costs </b> - If this toggle is turned on, the player's main character will be charged any gold cost set for a recipe. If turned off (default), the player is never charged gold.<br/><br/>
+
+		<br/><br/>
+
+		<h1><a name="dev02">Working With Recipes</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		Creating and editing crafting recipes is a complex but systematic process. There are two primary areas of concern which must be kept in mind in the process - the elements and composition of the individual recipes themselves, and the way they are set up within their files so that the craft system can find them. Errors on either end can render a recipe non-functional, but with diligence and attention to detail recipes become quick and easy to add and modify.<br/><br/>
+
+		Throughout this process, you will need to view and edit 2da files. These files are essentially plain text spreadsheets, and can be worked with in a number of applications, including the game's toolset. As a general rule, you should use whatever application you are most comfortable with, but I prefer Microsoft Excel, because it allows me to automate a number of the more labor intensive processes involved. As always, remember that 2da files must be saved in the format of tab or space delimited text files for the game to read them properly.<br/><br/>
+
+		<h2>Understanding Recipes</h2>
+
+		Recipes are stored in the crafting.2da file, which is essentially just a spread sheet full of data about each recipe. Each recipe follows the same form, and so by understanding what the information in each column of the spreadsheet represents, and how it is used, you will gain a mastery of the implementation of individual recipes. There are larger concerns as well, but these are addressed in the next section, since an understanding of recipes is useful in understanding the way they are assembled into the system.<br/><br/>
+
+		<b>Index</b> - As with every 2da file, the first unlabeled column contains index numbers. It is important that these numbers start at zero, and count upwards on each following line. These numbers are used as reference points when the code retrieves information from 2da files, and so errors here can break whole sections of your file.<br/><br/>
+
+		<b>Category</b> - The category can be thought of as the key for any given recipe. When the system goes looking for a recipe, the first thing it does is limit it's search to recipes with a particular category. For magical recipes, the number in the Category column is the spell number (from spells.2da) for the spell the recipe requires. For mundane crafting the category is the tag name of the mold used. For alchemy and distilling, the category is simply a fixed value.<br/><br/>
+
+		<b>Reagents</b> - The reagents list is a comma separated list of the ingredients required for the recipe. This list must be sorted in alphabetical order, keeping in mind that all capital letters come before any lower case letter (for example, "Z" comes before "a"). The values in the list are the tag names of the ingredients, and are case sensitive. Only items of the "Other" category may be used, which basically means no equipment or other useful items may be ingredients under normal circumstances.<br/><br/>
+
+		<b>Tags</b> - The tags column is used only for enchanting recipes, and indicates the item types which the recipe may enchant. In TCC, this column may contain a comma separated list of tag values taken from the list of item types described in this document. Some item type codes cover multiple types for your convenience. For recipes which create items rather than enchanting them, this column should be filled out with a zero, or the string "****", indicating that it does not contain useful information.<br/><br/>
+
+		<b>Effects</b> - Like tags, the effects column is used only for enchanting. This comma delimited list holds the information which defines the property to be added by the recipe. The first value is the property type's line number from itempropdef.2da, and the remaining values are the parameters for the property's ItemProperty* function. Unused parameter slots are filled with zeroes. Note that several ItemProperty functions are currently not working, and so recipes which add them will not successfully add the property to the item.<br/><br/>
+
+		<b>Output</b> - The output column is used for all recipes which create a new item rather than enchanting an existing one. It contains the tags of the items to be produced by the recipe. In most cases, this column contains a single tag, but you can produce multiple products by entering a comma delimited list of their tags in this space. For recipes which don't produce an item this column should be filled with the "****" string to indicate this.<br/><br/>
+
+		<b>Skill</b> - The skill column is used for mundane crafting recipes to indicate which crafting skill is to be used for the recipe. The column is not used for magical crating, alchemy, distilling, or salvaging, since the scripts for those features assume a particular skill is required for every recipe they handle. The value zero is used to fill this column for non-mundane crafting recipes. A value of 26 indicates Craft Weapons, 25 indicates Craft Armor, and 22 indicates Craft Traps.<br/><br/>
+
+		<b>Level</b> - The level column is used differently for different types of recipes. For magical crafting, this column contains the required caster level for the recipe in question. For mundane crafting it denotes the required skill total, including all stat and equipment bonuses and any other skill modifiers which may be in place. Every recipe uses it in whichever format is applicable.<br/><br/>
+
+		<b>Exclude</b> - The exclude column is used for the TCC recipe exclusion feature. You may enter one or more property types (as listed in itempropdef.2da) as a comma delimited list here, with which this recipe is incompatible. If this recipe is used on an item bearing a property of the designated type, the crafting attempt will fail. Note that excludes don't prevent excluded properties from being added after crafting, so you should make sure that exclusivity is indicated on every recipe that needs it.<br/><br/>
+
+		<b>XP</b> - The XP column allows you to set an experience point cost to be charged to any character using the recipe in question. This cost will be assessed against the main character belonging to the crafting player, since henchmen synchronize their experience to their leader. This cost will be ignored if the UseRecipeXPCosts toggle in tcc_config.2da is set to off, which it is by default. Any integer value is valid in this field. Using a negative value will grant the player experience for completing the recipe.<br/><br/>
+
+		<b>GP</b> - The GP column allows you to set a gold peace cost to be charged to any character using the recipe in question. This cost will be assessed against the main character belonging to the crafting player, in the case of multiple player characters grouped together with henchmen. This cost will be ignored if the UseRecipeGPCosts toggle in tcc_config.2da is set to off, which it is by default. Any positive integer value is valid in this field. Negative values are not supported.<br/><br/>
+
+		<b>Disable</b> - The Disable column allows you to quickly and easily disable recipes you don't want to be used without going to the trouble of re-indexing or reorganizing the recipe list. If a player attempts to use a recipe which has been disabled, TCC will return the same error message as if the recipe did not exist, allowing you to seamlessly hide recipes from the players. A value of one in this field disables the recipe, while a value of zero allows it. Other values are not recommended.<br/><br/>
+
+		<h2>File Setup And Indexing</h2>
+
+		There are two files which you will have to edit when working with recipes. The first is crafting.2da, which contains the recipes themselves, and the second is crafting_index.2da, which is as its name implies an index of the recipes in crafting.2da which is used to improve the efficiency of searching for the necessary information in that massive file.  There are a couple of important guidelines that need to be followed in terms of the way these files are set up:<br/><br/>
+
+		<b>Grouping Recipes</b> - Within crafting.2da, it is critical that all properties which use have the same category value be grouped together. Because of the way the file is searched, only the first cluster with a particular category will be searched, and any other recipes will never be considered for matching. This will often require you to insert lines into the middle of crafting.2da, so you must be careful to maintain the proper index values throughout.<br/><br/>
+
+		<b>Crafting Index</b> - As its name implies, crafting_index.2da serves as an index of crafting.2da, and is used to narrow the search for matching recipes. Each entry in the index file corresponds to a category value listed in crafting.2da, giving the proper category key, followed by the first line in crafting.2da where that category appears. The start rows listed in the crafting index must be updated whenever the first line with a particular category in crafting.2da changes. The categories in the index must also be listed in the same order as the categories appear in crafting.2da.<br/><br/>
+
+		<br/><br/>
+
+		<h1><a name="dev03">Different Item Types</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		Under the original crafting system, there was script support for enchanting only two categories of items: shields and armor, and weapons. The Complete Craftsmen has restructured this system, expanding it and breaking it down so that recipes can be created for enchanting very specific types of equipment, or broad groups of types.<br/><br/>
+
+		<h2>Item Categories</h2>
+
+		<b>Melee Weapons</b> - Any and all melee weapons.<br/>
+		Constant Name: TCC_TYPE_MELEE<br/>
+		Constant (Tags) Value: 2<br/><br/>
+
+		<b>Bows</b> - Short and long bows.<br/>
+		Constant Name: TCC_TYPE_BOW<br/>
+		Constant (Tags) Value: 3<br/><br/>
+
+		<b>Crossbows</b> - Heavy and light crossbows.<br/>
+		Constant Name: TCC_TYPE_XBOW<br/>
+		Constant (Tags) Value: 4<br/><br/>
+
+		<b>Slings</b> - Any sling type weapon.<br/>
+		Constant Name: TCC_TYPE_SLING<br/>
+		Constant (Tags) Value: 5<br/><br/>
+
+		<b>Ammunition</b> - Arrows, bolts, and sling bullets.<br/>
+		Constant Name: TCC_TYPE_AMMO<br/>
+		Constant (Tags) Value: 6<br/><br/>
+
+		<b>Armor</b> - Armor of any type.<br/>
+		Constant Name: TCC_TYPE_ARMOR<br/>
+		Constant (Tags) Value: 7<br/><br/>
+
+		<b>Shields</b> - Light, heavy, and tower shields.<br/>
+		Constant Name: TCC_TYPE_SHIELD<br/>
+		Constant (Tags) Value: 8<br/><br/>
+
+		<b>Head</b> - Helms, crowns, hats, and other headwear.<br/>
+		Constant Name: TCC_TYPE_HEAD<br/>
+		Constant (Tags) Value: 9<br/><br/>
+
+		<b>Back</b> - Cloaks, capes, mantles and similar items.<br/>
+		Constant Name: TCC_TYPE_BACK<br/>
+		Constant (Tags) Value: 10<br/><br/>
+
+		<b>Wrists</b> - Gloves, bracers, bracelets and similar items.<br/>
+		Constant Name: TCC_TYPE_WRISTS<br/>
+		Constant (Tags) Value: 11<br/><br/>
+
+		<b>Neck</b> - Necklaces, talismans, amulets, and so forth.<br/>
+		Constant Name: TCC_TYPE_NECK<br/>
+		Constant (Tags) Value: 12<br/><br/>
+
+		<b>Waist</b> - Belts, girdles, sashes, and similar items.<br/>
+		Constant Name: TCC_TYPE_WAIST<br/>
+		Constant (Tags) Value: 13<br/><br/>
+
+		<b>Rings</b> - Rings and whatever else fits the bill.<br/>
+		Constant Name: TCC_TYPE_RING<br/>
+		Constant (Tags) Value: 14<br/><br/>
+
+		<b>Feet</b> - Boots, shoes, sandals, slippers and whatever else.<br/>
+		Constant Name: TCC_TYPE_FEET<br/>
+		Constant (Tags) Value: 15<br/><br/>
+
+		<b>Instruments</b> - Any type of  musical instrument.<br/>
+		Constant Name: TCC_TYPE_INSTRUMENT<br/>
+		Constant (Tags) Value: 16<br/><br/>
+
+		<b>Containers</b> - Bags, boxes, sacks, packs, and such like.<br/>
+		Constant Name: TCC_TYPE_CONTAINER<br/>
+		Constant (Tags) Value: 17<br/><br/>
+
+		<h2>Special Categories</h2>
+
+		<b>None</b> - This type will never be matched to any item and constitutes an error result. Use this as the tag designation for recipes which produce an entire new item instead of applying an effect to an item that already exists.<br/>
+		Constant Name: TCC_TYPE_NONE<br/>
+		Constant (Tags) Value: 0<br/><br/>
+
+		<b>Any Equipment</b> - This is a special item type created to simplify designating a large group of tags. Use this type value for designating a recipe which can be used on any of the above types of items.<br/>
+		Constant Name: TCC_TYPE_ANY<br/>
+		Constant (Tags) Value: -1<br/><br/>
+
+		<b>Wondrous Objects</b> - This is a special item type create to simplify designating a large group of tags. Use this type value for designating a recipe which can be used on any wondrous object.<br/>
+		Constant Name: TCC_TYPE_NONE<br/>
+		Constant (Tags) Value: -2<br/><br/>
+
+		<br/><br/>
+
+		<h1><a name="dev04">Customizing Salvage Tables</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		The Complete Craftsman's salvage system uses a salvage table to dictate what products can be produced for any given property found on an item being salvaged. The file is named tcc_salvage.2da, and like any 2da file is essentially a spreadsheet full of values in rows and columns. You can edit the salvage sheet to produce your own version, allowing the salvage system to produce different products for any given property.<br/><br/>
+
+		Each row in the salvage sheet is associated with a particular property. The rows and properties are arranged in the same order as those in itempropdef.2da, for ease of reference and general consistency. Properties from that file which do not produce a salvage result are simply left out of the salvage sheet. The information in each column is explained below.<br/><br/>
+
+		<h2>Salvage Table Columns</h2>
+
+		<b>Property</b> - The property entry contains the property number which is to be associated with that row's data. This is the same as the line number of  the property in question in itempropdef.2da, and the first number in a recipe's property string for that property. This number is used to look up the proper line in the table for each property being salvaged.<br/><br/>
+
+		<b>Range</b> - The salvage system attempts to determine how powerful a property is amongst properties of it's same type. The range value is used in this process as a point of scale, telling the system what the highest value to be returned will be for a particular property. In general, you should not change this value, as it is derived from the number of constant values associated with a particular property.<br/><br/>
+
+		Depending on where a particular property falls in relation to it's associated range value, the property will be graded on a scale of one to four, with one being the weakest quarter of the range, and four being the strongest. This salvage grade is used to determine which set of skill DC, essence, and gem will be used for salvaging it. Some properties cannot be graded, and so they have a range of one and use only the first set of skill, essence, and gem columns.<br/><br/>
+
+		<b>Skill</b> - The skill column indicates the skill check DC for the property in question at the designated grade. The lowest DC amongst the properties on an item is the minimum skill required to salvage the item at all. The highest DC amongst the properties on an item is the DC used in the Spellcraft check to see how much can be salvaged.<br/><br/>
+
+		<b>Essence</b> - The essence column indicates the guaranteed product of salvaging the property. It can hold the tag for an item to be produced, or a comma delimited list of tags if multiple results are to be generated. These items will be produced by any salvage attempt with sufficient minimum skill, regardless of weather the Spellcraft check succeeds or fails. The items in this list need not necessarily be essences.<br/><br/>
+
+		<b>Gem</b> - The gem column indicates the additional product of salvaging the property when a successful Spellcraft check is made for the attempt. As with the essence column, it can contain a single item tag, or a comma delimited list of tags. These items will be produced only if a successful skill check is made against the most difficult salvage DC on the item in question. The items need not necessarily be gems.<br/><br/>
+
+		<br/><br/>
+
+		<h1><a name="dev05">Customizing Property Slot Costs</a></h1><a href="#top" class="back">Back To Top</a><br/>
+
+		A new feature in The Complete Craftsman allows you to set up properties to count as occupying multiple slots on an item. This system limits them only in so far as enchanting is concerned - they are simply counted double whenever you try to add a new property, and the existing ones are tallied. The property itself is the same as it has always been, but it is now associated with a slot value.<br/><br/>
+
+		The property slot cost is stored in a new column in itempropdef.2da. Stored in the "slots" column on the far right of that sheet, you need only end the desired slot cost. Note that a slot cost of zero is acceptable, and will cause properties of that type to not be counted towards the total. Starting in version 1.12, these properties are properly handled as free, and so can be enchanted onto full items.
+
+		</div>
+		
+		<br/><br/><br/><br/>
+		
+	</body>
+</html>
+	
