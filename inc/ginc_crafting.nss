@@ -34,7 +34,7 @@ struct range2da
 // ________________
 // ** CONSTANTS ***
 // ----------------
-const int TELLCRAFT = TRUE; // toggle for debug.
+const int TELLCRAFT = FALSE; // toggle for debug.
 
 
 // ___________________
