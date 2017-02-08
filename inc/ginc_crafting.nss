@@ -757,31 +757,25 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 														GetItemPropertyCostTableValue(ipEnchant),
 														GetItemPropertySubType(ipEnchant));
 
-				if (!bUpgradeOrFree)
+				if (!bUpgradeOrFree && (bUpgradeOrFree = isIpUpgrade(oItem, ipEnchant)))
 				{
-					bUpgradeOrFree = isIpUpgrade(oItem, ipEnchant);
-					if (bUpgradeOrFree)
-						TellCraft(". . . . . " + IntToString(iPropType) + " is an Upgrade");
+					TellCraft(". . . . . " + IntToString(iPropType) + " is an Upgrade");
 				}
 
-				// Check for set setup recipe
-				if (!bUpgradeOrFree)
+				// Check for Set setup recipe
+				if (!bUpgradeOrFree
+					&& iRecipeMatch >= iFirstSetRecipe && iRecipeMatch <= iLastSetRecipe)
 				{
-					if(iRecipeMatch >= iFirstSetRecipe && iRecipeMatch <= iLastSetRecipe)
-					{
-						TellCraft(". . . . . is Set setup recipe : free");
-						bUpgradeOrFree = TRUE;
-					}
+					TellCraft(". . . . . is Set setup recipe : free");
+					bUpgradeOrFree = TRUE;
 				}
+
 				// If Set properties are free and this recipe will add one
-				if (!bUpgradeOrFree)
+				if (!bUpgradeOrFree
+					&& bTCC_SetPropsAreFree && GetLatentPartReady(oItem))
 				{
-					if (bTCC_SetPropsAreFree
-						&& GetLatentPartReady(oItem))
-					{
-						TellCraft(". . . . . is SetProp : free");
-						bUpgradeOrFree = TRUE;
-					}
+					TellCraft(". . . . . is SetProp : free");
+					bUpgradeOrFree = TRUE;
 				}
 
 				if (!bUpgradeOrFree)
@@ -789,8 +783,8 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					if (bTCC_UseVariableSlotCosts
 						&& !StringToInt(Get2DAString(ITEM_PROP_DEF_2DA, COL_ITEM_PROP_DEF_SLOTS, iPropType)))
 					{
-						bUpgradeOrFree = TRUE; // could not find a cost for the property
 						TellCraft(". . . . . " + IntToString(iPropType) + " had no available cost");
+						bUpgradeOrFree = TRUE; // could not find a cost for the property
 					}
 					else
 					{
@@ -2180,7 +2174,7 @@ int GetQtyLatentIps(object oItem)
 }
 
 // Gets the part-value of the Property Set that's about to be added to oItem.
-// - 0 if the flag is not set (indicating a non-Set ip)
+// - 0 indicates a non-SetProperty (ie. regular) ip
 int GetLatentPartReady(object oItem)
 {
 	return GetLocalInt(oItem, TCC_VAR_SET_FLAG);

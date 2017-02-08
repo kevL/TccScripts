@@ -57,7 +57,9 @@ void main()
 		SendMessageToPC(oPC, "WARNING : Variables on items in stacks might not be consistent.");
 
 
-	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + GetTag(oTarget) + " )"); // TODO: Add template-resref.
+	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + GetTag(oTarget) + " )");
+
+	SendMessageToPC(oPC, ". resref : " + GetResRef(oTarget));
 
 	SendMessageToPC(oPC, ". plot : " + IntToString(GetPlotFlag(oTarget)));
 
@@ -72,18 +74,22 @@ void main()
 	int bMasterwork = GetLocalInt(oTarget, TCC_VAR_MASTERWORK); //|| GetStringRight(GetTag(oTarget), 5) == TCC_MASTERWORK_SUF - not comprehensive, See tag.
 	SendMessageToPC(oPC, ". TCC Masterwork : " + IntToString(bMasterwork));
 
-//	int iGroup = GetLocalInt(oTarget, TCC_VAR_SET_GROUP);
-//	if (iGroup)
-//	{
-//		SendMessageToPC(oPC, ". TCC Property Set");
-//		SendMessageToPC(oPC, ". . group : "		+ IntToString(iGroup));
-//		SendMessageToPC(oPC, ". . parts : "		+ IntToString(GetLocalInt(oTarget, TCC_VAR_SET_PARTS)));
-//		SendMessageToPC(oPC, ". . prepared : "	+ IntToString(GetLocalInt(oTarget, TCC_VAR_SET_PREP_ITEM)));
-//		SendMessageToPC(oPC, ". . latentip : "	+ GetLocalString(oTarget, TCC_VAR_SET_IP));
-//		// NOTE: Set Label does not get stored.
-//	}
-//	else
-//		SendMessageToPC(oPC, ". TCC Property Set : no Set");
+
+	SendMessageToPC(oPC, ". TCC disallow as part of any Set : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_NOT)));
+	SendMessageToPC(oPC, ". TCC Set Label : " + GetLocalString(oTarget, TCC_VAR_SET_LABEL));
+
+	string sGroup, sEncodedIp;
+	int iGroup = 2;
+	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
+	while (iGroup <= iSetProps)
+	{
+		sGroup = TCC_VAR_SET_GROUP_PRE + IntToString(iGroup++);
+		sEncodedIp = GetLocalString(oTarget, sGroup);
+		if (sEncodedIp != "")
+			SendMessageToPC(oPC, ". . TCC Set Group : " + sGroup + " ip : " + sEncodedIp);
+	}
+
+	SendMessageToPC(oPC, ". TCC Set part ready : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_FLAG)));
 
 
 	int iPropType, iDurType, iSubType, iCostTable, iCostValue, iPar1Table, iPar1Value;
