@@ -8,6 +8,8 @@ Mod Version: 1.167
 
 
 INTRO
+EXOTIC MATERIALS
+SET CREATION
 RECIPES
  Item Creation
   X0000 Universal Ingredients
@@ -56,7 +58,7 @@ RECIPES
 	 On-Hit
          VFX
   X1007 Weapons (Ranged)
-  x1008 Wondrous Items
+  X1008 Wondrous Items
 
 
 
@@ -74,6 +76,83 @@ Do note that some spells will not work on the Magician Workbench, and can only
 be used on MotB's Enchanter's Satchel. Make sure to try the spell on both before
 reporting that a spell doesn't work.
 
+--------------------------------------------------------------------------------
+				EXOTIC MATERIALS
+--------------------------------------------------------------------------------
+
+TCC allows you to create a number of items using exotic materials not possible
+in vanilla NWN 2. There are some important complexities to bear in mind:
+* Exotic Materials grant their items a pre-determined set of bonuses, that use
+  enchantment slots. These bonus properties can be upgraded but not removed.
+* When you craft weapons and armor (torso armor and shields) using exotic materials
+  those items get special bonus slots that offset the pre-determined properties.
+* When you craft other items using exotic materials, there are no special
+  bonus slots like with armor and weapons. As such, you can craft items that
+  have no free enchantment slots available.
+
+In order to rationalize the effects of exotic materials, there are a number of 
+UTIs in the Template Overrides folder that replace item blueprints in the
+vanilla game. Using these is strictly optional.
+  
+The properties of each exotic item is listed below:
+Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
+Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
+Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
+Salamander Hide - AC +1 (Armor), Base Weight Reduction 60%, Fire Resistance 10
+Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
+				  +1 attack (Slings)
+Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10,
+				   +1 attack (Slings)
+Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
+
+Duskwood - Base Weight Reduction 40%, +3 attack (Crossbows), Mighty +6 (Bows)
+Ironwood - Base Weight Reduction 40%, Arcane Spell Failure -5% (Shields),
+		   +1 attack (Melee weapons)
+Shederran - +2 attack (Crossbows), Mighty +4 (Bows)
+Zalantar - Arcane Spell Failure -10% for Heavy & Tower Shields, -5% for Light Shields.
+		   AC +2 for all Shields, +1 Magical damage for Melee weapons
+		   +1 attack (Crossbows), +2 Mighty (Bows)
+
+Alchemical Silver & Cold Iron - No specific bonuses
+Adamantine - Damage Resistance 1/- (Light Armor & Light Shields),
+			 2/- (Medium Armor & Heavy Shields),
+			 3/- (Heavy Armor & Tower Shields)
+			 Magical damage 2 (Gauntlets, Melee weapons, Ammunition)
+Darksteel - Acid Resistance 5 (Armor, Shields, Helms),
+			Electrical damage 1 (Gloves, Melee weapons, Ammunition)
+Mithral - Base Weight Reduction 60% (Weapons)
+Mithral Armor & Shields are a special case: Instead of Item Properties they
+are categorized as completely different armor types. In general, they gain:
+Weight reduced by ~50%
+Max Dex Bonus increased by 2
+Armor Check Penalties lessened by 3
+Arcane Spell Failure decreased by 10%
+Heavy Armor becomes Medium, Medium Armor becomes Light
+
+--------------------------------------------------------------------------------
+				SET CREATION
+--------------------------------------------------------------------------------
+
+Details about set creation can be found here:
+http://completecraftsman.com/
+The Set Creation Recipes are:
+
+To Forge the Item Set (Level 10 required):
+* Place all items for the set into the Workbench
+* Add a Rogue Stone and a Radiant Power Essence
+* Cast Legend Lore
+
+To grant an item a set property
+* Place one item from the set into the Workbench
+* Add a Gem and Essence from the table below
+* Cast Legend Lore
+* Enchant the item with the property you want in the normal way.
+
+Set Property Table. If you want the property to activate when the PC equips:
+Two Set Items: Beljuril & Radiant Power Essence (Level 19 required)
+Three Set Items: King's Tear & Radiant Power Essence (Level 16 required)
+Four Set Items: Diamond & Glowing Power Essence (Level 13 required)
+Five Set Items: Fire Opal & Weak Power Essence (Level 10 required)
 
 --------------------------------------------------------------------------------
 			 RECIPES - ITEM CREATION
@@ -520,15 +599,17 @@ Craft Armor
   Salamander Hide: +12
   Winter Wolf Hide: +12
   Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for armor - see tcc_config)
-  Ironwood: +15 (not found in NWN2, but exists in the game files)
+  Ironwood: +15 (not found in NWN2 campaigns, but exists in the game files)
   Umber Hulk Hide: +17
   Wyvern Hide: +20
   Red Dragon Hide: +23 (grants a bonus enchantment slot due to being the 'best' hide for armor - see tcc_config)
 
-Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
-Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
+NOTE: Crafting with exotic materials has side-effects. Please read the note on Exotic Materials at the top of this document.
+
+Fire Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded Armor, Robe
+Ice Mephit Hide: Belt, Boots, Cloak, Gloves, Hat, Padded Armor, Robe
 Red Dragon Hide: Breastplate, Gloves, Half Plate, Hat, Scalemail, Shields
-Salamander Hide: Belt, Boots, Cloak, Gloves, Hat, Hide, Leather, Studded Leather
+Salamander Hide: Belt, Boots, Cloak, Gloves, Hat, Hide Armor, Leather Armor, Studded Leather Armor
 Umber Hulk Hide: Half Plate, Shields
 Winter Wolf Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
 Wyvern Hide: Breastplate, Full Plate, Half Plate, Scalemail, Shields
@@ -570,6 +651,8 @@ Craft Weapon
   Winter Wolf Hide: +12
   Adamantine: +15 (grants a bonus enchantment slot due to being the 'best' metal for weapons - see tcc_config)
   Ironwood: +15 (not found in NWN2, but exists in the game files)
+
+NOTE: Crafting with exotic materials has side-effects. Please read the note on Exotic Materials at the top of this document.
 
 Salamander Hide: Sling
 Winter Wolf Hide: Sling

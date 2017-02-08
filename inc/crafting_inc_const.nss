@@ -120,7 +120,10 @@ const int TCC_TYPE_BACK 			= 80;
 //const int MAT_UHH = 10; // "_uhh_"
 //const int MAT_WYH = 11; // "_wyh_"
 //const int MAT_ZAL = 12; // "_zal_"
-// TODO: Document WinterWolf pelt and Fire/Ice Mephit hides.
+//const int MAT_WWF = 13; // "_wwf_"
+//const int MAT_FMP = 14; // "_fmp_"
+//const int MAT_IMP = 15; // "_imp_"
+
 
 
 // -----------------------------------------------------------------------------
