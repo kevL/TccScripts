@@ -57,7 +57,7 @@ void main()
 		SendMessageToPC(oPC, "WARNING : Variables on items in stacks might not be consistent.");
 
 
-	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + GetTag(oTarget) + " )");
+	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + GetTag(oTarget) + " )"); // TODO: Add template-resref.
 
 	SendMessageToPC(oPC, ". plot : " + IntToString(GetPlotFlag(oTarget)));
 
