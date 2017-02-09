@@ -34,7 +34,7 @@ struct range2da
 // ________________
 // ** CONSTANTS ***
 // ----------------
-const int TELLCRAFT = FALSE; // toggle for debug.
+const int TELLCRAFT = TRUE; // toggle for debug.
 
 
 // ___________________
@@ -480,12 +480,10 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				SetTriggerSpell(oCrafter);
 				return;
 			}
-			else
-			{
-				// '_iRecipeMatch_ii' was set by ParseRecipeMatches()
-				// assign it to 'iRecipeMatch' below
-				TellCraft(". . . . only 1 trigger for Imbue_Item : proceed w/ recipe");
-			}
+
+			// '_iRecipeMatch_ii' was set by ParseRecipeMatches()
+			// assign it to 'iRecipeMatch' below
+			TellCraft(". . . . only 1 trigger for Imbue_Item : proceed w/ recipe");
 		}
 		else
 		{
@@ -1012,10 +1010,10 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 				TellCraft(". . iBonus= " + IntToString(iBonus));
 				TellCraft(". . iDiscount= " + IntToString(iDiscount));
-				TellCraft(". . Total Props Allowed= " + IntToString(iTCC_BasePropSlots+iBonus+iDiscount));
+				TellCraft(". . Total Props Allowed= " + IntToString(iTCC_BasePropSlots + iBonus + iDiscount));
 				TellCraft(". . iPropCount= " + IntToString(iPropCount));
 				TellCraft(". . iRecipeTotalCost= " + IntToString(iRecipeTotalCost));
-				TellCraft(". . Total Props After Enchantment= " + IntToString(iPropCount+iRecipeTotalCost));
+				TellCraft(". . Total Props After Enchantment= " + IntToString(iPropCount + iRecipeTotalCost));
 
 				// Perform final slot check
 				if (iPropCount - iDiscount + iRecipeTotalCost > iTCC_BasePropSlots + iBonus)
@@ -1033,10 +1031,39 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 		DestroyItemsInInventory(TRUE);
 
+		// test Property Set creation:
+		string sPropSetStatus = Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, iRecipeMatch);
+		if (sPropSetStatus == "0") // set up a new group of Set-items
+		{
+			ConstructSet(oCrafter);
+			NotifyPlayer(oCrafter, -1, "The item Set is forged !");
+			return;
+		}
+
+		// test Property Set preparation:
+		int iParts = StringToInt(sPropSetStatus);
+		if (iParts != 0) // prepare Set-item to receive latent properties
+		{
+			SetLatentPartReady(oItem, iParts);
+			NotifyPlayer(oCrafter, -1, "Item prepared ! The next property added will require "
+						+ IntToString(iParts) + " Set parts to activate !");
+			return;
+		}
+
+		// test add Property Set latent-ip:
+		if (GetLatentPartReady(oItem)) // add encoded-ip as a latent Property Set ip
+		{
+			AddLatentIp(oItem, GetLatentPartReady(oItem), sEncodedIpFirst, oCrafter);
+			NotifyPlayer(oCrafter, -1, "Effect added as Set property !");
+			return;
+		}
+
 		// if this is a Property Set recipe handle it
 		// TODO: Restrict allowed slots to body & hands -- no ammo allowed as
 		// part of a Property Set, per GetQtyLatentPartsEquipped().
-		if ((iRecipeMatch >= iFirstSetRecipe && iRecipeMatch <= iLastSetRecipe)
+		// NOTE: Property Set recipes currently bypass GP & XP deductions.
+
+/*		if ((iRecipeMatch >= iFirstSetRecipe && iRecipeMatch <= iLastSetRecipe)
 			|| GetLatentPartReady(oItem))
 		{
 			TellCraft(". . is PropSet !");
@@ -1071,36 +1098,35 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			AddLatentIp(oItem, GetLatentPartReady(oItem), sEncodedIpFirst, oCrafter);
 			NotifyPlayer(oCrafter, -1, "Effect added as Set property !");
 			return;
-		}
-		else // not part of a Set
+		} */
+
+		// not part of a Set
+		rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER); // reset the Tokenizer
+		while (HasMoreTokens(rEncodedIps))
 		{
-			rEncodedIps = GetStringTokenizer(sEncodedIps, ENCODED_IP_LIST_DELIMITER); // reset the Tokenizer
-			while (HasMoreTokens(rEncodedIps))
-			{
-				rEncodedIps = AdvanceToNextToken(rEncodedIps);
-				sEncodedIp = GetNextToken(rEncodedIps);
+			rEncodedIps = AdvanceToNextToken(rEncodedIps);
+			sEncodedIp = GetNextToken(rEncodedIps);
 
-				iPropType = GetIntParam(sEncodedIp, 0);
-				ipEnchant = IPGetItemPropertyByID(iPropType,
-												  GetIntParam(sEncodedIp, 1),
-												  GetIntParam(sEncodedIp, 2),
-												  GetIntParam(sEncodedIp, 3),
-												  GetIntParam(sEncodedIp, 4));
+			iPropType = GetIntParam(sEncodedIp, 0);
+			ipEnchant = IPGetItemPropertyByID(iPropType,
+											  GetIntParam(sEncodedIp, 1),
+											  GetIntParam(sEncodedIp, 2),
+											  GetIntParam(sEncodedIp, 3),
+											  GetIntParam(sEncodedIp, 4));
 
-				TellCraft(". . add IP " + IntToString(iPropType) + " !");
-				int iPolicy;
-				if (isIgnoredIp(ipEnchant))
-					iPolicy = X2_IP_ADDPROP_POLICY_IGNORE_EXISTING;
-				else
-					iPolicy = X2_IP_ADDPROP_POLICY_REPLACE_EXISTING;
+			TellCraft(". . add IP " + IntToString(iPropType) + " !");
+			int iPolicy;
+			if (isIgnoredIp(ipEnchant))
+				iPolicy = X2_IP_ADDPROP_POLICY_IGNORE_EXISTING;
+			else
+				iPolicy = X2_IP_ADDPROP_POLICY_REPLACE_EXISTING;
 
-				IPSafeAddItemProperty(oItem,
-									  ipEnchant,
-									  0.f,
-									  iPolicy,
-									  FALSE,
-									  isIgnoredSubtype(ipEnchant));
-			}
+			IPSafeAddItemProperty(oItem,
+								  ipEnchant,
+								  0.f,
+								  iPolicy,
+								  FALSE,
+								  isIgnoredSubtype(ipEnchant));
 		}
 	}
 
