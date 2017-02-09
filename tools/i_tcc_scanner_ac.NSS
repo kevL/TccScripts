@@ -80,7 +80,7 @@ void main()
 
 	string sGroup, sEncodedIp;
 	int iGroup = 2;
-	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
+//	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
 	while (iGroup <= iSetProps)
 	{
 		sGroup = TCC_VAR_SET_GROUP_PRE + IntToString(iGroup++);
