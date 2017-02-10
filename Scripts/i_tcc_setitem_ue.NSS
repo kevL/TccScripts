@@ -13,7 +13,7 @@ void main()
 	object oItem = GetPCItemLastUnequipped();
 
 	string sSetLabel = GetLocalString(oItem, TCC_VAR_SET_LABEL);
-	int iParts = GetQtyLatentPartsEquipped(sSetLabel, oPC) - 1; // -1 'cause the item is still equipped
+	int iPartsEquipped = GetQtyLatentPartsEquipped(sSetLabel, oPC) - 1; // -1 'cause the item is still equipped
 
-	ActivateLatentGroup(sSetLabel, iParts, oPC);
+	ToggleSetGroup(sSetLabel, iPartsEquipped, oPC);
 }

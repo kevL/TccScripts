@@ -78,16 +78,16 @@ void main()
 	SendMessageToPC(oPC, ". TCC disallow as part of any Set : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_NOT)));
 	SendMessageToPC(oPC, ". TCC Set Label : " + GetLocalString(oTarget, TCC_VAR_SET_LABEL));
 
-	string sGroup, sEncodedIp;
-	int iGroup = 2;
+//	string sGroup, sEncodedIp;
+//	int iGroup = 2;
 //	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
-	while (iGroup <= iSetProps)
-	{
-		sGroup = TCC_VAR_SET_GROUP_PRE + IntToString(iGroup++);
-		sEncodedIp = GetLocalString(oTarget, sGroup);
-		if (sEncodedIp != "")
-			SendMessageToPC(oPC, ". . TCC Set Group : " + sGroup + " ip : " + sEncodedIp);
-	}
+//	while (iGroup <= iSetProps)
+//	{
+//		sGroup = TCC_VAR_SET_GROUP_PRE + IntToString(iGroup++);
+//		sEncodedIp = GetLocalString(oTarget, sGroup);
+//		if (sEncodedIp != "")
+//			SendMessageToPC(oPC, ". . TCC Set Group : " + sGroup + " ip : " + sEncodedIp);
+//	}
 
 	SendMessageToPC(oPC, ". TCC Set part ready : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_FLAG)));
 
