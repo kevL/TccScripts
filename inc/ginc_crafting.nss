@@ -1186,6 +1186,9 @@ int GetRecipeMatch(string sReagentTags, string sTrigger, object oItem = OBJECT_I
 	string sTypes;
 
 	struct range2da rRange = GetTriggerRange(sTrigger); // Crafting.2da rows
+	//TellCraft(". rRange.first= " + IntToString(rRange.first));
+	//TellCraft(". rRange.last= " + IntToString(rRange.last));
+
 	while (rRange.first != -1)
 	{
 		rRange.first = SearchForReagents(sReagentTags, rRange.first, rRange.last);
@@ -1194,8 +1197,13 @@ int GetRecipeMatch(string sReagentTags, string sTrigger, object oItem = OBJECT_I
 			case -1: return -1;
 			default:
 				sTypes = Get2DAString(CRAFTING_2DA, COL_CRAFTING_TAGS, rRange.first);
+				//TellCraft(". . sTypes= " + sTypes);
+
 				if (isTypeMatch(oItem, sTypes))
+				{
+					//TellCraft(". . TYPES MATCH ret= " + IntToString(rRange.first));
 					return rRange.first;
+				}
 		}
 		if (++rRange.first > rRange.last)
 			break;
@@ -1382,25 +1390,38 @@ int ParseRecipeMatches(string sRecipeMatches, object oCrafter)
 //   Crafting.2da also.
 struct range2da GetTriggerRange(string sTrigger)
 {
+	//TellCraft("GetTriggerRange sTrigger= " + sTrigger);
 	struct range2da rRange;
 
 	int i = 0;
 	if (sTrigger != SPELL_IMBUE_ITEM_ST) // note: ImbueItem acts as a trigger for any magical recipe.
 	{
 		i = GetTriggerStart(sTrigger);
+		//TellCraft(". start per Index 2da= " + IntToString(i));
 		switch (i)
 		{
 			case -1:
+				//TellCraft(". . not found");
 				rRange.first = -1;
 				return rRange;
 
 			default:
 				rRange.first = StringToInt(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_START_ROW, i));
+				//TellCraft(". . rRange.first= " + IntToString(rRange.first));
 
-				if (GetNum2DARows(CRAFTING_INDEX_2DA) - 1 == rRange.first)
+				int iTotal = GetNum2DARows(CRAFTING_INDEX_2DA);
+				//TellCraft(". . total rows Index 2da= " + IntToString(iTotal));
+
+				if (iTotal - 1 == i)
+				{
 					rRange.last = GetNum2DARows(CRAFTING_2DA) - 1;
+					//TellCraft(". . . first row is last row Index 2da rRange.last= " + IntToString(rRange.last));
+				}
 				else
+				{
 					rRange.last = StringToInt(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_START_ROW, i + 1)) - 1;
+					//TellCraft(". . . first row is NOT last row Index 2da rRange.last= " + IntToString(rRange.last));
+				}
 		}
 	}
 	else // Imbue_Item will search all spellId's ->
@@ -1408,6 +1429,10 @@ struct range2da GetTriggerRange(string sTrigger)
 		while (isSpellId(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_CATEGORY, i)))
 			++i;
 
+		// NOTE: This does not account for the fact that spell-triggers could go
+		// to the end of the .2da's; ie, if there are not molds/alchemy/distillation
+		// triggers at the end of the .2da's then 'rRange.last' needs to be handled
+		// as above^
 		rRange.last = StringToInt(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_START_ROW, i)) - 1;
 		rRange.first = 0;
 	}
@@ -2465,27 +2490,32 @@ void DoAlchemyCrafting(object oCrafter)
 // - distillation has no index
 void DoDistillation(object oItem, object oCrafter)
 {
+	//TellCraft("\nDoDistillation : " + GetName(oItem) + " ( " + GetTag(oItem) + " )");
+
 	int iRecipeMatch = GetRecipeMatch(GetTag(oItem), DISTILLATION_RECIPE_TRIGGER);
-	//TellCraft("iRecipeMatch = " + IntToString(iRecipeMatch));
+	//TellCraft(". iRecipeMatch = " + IntToString(iRecipeMatch));
+
 	if (iRecipeMatch != -1)
 	{
-		//TellCraft("Distilling ...");
+		//TellCraft(". . distilling");
 		int iSkillRankReq = StringToInt(Get2DAString(CRAFTING_2DA, COL_CRAFTING_SKILL_LEVEL, iRecipeMatch));
 		string sResrefList = Get2DAString(CRAFTING_2DA, COL_CRAFTING_OUTPUT, iRecipeMatch);
 		ExecuteDistillation(iSkillRankReq, oItem, oCrafter, sResrefList);
 	}
 	else if (!StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 30))) // TCC_Toggle_AllowItemSalvaging
 	{
-		//TellCraft("Nothing to see here ...");
+		//TellCraft(". . salvaging not allowed");
 		NotifyPlayer(oCrafter, ERROR_ITEM_NOT_DISTILLABLE);
 	}
 	else // ITEM SALVAGE SECTION ->
 	{
+		//TellCraft(". . salvaging TCC-type : " + IntToString(GetTccType(oItem)));
 		switch (GetTccType(oItem))
 		{
 			default:
 				if (!GetPlotFlag(oItem))
 				{
+					//TellCraft(". . . not plot ExecuteSalvage");
 					ExecuteSalvage(oItem, oCrafter);
 					break;
 				}
@@ -2493,7 +2523,7 @@ void DoDistillation(object oItem, object oCrafter)
 
 			case TCC_TYPE_NONE:
 			case TCC_TYPE_OTHER:
-				NotifyPlayer(oCrafter, -1, "You cannot salvage any materials !");
+				NotifyPlayer(oCrafter, -1, "You cannot distill or salvage any materials !");
 		}
 	}
 }
