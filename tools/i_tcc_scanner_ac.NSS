@@ -78,23 +78,25 @@ void main()
 	SendMessageToPC(oPC, ". TCC disallow as part of any Set : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_NOT)));
 	SendMessageToPC(oPC, ". TCC Set Label : " + GetLocalString(oTarget, TCC_VAR_SET_LABEL));
 
-//	string sGroup, sEncodedIp;
-//	int iGroup = 2;
-//	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
-//	while (iGroup <= iSetProps)
-//	{
-//		sGroup = TCC_VAR_SET_GROUP_PRE + IntToString(iGroup++);
-//		sEncodedIp = GetLocalString(oTarget, sGroup);
-//		if (sEncodedIp != "")
-//			SendMessageToPC(oPC, ". . TCC Set Group : " + sGroup + " ip : " + sEncodedIp);
-//	}
+	int iLength = GetStringLength(TCC_VAR_SET_GROUP_PRE);
+	string sVar;
+	int i;
+	int iVars = GetVariableCount(oTarget);
+	for (i = 0; i != iVars; ++i)
+	{
+		sVar = GetVariableName(oTarget, i);
+		if (GetStringLeft(sVar, iLength) == TCC_VAR_SET_GROUP_PRE)
+			SendMessageToPC(oPC, ". . TCC Set Group : "
+					+ GetStringRight(sVar, GetStringLength(sVar) - iLength)
+					+ " ip : " + GetLocalString(oTarget, sVar));
+	}
 
 	SendMessageToPC(oPC, ". TCC Set part ready : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_FLAG)));
 
 
 	int iPropType, iDurType, iSubType, iCostTable, iCostValue, iPar1Table, iPar1Value;
 
-	int i = 0;
+	i = 0;
 	itemproperty ipScan = GetFirstItemProperty(oTarget);
 	while (GetIsItemPropertyValid(ipScan))
 	{

@@ -2217,12 +2217,24 @@ int GetQtyLatentPartsEquipped(string sSetLabel, object oPC)
 }
 
 // Activates or deactivates Property Set ip's of the appropriate group.
+// kL_NOTE: I don't trust the code to work well with any items that are parts of
+// more than one Property Set. Mainly because it relies on the variable
+// TCC_VAR_SET_LABEL, which is specified in 'gui_tcc_constructset' and can be
+// the same as other Sets or blank at the discretion of the player. It also
+// seems possible for a SetLabel to be overwritten by another if/when an item is
+// subsumed into another Set after it's been assigned to its first Set (unless
+// the tcc_config value is turned on/off, in which case the part may be rejected
+// and all reagents would be lost regardless). In sum: plenty of holes for
+// things to go borky.
 void ToggleSetGroup(string sSetLabel, int iPartsEquipped, object oPC)
 {
-//	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
-/*	int iParts;
+	TellCraft("\nTOGGLE SET GROUP");
+
+	int iLength = GetStringLength(TCC_VAR_SET_GROUP_PRE);
+	int iGroup;
 
 	object oItem;
+	string sVar;
 
 	int iSlot;
 	for (iSlot = INVENTORY_SLOT_HEAD; iSlot != INVENTORY_SLOT_ARROWS; ++iSlot)
@@ -2233,27 +2245,45 @@ void ToggleSetGroup(string sSetLabel, int iPartsEquipped, object oPC)
 		{
 			DeactivateLatentIps(oItem);
 
-			iParts = 2;
-			while (iParts <= iSetProps)
+			int i;
+			int iVars = GetVariableCount(oItem);
+			for (i = 0; i != iVars; ++i)
 			{
-				if (iParts <= iPartsEquipped && GetLocalString(oItem, TCC_VAR_SET_GROUP_PRE + IntToString(iParts)) != "")
-					ActivateLatentIp(oItem, iParts, oPC);
-
-				++iParts;
+				sVar = GetVariableName(oItem, i);
+				if (GetStringLeft(sVar, iLength) == TCC_VAR_SET_GROUP_PRE)
+				{
+					iGroup = StringToInt(GetStringRight(sVar, GetStringLength(sVar) - iLength));
+					if (iGroup <= iPartsEquipped) //&& GetLocalString(oItem, TCC_VAR_SET_GROUP_PRE + IntToString(iParts)) != "")
+						ActivateLatentIp(oItem, iGroup, oPC);
+				}
 			}
+
+//	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
+//	int iParts;
+
+//			iParts = 2;
+//			while (iParts <= iSetProps)
+//			{
+//				if (iParts <= iPartsEquipped && GetLocalString(oItem, TCC_VAR_SET_GROUP_PRE + IntToString(iParts)) != "")
+//					ActivateLatentIp(oItem, iParts, oPC);
+
+//				++iParts;
+//			}
 		}
-	} */
+	}
 }
 
 // Clears all active Property Set ip's from oItem.
 void DeactivateLatentIps(object oItem)
 {
+	TellCraft("DeactivateLatentIps : " + GetName(oItem) + " ( " + GetTag(oItem) + " )");
+
 	itemproperty ipProp, ipScan;
 
 	int iPropType, iPropSubType, iPropCostTable, iPropCostTableValue;
 	int iScanType, iScanSubType, iScanCostTable, iScanCostTableValue;
 
-	string sSetProp;
+	string sVar, sLatentIp;
 
 	int iLength = GetStringLength(TCC_VAR_SET_GROUP_PRE);
 
@@ -2261,21 +2291,31 @@ void DeactivateLatentIps(object oItem)
 	int iVars = GetVariableCount(oItem);
 	for (i = 0; i != iVars; ++i)
 	{
-		sSetProp = GetVariableName(oItem, i);
-		if (GetStringLeft(sSetProp, iLength) == TCC_VAR_SET_GROUP_PRE)
+		sVar = GetVariableName(oItem, i);
+		if (GetStringLeft(sVar, iLength) == TCC_VAR_SET_GROUP_PRE)
 		{
-			if (sSetProp != "") // if a SetProp exists de-activate it
+			TellCraft(". check var : " + sVar);
+
+			sLatentIp = GetLocalString(oItem, sVar);
+			if (sLatentIp != "") // if a SetProp exists de-activate it
 			{
-				ipProp = IPGetItemPropertyByID(GetIntParam(sSetProp, 0), // TODO: Check if 'sSetProp' can really be used by GetIntParam().
-											   GetIntParam(sSetProp, 1),
-											   GetIntParam(sSetProp, 2),
-											   GetIntParam(sSetProp, 3),
-											   GetIntParam(sSetProp, 4));
+				TellCraft(". . check ip : " + sLatentIp);
+
+				ipProp = IPGetItemPropertyByID(GetIntParam(sLatentIp, 0), // TODO: Check if 'sLatentIp' can really be used by GetIntParam().
+											   GetIntParam(sLatentIp, 1),
+											   GetIntParam(sLatentIp, 2),
+											   GetIntParam(sLatentIp, 3),
+											   GetIntParam(sLatentIp, 4));
 
 				iPropType			= GetItemPropertyType(ipProp);
 				iPropSubType		= GetItemPropertySubType(ipProp);
 				iPropCostTable		= GetItemPropertyCostTable(ipProp);
 				iPropCostTableValue	= GetItemPropertyCostTableValue(ipProp);
+
+				TellCraft(". . . iPropType= "			+ IntToString(iPropType));
+				TellCraft(". . . iPropSubType= "		+ IntToString(iPropSubType));
+				TellCraft(". . . iPropCostTable= "		+ IntToString(iPropCostTable));
+				TellCraft(". . . iPropCostTableValue= "	+ IntToString(iPropCostTableValue));
 
 				ipScan = GetFirstItemProperty(oItem);
 				while (GetIsItemPropertyValid(ipScan))
@@ -2285,19 +2325,36 @@ void DeactivateLatentIps(object oItem)
 					iScanCostTable		= GetItemPropertyCostTable(ipScan);
 					iScanCostTableValue	= GetItemPropertyCostTableValue(ipScan);
 
+					TellCraft(". . . . iScanType= "				+ IntToString(iScanType));
+					TellCraft(". . . . iScanSubType= "			+ IntToString(iScanSubType));
+					TellCraft(". . . . iScanCostTable= "		+ IntToString(iScanCostTable));
+					TellCraft(". . . . iScanCostTableValue= "	+ IntToString(iScanCostTableValue));
+
 					if (isIgnoredSubtype(ipScan))
-						iPropSubType = iScanSubType;
+					{
+						TellCraft(". . . . . ignore subtype");
+						iScanSubType = iPropSubType;
+					}
+
+					TellCraft(". type match= "				+ IntToString(iScanType				== iPropType));
+					TellCraft(". subtype match= "			+ IntToString(iScanSubType			== iPropSubType));
+					TellCraft(". costtable match= "			+ IntToString(iScanCostTable		== iPropCostTable));
+					TellCraft(". costtablevalue match= "	+ IntToString(iScanCostTableValue	== iPropCostTableValue));
 
 					if (   iScanType			== iPropType
 						&& iScanSubType			== iPropSubType
 						&& iScanCostTable		== iPropCostTable
 						&& iScanCostTableValue	== iPropCostTableValue)
 					{
+						TellCraft(". . . clear ip");
 						RemoveItemProperty(oItem, ipScan);
 						ipScan = GetFirstItemProperty(oItem);
 					}
 					else
+					{
+						TellCraft(". . . no match");
 						ipScan = GetNextItemProperty(oItem);
+					}
 				}
 			}
 		}
@@ -2821,7 +2878,6 @@ void ConstructSet(object oCrafter)
 					sDefaultString,
 					sVariableString);
 }
-
 
 // -----------------------------------------------------------------------------
 // public functions for mortar & pestle and shaper's alembic
