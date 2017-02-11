@@ -84,10 +84,10 @@
 80	172	"cft_ess_earth2,cft_ess_power4,cft_gem_12"	2	"23,0,2,0,0"	****	1092	16	****	0	0	1
 81	172	"cft_ess_earth3,cft_ess_power4,cft_gem_14"	2	"23,0,3,0,0"	****	1092	18	****	0	0	1
 82	172	"cft_ess_earth4,cft_ess_power4,cft_gem_15"	2	"23,0,4,0,0"	****	1092	20	****	0	0	1
-83	172	"cft_ess_fire1,cft_ess_power4,cft_gem_10"	2	"23,5,1,0,0"	****	1092	14	****	0	0	1
-84	172	"cft_ess_fire2,cft_ess_power4,cft_gem_12"	2	"23,5,2,0,0"	****	1092	16	****	0	0	1
-85	172	"cft_ess_fire3,cft_ess_power4,cft_gem_14"	2	"23,5,3,0,0"	****	1092	18	****	0	0	1
-86	172	"cft_ess_fire4,cft_ess_power4,cft_gem_15"	2	"23,5,4,0,0"	****	1092	20	****	0	0	1
+83	172	"cft_ess_fire1,cft_ess_power4,cft_gem_10"	2	"23,5,1,0,0"	****	1092	14	****	0	0	0
+84	172	"cft_ess_fire2,cft_ess_power4,cft_gem_12"	2	"23,5,2,0,0"	****	1092	16	****	0	0	0
+85	172	"cft_ess_fire3,cft_ess_power4,cft_gem_14"	2	"23,5,3,0,0"	****	1092	18	****	0	0	0
+86	172	"cft_ess_fire4,cft_ess_power4,cft_gem_15"	2	"23,5,4,0,0"	****	1092	20	****	0	0	0
 87	172	"cft_ess_power4,cft_ess_water1,cft_gem_10"	2	"23,1,1,0,0"	****	1092	14	****	0	0	1
 88	172	"cft_ess_power4,cft_ess_water2,cft_gem_12"	2	"23,1,2,0,0"	****	1092	16	****	0	0	1
 89	172	"cft_ess_power4,cft_ess_water3,cft_gem_14"	2	"23,1,3,0,0"	****	1092	18	****	0	0	1
@@ -526,7 +526,7 @@
 522	126	"cft_ess_power4,cft_ess_water4,cft_gem_12,n2_crft_ingiron"	0	****	NW_IT_MNECK037	1093	5	****	0	0	0
 523	539	"cft_ess_earth1,cft_gem_11,n2_crft_plkwood"	0	****	n2_it_mmidmisc01	1093	5	****	0	0	0
 524	539	"NW_IT_GEM006,cft_ess_earth2"	1	"43,0,0,0,0"	****	1092	10	****	0	0	0
-525	539	"NW_IT_GEM009,cft_ess_fire3,cft_ess_power1"	1	"74,9,0,0,0"	****	1092	10	****	0	0	1
+525	539	"NW_IT_GEM009,cft_ess_fire3,cft_ess_power1"	1	"74,9,0,0,0"	****	1092	10	****	0	0	0
 526	539	"cft_ess_fire4,cft_gem_13"	-1	"12,2,0,0,0"	****	0	15	****	0	0	0
 527	539	"nx1_cft_ess_air02,nx1_cft_ess_fire02,nx1_cft_ess_power02"	1	"43,0,0,0,0"	****	1092	12	****	0	0	0
 528	38	"cft_ess_fire4,cft_ess_power4,cft_ess_water4,cft_gem_12,n2_crft_ingiron"	0	****	X0_IT_MNECK003	1093	18	****	0	0	0
@@ -846,7 +846,7 @@
 842	547	"cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_15"	2	"82,119,20,0,0"	****	1092	20	****	0	0	0
 843	547	"n2_crft_ingmithral,n2_crft_mold_tcc_bolt"	0	****	nw_wammbo003	1092	14	****	0	0	0
 844	861	"NW_IT_GEM006,cft_ess_earth2"	1	"43,0,0,0,0"	****	1092	10	****	0	0	0
-845	861	"NW_IT_GEM009,cft_ess_fire3,cft_ess_power1"	1	"74,9,0,0,0"	****	1092	10	****	0	0	1
+845	861	"NW_IT_GEM009,cft_ess_fire3,cft_ess_power1"	1	"74,9,0,0,0"	****	1092	10	****	0	0	0
 846	861	"n2_crft_ingmithral,n2_crft_mold_tcc_bullet"	0	****	nw_wammbu004	1092	12	****	0	0	0
 847	861	"nx1_cft_ess_air02,nx1_cft_ess_fire02,nx1_cft_ess_power02"	1	"43,0,0,0,0"	****	1092	12	****	0	0	0
 848	26	"nx1_cft_ess_power02,nx1_cft_ess_water03,nx1_cft_ess_water03"	1	"48,3,0,1,0"	****	1092	12	****	0	0	0

@@ -1366,6 +1366,26 @@ Armor of Spell Resistance (Greater): Spell Resistance 22
   Ingredients: Radiant Power Essence + Radiant Fire Essence + Beljuril
   Spell: Spell Resistance
 
+Damage Resistance (Magical): 5
+  Requires: Caster Level 14, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Faint Fire Essence + Star Sapphire
+  Spell: Stoneskin
+
+Damage Resistance (Magical): 10
+  Requires: Caster Level 16, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Weak Fire Essence + Blue Diamond
+  Spell: Stoneskin
+
+Damage Resistance (Magical): 15
+  Requires: Caster Level 18, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Glowing Fire Essence + Beljuril
+  Spell: Stoneskin
+
+Damage Resistance (Magical): 20
+  Requires: Caster Level 20, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Fire Essence + King's Tear
+  Spell: Stoneskin
+
 ------------------------------------------------------------------------------
 These Damage Resistance Recipes don't work due to a bug in NWN2's core code.
 We have disabled them in the crafting.2da
@@ -1388,26 +1408,6 @@ Damage Resistance (Bludgeoning): 15
 Damage Resistance (Bludgeoning): 20
   Requires: Caster Level 20, Craft Magic Arms and Armor feat
   Ingredients: Radiant Power Essence + Radiant Earth Essence + King's Tear
-  Spell: Stoneskin
-
-Damage Resistance (Magical): 5
-  Requires: Caster Level 14, Craft Magic Arms and Armor feat
-  Ingredients: Radiant Power Essence + Faint Fire Essence + Star Sapphire
-  Spell: Stoneskin
-
-Damage Resistance (Magical): 10
-  Requires: Caster Level 16, Craft Magic Arms and Armor feat
-  Ingredients: Radiant Power Essence + Weak Fire Essence + Blue Diamond
-  Spell: Stoneskin
-
-Damage Resistance (Magical): 15
-  Requires: Caster Level 18, Craft Magic Arms and Armor feat
-  Ingredients: Radiant Power Essence + Glowing Fire Essence + Beljuril
-  Spell: Stoneskin
-
-Damage Resistance (Magical): 20
-  Requires: Caster Level 20, Craft Magic Arms and Armor feat
-  Ingredients: Radiant Power Essence + Radiant Fire Essence + King's Tear
   Spell: Stoneskin
 
 Damage Resistance (Piercing): 5
@@ -3111,10 +3111,6 @@ Lucky: Adds +1 to all saves
   Ingredients: Faint Power Essence + Faint Earth Essence + Obsidian
   Spell: Resistance
 
-------------------------------------------------------------------------------
-The Massive Criticals property doesn't work due to a bug in NWN2's core code.
-We have disabled it in the crafting.2da
-------------------------------------------------------------------------------
 Massive Criticals: Adds 1d10 damage to criticals
   Requires: Caster Level 10, Craft Magic Arms and Armor feat
   Ingredients: Glowing Fire Essence + Faint Power Essence + Fire Opal
