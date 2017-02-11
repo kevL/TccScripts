@@ -13,7 +13,7 @@ void main()
 	object oItem = GetPCItemLastEquipped();
 
 	string sSetLabel = GetLocalString(oItem, TCC_VAR_SET_LABEL);
-	int iParts = GetQtyLatentPartsEquipped(sSetLabel, oPC);
+	int iPartsEquipped = GetQtyLatentPartsEquipped(sSetLabel, oPC);
 
-	ActivateLatentGroup(sSetLabel, iParts, oPC);
+	ToggleSetGroup(sSetLabel, iPartsEquipped, oPC);
 }
