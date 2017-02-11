@@ -9,7 +9,7 @@
 
 void main(string sSpell)
 {
-	SendMessageToPC(GetFirstPC(FALSE), "Run ( gui_trigger_spell_set ) " + GetName(OBJECT_SELF) + " " + GetTag(OBJECT_SELF));
+	//SendMessageToPC(GetFirstPC(FALSE), "Run ( gui_trigger_spell_set ) " + GetName(OBJECT_SELF) + " " + GetTag(OBJECT_SELF));
 	//SendMessageToPC(GetFirstPC(FALSE), ". sSpell= _" + sSpell + "_");
 
 	object oModule = GetModule();
@@ -29,7 +29,7 @@ void main(string sSpell)
 
 	if (sSpell != "" && isSpellId(sSpell))
 	{
-		SendMessageToPC(GetFirstPC(FALSE), ". spell= _" + sSpell + "_");
+		//SendMessageToPC(GetFirstPC(FALSE), ". spell= _" + sSpell + "_");
 
 		object oCrafter = GetControlledCharacter(OBJECT_SELF);
 

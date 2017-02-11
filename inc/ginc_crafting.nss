@@ -34,7 +34,7 @@ struct range2da
 // ________________
 // ** CONSTANTS ***
 // ----------------
-const int TELLCRAFT = TRUE; // toggle for debug.
+const int TELLCRAFT = FALSE; // toggle for debug.
 
 
 // ___________________
@@ -1036,8 +1036,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		// NOTE: Property Set recipes currently bypass GP & XP deductions.
 
 		// test Property Set creation:
-		string sPropSetStatus = Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, iRecipeMatch);
-		if (sPropSetStatus == "0") // set up a new group of Set-items
+		if (sEncodedIps == "0") // set up a new group of Set-items
 		{
 			ConstructSet(oCrafter);
 			NotifyPlayer(oCrafter, -1, "The Property Set is forged !");
@@ -1045,12 +1044,12 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		}
 
 		// test Property Set preparation:
-		int iParts = StringToInt(sPropSetStatus);
+		int iParts = StringToInt(sEncodedIps);
 		if (iParts != 0) // prepare Set-item to receive latent properties
 		{
 			SetLatentPartReady(oItem, iParts);
 			NotifyPlayer(oCrafter, -1, "The Set item is prepared ! The next property added"
-					+ " will require " + sPropSetStatus + " parts to activate !");
+					+ " will require " + sEncodedIps + " parts to activate !");
 			return;
 		}
 
@@ -1398,10 +1397,8 @@ struct range2da GetTriggerRange(string sTrigger)
 				rRange.first = StringToInt(Get2DAString(CRAFTING_INDEX_2DA, COL_CRAFTING_START_ROW, i));
 				//TellCraft(". . rRange.first= " + IntToString(rRange.first));
 
-				int iTotal = GetNum2DARows(CRAFTING_INDEX_2DA);
-				//TellCraft(". . total rows Index 2da= " + IntToString(iTotal));
-
-				if (iTotal - 1 == i)
+				//TellCraft(". . total rows Index 2da= " + IntToString(GetNum2DARows(CRAFTING_INDEX_2DA)));
+				if (GetNum2DARows(CRAFTING_INDEX_2DA) - 1 == i)
 				{
 					rRange.last = GetNum2DARows(CRAFTING_2DA) - 1;
 					//TellCraft(". . . first row is last row Index 2da rRange.last= " + IntToString(rRange.last));
@@ -2282,18 +2279,6 @@ void ToggleSetGroup(string sSetLabel, int iPartsEquipped, object oPC)
 						ActivateLatentIp(oItem, iGroup, oPC);
 				}
 			}
-
-//	int iSetProps = StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 2)) + 1; // TCC_Value_MaximumSetProperties
-//	int iParts;
-
-//			iParts = 2;
-//			while (iParts <= iSetProps)
-//			{
-//				if (iParts <= iPartsEquipped && GetLocalString(oItem, TCC_VAR_SET_GROUP_PRE + IntToString(iParts)) != "")
-//					ActivateLatentIp(oItem, iParts, oPC);
-
-//				++iParts;
-//			}
 		}
 	}
 }
@@ -2337,10 +2322,10 @@ void DeactivateLatentIps(object oItem)
 				iPropCostTable		= GetItemPropertyCostTable(ipProp);
 				iPropCostTableValue	= GetItemPropertyCostTableValue(ipProp);
 
-				TellCraft(". . . iPropType= "			+ IntToString(iPropType));
-				TellCraft(". . . iPropSubType= "		+ IntToString(iPropSubType));
-				TellCraft(". . . iPropCostTable= "		+ IntToString(iPropCostTable));
-				TellCraft(". . . iPropCostTableValue= "	+ IntToString(iPropCostTableValue));
+				//TellCraft(". . . iPropType= "				+ IntToString(iPropType));
+				//TellCraft(". . . iPropSubType= "			+ IntToString(iPropSubType));
+				//TellCraft(". . . iPropCostTable= "		+ IntToString(iPropCostTable));
+				//TellCraft(". . . iPropCostTableValue= "	+ IntToString(iPropCostTableValue));
 
 				ipScan = GetFirstItemProperty(oItem);
 				while (GetIsItemPropertyValid(ipScan))
@@ -2350,21 +2335,21 @@ void DeactivateLatentIps(object oItem)
 					iScanCostTable		= GetItemPropertyCostTable(ipScan);
 					iScanCostTableValue	= GetItemPropertyCostTableValue(ipScan);
 
-					TellCraft(". . . . iScanType= "				+ IntToString(iScanType));
-					TellCraft(". . . . iScanSubType= "			+ IntToString(iScanSubType));
-					TellCraft(". . . . iScanCostTable= "		+ IntToString(iScanCostTable));
-					TellCraft(". . . . iScanCostTableValue= "	+ IntToString(iScanCostTableValue));
+					//TellCraft(". . . . iScanType= "			+ IntToString(iScanType));
+					//TellCraft(". . . . iScanSubType= "		+ IntToString(iScanSubType));
+					//TellCraft(". . . . iScanCostTable= "		+ IntToString(iScanCostTable));
+					//TellCraft(". . . . iScanCostTableValue= "	+ IntToString(iScanCostTableValue));
 
 					if (isIgnoredSubtype(ipScan))
 					{
-						TellCraft(". . . . . ignore subtype");
+						//TellCraft(". . . . . ignore subtype");
 						iScanSubType = iPropSubType;
 					}
 
-					TellCraft(". type match= "				+ IntToString(iScanType				== iPropType));
-					TellCraft(". subtype match= "			+ IntToString(iScanSubType			== iPropSubType));
-					TellCraft(". costtable match= "			+ IntToString(iScanCostTable		== iPropCostTable));
-					TellCraft(". costtablevalue match= "	+ IntToString(iScanCostTableValue	== iPropCostTableValue));
+					//TellCraft(". type match= "			+ IntToString(iScanType				== iPropType));
+					//TellCraft(". subtype match= "			+ IntToString(iScanSubType			== iPropSubType));
+					//TellCraft(". costtable match= "		+ IntToString(iScanCostTable		== iPropCostTable));
+					//TellCraft(". costtablevalue match= "	+ IntToString(iScanCostTableValue	== iPropCostTableValue));
 
 					if (   iScanType			== iPropType
 						&& iScanSubType			== iPropSubType

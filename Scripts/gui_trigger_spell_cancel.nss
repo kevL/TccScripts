@@ -8,7 +8,7 @@
 
 void main()
 {
-	SendMessageToPC(GetFirstPC(FALSE), "Run ( gui_trigger_spell_cancel ) " + GetName(OBJECT_SELF) + " " + GetTag(OBJECT_SELF));
+	//SendMessageToPC(GetFirstPC(FALSE), "Run ( gui_trigger_spell_cancel ) " + GetName(OBJECT_SELF) + " " + GetTag(OBJECT_SELF));
 
 	// clean up.
 	DeleteLocalObject(GetModule(), II_VAR_CONTAINER);
