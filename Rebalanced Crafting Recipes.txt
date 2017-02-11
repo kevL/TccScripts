@@ -1366,6 +1366,10 @@ Armor of Spell Resistance (Greater): Spell Resistance 22
   Ingredients: Radiant Power Essence + Radiant Fire Essence + Beljuril
   Spell: Spell Resistance
 
+------------------------------------------------------------------------------
+These Damage Resistance Recipes don't work due to a bug in NWN2's core code.
+We have disabled them in the crafting.2da
+------------------------------------------------------------------------------
 Damage Resistance (Bludgeoning): 5
   Requires: Caster Level 14, Craft Magic Arms and Armor feat
   Ingredients: Radiant Power Essence + Faint Earth Essence + Star Sapphire
@@ -1445,6 +1449,10 @@ Damage Resistance (Slashing): 20
   Requires: Caster Level 20, Craft Magic Arms and Armor feat
   Ingredients: Radiant Power Essence + Radiant Air Essence + King's Tear
   Spell: Stoneskin
+
+------------------------------------------------------------------------------
+End of disabled recipes
+------------------------------------------------------------------------------
 
 Fortified Armor: Immunity to Critical Hits and Sneak Attack
   Requires: Caster Level 13, Craft Magic Arms and Armor feat
@@ -3103,6 +3111,10 @@ Lucky: Adds +1 to all saves
   Ingredients: Faint Power Essence + Faint Earth Essence + Obsidian
   Spell: Resistance
 
+------------------------------------------------------------------------------
+The Massive Criticals property doesn't work due to a bug in NWN2's core code.
+We have disabled it in the crafting.2da
+------------------------------------------------------------------------------
 Massive Criticals: Adds 1d10 damage to criticals
   Requires: Caster Level 10, Craft Magic Arms and Armor feat
   Ingredients: Glowing Fire Essence + Faint Power Essence + Fire Opal
