@@ -30,7 +30,7 @@ void main()
 			if (GetGlobalInt(CAMPAIGN_SWITCH_SMITH_HAMMER_RENAME_ITEM)
 				|| StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 32))) // TCC_Toggle_AllowEasyItemRenaming
 			{
-				SetEnchantedLabel(oPC, oTarget);
+				SetEnchantedItemName(oPC, oTarget);
 			}
 			else
 				NotifyPlayer(oPC, -1, "Renaming items is not allowed.");

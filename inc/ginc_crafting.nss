@@ -225,7 +225,7 @@ string GetSalvageGem(int iIndex, int iGrade);
 // functions that invoke GUI-inputboxes:
 
 // Invokes a GUI-inputbox for player to relabel oItem.
-void SetEnchantedLabel(object oCrafter, object oItem);
+void SetEnchantedItemName(object oCrafter, object oItem);
 
 // Opens a GUI inputbox for entering an Imbue_Item triggerspell.
 void SetTriggerSpell(object oCrafter);
@@ -1102,7 +1102,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 	ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectVisualEffect(VFX_FNF_CRAFT_MAGIC), OBJECT_SELF);
 	NotifyPlayer(oCrafter);
 
-	if (bEnchant) SetEnchantedLabel(oCrafter, oItem);
+	if (bEnchant) SetEnchantedItemName(oCrafter, oItem);
 }
 
 
@@ -2778,7 +2778,7 @@ string GetSalvageGem(int iIndex, int iGrade)
 // @param oCrafter	- a currently controlled character;
 //					  either the crafter or the user of a Smith Hammer on oItem
 // @param oItem		- the item to relabel
-void SetEnchantedLabel(object oCrafter, object oItem)
+void SetEnchantedItemName(object oCrafter, object oItem)
 {
 	SetLocalObject(GetModule(), VAR_ENCHANTED_ITEM_OBJECT, oItem);
 
