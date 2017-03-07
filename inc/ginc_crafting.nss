@@ -672,7 +672,10 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		string sEncodedIps = Get2DAString(CRAFTING_2DA, COL_CRAFTING_EFFECTS, iRecipeMatch);
 		TellCraft(". . sEncodedIps= " + sEncodedIps);
 
-		if (sEncodedIps == "0" || StringToInt(sEncodedIps) != 0)
+		int bPropSetRecipe = GetStringLength(sEncodedIps) == 1; // IMPORTANT: PropSet "EFFECTS" shall have only 1 digit.
+		TellCraft(". . bPropSetRecipe= " + IntToString(bPropSetRecipe));
+
+		if (bPropSetRecipe)
 		{
 			TellCraft(". . . is PropSetRecipe for creation or preparation");
 		}
@@ -1034,27 +1037,26 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 		// TODO: Restrict allowed slots to body & hands -- no ammo allowed as
 		// part of a Property Set, per GetQtyLatentPartsEquipped().
 		// NOTE: Property Set recipes currently bypass GP & XP deductions.
-
-		// test Property Set creation:
-		if (sEncodedIps == "0") // set up a new group of Set-items
+		if (bPropSetRecipe)
 		{
-			ConstructSet(oCrafter);
-			NotifyPlayer(oCrafter, -1, "The Property Set is forged !");
+			// check Property Set creation:
+			if (sEncodedIps == "0") // set up a new group of Set-items
+			{
+				ConstructSet(oCrafter);
+				NotifyPlayer(oCrafter, -1, "The Property Set is forged !");
+			}
+			else // is Property Set preparation
+			{
+				// prepare Set-item to receive latent properties
+				SetLatentPartReady(oItem, StringToInt(sEncodedIps));
+				NotifyPlayer(oCrafter, -1, "The Set item is prepared ! The next property added"
+						+ " will require " + sEncodedIps + " parts to activate !");
+			}
 			return;
 		}
 
-		// test Property Set preparation:
-		int iParts = StringToInt(sEncodedIps);
-		if (iParts != 0) // prepare Set-item to receive latent properties
-		{
-			SetLatentPartReady(oItem, iParts);
-			NotifyPlayer(oCrafter, -1, "The Set item is prepared ! The next property added"
-					+ " will require " + sEncodedIps + " parts to activate !");
-			return;
-		}
-
-		// test add Property Set latent-ip:
-		iParts = GetLatentPartReady(oItem);
+		// check add Property Set latent-ip
+		int iParts = GetLatentPartReady(oItem);
 		if (iParts) // add encoded-ip as a latent Property Set ip
 		{
 			AddLatentIp(oItem, iParts, sEncodedIpFirst, oCrafter);
