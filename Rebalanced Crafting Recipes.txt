@@ -2960,22 +2960,22 @@ Base Weapon Enchantment +5
 Acid Weapon: +2 Acid Damage
   Requires: Caster Level 5, Craft Magic Arms and Armor feat
   Ingredients: Faint Earth Essence + Emerald
-  Spell: Acid Splash
+  Spell: Melf's Acid Arrow
 
 Acid Weapon: +1d6 Acid Damage
   Requires: Caster Level 10, Craft Magic Arms and Armor feat
   Ingredients: Weak Earth Essence + Emerald
-  Spell: Acid Splash
+  Spell: Melf's Acid Arrow
 
 Acid Weapon: +1d10 Acid Damage
   Requires: Caster Level 15, Craft Magic Arms and Armor feat
   Ingredients: Glowing Earth Essence + Emerald
-  Spell: Acid Splash
+  Spell: Melf's Acid Arrow
 
 Acid Weapon: +2d6 Acid Damage
   Requires: Caster Level 20, Craft Magic Arms and Armor feat
   Ingredients: Radiant Earth Essence + Emerald
-  Spell: Acid Splash
+  Spell: Melf's Acid Arrow
 
 Flaming Weapon: +2 Fire Damage
   Requires: Caster Level 5, Craft Magic Arms and Armor feat
