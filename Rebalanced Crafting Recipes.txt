@@ -615,8 +615,8 @@ Winter Wolf Hide: Belt, Boots, Cloak, Gloves, Hat, Padded, Robe
 Wyvern Hide: Breastplate, Full Plate, Half Plate, Scalemail, Shields
 
 Adamantine: Gloves, Hat, Metal Armor, Shields
-Alchemical Silver: Gloves, Hat
-Cold Iron: Gloves, Hat
+Alchemical Silver: Gloves
+Cold Iron: Gloves
 Darksteel: Gloves, Hat, Metal Armor, Shields
 Mithral: Gloves, Hat, Metal Armor, Shields
 

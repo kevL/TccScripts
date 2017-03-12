@@ -1634,7 +1634,7 @@
 1630	n2_crft_mold_tcc_arrow	"X2_IT_POISON015,n2_crft_ingiron,n2_crft_mold_tcc_arrow"	0	****	nw_wammar007	26	7	****	0	0	0
 1631	n2_crft_mold_tcc_arrow	"X2_IT_POISON013,X2_IT_POISON015,n2_crft_ingiron,n2_crft_mold_tcc_arrow"	0	****	nw_wammar008	26	7	****	0	0	0
 1632	n2_crft_mold_tcc_arrow	"n2_crft_ingadamant,n2_crft_mold_tcc_arrow"	0	****	tcc_arrow_ada_001	26	17	****	0	0	0
-1633	n2_crft_mold_tcc_arrow	"N2_IT_ALCH_4,N2_IT_THUN_4,n2_crft_ingadamant,n2_crft_mold_tcc_arrow"	0	****	nx1_arrow001	26	22	****	0	0	0
+1633	n2_crft_mold_tcc_arrow	"n2_crft_ingadamant,n2_crft_mold_tcc_arrow,n2_it_alch_4,n2_it_thun_4"	0	****	nx1_arrow001	26	22	****	0	0	0
 1634	n2_crft_mold_tcc_arrow	"n2_crft_ingcldiron,n2_crft_mold_tcc_arrow"	0	****	tcc_arrow_cld_001	26	7	****	0	0	0
 1635	n2_crft_mold_tcc_arrow	"X1_IT_MSMLMISC01,n2_crft_ingcldiron,n2_crft_mold_tcc_arrow"	0	****	nw_wammar005	26	12	****	0	0	0
 1636	n2_crft_mold_tcc_arrow	"n2_crft_ingdrksteel,n2_crft_mold_tcc_arrow"	0	****	tcc_arrow_drk_001	26	12	****	0	0	0
@@ -1704,8 +1704,8 @@
 1700	n2_crft_mold_tcc_hat	"n2_crft_hidedragon,n2_crft_mold_tcc_hat"	0	****	tcc_helm_rdh_001	25	13	****	0	0	0
 1701	n2_crft_mold_tcc_hat	"n2_crft_hidesalam,n2_crft_mold_tcc_hat"	0	****	tcc_hat_sal_001	25	13	****	0	0	0
 1702	n2_crft_mold_tcc_hat	"n2_crft_ingadamant,n2_crft_mold_tcc_hat"	0	****	x2_it_adahelm	25	13	****	0	0	0
-1703	n2_crft_mold_tcc_hat	"n2_crft_ingcldiron,n2_crft_mold_tcc_hat"	0	****	tcc_helm_drk_001	25	13	****	0	0	0
-1704	n2_crft_mold_tcc_hat	"n2_crft_ingdrksteel,n2_crft_mold_tcc_hat"	0	****	tcc_helm_001	25	13	****	0	0	0
+1703	n2_crft_mold_tcc_hat	"n2_crft_ingiron,n2_crft_mold_tcc_hat"	0	****	tcc_helm_001	25	13	****	0	0	0
+1704	n2_crft_mold_tcc_hat	"n2_crft_ingdrksteel,n2_crft_mold_tcc_hat"	0	****	tcc_helm_drk_001	25	13	****	0	0	0
 1705	n2_crft_mold_tcc_hat	"n2_crft_ingmithral,n2_crft_mold_tcc_hat"	0	****	tcc_helm_mth_001	25	13	****	0	0	0
 1706	n2_crft_mold_tcc_gloves	"N2_CRFT_DIST024,N2_CRFT_DIST024,n2_crft_mold_tcc_gloves"	0	****	tcc_gloves_fmp_001	25	6	****	0	0	0
 1707	n2_crft_mold_tcc_gloves	"N2_CRFT_DIST025,N2_CRFT_DIST025,n2_crft_mold_tcc_gloves"	0	****	tcc_gloves_imp_001	25	6	****	0	0	0
