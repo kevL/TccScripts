@@ -830,7 +830,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 
 						// Grant a bonus slot if the item is Masterwork
 						if (GetLocalInt(oItem, TCC_VAR_MASTERWORK)
-							|| GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
+							|| GetStringLowerCase(GetStringRight(GetTag(oItem), 5)) == TCC_MASTER_TAG)
 						{
 							iBonus += StringToInt(Get2DAString(TCC_CONFIG_2da, TCC_COL_VALUE, 5)); // TCC_Value_GrantMasterworkBonusSlots
 							TellCraft(". . . enchant on Masterwork item - iBonus= " + IntToString(iBonus));
@@ -1959,7 +1959,7 @@ int GetMaterialCode(object oItem)
 		int i;
 		for (i = 0; i != iLength; ++i)
 		{
-			sMaterial = GetSubString(sTag, i, 5);
+			sMaterial = GetStringLowerCase(GetSubString(sTag, i, 5));
 			//TellCraft(". . test= " + sMaterial);
 			if (sMaterial == "_ada_") return  1; // MAT_ADA
 			if (sMaterial == "_cld_") return  2; // MAT_CLD

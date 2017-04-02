@@ -35,6 +35,10 @@ string par1value(int iPar1Value, int iPar1Table, int iPropType);
 
 // Gets the base-material as a string.
 string material(int iBaseMaterial);
+// note: Mimics GetMaterialCode() in 'ginc_crafting'
+int GetMaterial(string sTag);
+// Gets a description for the specified material.
+string GetMaterialDescription(int iMaterial);
 
 
 // ___________
@@ -57,7 +61,8 @@ void main()
 		SendMessageToPC(oPC, "WARNING : Variables on items in stacks might not be consistent.");
 
 
-	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + GetTag(oTarget) + " )");
+	string sTag = GetTag(oTarget);
+	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + sTag + " )");
 
 	SendMessageToPC(oPC, ". resref : " + GetResRef(oTarget));
 
@@ -68,12 +73,22 @@ void main()
 
 	int iBaseMaterial = GetItemBaseMaterialType(oTarget);
 	SendMessageToPC(oPC, ". Base Material : " + IntToString(iBaseMaterial) + material(iBaseMaterial));
-	int iMaterial = GetLocalInt(oTarget, TCC_VAR_MATERIAL); //GetMaterialType(oTarget) - not comprehensive, See tag.
-	SendMessageToPC(oPC, ". TCC Material : " + IntToString(iMaterial));
 
-	int bMasterwork = GetLocalInt(oTarget, TCC_VAR_MASTERWORK); //|| GetStringRight(GetTag(oTarget), 5) == TCC_MASTERWORK_SUF - not comprehensive, See tag.
-	SendMessageToPC(oPC, ". TCC Masterwork : " + IntToString(bMasterwork));
+	int iMaterial = GetLocalInt(oTarget, TCC_VAR_MATERIAL);
+	SendMessageToPC(oPC, ". TCC Material Int : " + IntToString(iMaterial) + GetMaterialDescription(iMaterial));
 
+	SendMessageToPC(oPC, ". TCC Material String : " + IntToString(GetMaterial(sTag)) + GetMaterialDescription(iMaterial));
+
+	int bMasterwork = GetLocalInt(oTarget, TCC_VAR_MASTERWORK);
+	SendMessageToPC(oPC, ". TCC Masterwork Int : " + IntToString(bMasterwork));
+
+	string sMasterwork = GetStringRight(sTag, 5);
+	if (GetStringLowerCase(sMasterwork) != TCC_MASTER_TAG)
+		sMasterwork = "";
+
+	SendMessageToPC(oPC, ". TCC Masterwork String : " + sMasterwork);
+
+	SendMessageToPC(oPC, ". Armor Rule Stat : " + IntToString(GetArmorRulesType(oTarget)));
 
 	SendMessageToPC(oPC, ". TCC disallow as part of any Set : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_NOT)));
 	SendMessageToPC(oPC, ". TCC Set Label : " + GetLocalString(oTarget, TCC_VAR_SET_LABEL));
@@ -208,4 +223,64 @@ string material(int iBaseMaterial)
 {
 	string sRet = GetStringByStrRef(StringToInt(Get2DAString("iprp_materials", "NAME", iBaseMaterial)));
 	return " <c=cornflowerblue>( " + sRet + " )</c>";
+}
+
+// note: Mimics GetMaterialCode() in 'ginc_crafting'
+int GetMaterial(string sTag)
+{
+	string sMaterial;
+	int iLength = GetStringLength(sTag);
+	if (iLength > 4)
+	{
+		iLength -= 4;
+		int i;
+		for (i = 0; i != iLength; ++i)
+		{
+			sMaterial = GetStringLowerCase(GetSubString(sTag, i, 5));
+
+			if (sMaterial == "_ada_") return  1; // MAT_ADA
+			if (sMaterial == "_cld_") return  2; // MAT_CLD
+			if (sMaterial == "_drk_") return  3; // MAT_DRK
+			if (sMaterial == "_dsk_") return  4; // MAT_DSK
+			if (sMaterial == "_mth_") return  5; // MAT_MTH
+			if (sMaterial == "_rdh_") return  6; // MAT_RDH
+			if (sMaterial == "_shd_") return  7; // MAT_SHD
+			if (sMaterial == "_slh_") return  8; // MAT_SLH
+			if (sMaterial == "_slv_") return  9; // MAT_SLV
+			if (sMaterial == "_uhh_") return 10; // MAT_UHH
+			if (sMaterial == "_wyh_") return 11; // MAT_WYH
+			if (sMaterial == "_zal_") return 12; // MAT_ZAL
+			if (sMaterial == "_wwf_") return 13; // MAT_WWF
+			if (sMaterial == "_fmp_") return 14; // MAT_FMP
+			if (sMaterial == "_imp_") return 15; // MAT_IMP
+		}
+	}
+	return 0; // MAT_NUL - nothing was found, assume no particular material
+}
+
+// Gets a description for the specified material.
+string GetMaterialDescription(int iMaterial)
+{
+	string sDesc = " <c=cornflowerblue>( ";
+	switch (iMaterial)
+	{
+		case  0: sDesc += "none";				break;
+		case  1: sDesc += "adamantine";			break;
+		case  2: sDesc += "cold iron";			break;
+		case  3: sDesc += "dark steel";			break;
+		case  4: sDesc += "duskwood";			break;
+		case  5: sDesc += "mithral";			break;
+		case  6: sDesc += "red dragon hide";	break;
+		case  7: sDesc += "shederran";			break;
+		case  8: sDesc += "salamander hide";	break;
+		case  9: sDesc += "alchemical silver";	break;
+		case 10: sDesc += "umberhulk hide";		break;
+		case 11: sDesc += "wyvern hide";		break;
+		case 12: sDesc += "zalantar";			break;
+		case 13: sDesc += "winterwolf pelt";	break;
+		case 14: sDesc += "fire imp pelt";		break;
+		case 15: sDesc += "ice imp pelt";		break;
+		default: sDesc += "error : invalid TCC material type";
+	}
+	return sDesc += " )</c>";
 }

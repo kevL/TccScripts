@@ -82,7 +82,7 @@ void ConvertToSetPart(object oItem, string sSetLabel, object oContainer, object 
 
 	// btw ... should those have been done already in DoMagicCrafting(). -> yes, check it/ TODO.
 
-	if (GetStringRight(GetTag(oItem), 5) == TCC_MASTER_TAG)
+	if (GetStringLowerCase(GetStringRight(GetTag(oItem), 5)) == TCC_MASTER_TAG)
 		SetLocalInt(oItem, TCC_VAR_MASTERWORK, TRUE);
 
 	int iMaterial = GetMaterialCode(oItem);
