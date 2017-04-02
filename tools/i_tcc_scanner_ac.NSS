@@ -35,10 +35,17 @@ string par1value(int iPar1Value, int iPar1Table, int iPropType);
 
 // Gets the base-material as a string.
 string material(int iBaseMaterial);
-// note: Mimics GetMaterialCode() in 'ginc_crafting'
+
+// Gets the TCC material type from a specified tag.
 int GetMaterial(string sTag);
 // Gets a description for the specified material.
 string GetMaterialDescription(int iMaterial);
+// Gets a description for the specified baseitem type.
+string GetBaseTypeDescription(int iBaseType);
+// Gets a description for the specified tcc-item type.
+string GetTccTypeDescription(int iTccType);
+// Gets a description for the specified armorrule stat.
+string GetArmorRuleStatDescription(int iStat);
 
 
 // ___________
@@ -51,48 +58,55 @@ void main()
 	object oPC = GetItemActivator();
 	object oTarget = GetItemActivatedTarget();
 
+	// early out
 	if (GetObjectType(oTarget) != OBJECT_TYPE_ITEM)
 	{
-		SendMessageToPC(oPC, "ERROR : Only items can be targeted !");
+		SendMessageToPC(oPC, "<c=firebrick>ERROR : Only items can be targeted !</c>");
 		return;
 	}
 
-	if (GetItemStackSize(oTarget) != 1)
-		SendMessageToPC(oPC, "WARNING : Variables on items in stacks might not be consistent.");
+	string sTag;
 
-
-	string sTag = GetTag(oTarget);
+	// general info
+	sTag = GetTag(oTarget);
 	SendMessageToPC(oPC, "\nTCC Scan : <c=cornflowerblue>" + GetName(oTarget) + "</c> ( " + sTag + " )");
 
-	SendMessageToPC(oPC, ". resref : " + GetResRef(oTarget));
+	if (GetItemStackSize(oTarget) != 1)
+		SendMessageToPC(oPC, "<c=coral>WARNING : Variables on items in stacks might not be consistent.</c>");
 
+	SendMessageToPC(oPC, ". resref : " + GetResRef(oTarget));
 	SendMessageToPC(oPC, ". plot : " + IntToString(GetPlotFlag(oTarget)));
 
-	SendMessageToPC(oPC, ". Base Type : " + IntToString(GetBaseItemType(oTarget)));
-	SendMessageToPC(oPC, ". TCC Type : "  + IntToString(GetTccType(oTarget)));
+	int iVal;
 
-	int iBaseMaterial = GetItemBaseMaterialType(oTarget);
-	SendMessageToPC(oPC, ". Base Material : " + IntToString(iBaseMaterial) + material(iBaseMaterial));
+	// item type
+	iVal = GetBaseItemType(oTarget);
+	SendMessageToPC(oPC, ". Base Type : " + IntToString(iVal) + GetBaseTypeDescription(iVal));
+	iVal = GetTccType(oTarget);
+	SendMessageToPC(oPC, ". TCC Type : "  + IntToString(iVal) + GetTccTypeDescription(iVal));
 
-	int iMaterial = GetLocalInt(oTarget, TCC_VAR_MATERIAL);
-	SendMessageToPC(oPC, ". TCC Material Int : " + IntToString(iMaterial) + GetMaterialDescription(iMaterial));
+	// armor rule
+	iVal = GetArmorRulesType(oTarget);
+	SendMessageToPC(oPC, ". Armor Rule Stat : " + IntToString(iVal) + GetArmorRuleStatDescription(iVal));
 
-	SendMessageToPC(oPC, ". TCC Material String : " + IntToString(GetMaterial(sTag)) + GetMaterialDescription(iMaterial));
+	// material
+	iVal = GetItemBaseMaterialType(oTarget);
+	SendMessageToPC(oPC, ". Base Material : " + IntToString(iVal) + material(iVal));
+	iVal = GetLocalInt(oTarget, TCC_VAR_MATERIAL);
+	SendMessageToPC(oPC, ". TCC Material Int : " + IntToString(iVal) + GetMaterialDescription(iVal));
+	iVal = GetMaterial(sTag);
+	SendMessageToPC(oPC, ". TCC Material String : " + IntToString(iVal) + GetMaterialDescription(iVal));
 
-	int bMasterwork = GetLocalInt(oTarget, TCC_VAR_MASTERWORK);
-	SendMessageToPC(oPC, ". TCC Masterwork Int : " + IntToString(bMasterwork));
+	// masterwork
+	SendMessageToPC(oPC, ". TCC Masterwork Int : " + IntToString(GetLocalInt(oTarget, TCC_VAR_MASTERWORK)));
+	sTag = GetStringRight(sTag, 5);
+	if (GetStringLowerCase(sTag) != TCC_MASTER_TAG)
+		sTag = "";
+	SendMessageToPC(oPC, ". TCC Masterwork String : " + sTag);
 
-	string sMasterwork = GetStringRight(sTag, 5);
-	if (GetStringLowerCase(sMasterwork) != TCC_MASTER_TAG)
-		sMasterwork = "";
-
-	SendMessageToPC(oPC, ". TCC Masterwork String : " + sMasterwork);
-
-	SendMessageToPC(oPC, ". Armor Rule Stat : " + IntToString(GetArmorRulesType(oTarget)));
-
-	SendMessageToPC(oPC, ". TCC disallow as part of any Set : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_NOT)));
+	// property Set
+	SendMessageToPC(oPC, ". TCC disallow as part of a Set : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_NOT)));
 	SendMessageToPC(oPC, ". TCC Set Label : " + GetLocalString(oTarget, TCC_VAR_SET_LABEL));
-
 	int iLength = GetStringLength(TCC_VAR_SET_GROUP_PRE);
 	string sVar;
 	int i;
@@ -105,12 +119,10 @@ void main()
 					+ GetStringRight(sVar, GetStringLength(sVar) - iLength)
 					+ " ip : " + GetLocalString(oTarget, sVar));
 	}
-
 	SendMessageToPC(oPC, ". TCC Set part ready : " + IntToString(GetLocalInt(oTarget, TCC_VAR_SET_FLAG)));
 
-
+	// itemproperties
 	int iPropType, iDurType, iSubType, iCostTable, iCostValue, iPar1Table, iPar1Value;
-
 	i = 0;
 	itemproperty ipScan = GetFirstItemProperty(oTarget);
 	while (GetIsItemPropertyValid(ipScan))
@@ -225,7 +237,9 @@ string material(int iBaseMaterial)
 	return " <c=cornflowerblue>( " + sRet + " )</c>";
 }
 
-// note: Mimics GetMaterialCode() in 'ginc_crafting'
+// Gets the TCC material type from a specified tag.
+// note: This mimics GetMaterialCode() in 'ginc_crafting' but both could
+// probably use the hard function, FindSubString(). or not ...
 int GetMaterial(string sTag)
 {
 	string sMaterial;
@@ -261,26 +275,71 @@ int GetMaterial(string sTag)
 // Gets a description for the specified material.
 string GetMaterialDescription(int iMaterial)
 {
-	string sDesc = " <c=cornflowerblue>( ";
+	string sRet = " <c=cornflowerblue>( ";
 	switch (iMaterial)
 	{
-		case  0: sDesc += "none";				break;
-		case  1: sDesc += "adamantine";			break;
-		case  2: sDesc += "cold iron";			break;
-		case  3: sDesc += "dark steel";			break;
-		case  4: sDesc += "duskwood";			break;
-		case  5: sDesc += "mithral";			break;
-		case  6: sDesc += "red dragon hide";	break;
-		case  7: sDesc += "shederran";			break;
-		case  8: sDesc += "salamander hide";	break;
-		case  9: sDesc += "alchemical silver";	break;
-		case 10: sDesc += "umberhulk hide";		break;
-		case 11: sDesc += "wyvern hide";		break;
-		case 12: sDesc += "zalantar";			break;
-		case 13: sDesc += "winterwolf pelt";	break;
-		case 14: sDesc += "fire imp pelt";		break;
-		case 15: sDesc += "ice imp pelt";		break;
-		default: sDesc += "error : invalid TCC material type";
+		case  0: sRet += "none";				break;
+		case  1: sRet += "adamantine";			break;
+		case  2: sRet += "cold iron";			break;
+		case  3: sRet += "dark steel";			break;
+		case  4: sRet += "duskwood";			break;
+		case  5: sRet += "mithral";				break;
+		case  6: sRet += "red dragon hide";		break;
+		case  7: sRet += "shederran";			break;
+		case  8: sRet += "salamander hide";		break;
+		case  9: sRet += "alchemical silver";	break;
+		case 10: sRet += "umberhulk hide";		break;
+		case 11: sRet += "wyvern hide";			break;
+		case 12: sRet += "zalantar";			break;
+		case 13: sRet += "winterwolf pelt";		break;
+		case 14: sRet += "fire imp pelt";		break;
+		case 15: sRet += "ice imp pelt";		break;
+		default: sRet += "<c=firebrick>ERROR : invalid TCC material type</c>";
 	}
-	return sDesc += " )</c>";
+	return sRet += " )</c>";
+}
+
+// Gets a description for the specified baseitem type.
+string GetBaseTypeDescription(int iBaseType)
+{
+	string sRet = " <c=cornflowerblue>( ";
+	sRet += Get2DAString("baseitems", "label", iBaseType);
+	return sRet += " )</c>";
+}
+
+// Gets a description for the specified tcc-item type.
+string GetTccTypeDescription(int iTccType)
+{
+	string sRet = " <c=cornflowerblue>( ";
+	switch (iTccType)
+	{
+		case TCC_TYPE_NONE:			sRet += "none";			break;
+		case TCC_TYPE_HEAD:			sRet += "head";			break;
+		case TCC_TYPE_NECK:			sRet += "neck";			break;
+		case TCC_TYPE_WAIST:		sRet += "waist";		break;
+		case TCC_TYPE_FEET:			sRet += "feet";			break;
+		case TCC_TYPE_GLOVES:		sRet += "gloves";		break;
+		case TCC_TYPE_RING:			sRet += "ring";			break;
+		case TCC_TYPE_BACK:			sRet += "back";			break;
+		case TCC_TYPE_INSTRUMENT:	sRet += "instrument";	break;
+		case TCC_TYPE_CONTAINER:	sRet += "container";	break;
+		case TCC_TYPE_ARMOR:		sRet += "armor";		break;
+		case TCC_TYPE_SHIELD:		sRet += "shield";		break;
+		case TCC_TYPE_BOW:			sRet += "bow";			break;
+		case TCC_TYPE_XBOW:			sRet += "xbow";			break;
+		case TCC_TYPE_SLING:		sRet += "sling";		break;
+		case TCC_TYPE_AMMO:			sRet += "ammo";			break;
+		case TCC_TYPE_MELEE:		sRet += "melee";		break;
+		case TCC_TYPE_OTHER:		sRet += "other";		break;
+		default:					sRet += "<c=firebrick>ERROR : invalid TCC type</c>";
+	}
+	return sRet += " )</c>";
+}
+
+// Gets a description for the specified armorrule stat.
+string GetArmorRuleStatDescription(int iStat)
+{
+	string sRet = " <c=cornflowerblue>( ";
+	sRet += Get2DAString("armorrulestats", "Label", iStat);
+	return sRet += " )</c>";
 }
