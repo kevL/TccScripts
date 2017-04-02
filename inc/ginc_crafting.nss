@@ -1816,7 +1816,8 @@ int GetTccType(object oItem)
 		case BASE_ITEM_FLUTE:
 		case BASE_ITEM_MANDOLIN:		return TCC_TYPE_INSTRUMENT;
 
-		case BASE_ITEM_BAG:				return TCC_TYPE_CONTAINER; // also #66 BASE_ITEM_LARGEBOX
+		case BASE_ITEM_LARGEBOX:
+		case BASE_ITEM_BAG:				return TCC_TYPE_CONTAINER;
 
 		case BASE_ITEM_ARMOR:			return TCC_TYPE_ARMOR;
 
