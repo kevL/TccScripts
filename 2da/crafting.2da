@@ -503,9 +503,9 @@
 499	355	"cft_ess_water4,cft_gem_14"	-1	"0,4,8,0,0"	****	0	17	****	0	0	0
 500	355	"cft_ess_water1,cft_gem_03"	-1	"13,2,1,0,0"	****	0	8	****	0	0	0
 501	355	"cft_ess_water2,cft_gem_03"	-1	"13,2,2,0,0"	****	0	8	****	0	0	0
-502	355	"cft_ess_water2,cft_ess_power1,cft_gem_09"	-1	"13,2,3,0,0"	****	0	8	****	0	0	0
-503	355	"cft_ess_water3,cft_ess_power2,cft_gem_10"	-1	"13,2,4,0,0"	****	0	9	****	0	0	0
-504	355	"cft_ess_water4,cft_ess_power3,cft_gem_12"	-1	"13,2,5,0,0"	****	0	11	****	0	0	0
+502	355	"cft_ess_power1,cft_ess_water2,cft_gem_09"	-1	"13,2,3,0,0"	****	0	8	****	0	0	0
+503	355	"cft_ess_power2,cft_ess_water3,cft_gem_10"	-1	"13,2,4,0,0"	****	0	9	****	0	0	0
+504	355	"cft_ess_power3,cft_ess_water4,cft_gem_12"	-1	"13,2,5,0,0"	****	0	11	****	0	0	0
 505	355	"cft_ess_earth1,cft_gem_03"	-1	"13,3,1,0,0"	****	0	8	****	0	0	0
 506	355	"cft_ess_earth2,cft_gem_03"	-1	"13,3,2,0,0"	****	0	8	****	0	0	0
 507	355	"cft_ess_earth2,cft_ess_power1,cft_gem_09"	-1	"13,3,3,0,0"	****	0	8	****	0	0	0
