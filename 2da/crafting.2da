@@ -123,7 +123,7 @@
 119	431	NW_IT_GEM005,cft_ess_air4,cft_ess_power4,cft_ess_water4	1	82,86,12,0,0	****	1092	12	****	0	0	0
 120	431	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_09	1	82,86,16,0,0	****	1092	16	****	0	0	0
 121	431	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_15	1	82,86,20,0,0	****	1092	20	****	0	0	0
-122	431	NW_IT_GEM010,cft_ess_air4,cft_ess_power4,cft_ess_water4	2	82,86,4,0,0	****	1092	4	****	0	0	0
+122	431	NW_IT_GEM010,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,86,4,0,0	****	1092	4	****	0	0	0
 123	431	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_03	2	82,86,8,0,0	****	1092	8	****	0	0	0
 124	431	NW_IT_GEM005,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,86,12,0,0	****	1092	12	****	0	0	0
 125	431	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_09	2	82,86,16,0,0	****	1092	16	****	0	0	0
@@ -133,7 +133,7 @@
 129	432	NW_IT_GEM005,cft_ess_air4,cft_ess_power4,cft_ess_water4	1	82,87,12,0,0	****	1092	12	****	0	0	0
 130	432	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_09	1	82,87,16,0,0	****	1092	16	****	0	0	0
 131	432	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_15	1	82,87,20,0,0	****	1092	20	****	0	0	0
-132	432	NW_IT_GEM010,cft_ess_air4,cft_ess_power4,cft_ess_water4	2	82,87,4,0,0	****	1092	4	****	0	0	0
+132	432	NW_IT_GEM010,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,87,4,0,0	****	1092	4	****	0	0	0
 133	432	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_03	2	82,87,8,0,0	****	1092	8	****	0	0	0
 134	432	NW_IT_GEM005,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,87,12,0,0	****	1092	12	****	0	0	0
 135	432	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_09	2	82,87,16,0,0	****	1092	16	****	0	0	0
@@ -143,7 +143,7 @@
 139	433	NW_IT_GEM005,cft_ess_air4,cft_ess_power4,cft_ess_water4	1	82,88,12,0,0	****	1092	12	****	0	0	0
 140	433	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_09	1	82,88,16,0,0	****	1092	16	****	0	0	0
 141	433	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_15	1	82,88,20,0,0	****	1092	20	****	0	0	0
-142	433	NW_IT_GEM010,cft_ess_air4,cft_ess_power4,cft_ess_water4	2	82,88,4,0,0	****	1092	4	****	0	0	0
+142	433	NW_IT_GEM010,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,88,4,0,0	****	1092	4	****	0	0	0
 143	433	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_03	2	82,88,8,0,0	****	1092	8	****	0	0	0
 144	433	NW_IT_GEM005,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,88,12,0,0	****	1092	12	****	0	0	0
 145	433	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_09	2	82,88,16,0,0	****	1092	16	****	0	0	0
@@ -153,7 +153,7 @@
 149	434	NW_IT_GEM005,cft_ess_air4,cft_ess_power4,cft_ess_water4	1	82,89,12,0,0	****	1092	12	****	0	0	0
 150	434	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_09	1	82,89,16,0,0	****	1092	16	****	0	0	0
 151	434	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_15	1	82,89,20,0,0	****	1092	20	****	0	0	0
-152	434	NW_IT_GEM010,cft_ess_air4,cft_ess_power4,cft_ess_water4	2	82,89,4,0,0	****	1092	4	****	0	0	0
+152	434	NW_IT_GEM010,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,89,4,0,0	****	1092	4	****	0	0	0
 153	434	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_03	2	82,89,8,0,0	****	1092	8	****	0	0	0
 154	434	NW_IT_GEM005,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,89,12,0,0	****	1092	12	****	0	0	0
 155	434	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_09	2	82,89,16,0,0	****	1092	16	****	0	0	0
@@ -166,7 +166,7 @@
 162	435	NW_IT_GEM005,cft_ess_air4,cft_ess_power4,cft_ess_water4	1	82,90,12,0,0	****	1092	12	****	0	0	0
 163	435	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_09	1	82,90,16,0,0	****	1092	16	****	0	0	0
 164	435	cft_ess_air4,cft_ess_power4,cft_ess_water4,cft_gem_15	1	82,90,20,0,0	****	1092	20	****	0	0	0
-165	435	NW_IT_GEM010,cft_ess_air4,cft_ess_power4,cft_ess_water4	2	82,90,4,0,0	****	1092	4	****	0	0	0
+165	435	NW_IT_GEM010,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,90,4,0,0	****	1092	4	****	0	0	0
 166	435	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_03	2	82,90,8,0,0	****	1092	8	****	0	0	0
 167	435	NW_IT_GEM005,cft_ess_earth4,cft_ess_power4,cft_ess_water4	2	82,90,12,0,0	****	1092	12	****	0	0	0
 168	435	cft_ess_earth4,cft_ess_power4,cft_ess_water4,cft_gem_09	2	82,90,16,0,0	****	1092	16	****	0	0	0
