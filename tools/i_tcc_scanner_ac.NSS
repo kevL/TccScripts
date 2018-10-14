@@ -314,13 +314,13 @@ string GetTccTypeDescription(int iTccType)
 	switch (iTccType)
 	{
 		case TCC_TYPE_NONE:			sRet += "none";			break;
-		case TCC_TYPE_HEAD:			sRet += "head";			break;
-		case TCC_TYPE_NECK:			sRet += "neck";			break;
-		case TCC_TYPE_WAIST:		sRet += "waist";		break;
-		case TCC_TYPE_FEET:			sRet += "feet";			break;
+		case TCC_TYPE_HELMET:		sRet += "helmet";		break;
+		case TCC_TYPE_AMULET:		sRet += "amulet";		break;
+		case TCC_TYPE_BELT:			sRet += "belt";			break;
+		case TCC_TYPE_BOOTS:		sRet += "boots";		break;
 		case TCC_TYPE_GLOVES:		sRet += "gloves";		break;
 		case TCC_TYPE_RING:			sRet += "ring";			break;
-		case TCC_TYPE_BACK:			sRet += "back";			break;
+		case TCC_TYPE_CLOAK:		sRet += "cloak";		break;
 		case TCC_TYPE_INSTRUMENT:	sRet += "instrument";	break;
 		case TCC_TYPE_CONTAINER:	sRet += "container";	break;
 		case TCC_TYPE_ARMOR:		sRet += "armor";		break;

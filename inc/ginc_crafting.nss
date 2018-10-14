@@ -557,13 +557,13 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 					iFeat = FEAT_CRAFT_MAGIC_ARMS_AND_ARMOR;
 					break;
 
-				case TCC_TYPE_HEAD:
-				case TCC_TYPE_NECK:
-				case TCC_TYPE_WAIST:
-				case TCC_TYPE_FEET:
+				case TCC_TYPE_HELMET:
+				case TCC_TYPE_AMULET:
+				case TCC_TYPE_BELT:
+				case TCC_TYPE_BOOTS:
 				case TCC_TYPE_GLOVES:
 				case TCC_TYPE_RING:
-				case TCC_TYPE_BACK:
+				case TCC_TYPE_CLOAK:
 				case TCC_TYPE_INSTRUMENT:
 				case TCC_TYPE_CONTAINER:
 				case TCC_TYPE_OTHER: // "Other" should never happen.
@@ -1623,11 +1623,13 @@ int isTypeMatch(object oItem, string sTypes)
 		switch (iType) // cases include only the possible returns from GetTccType()
 		{
 			case TCC_TYPE_MELEE:									//  1
+				//TellCraft(". . . oItem is TCC_TYPE_MELEE");
 				if (FindListElementIndex(sTypes, "1") != -1)
 					return TRUE;
 				break;
 
 			case TCC_TYPE_BOW:										//  3
+				//TellCraft(". . . oItem is TCC_TYPE_BOW");
 				if (   FindListElementIndex(sTypes,  "3") != -1
 					|| FindListElementIndex(sTypes, "10") != -1)	// TCC_TYPE_RANGED
 				{
@@ -1636,6 +1638,7 @@ int isTypeMatch(object oItem, string sTypes)
 				break;
 
 			case TCC_TYPE_XBOW:										//  4
+				//TellCraft(". . . oItem is TCC_TYPE_XBOW");
 				if (   FindListElementIndex(sTypes,  "4") != -1
 					|| FindListElementIndex(sTypes, "10") != -1)	// TCC_TYPE_RANGED
 				{
@@ -1644,6 +1647,7 @@ int isTypeMatch(object oItem, string sTypes)
 				break;
 
 			case TCC_TYPE_SLING:									//  5
+				//TellCraft(". . . oItem is TCC_TYPE_SLING");
 				if (   FindListElementIndex(sTypes,  "5") != -1
 					|| FindListElementIndex(sTypes, "10") != -1)	// TCC_TYPE_RANGED
 				{
@@ -1652,11 +1656,13 @@ int isTypeMatch(object oItem, string sTypes)
 				break;
 
 			case TCC_TYPE_AMMO:										//  6
+				//TellCraft(". . . oItem is TCC_TYPE_AMMO");
 				if (FindListElementIndex(sTypes, "6") != -1)
 					return TRUE;
 				break;
 
 			case TCC_TYPE_ARMOR:									//  7
+				//TellCraft(". . . oItem is TCC_TYPE_ARMOR");
 				if (   FindListElementIndex(sTypes, "7") != -1
 					|| FindListElementIndex(sTypes, "2") != -1)		// TCC_TYPE_ARMOR_SHIELD
 				{
@@ -1665,6 +1671,7 @@ int isTypeMatch(object oItem, string sTypes)
 				break;
 
 			case TCC_TYPE_SHIELD:									//  8
+				//TellCraft(". . . oItem is TCC_TYPE_SHIELD");
 				if (   FindListElementIndex(sTypes, "8") != -1
 					|| FindListElementIndex(sTypes, "2") != -1)		// TCC_TYPE_ARMOR_SHIELD
 				{
@@ -1673,72 +1680,82 @@ int isTypeMatch(object oItem, string sTypes)
 				break;
 
 			case TCC_TYPE_OTHER:									//  9
+				//TellCraft(". . . oItem is TCC_TYPE_OTHER");
 				if (FindListElementIndex(sTypes, "9") != -1)
 					return TRUE;
 				break;
 
 			case TCC_TYPE_INSTRUMENT:								// 15
+				//TellCraft(". . . oItem is TCC_TYPE_INSTRUMENT");
 				if (FindListElementIndex(sTypes, "15") != -1)
 					return TRUE;
 				break;
 
 			case TCC_TYPE_CONTAINER:								// 16
+				//TellCraft(". . . oItem is TCC_TYPE_CONTAINER");
 				if (FindListElementIndex(sTypes, "16") != -1)
 					return TRUE;
 				break;
 
-			case TCC_TYPE_HEAD:										// 17
+			case TCC_TYPE_HELMET:									// 17
+				//TellCraft(". . . oItem is TCC_TYPE_HELMET");
 				if (   FindListElementIndex(sTypes, "17") != -1
-					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_MISC_EQUIPPABLE
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
 				{
 					return TRUE;
 				}
 				break;
 
-			case TCC_TYPE_NECK:										// 19
+			case TCC_TYPE_AMULET:									// 19
+				//TellCraft(". . . oItem is TCC_TYPE_AMULET");
 				if (   FindListElementIndex(sTypes, "19") != -1
-					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_MISC_EQUIPPABLE
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
 				{
 					return TRUE;
 				}
 				break;
 
-			case TCC_TYPE_WAIST:									// 21
+			case TCC_TYPE_BELT:										// 21
+				//TellCraft(". . . oItem is TCC_TYPE_BELT");
 				if (   FindListElementIndex(sTypes, "21") != -1
-					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_MISC_EQUIPPABLE
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
 				{
 					return TRUE;
 				}
 				break;
 
-			case TCC_TYPE_FEET:										// 26
+			case TCC_TYPE_BOOTS:									// 26
+				//TellCraft(". . . oItem is TCC_TYPE_BOOTS");
 				if (   FindListElementIndex(sTypes, "26") != -1
-					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_MISC_EQUIPPABLE
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
 				{
 					return TRUE;
 				}
 				break;
 
 			case TCC_TYPE_GLOVES:									// 36
+				//TellCraft(". . . oItem is TCC_TYPE_GLOVES");
 				if (   FindListElementIndex(sTypes, "36") != -1
 					|| FindListElementIndex(sTypes, "11") != -1		// TCC_TYPE_WRISTS
-					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_MISC_EQUIPPABLE
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
 				{
 					return TRUE;
 				}
 				break;
 
 			case TCC_TYPE_RING:										// 52
+				//TellCraft(". . . oItem is TCC_TYPE_RING");
 				if (   FindListElementIndex(sTypes, "52") != -1
-					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_MISC_EQUIPPABLE
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
 				{
 					return TRUE;
 				}
 				break;
 
-			case TCC_TYPE_BACK:										// 80
+			case TCC_TYPE_CLOAK:									// 80
+				//TellCraft(". . . oItem is TCC_TYPE_CLOAK");
 				if (   FindListElementIndex(sTypes, "80") != -1
-					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_MISC_EQUIPPABLE
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
 				{
 					return TRUE;
 				}
@@ -1749,44 +1766,45 @@ int isTypeMatch(object oItem, string sTypes)
 	return FALSE;
 }
 /*
-const int TCC_TYPE_MISC_EQUIPPABLE	= -2;
-const int TCC_TYPE_ANY				= -1;
-const int TCC_TYPE_NONE 			=  0;
-const int TCC_TYPE_MELEE			=  1;
-const int TCC_TYPE_ARMOR_SHIELD 	=  2;
-const int TCC_TYPE_BOW				=  3;
-const int TCC_TYPE_XBOW 			=  4;
-const int TCC_TYPE_SLING			=  5;
-const int TCC_TYPE_AMMO 			=  6;
-const int TCC_TYPE_ARMOR			=  7;
-const int TCC_TYPE_SHIELD			=  8;
-const int TCC_TYPE_OTHER			=  9;
-const int TCC_TYPE_RANGED			= 10;
-const int TCC_TYPE_WRISTS			= 11;
-const int TCC_TYPE_INSTRUMENT		= 15;
-const int TCC_TYPE_CONTAINER		= 16;
+const int TCC_TYPE_EQUIPPABLE	= -2;
+const int TCC_TYPE_ANY			= -1;
+const int TCC_TYPE_NONE			=  0;
+const int TCC_TYPE_MELEE		=  1;
+const int TCC_TYPE_ARMOR_SHIELD	=  2;
+const int TCC_TYPE_BOW			=  3;
+const int TCC_TYPE_XBOW			=  4;
+const int TCC_TYPE_SLING		=  5;
+const int TCC_TYPE_AMMO			=  6;
+const int TCC_TYPE_ARMOR		=  7;
+const int TCC_TYPE_SHIELD		=  8;
+const int TCC_TYPE_OTHER		=  9;
+const int TCC_TYPE_RANGED		= 10;
+const int TCC_TYPE_WRISTS		= 11;
+const int TCC_TYPE_INSTRUMENT	= 15;
+const int TCC_TYPE_CONTAINER	= 16;
 
-const int TCC_TYPE_HEAD 			= 17; // BASE_ITEM_HELMET
-const int TCC_TYPE_NECK 			= 19; // BASE_ITEM_AMULET
-const int TCC_TYPE_WAIST			= 21; // BASE_ITEM_BELT
-const int TCC_TYPE_FEET 			= 26; // BASE_ITEM_BOOTS
-const int TCC_TYPE_GLOVES			= 36; // BASE_ITEM_GLOVES
-const int TCC_TYPE_RING 			= 52; // BASE_ITEM_RING
-const int TCC_TYPE_BACK 			= 80; // BASE_ITEM_CLOAK
+const int TCC_TYPE_HELMET		= 17; // BASE_ITEM_HELMET // note: These constants are equivalent to those in BaseItems.2da ->
+const int TCC_TYPE_AMULET		= 19; // BASE_ITEM_AMULET
+const int TCC_TYPE_BELT			= 21; // BASE_ITEM_BELT
+const int TCC_TYPE_BOOTS		= 26; // BASE_ITEM_BOOTS
+const int TCC_TYPE_GLOVES		= 36; // BASE_ITEM_GLOVES // note: #78 BASE_ITEM_BRACER gets subsumed by TCC_TYPE_GLOVES
+const int TCC_TYPE_RING			= 52; // BASE_ITEM_RING
+const int TCC_TYPE_CLOAK		= 80; // BASE_ITEM_CLOAK
 */
+
 // Gets the TCC-type of oItem.
 // - this returns one of the following TCC-types. If oItem needs to be compared
-//   to a multi-TCC-type like TCC_TYPE_MISC_EQUIPPABLE or TCC_TYPE_ARMOR_SHIELD
-//   that needs to be done elsewhere, eg. isTypeMatch()
+//   to a multi-TCC-type like TCC_TYPE_EQUIPPABLE or TCC_TYPE_ARMOR_SHIELD that
+//   needs to be done elsewhere, eg. isTypeMatch()
 // @return -
 // - TCC_TYPE_NONE
-// - TCC_TYPE_HEAD
-// - TCC_TYPE_NECK
-// - TCC_TYPE_WAIST
-// - TCC_TYPE_FEET
+// - TCC_TYPE_HELMET
+// - TCC_TYPE_AMULET
+// - TCC_TYPE_BELT
+// - TCC_TYPE_BOOTS
 // - TCC_TYPE_GLOVES
 // - TCC_TYPE_RING
-// - TCC_TYPE_BACK
+// - TCC_TYPE_CLOAK
 // - TCC_TYPE_INSTRUMENT
 // - TCC_TYPE_CONTAINER
 // - TCC_TYPE_ARMOR
@@ -1803,14 +1821,14 @@ int GetTccType(object oItem)
 
 	switch (GetBaseItemType(oItem))
 	{
-		case BASE_ITEM_HELMET:			return TCC_TYPE_HEAD;
-		case BASE_ITEM_AMULET:			return TCC_TYPE_NECK;
-		case BASE_ITEM_BELT:			return TCC_TYPE_WAIST;
-		case BASE_ITEM_BOOTS:			return TCC_TYPE_FEET;
+		case BASE_ITEM_HELMET:			return TCC_TYPE_HELMET;
+		case BASE_ITEM_AMULET:			return TCC_TYPE_AMULET;
+		case BASE_ITEM_BELT:			return TCC_TYPE_BELT;
+		case BASE_ITEM_BOOTS:			return TCC_TYPE_BOOTS;
 		case BASE_ITEM_GLOVES:
 		case BASE_ITEM_BRACER:			return TCC_TYPE_GLOVES; // also, kPrC #201 spiked gloves, #202 bladed gloves
 		case BASE_ITEM_RING:			return TCC_TYPE_RING;
-		case BASE_ITEM_CLOAK:			return TCC_TYPE_BACK;
+		case BASE_ITEM_CLOAK:			return TCC_TYPE_CLOAK;
 
 		case BASE_ITEM_DRUM:
 		case BASE_ITEM_FLUTE:

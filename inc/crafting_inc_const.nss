@@ -80,29 +80,38 @@ const string TCC_SET_TAG			= "tcc_setitem";
 
 
 // TCC-types
-const int TCC_TYPE_MISC_EQUIPPABLE	= -2;
-const int TCC_TYPE_ANY				= -1;
-const int TCC_TYPE_NONE 			=  0;
+// Note: types below that are commented out are NOT compared as ints against
+// 'oItem's true basetype. Instead they are string-values under TAGS in
+// Crafting.2da (and they specify 2+ of the *other* TCC-types excl/
+// TCC_TYPE_WRISTS which is ambiguous at present). So I'm commenting them out
+// here to avoid (further) confusion; only constants that are defined here are
+// possible returns from GetTccType() (a funct that converts 'oItem's true
+// basetype to its corresponding TCC-type).
+// NOTE: TCC_TYPE_EQUIPPABLE excludes Weapons/Armor/Shields (ie, left/right hand slots and chest slot).
+//const int TCC_TYPE_EQUIPPABLE		= -2; // TCC_TYPE_HELMET, TCC_TYPE_AMULET, TCC_TYPE_BELT, TCC_TYPE_BOOTS, TCC_TYPE_GLOVES (incl/ TCC_TYPE_WRISTS), TCC_TYPE_RING, TCC_TYPE_CLOAK
+//const int TCC_TYPE_ANY			= -1; // Any. really: if "-1" is specified as the TAG then the basetype isn't even checked against.
+const int TCC_TYPE_NONE				=  0; // special value ... is a return from GetTccType() for an invalid object AND is used in other ways here 'n there
 const int TCC_TYPE_MELEE			=  1;
-const int TCC_TYPE_ARMOR_SHIELD 	=  2;
+//const int TCC_TYPE_ARMOR_SHIELD	=  2; // TCC_TYPE_ARMOR, TCC_TYPE_SHIELD
 const int TCC_TYPE_BOW				=  3;
-const int TCC_TYPE_XBOW 			=  4;
+const int TCC_TYPE_XBOW				=  4;
 const int TCC_TYPE_SLING			=  5;
-const int TCC_TYPE_AMMO 			=  6;
+const int TCC_TYPE_AMMO				=  6;
 const int TCC_TYPE_ARMOR			=  7;
 const int TCC_TYPE_SHIELD			=  8;
 const int TCC_TYPE_OTHER			=  9;
-const int TCC_TYPE_RANGED			= 10;
-const int TCC_TYPE_WRISTS			= 11;
+//const int TCC_TYPE_RANGED			= 10; // TCC_TYPE_BOW, TCC_TYPE_XBOW, TCC_TYPE_SLING
+//const int TCC_TYPE_WRISTS			= 11; // TCC_TYPE_GLOVES
 const int TCC_TYPE_INSTRUMENT		= 15;
 const int TCC_TYPE_CONTAINER		= 16;
-const int TCC_TYPE_HEAD 			= 17;
-const int TCC_TYPE_NECK 			= 19;
-const int TCC_TYPE_WAIST			= 21;
-const int TCC_TYPE_FEET 			= 26;
-const int TCC_TYPE_GLOVES			= 36;
-const int TCC_TYPE_RING 			= 52;
-const int TCC_TYPE_BACK 			= 80;
+
+const int TCC_TYPE_HELMET			= 17; // = BASE_ITEM_HELMET // these integers are equivalent to corresponding basetypes in BaseItems.2da ->
+const int TCC_TYPE_AMULET			= 19; // = BASE_ITEM_AMULET
+const int TCC_TYPE_BELT				= 21; // = BASE_ITEM_BELT
+const int TCC_TYPE_BOOTS			= 26; // = BASE_ITEM_BOOTS
+const int TCC_TYPE_GLOVES			= 36; // = BASE_ITEM_GLOVES (subsumes #78 BASE_ITEM_BRACER)
+const int TCC_TYPE_RING				= 52; // = BASE_ITEM_RING
+const int TCC_TYPE_CLOAK			= 80; // = BASE_ITEM_CLOAK
 
 
 // WARNING: Do not use these because they may cause a conflict with
