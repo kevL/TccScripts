@@ -136,6 +136,11 @@ Version changes
 
 Version 2.05
 - Fixed Divine Level 4 Spells on Armor to use the right ingredients
+- Fixed Cleric Bonus Spell enhancements for Levels 3,4,5
+- Fixed Appraise +4 enhancement recipe
+- Fixed Hypothermia Bolt recipe to make Bolts of Frostbite not Bolts of Lightning
+- improvements to the tcc_scanner
+- Miscellaneous bugfixes
 
 Version 2.04
 - Fixed Readme error where Acid Splash was used for Melee weapon acid damage recipes. The Readme now correctly reflects

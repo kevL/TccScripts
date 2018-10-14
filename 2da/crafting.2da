@@ -723,7 +723,7 @@
 719	0	nx1_cft_ess_earth03,nx1_cft_ess_earth03,nx1_cft_ess_earth03	1	16,6,57,0,0	****	1092	30	****	0	0	0
 720	1039	n2_crft_ingmithral,n2_crft_mold_tcc_tstar	0	****	nw_wthmsh007	1092	12	****	0	0	0
 721	1031	n2_crft_ingmithral,n2_crft_mold_tcc_arrow	0	****	nw_wammar005	1092	10	****	0	0	0
-722	1031	n2_crft_ingmithral,n2_crft_mold_tcc_bolt	0	****	nw_wammbo002	1092	10	****	0	0	0
+722	1031	n2_crft_ingmithral,n2_crft_mold_tcc_bolt	0	****	nw_wammbo001	1092	10	****	0	0	0
 723	1031	n2_crft_ingmithral,n2_crft_mold_tcc_bullet	0	****	nw_wammbu006	1092	10	****	0	0	0
 724	1031	n2_crft_ingmithral,n2_crft_mold_tcc_dart	0	****	nw_wthmdt005	1092	12	****	0	0	0
 725	1031	n2_crft_ingmithral,n2_crft_mold_tcc_tstar	0	****	nw_wthmsh003	1092	12	****	0	0	0
