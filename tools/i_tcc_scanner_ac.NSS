@@ -320,6 +320,7 @@ string GetTccTypeDescription(int iTccType)
 		case TCC_TYPE_BOOTS:		sRet += "boots";		break;
 		case TCC_TYPE_GLOVES:		sRet += "gloves";		break;
 		case TCC_TYPE_RING:			sRet += "ring";			break;
+		case TCC_TYPE_BRACER:		sRet += "bracer";		break;
 		case TCC_TYPE_CLOAK:		sRet += "cloak";		break;
 		case TCC_TYPE_INSTRUMENT:	sRet += "instrument";	break;
 		case TCC_TYPE_CONTAINER:	sRet += "container";	break;

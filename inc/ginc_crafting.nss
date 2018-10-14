@@ -563,10 +563,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				case TCC_TYPE_BOOTS:
 				case TCC_TYPE_GLOVES:
 				case TCC_TYPE_RING:
+				case TCC_TYPE_BRACER:
 				case TCC_TYPE_CLOAK:
 				case TCC_TYPE_INSTRUMENT:
 				case TCC_TYPE_CONTAINER:
-				case TCC_TYPE_OTHER: // "Other" should never happen.
+				case TCC_TYPE_OTHER: // "Other" should never happen (perhaps).
 					iFeat = FEAT_CRAFT_WONDROUS_ITEMS;
 					break;
 
@@ -1752,6 +1753,16 @@ int isTypeMatch(object oItem, string sTypes)
 				}
 				break;
 
+			case TCC_TYPE_BRACER:									// 78
+				//TellCraft(". . . oItem is TCC_TYPE_BRACER");
+				if (   FindListElementIndex(sTypes, "78") != -1
+					|| FindListElementIndex(sTypes, "11") != -1		// TCC_TYPE_WRISTS
+					|| FindListElementIndex(sTypes, "-2") != -1)	// TCC_TYPE_EQUIPPABLE
+				{
+					return TRUE;
+				}
+				break;
+
 			case TCC_TYPE_CLOAK:									// 80
 				//TellCraft(". . . oItem is TCC_TYPE_CLOAK");
 				if (   FindListElementIndex(sTypes, "80") != -1
@@ -1787,8 +1798,9 @@ const int TCC_TYPE_HELMET		= 17; // BASE_ITEM_HELMET // note: These constants ar
 const int TCC_TYPE_AMULET		= 19; // BASE_ITEM_AMULET
 const int TCC_TYPE_BELT			= 21; // BASE_ITEM_BELT
 const int TCC_TYPE_BOOTS		= 26; // BASE_ITEM_BOOTS
-const int TCC_TYPE_GLOVES		= 36; // BASE_ITEM_GLOVES // note: #78 BASE_ITEM_BRACER gets subsumed by TCC_TYPE_GLOVES
+const int TCC_TYPE_GLOVES		= 36; // BASE_ITEM_GLOVES
 const int TCC_TYPE_RING			= 52; // BASE_ITEM_RING
+const int TCC_TYPE_BRACER		= 78; // BASE_ITEM_BRACER
 const int TCC_TYPE_CLOAK		= 80; // BASE_ITEM_CLOAK
 */
 
@@ -1803,6 +1815,7 @@ const int TCC_TYPE_CLOAK		= 80; // BASE_ITEM_CLOAK
 // - TCC_TYPE_BELT
 // - TCC_TYPE_BOOTS
 // - TCC_TYPE_GLOVES
+// - TCC_TYPE_BRACER
 // - TCC_TYPE_RING
 // - TCC_TYPE_CLOAK
 // - TCC_TYPE_INSTRUMENT
@@ -1825,8 +1838,8 @@ int GetTccType(object oItem)
 		case BASE_ITEM_AMULET:			return TCC_TYPE_AMULET;
 		case BASE_ITEM_BELT:			return TCC_TYPE_BELT;
 		case BASE_ITEM_BOOTS:			return TCC_TYPE_BOOTS;
-		case BASE_ITEM_GLOVES:
-		case BASE_ITEM_BRACER:			return TCC_TYPE_GLOVES; // also, kPrC #201 spiked gloves, #202 bladed gloves
+		case BASE_ITEM_GLOVES:			return TCC_TYPE_GLOVES; // also, kPrC #201 spiked gloves, #202 bladed gloves
+		case BASE_ITEM_BRACER:			return TCC_TYPE_BRACER;
 		case BASE_ITEM_RING:			return TCC_TYPE_RING;
 		case BASE_ITEM_CLOAK:			return TCC_TYPE_CLOAK;
 

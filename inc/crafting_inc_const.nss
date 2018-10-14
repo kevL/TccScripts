@@ -82,11 +82,10 @@ const string TCC_SET_TAG			= "tcc_setitem";
 // TCC-types
 // Note: types below that are commented out are NOT compared as ints against
 // 'oItem's true basetype. Instead they are string-values under TAGS in
-// Crafting.2da (and they specify 2+ of the *other* TCC-types excl/
-// TCC_TYPE_WRISTS which is ambiguous at present). So I'm commenting them out
-// here to avoid (further) confusion; only constants that are defined here are
-// possible returns from GetTccType() (a funct that converts 'oItem's true
-// basetype to its corresponding TCC-type).
+// Crafting.2da (and they specify 2+ of the *other* TCC-types). So I'm
+// commenting them out here to avoid confusion; only constants that are defined
+// here are possible returns from GetTccType() (a funct that converts 'oItem's
+// true basetype to its corresponding TCC-type).
 // NOTE: TCC_TYPE_EQUIPPABLE excludes Weapons/Armor/Shields (ie, left/right hand slots and chest slot).
 //const int TCC_TYPE_EQUIPPABLE		= -2; // TCC_TYPE_HELMET, TCC_TYPE_AMULET, TCC_TYPE_BELT, TCC_TYPE_BOOTS, TCC_TYPE_GLOVES (incl/ TCC_TYPE_WRISTS), TCC_TYPE_RING, TCC_TYPE_CLOAK
 //const int TCC_TYPE_ANY			= -1; // Any. really: if "-1" is specified as the TAG then the basetype isn't even checked against.
@@ -101,7 +100,7 @@ const int TCC_TYPE_ARMOR			=  7;
 const int TCC_TYPE_SHIELD			=  8;
 const int TCC_TYPE_OTHER			=  9;
 //const int TCC_TYPE_RANGED			= 10; // TCC_TYPE_BOW, TCC_TYPE_XBOW, TCC_TYPE_SLING
-//const int TCC_TYPE_WRISTS			= 11; // TCC_TYPE_GLOVES
+//const int TCC_TYPE_WRISTS			= 11; // TCC_TYPE_GLOVES, TCC_TYPE_BRACER
 const int TCC_TYPE_INSTRUMENT		= 15;
 const int TCC_TYPE_CONTAINER		= 16;
 
@@ -109,8 +108,9 @@ const int TCC_TYPE_HELMET			= 17; // = BASE_ITEM_HELMET // these integers are eq
 const int TCC_TYPE_AMULET			= 19; // = BASE_ITEM_AMULET
 const int TCC_TYPE_BELT				= 21; // = BASE_ITEM_BELT
 const int TCC_TYPE_BOOTS			= 26; // = BASE_ITEM_BOOTS
-const int TCC_TYPE_GLOVES			= 36; // = BASE_ITEM_GLOVES (subsumes #78 BASE_ITEM_BRACER)
+const int TCC_TYPE_GLOVES			= 36; // = BASE_ITEM_GLOVES
 const int TCC_TYPE_RING				= 52; // = BASE_ITEM_RING
+const int TCC_TYPE_BRACER			= 78; // = BASE_ITEM_BRACER
 const int TCC_TYPE_CLOAK			= 80; // = BASE_ITEM_CLOAK
 
 
