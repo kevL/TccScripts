@@ -87,7 +87,7 @@ const string TCC_SET_TAG			= "tcc_setitem";
 // here are possible returns from GetTccType() (a funct that converts 'oItem's
 // true basetype to its corresponding TCC-type).
 // NOTE: TCC_TYPE_EQUIPPABLE excludes Weapons/Armor/Shields (ie, left/right hand slots and chest slot).
-//const int TCC_TYPE_EQUIPPABLE		= -2; // TCC_TYPE_HELMET, TCC_TYPE_AMULET, TCC_TYPE_BELT, TCC_TYPE_BOOTS, TCC_TYPE_GLOVES (incl/ TCC_TYPE_WRISTS), TCC_TYPE_RING, TCC_TYPE_CLOAK
+//const int TCC_TYPE_EQUIPPABLE		= -2; // TCC_TYPE_HELMET, TCC_TYPE_AMULET, TCC_TYPE_BELT, TCC_TYPE_BOOTS, TCC_TYPE_GLOVES, TCC_TYPE_RING, TCC_TYPE_BRACER, TCC_TYPE_CLOAK
 //const int TCC_TYPE_ANY			= -1; // Any. really: if "-1" is specified as the TAG then the basetype isn't even checked against.
 const int TCC_TYPE_NONE				=  0; // special value ... is a return from GetTccType() for an invalid object AND is used in other ways here 'n there
 const int TCC_TYPE_MELEE			=  1;
