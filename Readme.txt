@@ -143,6 +143,8 @@ Version 2.05
 - Removed an old recipe for Slay Living vs Undead on a weapon that is superceded by a TCC recipe
 - Added documentation for Slay Dwarves/Elves/Half-Elves to the Readme
 - Fixed Slay Outsiders enhancement to work with Slay Living as well as Finger of Death
+- Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
+  and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
 

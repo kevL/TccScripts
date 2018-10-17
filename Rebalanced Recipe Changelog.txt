@@ -4,6 +4,8 @@ Changes
 
 Changes v2.05
 * Added existing Slay Dwarves/Elves/Half-Elves On-Hit enchantments to the Gloves section of the Readme
+* Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
+  and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 
 Changes v2.04
 * Fixed Readme error where Acid Splash was used for Melee weapon acid damage recipes. The Readme now correctly reflects  that the recipe uses Melf's Acid Arrow.
