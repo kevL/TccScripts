@@ -140,6 +140,9 @@ Version 2.05
 - Fixed Appraise +4 enhancement recipe
 - Fixed Hypothermia Bolt recipe to make Bolts of Frostbite not Bolts of Lightning
 - Staff of Ashenwood in MotB uses Mold Spirit spell and now requires Mold Spirit feat, not Malleate Spirit Feat.
+- Removed an old recipe for Slay Living vs Undead on a weapon that is superceded by a TCC recipe
+- Added documentation for Slay Dwarves/Elves/Half-Elves to the Readme
+- Fixed Slay Outsiders enhancement to work with Slay Living as well as Finger of Death
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
 
