@@ -990,7 +990,7 @@
 986 86 NW_IT_GEM002,cft_ess_fire3,cft_ess_power4,cft_ess_water2 -1 12,12,0,0,0 **** 0 10 **** 0 0 0
 987 86 NW_IT_GEM002,cft_ess_air2,cft_ess_power4,cft_ess_water3 -1 12,13,0,0,0 **** 0 10 **** 0 0 0
 988 86 NW_IT_GEM002,cft_ess_earth3,cft_ess_power4,cft_ess_water2 -1 12,14,0,0,0 **** 0 10 **** 0 0 0
-989 86 NW_IT_GEM002,cft_ess_earth3,cft_ess_power4,cft_ess_air2 -1 **** **** 0 10 **** 0 0 0
+989 86 NW_IT_GEM002,cft_ess_air2,cft_ess_earth3,cft_ess_power4 -1 12,799,0,0,0 **** 0 10 **** 0 0 0
 990 86 cft_ess_power4,cft_gem_14 -1 15,147,13,0,0 **** 0 3 **** 0 0 0
 991 2 cft_ess_earth4,cft_ess_power1,cft_gem_03 -1 15,4,8,0,0 **** 0 15 **** 0 0 0
 992 862 cft_ess_fire4,cft_ess_power2,cft_gem_03 -1 15,541,9,0,0 **** 0 7 **** 0 0 0

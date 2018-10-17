@@ -2217,6 +2217,12 @@ Spell Focus (Necromancy)
                Weak Water Essence + Fire Agate
   Spell: Identify
 
+Spell Focus (Transmutation)
+  Requires: Caster Level 10, appropriate Craft feat
+  Ingredients: Glowing Earth Essence + Radiant Power Essence +
+               Weak Air Essence + Fire Agate
+  Spell: Identify
+
 Toughness
   Requires: Caster Level 15, appropriate Craft feat
   Ingredients: Radiant Earth Essence + Beljuril
