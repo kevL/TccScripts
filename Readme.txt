@@ -140,6 +140,7 @@ Version 2.05
 - Fixed Appraise +4 enhancement recipe
 - Fixed Hypothermia Bolt recipe to make Bolts of Frostbite not Bolts of Lightning
 - Staff of Ashenwood in MotB uses Mold Spirit spell and now requires Mold Spirit feat, not Malleate Spirit Feat.
+- Removed an old recipe for Slay Living vs Undead on a weapon that is superceded by a TCC recipe
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
 
