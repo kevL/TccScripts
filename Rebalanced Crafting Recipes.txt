@@ -3125,11 +3125,6 @@ Keen: Doubles Threat Range
   Ingredients: Weak Earth Essence, Ruby
   Spell: Keen Edge or Weapon of Impact
 
-Lucky: Adds +1 to all saves
-  Requires: Caster Level 5, Craft Magic Arms and Armor feat
-  Ingredients: Faint Power Essence + Faint Earth Essence + Obsidian
-  Spell: Resistance
-
 Massive Criticals: Adds 1d10 damage to criticals
   Requires: Caster Level 10, Craft Magic Arms and Armor feat
   Ingredients: Glowing Fire Essence + Faint Power Essence + Fire Opal
