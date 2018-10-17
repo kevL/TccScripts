@@ -2,6 +2,9 @@
 Changes
 ~~~~~~~~~~~~[/b]
 
+Changes v2.05
+* Added existing Slay Dwarves/Elves/Half-Elves On-Hit enchantments to the Gloves section of the Readme
+
 Changes v2.04
 * Fixed Readme error where Acid Splash was used for Melee weapon acid damage recipes. The Readme now correctly reflects  that the recipe uses Melf's Acid Arrow.
 * Fixed Readme error - Alchemical Silver and Cold Iron cannot be used to make helmets/hats.

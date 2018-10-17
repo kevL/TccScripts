@@ -1897,10 +1897,24 @@ Slaying (Beasts): Slay Beast (DC 20)
   Ingredients: Radiant Power Essence + Radiant Water Essence + Rogue Stone
   Spell: Finger of Death or Slay Living
 
+Slaying (Dwarves): Slay Dwarves (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Earth Essence +
+               Radiant Fire Essence + Radiant Power Essence +
+               + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
 Slaying (Elementals): Slay Elemental (DC 20)
   Requires: Caster Level 18, Craft Wondrous Items feat
   Ingredients: Radiant Fire Essence + Radiant Power Essence +
                Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Elves): Slay Elves (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Fire Essence 
+               + Radiant Power Essence + Radiant Water Essence 
+			   + Rogue Stone
   Spell: Finger of Death or Slay Living
 
 Slaying (Giants): Slay Giant (DC 20)
@@ -1912,10 +1926,15 @@ Slaying (Giants): Slay Giant (DC 20)
 Slaying (Humans): Slay Human (DC 20)
   Requires: Caster Level 18, Craft Wondrous Items feat
   Ingredients: Radiant Air Essence + Radiant Earth Essence +
-
                Radiant Fire Essence + Radiant Power Essence +
-
                Radiant Water Essence + Rogue Stone
+  Spell: Finger of Death or Slay Living
+
+Slaying (Half-Elves): Slay Half-Elves (DC 20)
+  Requires: Caster Level 18, Craft Wondrous Items feat
+  Ingredients: Radiant Air Essence + Radiant Earth Essence +
+               Radiant Power Essence + Radiant Water Essence
+			   + Rogue Stone
   Spell: Finger of Death or Slay Living
 
 Slaying (Orcs): Slay Orc (DC 20)
@@ -3230,9 +3249,7 @@ Slaying Weapon (Half-Elves): Slay Half-Elf (DC 20)
 Slaying Weapon (Humans): Slay Human (DC 20)
   Requires: Caster Level 18, Craft Magic Arms and Armor feat
   Ingredients: Radiant Air Essence + Radiant Earth Essence +
-
                Radiant Fire Essence + Radiant Power Essence +
-
                Radiant Water Essence + Rogue Stone
   Spell: Finger of Death or Slay Living
 
