@@ -2412,7 +2412,7 @@ Resistance +5
 
 
 Required Spell: Legend Lore
-Required Caster Level: 12/15/18
+Required Caster Level: 6/12/18
 
 Skills have been separated into 6 groups; Dialog, Physical-Natural, Physical-Skilled,
 Physical-Complex, Mental, and Crafting.
