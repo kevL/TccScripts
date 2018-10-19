@@ -2840,6 +2840,11 @@ Only usable by: Evil
   Ingredients: Faint Earth Essence + Aventurine
   Spell: Protection from Good
 
+Only usable by: Favored Soul
+  Requires: Caster Level 6, appropriate Craft feat
+  Ingredients: Faint Water Essence + Fire Agate
+  Spell: Mind Fog
+
 Only usable by: Fighter
   Requires: Caster Level 6, appropriate Craft feat
   Ingredients: Faint Earth Essence + Phenalope
@@ -2878,6 +2883,11 @@ Only usable by: Rogue
 Only usable by: Sorcerer
   Requires: Caster Level 6, appropriate Craft feat
   Ingredients: Faint Fire Essence + Amethyst
+  Spell: Mind Fog
+
+Only usable by: Spirit Shaman
+  Requires: Caster Level 6, appropriate Craft feat
+  Ingredients: Faint Air Essence + Fire Agate
   Spell: Mind Fog
 
 Only usable by: Warlock
