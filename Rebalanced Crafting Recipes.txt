@@ -2307,6 +2307,31 @@ Bonus Spell Slot (Druid Level 5)
   Ingredients: Radiant Earth Essence + Glowing Power Essence + Blue Diamond
   Spell: Owl's Wisdom
 
+Bonus Spell Slot (Favored Soul Level 1)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Water Essence + Obsidian
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Favored Soul Level 2)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Water Essence + Obsidian
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Favored Soul Level 3)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Water Essence + Faint Power Essence + Canary Diamond
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Favored Soul Level 4)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Glowing Water Essence + Weak Power Essence + Star Sapphire
+  Spell: Eagle's Splendor
+
+Bonus Spell Slot (Favored Soul Level 5)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Radiant Water Essence + Glowing Power Essence + Blue Diamond
+  Spell: Eagle's Splendor
+
 Bonus Spell Slot (Sorcerer Level 1)
   Requires: Caster Level 8, appropriate Craft feat
   Ingredients: Faint Fire Essence + Obsidian
@@ -2331,6 +2356,31 @@ Bonus Spell Slot (Sorcerer Level 5)
   Requires: Caster Level 11, appropriate Craft feat
   Ingredients: Radiant Fire Essence + Glowing Power Essence + Blue Diamond
   Spell: Eagle's Splendor
+
+Bonus Spell Slot (Spirit Shaman Level 1)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Faint Air Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Spirit Shaman Level 2)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Air Essence + Obsidian
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Spirit Shaman Level 3)
+  Requires: Caster Level 8, appropriate Craft feat
+  Ingredients: Weak Air Essence + Faint Power Essence + Canary Diamond
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Spirit Shaman Level 4)
+  Requires: Caster Level 9, appropriate Craft feat
+  Ingredients: Glowing Air Essence + Weak Power Essence + Star Sapphire
+  Spell: Owl's Wisdom
+
+Bonus Spell Slot (Spirit Shaman Level 5)
+  Requires: Caster Level 11, appropriate Craft feat
+  Ingredients: Radiant Air Essence + Glowing Power Essence + Blue Diamond
+  Spell: Owl's Wisdom
 
 Bonus Spell Slot (Wizard Level 1)
   Requires: Caster Level 8, appropriate Craft feat
