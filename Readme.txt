@@ -146,6 +146,7 @@ Version 2.05
 - Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 - Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
+- Silent Armor and Shadowy Armor recipes now work
 - Added missing recipe for Spell Focus (Transmutation)
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
