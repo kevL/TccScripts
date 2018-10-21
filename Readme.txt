@@ -150,6 +150,7 @@ Version 2.05
 - Bonus Spell Slot recipes for Favored Souls and Spirit Shamans are now available
 - Limitation recipes for Favored Souls and Spirit Shamans are now available
 - Fixed the icons for TCC arrows
+- Added blueprints for TCC non-masterwork arrows: Cold Iron, Alchemical Silver
 - Added missing recipe for Spell Focus (Transmutation)
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
