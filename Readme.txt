@@ -149,6 +149,7 @@ Version 2.05
 - Silent Armor and Shadowy Armor recipes now work
 - Bonus Spell Slot recipes for Favored Souls and Spirit Shamans are now available
 - Limitation recipes for Favored Souls and Spirit Shamans are now available
+- Fixed the icons for TCC arrows
 - Added missing recipe for Spell Focus (Transmutation)
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
