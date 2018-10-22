@@ -3416,6 +3416,55 @@ Attack +5
   Ingredients: Glowing Power Essence + Glowing Water Essence + Blue Diamond
   Spell: Bless or True Strike
 
+Unlimited Ammunition: Basic
+  Requires: Caster Level 7, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Beljuril
+  Spell: Magic Missile
+
+Unlimited Ammunition: Cold (1d6)
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Glowing Water Essence + Beljuril
+  Spell: Magic Missile
+
+Unlimited Ammunition: Fire (1d6)
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Glowing Fire Essence + Beljuril
+  Spell: Magic Missile
+
+Unlimited Ammunition: Lightning (1d6)
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Glowing Air Essence + Beljuril
+  Spell: Magic Missile
+
+Unlimited Ammunition: +1
+  Requires: Caster Level 9, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + King's Tear
+  Spell: Magic Missile
+
+Unlimited Ammunition: +2
+  Requires: Caster Level 11, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Faint Air Essence + King's Tear
+  Spell: Magic Missile
+
+Unlimited Ammunition: +3
+  Requires: Caster Level 13, Craft Magic Arms and Armor feat
+  Ingredients: Weak Power Essence + Weak Air Essence + King's Tear
+  Spell: Magic Missile
+
+Unlimited Ammunition: +4
+  Requires: Caster Level 15, Craft Magic Arms and Armor feat
+  Ingredients: Glowing Power Essence + Glowing Air Essence + King's Tear
+  Spell: Magic Missile
+
+Unlimited Ammunition: +1
+  Requires: Caster Level 17, Craft Magic Arms and Armor feat
+  Ingredients: Radiant Power Essence + Radiant Air Essence + King's Tear
+  Spell: Magic Missile
+
+Unlimited Ammunition: Nature's Rage (special Mask of the Betrayer recipe)
+  Requires: Mold Spirit
+  Ingredients: Gnarlthorn's Essence
+  Spell: Mold Spirit
 
 --------------------------------------------------------------------------------
                     /////Wondrous Items\\\\\                              X1008

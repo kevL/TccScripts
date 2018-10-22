@@ -7,6 +7,7 @@ Changes v2.05
 * Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 * Added missing recipe for Spell Focus (Transmutation)
+* Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe
 * Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
 * Bonus Spell Slot recipes for Favored Souls and Spirit Shamans are now available
 * Limitation recipes for Favored Souls and Spirit Shamans are now available
@@ -49,7 +50,7 @@ Removed numerous Bonus Feat recipes; Weapon Proficiencies, Armor Proficiencies, 
 Extra Music/Rage/Smite/Turning/Wildshape, 2W-Fighting, W.Finesse, and PB Shot.
 
 Disabled Adamantine Jewelry recipes.
-Disabled Unlimited Ammo and Invulnerable Armor recipes.
+Disabled Invulnerable Armor recipes.
 
 Masterwork Weapons now get +1 to attack rather than a +1 enchantment.
 Masterwork armor now use Obsidian defaults; masterwork armor gets a reduction in Armor Check Penalty and an increase in sale price.
@@ -744,23 +745,3 @@ Craft Alchemy
 Craft Armor
 Craft Weapon
 Craft Trap
-
-
-------------------------------------
-Disabled Unlimited Ammo recipes
-------------------------------------
-
-
-The Unlimited Ammo recipes have been overhauled. Each now uses Magic Missile.
-
-Basic = Power1 + Beljuril (Level 7)
-1d6 Cold = Water3 + Power1 + Beljuril (Level 12)
-1d6 Fire = Fire3 + Power1 + Beljuril (Level 12)
-1d6 Lightning = Air3 + Power1 + Beljuril (Level 12)
-+1 = Power1 + King's Tear (Level 9)
-+2 = Air1 + Power1 + King's Tear (Level 11)
-+3 = Air2 + Power2 + King's Tear (Level 13)
-+4 = Air3 + Power3 + King's Tear (Level 15)
-+5 = Air4 + Power4 + King's Tear (Level 17)
-
-Unlimited Nature's Rage Ammo = Gnarlthorn's Essence + Ranged Weapon
