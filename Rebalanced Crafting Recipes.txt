@@ -297,6 +297,7 @@ Vampire = Mithral + Arrow Mold + Vampiric Touch (Level 8)
 
 Bolts:
 
+Acid = Mithral + Bolt Mold + Melf's Acid Arrow (Level 10)
 Fire = Mithral + Bolt Mold + Flame Arrow/Flame Weapon (Level 10)
 Frostbite = Mithral + Bolt Mold + Ray of Frost/Hypothermia (Level 10)
 Lightning = Mithral + Bolt Mold + Shocking Grasp/Call Lightning (Level 10)
@@ -307,6 +308,7 @@ Poison = Mithral + Bolt Mold + Contagion (Level 10)
 
 Bullets:
 
+Acid = Mithral + Bullet Mold + Melf's Acid Arrow (Level 10)
 Fire = Mithral + Bullet Mold + Fireburst/Flame Weapon (Level 10)
 Giant's Bane = Mithral + Bullet Mold + Spike Growth (Level 14)
 Ice = Mithral + Bullet Mold + Ray of Frost/Hypothermia (Level 10)
