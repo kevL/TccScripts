@@ -3438,7 +3438,7 @@ Unlimited Ammunition: Lightning (1d6)
   Ingredients: Faint Power Essence + Glowing Air Essence + Diamond
   Spell: Magic Missile
 
-Unlimited Ammunition: Acid (1d6)
+Unlimited Ammunition: Acid (1d6) (NOTE: Text on the enchanted weapon is wrong, but the effect works. See Known Bugs section of the Readme)
   Requires: Caster Level 12, Craft Magic Arms and Armor feat
   Ingredients: Faint Power Essence + Glowing Earth Essence + Emerald
   Spell: Magic Missile
