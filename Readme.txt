@@ -143,7 +143,8 @@ Version 2.05
 - Removed an old recipe for Slay Living vs Undead on a weapon that is superceded by a TCC recipe
 - Added documentation for Slay Dwarves/Elves/Half-Elves to the Readme
 - Fixed Slay Outsiders enhancement to work with Slay Living as well as Finger of Death
-- Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe. Rebalanced the gems for the Unlimited Ammo recipes
+- Added Acid Bolt and Acid Bullet items, and recipes
+- Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe. Rebalanced the gems for the Unlimited Ammo recipes
 - Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 - Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
@@ -154,7 +155,6 @@ Version 2.05
 - Added blueprints for TCC non-masterwork arrows, bolts, bullets: Cold Iron, Alchemical Silver
 - Added blueprints for non-masterwork Ring and Adamantine Ring, and for Masterwork Sling
 - Added missing recipe for Spell Focus (Transmutation)
-- Added Acid Bolt and Acid Bullet items, and recipes
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
 

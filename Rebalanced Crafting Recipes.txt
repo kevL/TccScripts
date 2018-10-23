@@ -3438,6 +3438,11 @@ Unlimited Ammunition: Lightning (1d6)
   Ingredients: Faint Power Essence + Glowing Air Essence + Diamond
   Spell: Magic Missile
 
+Unlimited Ammunition: Acid (1d6)
+  Requires: Caster Level 12, Craft Magic Arms and Armor feat
+  Ingredients: Faint Power Essence + Glowing Earth Essence + Emerald
+  Spell: Magic Missile
+
 Unlimited Ammunition: +1
   Requires: Caster Level 9, Craft Magic Arms and Armor feat
   Ingredients: Faint Power Essence + Diamond
@@ -3458,7 +3463,7 @@ Unlimited Ammunition: +4
   Ingredients: Glowing Power Essence + Glowing Air Essence + Blue Diamond
   Spell: Magic Missile
 
-Unlimited Ammunition: +1
+Unlimited Ammunition: +5
   Requires: Caster Level 17, Craft Magic Arms and Armor feat
   Ingredients: Radiant Power Essence + Radiant Air Essence + King's Tear
   Spell: Magic Missile

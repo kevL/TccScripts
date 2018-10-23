@@ -7,11 +7,11 @@ Changes v2.05
 * Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 * Added missing recipe for Spell Focus (Transmutation)
-* Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe. Rebalanced the gems for the Unlimited Ammo recipes
+* Added Acid Bolt and Acid Bullet items, and recipes
+* Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe. Rebalanced the gems for the Unlimited Ammo recipes
 * Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
 * Bonus Spell Slot recipes for Favored Souls and Spirit Shamans are now available
 * Limitation recipes for Favored Souls and Spirit Shamans are now available
-* Added Acid Bolt and Acid Bullet items, and recipes
 
 Changes v2.04
 * Fixed Readme error where Acid Splash was used for Melee weapon acid damage recipes. The Readme now correctly reflects  that the recipe uses Melf's Acid Arrow.
