@@ -33,7 +33,13 @@ A word of caution about item blueprints: Item blueprints are used at the moment 
 overrides in this mod will not replace existing items. Items are created through crafting, but also at the moment you first
 enter any area. So if you install these item overrides they will only affect newly forged items, and items found in areas
 you have not yet visited.
-   
+
+--------------------
+Known Bugs
+--------------------
+* v2.05 the new Unlimited Ammo recipe for Acid arrows shows the wrong text on the enchanted weapon. Will potentially be fixed if we ever
+  merge (or become compatible) with Kaedrin's PrC pack. The actual enchantment works though.
+
 --------------------
 Description
 --------------------
@@ -143,6 +149,8 @@ Version 2.05
 - Removed an old recipe for Slay Living vs Undead on a weapon that is superceded by a TCC recipe
 - Added documentation for Slay Dwarves/Elves/Half-Elves to the Readme
 - Fixed Slay Outsiders enhancement to work with Slay Living as well as Finger of Death
+- Added Acid Bolt and Acid Bullet items, and recipes
+- Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe (with a small known bug). Rebalanced the gems for the Unlimited Ammo recipes
 - Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 - Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
