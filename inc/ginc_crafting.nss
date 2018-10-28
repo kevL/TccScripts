@@ -10,7 +10,7 @@
 // ** INCLUDES ***
 //----------------
 #include "ginc_item"			// GetIsEquippable()
-//#include "x2_inc_itemprop"	// IPGetItemPropertyByID(), IPSafeAddItemProperty(), IPGetIsMeleeWeapon(), IPGetWeaponEnhancementBonus()
+//#include "x2_inc_itemprop"	// IPSafeAddItemProperty(), IPGetIsMeleeWeapon(), IPGetWeaponEnhancementBonus()
 								// X2_IP_ADDPROP_POLICY_IGNORE_EXISTING, X2_IP_ADDPROP_POLICY_REPLACE_EXISTING
 #include "ginc_param_const"		// GetIntParam(), GetStringParam()
 #include "ginc_2da"				// GetIsLegalItemProp()
@@ -172,6 +172,9 @@ int isIgnoredIp(itemproperty ip);
 int isIgnoredSubtype(itemproperty ip);
 // Checks for +1 attack bonus on Masterwork weapons.
 int hasMasterworkAttackBonus(object oItem);
+
+// Converts an EncodedIP and returns a constructed IP.
+itemproperty GetItemPropertyByID(int iType, int iPar1 = 0, int iPar2 = 0, int iPar3 = 0, int iPar4 = 0);
 
 
 // -----------------------------------------------------------------------------
@@ -692,11 +695,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 				sEncodedIp = GetNextToken(rEncodedIps);
 
 				iPropType = GetIntParam(sEncodedIp, 0);
-				ipEnchant = IPGetItemPropertyByID(iPropType,
-												  GetIntParam(sEncodedIp, 1),
-												  GetIntParam(sEncodedIp, 2),
-												  GetIntParam(sEncodedIp, 3),
-												  GetIntParam(sEncodedIp, 4));
+				ipEnchant = GetItemPropertyByID(iPropType,
+												GetIntParam(sEncodedIp, 1),
+												GetIntParam(sEncodedIp, 2),
+												GetIntParam(sEncodedIp, 3),
+												GetIntParam(sEncodedIp, 4));
 				if (bFirstIp)
 				{
 					bFirstIp = FALSE;
@@ -756,11 +759,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 						sEncodedIp = GetNextToken(rEncodedIps);
 
 						iPropType = GetIntParam(sEncodedIp, 0);
-						ipEnchant = IPGetItemPropertyByID(iPropType,
-														  GetIntParam(sEncodedIp, 1),
-														  GetIntParam(sEncodedIp, 2),
-														  GetIntParam(sEncodedIp, 3),
-														  GetIntParam(sEncodedIp, 4));
+						ipEnchant = GetItemPropertyByID(iPropType,
+														GetIntParam(sEncodedIp, 1),
+														GetIntParam(sEncodedIp, 2),
+														GetIntParam(sEncodedIp, 3),
+														GetIntParam(sEncodedIp, 4));
 
 						TellCraft(". . . . check iPropType= " + IntToString(iPropType));
 
@@ -1073,11 +1076,11 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 			sEncodedIp = GetNextToken(rEncodedIps);
 
 			iPropType = GetIntParam(sEncodedIp, 0);
-			ipEnchant = IPGetItemPropertyByID(iPropType,
-											  GetIntParam(sEncodedIp, 1),
-											  GetIntParam(sEncodedIp, 2),
-											  GetIntParam(sEncodedIp, 3),
-											  GetIntParam(sEncodedIp, 4));
+			ipEnchant = GetItemPropertyByID(iPropType,
+											GetIntParam(sEncodedIp, 1),
+											GetIntParam(sEncodedIp, 2),
+											GetIntParam(sEncodedIp, 3),
+											GetIntParam(sEncodedIp, 4));
 
 			TellCraft(". . add IP " + IntToString(iPropType) + " !");
 			int iPolicy;
@@ -2197,6 +2200,255 @@ int hasMasterworkAttackBonus(object oItem)
 	return FALSE;
 }
 
+// Converts an EncodedIP and returns a constructed IP.
+// - based on IPGetItemPropertyByID() in 'x2_inc_itemprop'
+itemproperty GetItemPropertyByID(int iType, int iPar1 = 0, int iPar2 = 0, int iPar3 = 0, int iPar4 = 0)
+{
+	itemproperty ipRet;
+
+	switch (iType)
+	{
+		case ITEM_PROPERTY_ABILITY_BONUS:								// 0
+			ipRet = ItemPropertyAbilityBonus(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_AC_BONUS:									// 1
+			ipRet = ItemPropertyACBonus(iPar1);
+			break;
+		case ITEM_PROPERTY_AC_BONUS_VS_ALIGNMENT_GROUP:					// 2
+			ipRet = ItemPropertyACBonusVsAlign(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_AC_BONUS_VS_DAMAGE_TYPE:						// 3
+			ipRet = ItemPropertyACBonusVsDmgType(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_AC_BONUS_VS_RACIAL_GROUP:					// 4
+			ipRet = ItemPropertyACBonusVsRace(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_AC_BONUS_VS_SPECIFIC_ALIGNMENT:				// 5
+			ipRet = ItemPropertyACBonusVsSAlign(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_ARCANE_SPELL_FAILURE:						// 84
+			ipRet = ItemPropertyArcaneSpellFailure(iPar1);
+			break;
+		case ITEM_PROPERTY_ATTACK_BONUS:								// 56
+			ipRet = ItemPropertyAttackBonus(iPar1);
+			break;
+		case ITEM_PROPERTY_ATTACK_BONUS_VS_ALIGNMENT_GROUP:				// 57
+			ipRet = ItemPropertyAttackBonusVsAlign(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_ATTACK_BONUS_VS_RACIAL_GROUP:				// 58
+			ipRet = ItemPropertyAttackBonusVsRace(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_ATTACK_BONUS_VS_SPECIFIC_ALIGNMENT:			// 59
+			ipRet = ItemPropertyAttackBonusVsSAlign(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_BASE_ITEM_WEIGHT_REDUCTION:					// 11
+			ipRet = ItemPropertyWeightReduction(iPar1);
+			break;
+		case ITEM_PROPERTY_BONUS_FEAT:									// 12
+			ipRet = ItemPropertyBonusFeat(iPar1);
+			break;
+		case ITEM_PROPERTY_BONUS_SPELL_SLOT_OF_LEVEL_N:					// 13
+			ipRet = ItemPropertyBonusLevelSpell(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_CAST_SPELL:									// 15
+			ipRet = ItemPropertyCastSpell(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DAMAGE_BONUS:								// 16
+			ipRet = ItemPropertyDamageBonus(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DAMAGE_BONUS_VS_ALIGNMENT_GROUP:				// 17
+			ipRet = ItemPropertyDamageBonusVsAlign(iPar1, iPar2, iPar3);
+			break;
+		case ITEM_PROPERTY_DAMAGE_BONUS_VS_RACIAL_GROUP:				// 18
+			ipRet = ItemPropertyDamageBonusVsRace(iPar1, iPar2, iPar3);
+			break;
+		case ITEM_PROPERTY_DAMAGE_BONUS_VS_SPECIFIC_ALIGNMENT:			// 19
+			ipRet = ItemPropertyDamageBonusVsSAlign(iPar1, iPar2, iPar3);
+			break;
+//		case ITEM_PROPERTY_DAMAGE_REDUCTION_DEPRECATED:					// 22
+		case ITEM_PROPERTY_DAMAGE_REDUCTION:							// 90	// JLR-OEI 04/03/06: NOW it is 85 (old one is deprecated!)
+			ipRet = ItemPropertyDamageReduction(iPar1, iPar2, iPar3, iPar4);	// kevL: NOW it is 90!!! No it's not: in fact, itemproperty DamageReduction
+			break;																// cannot be scripted at all; it can be added in the toolset only.
+		case ITEM_PROPERTY_DAMAGE_RESISTANCE:							// 23
+			ipRet = ItemPropertyDamageResistance(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DAMAGE_VULNERABILITY:						// 24
+			ipRet = ItemPropertyDamageVulnerability(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DARKVISION:									// 26
+			ipRet = ItemPropertyDarkvision();
+			break;
+		case ITEM_PROPERTY_DECREASED_ABILITY_SCORE:						// 27
+			ipRet = ItemPropertyDecreaseAbility(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DECREASED_AC:								// 28
+			ipRet = ItemPropertyDecreaseAC(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DECREASED_ATTACK_MODIFIER:					// 60
+			ipRet = ItemPropertyAttackPenalty(iPar1);
+			break;
+		case ITEM_PROPERTY_DECREASED_DAMAGE:							// 21
+			ipRet = ItemPropertyDamagePenalty(iPar1);
+			break;
+		case ITEM_PROPERTY_DECREASED_ENHANCEMENT_MODIFIER:				// 10
+			ipRet = ItemPropertyEnhancementPenalty(iPar1);
+			break;
+		case ITEM_PROPERTY_DECREASED_SAVING_THROWS:						// 49
+			ipRet = ItemPropertyReducedSavingThrow(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DECREASED_SAVING_THROWS_SPECIFIC:			// 50
+			ipRet = ItemPropertyReducedSavingThrowVsX(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_DECREASED_SKILL_MODIFIER:					// 29
+			ipRet = ItemPropertyDecreaseSkill(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_ENHANCED_CONTAINER_REDUCED_WEIGHT:			// 32
+			ipRet = ItemPropertyContainerReducedWeight(iPar1);
+			break;
+		case ITEM_PROPERTY_ENHANCEMENT_BONUS:							// 6
+			ipRet = ItemPropertyEnhancementBonus(iPar1);
+			break;
+		case ITEM_PROPERTY_ENHANCEMENT_BONUS_VS_ALIGNMENT_GROUP:		// 7
+			ipRet = ItemPropertyEnhancementBonusVsAlign(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_ENHANCEMENT_BONUS_VS_RACIAL_GROUP:			// 8
+			ipRet = ItemPropertyEnhancementBonusVsRace(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_ENHANCEMENT_BONUS_VS_SPECIFIC_ALIGNEMENT:	// 9
+			ipRet = ItemPropertyEnhancementBonusVsSAlign(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_EXTRA_MELEE_DAMAGE_TYPE:						// 33
+			ipRet = ItemPropertyExtraMeleeDamageType(iPar1);
+			break;
+		case ITEM_PROPERTY_EXTRA_RANGED_DAMAGE_TYPE:					// 34
+			ipRet = ItemPropertyExtraRangeDamageType(iPar1);
+			break;
+		case ITEM_PROPERTY_FREEDOM_OF_MOVEMENT:							// 75
+			ipRet = ItemPropertyFreeAction();
+			break;
+		case ITEM_PROPERTY_HASTE:										// 35
+			ipRet = ItemPropertyHaste();
+			break;
+		case ITEM_PROPERTY_HEALERS_KIT:									// 80
+			ipRet = ItemPropertyHealersKit(iPar1);
+			break;
+		case ITEM_PROPERTY_HOLY_AVENGER:								// 36
+			ipRet = ItemPropertyHolyAvenger();
+			break;
+		case ITEM_PROPERTY_IMMUNITY_DAMAGE_TYPE:						// 20
+			ipRet = ItemPropertyDamageImmunity(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_IMMUNITY_MISCELLANEOUS:						// 37
+			ipRet = ItemPropertyImmunityMisc(iPar1);
+			break;
+		case ITEM_PROPERTY_IMMUNITY_SPECIFIC_SPELL:						// 53
+			ipRet = ItemPropertySpellImmunitySpecific(iPar1);
+			break;
+		case ITEM_PROPERTY_IMMUNITY_SPELL_SCHOOL:						// 54
+			ipRet = ItemPropertySpellImmunitySchool(iPar1);
+			break;
+		case ITEM_PROPERTY_IMMUNITY_SPELLS_BY_LEVEL:					// 78
+			ipRet = ItemPropertyImmunityToSpellLevel(iPar1);
+			break;
+		case ITEM_PROPERTY_IMPROVED_EVASION:							// 38
+			ipRet = ItemPropertyImprovedEvasion();
+			break;
+		case ITEM_PROPERTY_KEEN:										// 43
+			ipRet = ItemPropertyKeen();
+			break;
+		case ITEM_PROPERTY_LIGHT:										// 44
+			ipRet = ItemPropertyLight(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_MASSIVE_CRITICALS:							// 74
+			ipRet = ItemPropertyMassiveCritical(iPar1);
+			break;
+		case ITEM_PROPERTY_MIGHTY:										// 45 - kL_fix.
+			ipRet = ItemPropertyMaxRangeStrengthMod(iPar1);
+			break;
+//		case ITEM_PROPERTY_MIND_BLANK:									// 46
+//			ipRet = ?(iPar1);
+//			break;
+		case ITEM_PROPERTY_MONSTER_DAMAGE:								// 77
+			ipRet = ItemPropertyMonsterDamage(iPar1);
+			break;
+		case ITEM_PROPERTY_NO_DAMAGE:									// 47
+			ipRet = ItemPropertyNoDamage();
+			break;
+		case ITEM_PROPERTY_ON_HIT_PROPERTIES:							// 48
+			ipRet = ItemPropertyOnHitProps(iPar1, iPar2, iPar3);
+			break;
+		case ITEM_PROPERTY_ON_MONSTER_HIT:								// 72
+			ipRet = ItemPropertyOnMonsterHitProperties(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_ONHITCASTSPELL:								// 82
+			ipRet = ItemPropertyOnHitCastSpell(iPar1, iPar2);
+			break;
+//		case ITEM_PROPERTY_POISON:										// 76
+//			// NWSCRIPT.nss: no longer working, poison is now a on_hit subtype
+//			ipRet = ();
+//			break;
+		case ITEM_PROPERTY_REGENERATION:								// 51
+			ipRet = ItemPropertyRegeneration(iPar1);
+			break;
+		case ITEM_PROPERTY_REGENERATION_VAMPIRIC:						// 67
+			ipRet = ItemPropertyVampiricRegeneration(iPar1);
+			break;
+		case ITEM_PROPERTY_SAVING_THROW_BONUS:							// 40
+			ipRet = ItemPropertyBonusSavingThrow(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_SAVING_THROW_BONUS_SPECIFIC:					// 41
+			ipRet = ItemPropertyBonusSavingThrowVsX(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_SKILL_BONUS:									// 52
+			ipRet = ItemPropertySkillBonus(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_SPECIAL_WALK:								// 79
+			ipRet = ItemPropertySpecialWalk(iPar1);
+			break;
+		case ITEM_PROPERTY_SPELL_RESISTANCE:
+			ipRet = ItemPropertyBonusSpellResistance(iPar1);			// 39
+			break;
+		case ITEM_PROPERTY_THIEVES_TOOLS:
+			ipRet = ItemPropertyThievesTools(iPar1);					// 55
+			break;
+		case ITEM_PROPERTY_TRAP:										// 70
+			ipRet = ItemPropertyTrap(iPar1, iPar2);
+			break;
+		case ITEM_PROPERTY_TRUE_SEEING:									// 71
+			ipRet = ItemPropertyTrueSeeing();
+			break;
+		case ITEM_PROPERTY_TURN_RESISTANCE:								// 73
+			ipRet = ItemPropertyTurnResistance(iPar1);
+			break;
+		case ITEM_PROPERTY_UNLIMITED_AMMUNITION:						// 61
+			ipRet = ItemPropertyUnlimitedAmmo(iPar1);
+			break;
+		case ITEM_PROPERTY_USE_LIMITATION_ALIGNMENT_GROUP:				// 62
+			ipRet = ItemPropertyLimitUseByAlign(iPar1);
+			break;
+		case ITEM_PROPERTY_USE_LIMITATION_CLASS:						// 63
+			ipRet = ItemPropertyLimitUseByClass(iPar1);
+			break;
+		case ITEM_PROPERTY_USE_LIMITATION_RACIAL_TYPE:					// 64
+			ipRet = ItemPropertyLimitUseByRace(iPar1);
+			break;
+		case ITEM_PROPERTY_USE_LIMITATION_SPECIFIC_ALIGNMENT:			// 65
+			ipRet = ItemPropertyLimitUseBySAlign(iPar1);
+			break;
+		case ITEM_PROPERTY_VISUALEFFECT:								// 83
+			ipRet = ItemPropertyVisualEffect(iPar1);
+			break;
+		case ITEM_PROPERTY_WEIGHT_INCREASE:								// 81
+			ipRet = ItemPropertyWeightIncrease(iPar1);
+			break;
+		case ITEM_PROPERTY_BONUS_HITPOINTS:								// 66
+			ipRet = ItemPropertyBonusHitpoints(iPar1);
+			break;
+	}
+
+	return ipRet;
+}
+
 // -----------------------------------------------------------------------------
 // functions for Property Sets
 // -----------------------------------------------------------------------------
@@ -2345,11 +2597,11 @@ void DeactivateLatentIps(object oItem)
 			{
 				TellCraft(". . check ip : " + sLatentIp);
 
-				ipProp = IPGetItemPropertyByID(GetIntParam(sLatentIp, 0), // TODO: Check if 'sLatentIp' can really be used by GetIntParam().
-											   GetIntParam(sLatentIp, 1),
-											   GetIntParam(sLatentIp, 2),
-											   GetIntParam(sLatentIp, 3),
-											   GetIntParam(sLatentIp, 4));
+				ipProp = GetItemPropertyByID(GetIntParam(sLatentIp, 0), // TODO: Check if 'sLatentIp' can really be used by GetIntParam().
+											 GetIntParam(sLatentIp, 1),
+											 GetIntParam(sLatentIp, 2),
+											 GetIntParam(sLatentIp, 3),
+											 GetIntParam(sLatentIp, 4));
 
 				iPropType			= GetItemPropertyType(ipProp);
 				iPropSubType		= GetItemPropertySubType(ipProp);
@@ -2412,11 +2664,11 @@ void ActivateLatentIp(object oItem, int iGroup, object oPC)
 	NotifyPlayer(oPC, -1, // TODO: a better player-notice.
 			"Activating ( " + sSetProp + " ) on " + GetName(oItem) + " ( parts " + IntToString(iGroup) + " )");
 
-	itemproperty ipProp = IPGetItemPropertyByID(GetIntParam(sSetProp, 0),
-												GetIntParam(sSetProp, 1),
-												GetIntParam(sSetProp, 2),
-												GetIntParam(sSetProp, 3),
-												GetIntParam(sSetProp, 4));
+	itemproperty ipProp = GetItemPropertyByID(GetIntParam(sSetProp, 0),
+											  GetIntParam(sSetProp, 1),
+											  GetIntParam(sSetProp, 2),
+											  GetIntParam(sSetProp, 3),
+											  GetIntParam(sSetProp, 4));
 
 	IPSafeAddItemProperty(oItem, ipProp, 0.f, X2_IP_ADDPROP_POLICY_KEEP_EXISTING);
 }
@@ -2996,11 +3248,11 @@ int GetIsEncodedEffectAnUpgrade(object oItem, string sEncodedIp)
 // Constructs an ip from sEncodedIp.
 itemproperty GetEncodedEffectItemProperty(string sEncodedIp)
 {
-	return IPGetItemPropertyByID(GetIntParam(sEncodedIp, 0),
-								 GetIntParam(sEncodedIp, 1),
-								 GetIntParam(sEncodedIp, 2),
-								 GetIntParam(sEncodedIp, 3),
-								 GetIntParam(sEncodedIp, 4));
+	return GetItemPropertyByID(GetIntParam(sEncodedIp, 0),
+							   GetIntParam(sEncodedIp, 1),
+							   GetIntParam(sEncodedIp, 2),
+							   GetIntParam(sEncodedIp, 3),
+							   GetIntParam(sEncodedIp, 4));
 }
 
 // Gets whether ip will be treated as an upgrade.
@@ -3031,11 +3283,11 @@ void ApplyEncodedEffectsToItem(object oItem, string sEncodedIps)
 // Adds sEncodedIp to oItem.
 void AddEncodedIp(object oItem, string sEncodedIp)
 {
-	itemproperty ipEnchant = IPGetItemPropertyByID(GetIntParam(sEncodedIp, 0),
-												   GetIntParam(sEncodedIp, 1),
-												   GetIntParam(sEncodedIp, 2),
-												   GetIntParam(sEncodedIp, 3),
-												   GetIntParam(sEncodedIp, 4));
+	itemproperty ipEnchant = GetItemPropertyByID(GetIntParam(sEncodedIp, 0),
+												 GetIntParam(sEncodedIp, 1),
+												 GetIntParam(sEncodedIp, 2),
+												 GetIntParam(sEncodedIp, 3),
+												 GetIntParam(sEncodedIp, 4));
 	if (GetIsItemPropertyValid(ipEnchant))
 	{
 		int iPolicy; // AddItemPropertyAutoPolicy(oItem, ipEnchant);
