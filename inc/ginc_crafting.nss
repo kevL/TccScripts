@@ -636,8 +636,7 @@ void DoMagicCrafting(int iSpellId, object oCrafter)
 	string sResrefList = Get2DAString(CRAFTING_2DA, COL_CRAFTING_OUTPUT, iRecipeMatch);
 	TellCraft(". sResrefList= " + sResrefList);
 
-	int bEnchant = FALSE;
-	if (sResrefList == "") bEnchant = TRUE;
+	int bEnchant = (sResrefList == "");
 	TellCraft(". bEnchant= " + IntToString(bEnchant));
 
 	if (!bEnchant) // CONSTRUCTION of a new Item
@@ -2109,23 +2108,30 @@ int ClearIpType(object oItem, int iPropType, int iCost, int iSubtype = -1)
 // - returns TRUE if a suitable match is found for ipProp
 int isIpUpgrade(object oItem, itemproperty ipProp)
 {
+	//TellCraft("isIpUpgrade() ipProp= " + IntToString(GetItemPropertyType(ipProp)));
 	if (!isIgnoredIp(ipProp))
 	{
 		int iPropType = GetItemPropertyType(ipProp);
 		int bIgnoreSub = isIgnoredSubtype(ipProp);
+		//TellCraft(". bIgnoreSub= " + IntToString(bIgnoreSub));
 
 		itemproperty ipScan = GetFirstItemProperty(oItem);
 		while (GetIsItemPropertyValid(ipScan))
 		{
+			//TellCraft(". test vs PropType= " + IntToString(GetItemPropertyType(ipScan)));
+			//TellCraft(". are Subtypes equal= " + IntToString(GetItemPropertySubType(ipScan) == GetItemPropertySubType(ipProp)));
+
 			if (GetItemPropertyDurationType(ipScan) == DURATION_TYPE_PERMANENT
 				&& GetItemPropertyType(ipScan) == iPropType
 				&& (bIgnoreSub || GetItemPropertySubType(ipScan) == GetItemPropertySubType(ipProp)))
 			{
+				//TellCraft(". . is an Upgrade");
 				return TRUE;
 			}
 			ipScan = GetNextItemProperty(oItem);
 		}
 	}
+	//TellCraft(". is NOT an Upgrade");
 	return FALSE;
 }
 
@@ -2175,6 +2181,7 @@ int isIgnoredSubtype(itemproperty ip)
 {
 	int iPropType = GetItemPropertyType(ip);
 	if (iPropType == ITEM_PROPERTY_VISUALEFFECT
+		|| iPropType == ITEM_PROPERTY_UNLIMITED_AMMUNITION
 //		|| iPropType == ITEM_PROPERTY_AC_BONUS									// <- dodge/deflection/etc. should be okay (is handled globally by BaseItems.2da).
 		|| Get2DAString(ITEM_PROP_DEF_2DA, "SubTypeResRef", iPropType) == "")	// NOTE: Determine if subType needs to be compared;
 	{																			// because even if there is no subType to an ip,
