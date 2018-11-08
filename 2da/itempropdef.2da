@@ -41,8 +41,8 @@
 37	1022	Immunity	IPRP_IMMUNITY	****	0	****	5503	1449	1
 38	710	ImprovedEvasion	****	3	0	****	5504	1429	1
 39	666	ImprovedMagicResist	****	2	11	****	5505	1422	1
-40	711	ImprovedSavingThrows	IPRP_SAVEELEMENT	****	2	****	5506	1440	1
-41	712	ImprovedSavingThrowsSpecific	IPRP_SAVINGTHROW	0.65	2	****	5506	1441	1
+40	711	ImprovedSavingThrows	IPRP_SAVEELEMENT	****	1	****	5506	1440	1
+41	712	ImprovedSavingThrowsSpecific	IPRP_SAVINGTHROW	0.65	1	****	5506	1441	1
 42	****	****	****	****	****	****	****	****	1
 43	713	Keen	****	1	0	****	5507	1079	1
 44	714	Light	****	1	18	9	5508	1431	1
