@@ -512,6 +512,10 @@ Poison Arrows: Poison (1d2 Con/Str Damage, DC=14) on hit
   Requires: Craft Weapon 7
   Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
 
+Acid Bolts: 1d6 Acid Damage
+  Requires: Craft Weapon 12
+  Ingredients: Alchemical Silver + Acid Flask
+
 Fire Bolts: 1d6 Fire Damage
   Requires: Craft Weapon 12
   Ingredients: Alchemical Silver + Alchemist's Fire
@@ -539,6 +543,10 @@ Paralytic Bolts: Stun (DC=14, Duration: 50% / 2 Rounds) on hit
 Poison Bolts: Poison (1d2 Con/Str Damage, DC=14) on hit
   Requires: Craft Weapon 7
   Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
+
+Acid Bullets: 1d6 Acid Damage
+  Requires: Craft Weapon 12
+  Ingredients: Alchemical Silver + Acid Flask
 
 Bullets of Screaming: 1d4 Sonic Damage, Silence (DC=14, Duration: 50% / 2 Rounds) on hit
   Requires: Craft Weapon 7
