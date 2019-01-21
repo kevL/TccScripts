@@ -481,7 +481,7 @@ Belt of Cloud Giant Strength: +8 bonus to Strength
 
 
 Acid Arrows: 1d6 Acid Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Acid Flask
 
 Arrows of Detonation: Fireball (Level 10) on hit
@@ -489,11 +489,11 @@ Arrows of Detonation: Fireball (Level 10) on hit
   Ingredients: Adamantine + Perfected Alchemist's Fire + Perfected Thunderstone
 
 Fire Arrows: 1d6 Fire Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Alchemist's Fire
 
 Ice Arrows: 1d6 Cold Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Cold Iron + Coldstone
 
 Magic Arrows: +1 enchantment
@@ -505,7 +505,7 @@ Mild Poison Arrows: Poison (1d2 Con Damage, DC=14) on hit
   Ingredients: Iron + Mild Bee Venom
 
 Lightning Arrows: 1d6 Shock Damage
-  Requires: Craft Weapon 17
+  Requires: Craft Weapon 15
   Ingredients: Darksteel + Quartz Crystal
 
 Poison Arrows: Poison (1d2 Con/Str Damage, DC=14) on hit
@@ -513,15 +513,15 @@ Poison Arrows: Poison (1d2 Con/Str Damage, DC=14) on hit
   Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
 
 Acid Bolts: 1d6 Acid Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Acid Flask
 
 Fire Bolts: 1d6 Fire Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Alchemist's Fire
 
 Ice Bolts: 1d6 Cold Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Cold Iron + Coldstone
 
 Magic Bolts: +1 enchantment
@@ -533,7 +533,7 @@ Mild Poison Bolts: Poison (1d2 Con Damage, DC=14) on hit
   Ingredients: Iron + Mild Bee Venom
 
 Lightning Bolts: 1d6 Shock Damage
-  Requires: Craft Weapon 17
+  Requires: Craft Weapon 15
   Ingredients: Darksteel + Quartz Crystal
 
 Paralytic Bolts: Stun (DC=14, Duration: 50% / 2 Rounds) on hit
@@ -545,7 +545,7 @@ Poison Bolts: Poison (1d2 Con/Str Damage, DC=14) on hit
   Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
 
 Acid Bullets: 1d6 Acid Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Acid Flask
 
 Bullets of Screaming: 1d4 Sonic Damage, Silence (DC=14, Duration: 50% / 2 Rounds) on hit
@@ -553,11 +553,11 @@ Bullets of Screaming: 1d4 Sonic Damage, Silence (DC=14, Duration: 50% / 2 Rounds
   Ingredients: Iron + Thunderstone
 
 Fire Bullets: 1d6 Fire Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Alchemist's Fire
 
 Ice Bullets: 1d6 Cold Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Cold Iron + Coldstone
 
 Magic Bullets: +1 enchantment
@@ -565,7 +565,7 @@ Magic Bullets: +1 enchantment
   Ingredients: Mithral + Potion of Bless
 
 Lightning Bullets: +1d6 Shock Damage
-  Requires: Craft Weapon 17
+  Requires: Craft Weapon 15
   Ingredients: Darksteel + Quartz Crystal
 
 Magic Darts/Shurikens: +1 enchantment
