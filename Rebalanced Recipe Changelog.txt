@@ -9,6 +9,7 @@ Changes v2.05
 - Added missing recipe for Spell Focus (Transmutation)
 - Added Acid Bolt and Acid Bullet items, and recipes.
 - Fixed Bolt of Fire Blacksmith recipe.
+- Rebalanced Craft skill requirements for Blacksmithing elemental arrows, bolts and bullets
 - Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe (with a small known bug). Rebalanced the gems for the Unlimited Ammo recipes
 - Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
 - Bonus Spell Slot recipes for Favored Souls and Spirit Shamans are now available
