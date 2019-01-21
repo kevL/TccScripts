@@ -1668,7 +1668,7 @@
 1664 n2_crft_mold_tcc_bolt n2_crft_ingmithral,n2_crft_mold_tcc_bolt 0 **** tcc_bolt_mth_001 26 12 **** 0 0 0
 1665 n2_crft_mold_tcc_bolt NW_IT_MPOTION009,n2_crft_ingmithral,n2_crft_mold_tcc_bolt 0 **** nw_wammbo008 26 17 **** 0 0 0
 1666 n2_crft_mold_tcc_bolt n2_crft_ingsilver,n2_crft_mold_tcc_bolt 0 **** tcc_bolt_slv_001 26 7 **** 0 0 0
-1667 n2_crft_mold_tcc_bolt X1_WMGRENADE001,n2_crft_ingsilver,n2_crft_mold_tcc_bolt 0 **** nw_wammbo005 26 12 **** 0 0 0
+1667 n2_crft_mold_tcc_bolt X1_WMGRENADE002,n2_crft_ingsilver,n2_crft_mold_tcc_bolt 0 **** nw_wammbo005 26 12 **** 0 0 0
 1668 n2_crft_mold_tcc_bolt X1_WMGRENADE001,n2_crft_ingsilver,n2_crft_mold_tcc_bolt 0 **** nw_wammbo099 26 12 **** 0 0 0
 1669 n2_crft_mold_tcc_boots n2_crft_hideleather,n2_crft_hideleather,n2_crft_mold_tcc_boots 0 **** tcc_boots_001 25 1 **** 0 0 0
 1670 n2_crft_mold_tcc_boots n2_crft_hidesalam,n2_crft_hidesalam,n2_crft_mold_tcc_boots 0 **** tcc_boots_sal_001 25 13 **** 0 0 0

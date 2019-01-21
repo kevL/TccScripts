@@ -3,35 +3,36 @@ Changes
 ~~~~~~~~~~~~[/b]
 
 Changes v2.05
-* Added existing Slay Dwarves/Elves/Half-Elves On-Hit enchantments to the Gloves section of the Readme
-* Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
+- Added existing Slay Dwarves/Elves/Half-Elves On-Hit enchantments to the Gloves section of the Readme
+- Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
-* Added missing recipe for Spell Focus (Transmutation)
-* Added Acid Bolt and Acid Bullet items, and recipes.
-* Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe (with a small known bug). Rebalanced the gems for the Unlimited Ammo recipes
-* Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
-* Bonus Spell Slot recipes for Favored Souls and Spirit Shamans are now available
-* Limitation recipes for Favored Souls and Spirit Shamans are now available
+- Added missing recipe for Spell Focus (Transmutation)
+- Added Acid Bolt and Acid Bullet items, and recipes.
+- Fixed Bolt of Fire Blacksmith recipe.
+- Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe (with a small known bug). Rebalanced the gems for the Unlimited Ammo recipes
+- Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
+- Bonus Spell Slot recipes for Favored Souls and Spirit Shamans are now available
+- Limitation recipes for Favored Souls and Spirit Shamans are now available
 
 Changes v2.04
-* Fixed Readme error where Acid Splash was used for Melee weapon acid damage recipes. The Readme now correctly reflects  that the recipe uses Melf's Acid Arrow.
-* Fixed Readme error - Alchemical Silver and Cold Iron cannot be used to make helmets/hats.
+- Fixed Readme error where Acid Splash was used for Melee weapon acid damage recipes. The Readme now correctly reflects  that the recipe uses Melf's Acid Arrow.
+- Fixed Readme error - Alchemical Silver and Cold Iron cannot be used to make helmets/hats.
 
 Changes v 2.0 (Vandervecken Smith)
-* Added Limitation recipes to the Crafting Recipes file, although they always worked just like in the original TCC
-* Increased Caster level requirement for Stat-boosting items from 8/8/8 to 88/14/17 for +4/+6/+8 items.
+- Added Limitation recipes to the Crafting Recipes file, although they always worked just like in the original TCC
+- Increased Caster level requirement for Stat-boosting items from 8/8/8 to 88/14/17 for +4/+6/+8 items.
   This applies to: Nymph Cloak, Headband of Intellect, Periapt of Wisdom, Belt of Giant Strength, Boots of Striding, Belt of Agility
-* Fixed a typo in the description of the Constitution +4 recipe - the wrong gem was noted - it's a Jacinth not a Star Sapphire
-* Fixed the Crafting Recipes file for +1/+2/+3 deflection recipes for weapons. It now reflects the correct caster levels.
-* Added a Limitation Recipe for Warlocks, as they were the only base class without one.
+- Fixed a typo in the description of the Constitution +4 recipe - the wrong gem was noted - it's a Jacinth not a Star Sapphire
+- Fixed the Crafting Recipes file for +1/+2/+3 deflection recipes for weapons. It now reflects the correct caster levels.
+- Added a Limitation Recipe for Warlocks, as they were the only base class without one.
 
 Changes v 1.19 (Vandervecken Smith)
-* Myrkul's Wrath modified recipe now takes two Adamantine Ingots instead of an Adamantine Scythe.
+- Myrkul's Wrath modified recipe now takes two Adamantine Ingots instead of an Adamantine Scythe.
 
 Changes from the Vandervecken Smith version (v1.18)
 
-* Amulet of Betrayal Personified now works with any four companion essences
-* Applying Shape of Fire or Shadow of the Void Essences to your weapons will now give free Fire and Cold VFX respectively
+- Amulet of Betrayal Personified now works with any four companion essences
+- Applying Shape of Fire or Shadow of the Void Essences to your weapons will now give free Fire and Cold VFX respectively
 
 ---------------------------------------
 
