@@ -1079,11 +1079,11 @@ Acid Blob (Average)
 
 Acid Blob (Major)
   Requires: Craft Trap 15
-  Ingredients: 5 Acid Flasks, 5 Tanglefoot Bags
+  Ingredients: 4 Acid Flasks, 4 Tanglefoot Bags
 
 Acid Blob (Deadly)
   Requires: Craft Trap 20
-  Ingredients: 7 Acid Flasks, 7 Tanglefoot Bags
+  Ingredients: 6 Acid Flasks, 6 Tanglefoot Bags
 
 Electrical (Minor)
   Requires: Craft Trap 5
