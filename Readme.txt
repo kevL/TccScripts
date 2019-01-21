@@ -162,6 +162,7 @@ Version 2.05
 - Added blueprints for TCC non-masterwork arrows, bolts, bullets: Cold Iron, Alchemical Silver
 - Added blueprints for non-masterwork Ring and Adamantine Ring, and for Masterwork Sling
 - Added missing recipe for Spell Focus (Transmutation)
+- Fixed Acid Blob vs Acid Splash recipes and slightly rebalanced Acid Blob recipes
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
 
