@@ -104,8 +104,8 @@ Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
 Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
 Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
 Salamander Hide - AC +1 (Armor), Base Weight Reduction 60%, Fire Resistance 10
-Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
 				  +1 attack (Slings)
+Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
 Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10,
 				   +1 attack (Slings)
 Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
