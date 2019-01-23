@@ -109,8 +109,8 @@ Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
 Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
 Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
 Salamander Hide - AC +1 (Armor), Base Weight Reduction 60%, Fire Resistance 10
-Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
 				  +1 attack (Slings)
+Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
 Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10,
 				   +1 attack (Slings)
 Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
@@ -155,7 +155,13 @@ Version 2.05
 - Added documentation for Slay Dwarves/Elves/Half-Elves to the Readme
 - Fixed Slay Outsiders enhancement to work with Slay Living as well as Finger of Death
 - Added Acid Bolt and Acid Bullet items, and recipes
+- Fixed Bolt of Fire Blacksmith recipe.
+- Rebalanced Craft skill requirements for Blacksmithing elemental arrows, bolts and bullets
 - Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe (with a small known bug). Rebalanced the gems for the Unlimited Ammo recipes
+- Sling recipes now actually work, they were missing before
+- Glove recipes for Winter Wolf pelt and Salamander Hide now work
+- Spell on hit Poison now works for weapons as well as armor
+- Poisoning Weapon now does proper poison damage as listed instead of casting the spell on hit
 - Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 - Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18
@@ -168,6 +174,7 @@ Version 2.05
 - Added missing recipe for Spell Focus (Transmutation)
 - Fixed Adamantine Shields (Masterwork only) to properly apply their Damage Reduction.
   For regular Adamantine shields, see the nwn2fixes mod.
+- Fixed Acid Blob vs Acid Splash recipes and slightly rebalanced Acid Blob recipes
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
 

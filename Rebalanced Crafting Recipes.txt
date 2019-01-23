@@ -99,8 +99,8 @@ Fire Mephit Hide - Base Weight Reduction 20%, Fire Resistance 5
 Ice Mephit Hide - Base Weight Reduction 20%, Cold Resistance 5
 Red Dragon Hide - AC +3 (Armor & Shields) or Fire damage 2 (Gloves), Base Weight Reduction 80%, Fire Resistance 20
 Salamander Hide - AC +1 (Armor), Base Weight Reduction 60%, Fire Resistance 10
+				   +1 attack (Slings)
 Umber Hulk Hide - AC +2 (Armor & Shields), Immunity to Mind-Affecting Spells
-				  +1 attack (Slings)
 Winter Wolf Hide - Base Weight Reduction 40%, Cold Resistance 10,
 				   +1 attack (Slings)
 Wyvern Hide - AC +2 (Armor & Shields), Base Weight Reduction 80%, Save vs Poison +4
@@ -481,7 +481,7 @@ Belt of Cloud Giant Strength: +8 bonus to Strength
 
 
 Acid Arrows: 1d6 Acid Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Acid Flask
 
 Arrows of Detonation: Fireball (Level 10) on hit
@@ -489,11 +489,11 @@ Arrows of Detonation: Fireball (Level 10) on hit
   Ingredients: Adamantine + Perfected Alchemist's Fire + Perfected Thunderstone
 
 Fire Arrows: 1d6 Fire Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Alchemist's Fire
 
 Ice Arrows: 1d6 Cold Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Cold Iron + Coldstone
 
 Magic Arrows: +1 enchantment
@@ -505,19 +505,23 @@ Mild Poison Arrows: Poison (1d2 Con Damage, DC=14) on hit
   Ingredients: Iron + Mild Bee Venom
 
 Lightning Arrows: 1d6 Shock Damage
-  Requires: Craft Weapon 17
+  Requires: Craft Weapon 15
   Ingredients: Darksteel + Quartz Crystal
 
 Poison Arrows: Poison (1d2 Con/Str Damage, DC=14) on hit
   Requires: Craft Weapon 7
   Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
 
+Acid Bolts: 1d6 Acid Damage
+  Requires: Craft Weapon 15
+  Ingredients: Alchemical Silver + Acid Flask
+
 Fire Bolts: 1d6 Fire Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Alchemist's Fire
 
 Ice Bolts: 1d6 Cold Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Cold Iron + Coldstone
 
 Magic Bolts: +1 enchantment
@@ -529,7 +533,7 @@ Mild Poison Bolts: Poison (1d2 Con Damage, DC=14) on hit
   Ingredients: Iron + Mild Bee Venom
 
 Lightning Bolts: 1d6 Shock Damage
-  Requires: Craft Weapon 17
+  Requires: Craft Weapon 15
   Ingredients: Darksteel + Quartz Crystal
 
 Paralytic Bolts: Stun (DC=14, Duration: 50% / 2 Rounds) on hit
@@ -540,16 +544,20 @@ Poison Bolts: Poison (1d2 Con/Str Damage, DC=14) on hit
   Requires: Craft Weapon 7
   Ingredients: Iron + Mild Bee Venom + Mild Scorpion Venom
 
+Acid Bullets: 1d6 Acid Damage
+  Requires: Craft Weapon 15
+  Ingredients: Alchemical Silver + Acid Flask
+
 Bullets of Screaming: 1d4 Sonic Damage, Silence (DC=14, Duration: 50% / 2 Rounds) on hit
   Requires: Craft Weapon 7
   Ingredients: Iron + Thunderstone
 
 Fire Bullets: 1d6 Fire Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Alchemical Silver + Alchemist's Fire
 
 Ice Bullets: 1d6 Cold Damage
-  Requires: Craft Weapon 12
+  Requires: Craft Weapon 15
   Ingredients: Cold Iron + Coldstone
 
 Magic Bullets: +1 enchantment
@@ -557,7 +565,7 @@ Magic Bullets: +1 enchantment
   Ingredients: Mithral + Potion of Bless
 
 Lightning Bullets: +1d6 Shock Damage
-  Requires: Craft Weapon 17
+  Requires: Craft Weapon 15
   Ingredients: Darksteel + Quartz Crystal
 
 Magic Darts/Shurikens: +1 enchantment
@@ -1079,11 +1087,11 @@ Acid Blob (Average)
 
 Acid Blob (Major)
   Requires: Craft Trap 15
-  Ingredients: 5 Acid Flasks, 5 Tanglefoot Bags
+  Ingredients: 4 Acid Flasks, 4 Tanglefoot Bags
 
 Acid Blob (Deadly)
   Requires: Craft Trap 20
-  Ingredients: 7 Acid Flasks, 7 Tanglefoot Bags
+  Ingredients: 6 Acid Flasks, 6 Tanglefoot Bags
 
 Electrical (Minor)
   Requires: Craft Trap 5
@@ -1613,6 +1621,7 @@ Inflict Serious Wounds  (Divine)
 Inflict Critical Wounds (Divine)
 Lesser Spell Breach     (Arcane)
 Phantasmal Killer       (Arcane)
+Poison                  (Divine)
 Vampiric Touch          (Arcane)
 
 Available Armor Spells:
