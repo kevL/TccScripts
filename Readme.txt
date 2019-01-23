@@ -146,6 +146,11 @@ Version changes
 --------------------
 
 Version 2.05
+NOTE: This mod now additionally packages the following 2DAs that were not present in 2.04:
+- iprp_ammocost
+- iprp_feats
+which may affect mod compatibility
+Changes:
 - Fixed Divine Level 4 Spells on Armor to use the right ingredients
 - Fixed Cleric Bonus Spell enhancements for Levels 3,4,5
 - Fixed Appraise +4 enhancement recipe
