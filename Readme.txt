@@ -155,6 +155,8 @@ Version 2.05
 - Added back the Unlimited Ammo spells, including Gnarlthorn's Essence recipe and a new Acid recipe (with a small known bug). Rebalanced the gems for the Unlimited Ammo recipes
 - Sling recipes now actually work, they were missing before
 - Glove recipes for Winter Wolf pelt and Salamander Hide now work
+- Spell on hit Poison now works for weapons as well as armor
+- Poisoning Weapon now does proper poison damage as listed instead of casting the spell on hit
 - Deleted the Lucky recipe on Weapons. This will never work as intended because in NWN2 Luck bonuses don't stack, 
   and items like the Luckstone are implemented with a very large number of properties, which is undesireable when enchanting.
 - Skill enhancement recipes (+4/+8/+12) now require a lower Caster Level: 6/12/18 instead of before: 12/15/18

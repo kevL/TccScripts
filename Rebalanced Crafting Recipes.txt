@@ -1621,6 +1621,7 @@ Inflict Serious Wounds  (Divine)
 Inflict Critical Wounds (Divine)
 Lesser Spell Breach     (Arcane)
 Phantasmal Killer       (Arcane)
+Poison                  (Divine)
 Vampiric Touch          (Arcane)
 
 Available Armor Spells:
