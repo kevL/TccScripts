@@ -5,7 +5,7 @@ Patch Version: 2.05
 Original The Complete Craftman Mod By: ChainsawXIV
 Previous Patch Credit: Jake Zahn/Offkorn
 Current Patch by: Vandervecken Smith & KevL
-Date: TBD
+Date: January 23rd 2019
 
 NOTE:
 This new version (2.0 onwards) is fully self-contained and should not be installed on top of the original TCC.
@@ -13,6 +13,11 @@ It repackages many original elements of the TCC, but the code has been majorly o
 HTML documentation from the original TCC is included with ChainsawXIV's permission.
 You can also find this documentation online at completecraftsman.com
 
+NWN2FIXES MOD:
+At least one of the fixes in this mod is complementary to the nwn2fixes mod, which can be found here:
+https://neverwintervault.org/project/nwn2/other/patch/nwn2-fixes
+https://github.com/nwn2fixes/player
+The nwn2fixes mod is highly recommended by the authors kevL and Vandervecken.
 
 --------------------
 Installation
@@ -63,7 +68,7 @@ If you wish to use recipes that adhere most closely to the original TCC, you may
 See the Installation section of this Readme for more details.
 We recommend the Rebalanced version.
 
-NOTE: All the standard MotB recipes from the vanilla game are included.
+NOTE: All the standard MotB recipes from the vanilla game are included. One new MotB-specific recipe has been added, using Gnarlthorn's Essence.
 
 To install this patch, you do not need to download the original TCC, or Jake's "Complete Craftsman MotB-SoZ Patch and Rebalance" mod.
 This mod is a complete re-release.
@@ -167,6 +172,8 @@ Version 2.05
 - Added blueprints for TCC non-masterwork arrows, bolts, bullets: Cold Iron, Alchemical Silver
 - Added blueprints for non-masterwork Ring and Adamantine Ring, and for Masterwork Sling
 - Added missing recipe for Spell Focus (Transmutation)
+- Fixed Adamantine Shields (Masterwork only) to properly apply their Damage Reduction.
+  For regular Adamantine shields, see the nwn2fixes mod.
 - Fixed Acid Blob vs Acid Splash recipes and slightly rebalanced Acid Blob recipes
 - improvements to the tcc_scanner
 - Miscellaneous bugfixes
