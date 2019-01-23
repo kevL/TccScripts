@@ -1,5 +1,5 @@
 Neverwinter Nights 2 TCC Rebalance Crafting Recipes
-Mod Version: 2.0.5
+Mod Version: 2.05
 
 
 --------------------------------------------------------------------------------
