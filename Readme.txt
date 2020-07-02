@@ -1,11 +1,11 @@
 Neverwinter Nights 2, The Complete Craftsman Reboot
 Formerly known as Neverwinter Nights 2, The Complete Craftsman MotB Patch + Rebalance [Reboot]
 Game Version: 1.23 Complete from GoG.com (tested), but probably works on other versions as well.
-Patch Version: 2.05
+Patch Version: 2.06
 Original The Complete Craftman Mod By: ChainsawXIV
 Previous Patch Credit: Jake Zahn/Offkorn
 Current Patch by: Vandervecken Smith & KevL
-Date: January 23rd 2019
+Date: July 1st 2020
 
 NOTE:
 This new version (2.0 onwards) is fully self-contained and should not be installed on top of the original TCC.
@@ -145,6 +145,9 @@ NOTE: Mithral Armor Masterwork bonuses function correctly, but they are not refl
 Version changes
 --------------------
 
+Version 2.06
+Changes:
+- Fixed a bug with Masterwork Heavy Adamantine Shields
 Version 2.05
 NOTE: This mod now additionally packages the following 2DAs that were not present in 2.04:
 - iprp_ammocost
